@@ -4,7 +4,7 @@
     <div class="header-brand">
         <!--begin::Logo-->
         <a href="">
-            <img alt="Logo" src="metronic/assets/media/logos/logo-1-dark.svg" class="h-25px h-lg-25px"/>
+            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/logo-1-dark.svg') }}" class="h-25px h-lg-25px"/>
         </a>
         <!--end::Logo-->
         <!--begin::Aside minimize-->

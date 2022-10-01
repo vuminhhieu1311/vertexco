@@ -14,14 +14,9 @@ class CategoryController extends Controller
         return view('category.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return 'Hello';
+        return view('category.create');
     }
 
     /**
