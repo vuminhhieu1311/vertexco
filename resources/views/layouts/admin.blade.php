@@ -15,6 +15,7 @@
     <link href="{{ asset('metronic/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('metronic/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+    @yield('additional_styles')
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -38,6 +39,7 @@
 <!--end::Root-->
 <!--end::Main-->
 
+<!--begin::Javascript-->
 <!--begin::Global Javascript Bundle(used by all pages)-->
 <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
