@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+    @include('components.admin.header', ['parent' => 'Categories', 'child' => 'Category List'])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Post-->

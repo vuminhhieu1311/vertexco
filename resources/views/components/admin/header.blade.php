@@ -3,7 +3,7 @@
     <!--begin::Brand-->
     <div class="header-brand">
         <!--begin::Logo-->
-        <a href="../../demo8/dist/index.html">
+        <a href="">
             <img alt="Logo" src="metronic/assets/media/logos/logo-1-dark.svg" class="h-25px h-lg-25px"/>
         </a>
         <!--end::Logo-->
@@ -71,13 +71,13 @@
             <!--begin::Page title-->
             <div class="page-title d-flex justify-content-center flex-column me-5">
                 <!--begin::Title-->
-                <h1 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Dashboard</h1>
+                <h1 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">{{ $child }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 pt-1">
                     <!--begin::Item-->
                     <li class="breadcrumb-item text-muted">
-                        <a href="../../demo8/dist/index.html" class="text-muted text-hover-primary">Home</a>
+                        <a href="" class="text-muted text-hover-primary">Home</a>
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
@@ -85,16 +85,18 @@
                         <span class="bullet bg-gray-200 w-5px h-2px"></span>
                     </li>
                     <!--end::Item-->
+                @if($parent)
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">Dashboards</li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item text-dark">Multipurpose</li>
+                        <li class="breadcrumb-item text-muted">{{ $parent }}</li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item">
+                            <span class="bullet bg-gray-200 w-5px h-2px"></span>
+                        </li>
+                        <!--end::Item-->
+                @endif
+                <!--begin::Item-->
+                    <li class="breadcrumb-item text-dark">{{ $child }}</li>
                     <!--end::Item-->
                 </ul>
                 <!--end::Breadcrumb-->

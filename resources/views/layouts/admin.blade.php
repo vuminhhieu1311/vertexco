@@ -28,7 +28,6 @@
         @include('components.admin.sidebar')
         <!--begin::Wrapper-->
         <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-            @include('components.admin.header')
             @yield('content')
             @include('components.admin.footer')
         </div>
