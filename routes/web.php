@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/update-language/{lang}', [
+    UserController::class,
+    'updateLanguage',
+])->name('update-language');
 
 Route::resources([
     'categories' => CategoryController::class,

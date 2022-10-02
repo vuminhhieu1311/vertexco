@@ -46,7 +46,7 @@
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar">
                             <!--begin::Add Category-->
-                            <a href="" class="btn btn-primary">Add Category</a>
+                            <a href="" class="btn btn-primary">{{ __('messages.add_category') }}</a>
                             <!--end::Add Category-->
                         </div>
                         <!--end::Card toolbar-->
@@ -60,9 +60,9 @@
                             <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th class="min-w-250px">Category</th>
-                                <th class="min-w-150px">Category Description</th>
-                                <th class="text-end min-w-70px">Actions</th>
+                                <th class="min-w-250px">{{ __('messages.category') }}</th>
+                                <th class="min-w-150px">{{ __('messages.category_description') }}</th>
+                                <th class="text-end min-w-70px">{{ __('messages.actions') }}</th>
                             </tr>
                             <!--end::Table row-->
                             </thead>
@@ -93,9 +93,7 @@
                                     </td>
                                     <!--end::Category=-->
                                     <td>
-                                        <!--begin::Badges-->
                                         <div>{{ $category->description }}</div>
-                                        <!--end::Badges-->
                                     </td>
                                     <!--begin::Action=-->
                                     <td class="text-end">
