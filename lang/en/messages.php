@@ -15,4 +15,8 @@ return [
     'sign_in' => 'Sign in',
     'password_confirmation' => 'Confirm password',
     'language' => 'Language',
+    'category_image' => 'Category image',
+    'category_name' => 'Category name',
+    'save_changes' => 'Save Changes',
+    'cancel' => 'Cancel',
 ];

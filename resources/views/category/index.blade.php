@@ -44,7 +44,8 @@
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar">
                             <!--begin::Add Category-->
-                            <a href="" class="btn btn-primary">{{ __('messages.add_category') }}</a>
+                            <a href="{{ route('categories.create') }}"
+                                class="btn btn-primary">{{ __('messages.add_category') }}</a>
                             <!--end::Add Category-->
                         </div>
                         <!--end::Card toolbar-->
@@ -74,10 +75,10 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Thumbnail-->
-                                                <a href="../../demo8/dist/apps/ecommerce/catalog/edit-category.html"
+                                                <a href=""
                                                     class="symbol symbol-50px">
                                                     <span class="symbol-label"
-                                                        style="background-image:url('metronic/assets/media//stock/ecommerce/68.gif');"></span>
+                                                        style="{{ 'background-image:url(' . asset($category->image_url) . ');' }}"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
                                                 <div class="ms-5">

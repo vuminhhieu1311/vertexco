@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -19,15 +20,19 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $filePath = optional($request->file('image'))->store('public/images');
+
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image_url' => Storage::url($filePath),
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('categories.index')
+            ->with('success', __('messages.successfully'));
     }
 
     /**

@@ -15,4 +15,5 @@ return [
     'sign_in' => 'Đăng nhập',
     'password_confirmation' => 'Xác nhận mật khẩu',
     'language' => 'Ngôn ngữ',
+    'category_image' => 'Hình ảnh',
 ];
