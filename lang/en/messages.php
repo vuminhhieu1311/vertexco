@@ -14,4 +14,5 @@ return [
     'already_have_account' => 'Already have an account?',
     'sign_in' => 'Sign in',
     'password_confirmation' => 'Confirm password',
+    'language' => 'Language',
 ];

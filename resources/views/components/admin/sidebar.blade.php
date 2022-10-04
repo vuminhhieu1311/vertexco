@@ -161,21 +161,31 @@
                             <div class="menu-item px-5" data-kt-menu-trigger="hover"
                                 data-kt-menu-placement="right-start">
                                 <a href="#" class="menu-link px-5">
-                                    <span class="menu-title position-relative">Language
-                                        <span
-                                            class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                                            <img class="w-15px h-15px rounded-1 ms-2"
-                                                src="{{ asset('metronic/assets/media/flags/united-states.svg') }}"
-                                                alt="" /></span></span>
+                                    <span class="menu-title position-relative">{{ __('messages.language') }}
+                                        @if (app()->getLocale() === 'en')
+                                            <span
+                                                class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
+                                                <img class="w-15px h-15px rounded-1 ms-2"
+                                                    src="{{ asset('metronic/assets/media/flags/en.svg') }}" />
+                                            </span>
+                                        @else
+                                            <span
+                                                class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">Vietnam
+                                                <img class="w-15px h-15px rounded-1 ms-2"
+                                                    src="{{ asset('metronic/assets/media/flags/vi.svg') }}" />
+                                            </span>
+                                        @endif
+                                    </span>
                                 </a>
                                 <!--begin::Menu sub-->
                                 <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="{{ route('update-language', ['lang' => 'en']) }}">
+                                        <a href="{{ route('update-language', ['lang' => 'en']) }}"
+                                            class="menu-link d-flex px-5">
                                             <span class="symbol symbol-20px me-4">
                                                 <img class="rounded-1"
-                                                    src="{{ asset('metronic/assets/media/flags/united-states.svg') }}"
+                                                    src="{{ asset('metronic/assets/media/flags/en.svg') }}"
                                                     alt="" />
                                             </span>English</a>
                                     </div>
@@ -186,7 +196,7 @@
                                             class="menu-link d-flex px-5">
                                             <span class="symbol symbol-20px me-4">
                                                 <img class="rounded-1"
-                                                    src="{{ asset('metronic/assets/media/flags/france.svg') }}"
+                                                    src="{{ asset('metronic/assets/media/flags/vi.svg') }}"
                                                     alt="" />
                                             </span>Vietnam</a>
                                     </div>

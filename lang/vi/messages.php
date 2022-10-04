@@ -14,4 +14,5 @@ return [
     'already_have_account' => 'Đã có tài khoản?',
     'sign_in' => 'Đăng nhập',
     'password_confirmation' => 'Xác nhận mật khẩu',
+    'language' => 'Ngôn ngữ',
 ];
