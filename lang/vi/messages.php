@@ -16,4 +16,9 @@ return [
     'password_confirmation' => 'Xác nhận mật khẩu',
     'language' => 'Ngôn ngữ',
     'category_image' => 'Hình ảnh',
+    'category_name' => 'Tên danh mục',
+    'save_changes' => 'Lưu thay đổi',
+    'cancel' => 'Hủy',
+    'edit' => 'Chỉnh sửa',
+    'delete' => 'Xóa',
 ];

@@ -27,6 +27,32 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
+            'image_url' => $filePath,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('categories.index')
+            ->with('success', __('messages.successfully'));
+    }
+
+    public function show(Category $category)
+    {
+        //
+    }
+
+    public function edit(Category $category)
+    {
+
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        Storage::delete($category->image_url);
+        $filePath = optional($request->file('image'))->store('public/images');
+
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
             'image_url' => Storage::url($filePath),
             'status' => $request->status,
         ]);
@@ -35,48 +61,11 @@ class CategoryController extends Controller
             ->with('success', __('messages.successfully'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index')
+            ->with('success', __('messages.successfully'));
     }
 }

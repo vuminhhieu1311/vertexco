@@ -30,3 +30,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'categories' => CategoryController::class,
     ]);
 });
+
+Route::get('test', function() {
+    \Illuminate\Support\Facades\Storage::delete('public/images/euRPxQ1l1W2RRVq8aEFonApOyRt490lPK6D5OUwF.jpg');
+});

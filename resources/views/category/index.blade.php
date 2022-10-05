@@ -15,6 +15,11 @@
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
+                @if (Session::get('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <!--begin::Category-->
                 <div class="card card-flush">
                     <!--begin::Card header-->
@@ -75,10 +80,9 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Thumbnail-->
-                                                <a href=""
-                                                    class="symbol symbol-50px">
+                                                <a href="" class="symbol symbol-50px">
                                                     <span class="symbol-label"
-                                                        style="{{ 'background-image:url(' . asset($category->image_url) . ');' }}"></span>
+                                                        style="{{ 'background-image:url(' . asset(Storage::url($category->image_url)) . ');' }}"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
                                                 <div class="ms-5">
@@ -92,12 +96,13 @@
                                         </td>
                                         <!--end::Category=-->
                                         <td>
-                                            <div>{{ $category->description }}</div>
+                                            <div>{!! $category->description !!}</div>
                                         </td>
                                         <!--begin::Action=-->
                                         <td class="text-end">
                                             <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                                data-kt-menu-trigger="click"
+                                                data-kt-menu-placement="bottom-end">{{ __('messages.actions') }}
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -115,13 +120,14 @@
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
                                                     <a href="../../demo8/dist/apps/ecommerce/catalog/add-category.html"
-                                                        class="menu-link px-3">Edit</a>
+                                                        class="menu-link px-3">{{ __('messages.edit') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-ecommerce-category-filter="delete_row">Delete</a>
+                                                <div class="menu-item px-3" data-bs-toggle="modal"
+                                                    data-bs-target="#kt_modal_{{ $category->id }}">
+                                                    <div class="menu-link px-3">
+                                                        {{ __('messages.delete') }}</div>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -130,6 +136,25 @@
                                         <!--end::Action=-->
                                     </tr>
                                     <!--end::Table row-->
+                                    <div class="modal fade" tabindex="-1" id="kt_modal_{{ $category->id }}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body lead">{{ __('messages.delete_confirm') }}</div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
+                                                        <form
+                                                            action="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                                                            method="POST"
+                                                        >
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <button type="submit" class="btn btn-danger">{{ __('messages.confirm') }}</button>
+                                                        </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </tbody>
                             <!--end::Table body-->

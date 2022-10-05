@@ -19,4 +19,9 @@ return [
     'category_name' => 'Category name',
     'save_changes' => 'Save Changes',
     'cancel' => 'Cancel',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'delete_confirm' => 'Are you sure you want to delete?',
+    'confirm' => 'Confirm',
+    'successfully' => 'Successfully!',
 ];
