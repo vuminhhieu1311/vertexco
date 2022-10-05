@@ -35,25 +35,23 @@ class CategoryController extends Controller
             ->with('success', __('messages.successfully'));
     }
 
-    public function show(Category $category)
-    {
-        //
-    }
-
     public function edit(Category $category)
     {
-
+        return view('category.edit', compact('category'));
     }
 
     public function update(Request $request, Category $category)
     {
-        Storage::delete($category->image_url);
-        $filePath = optional($request->file('image'))->store('public/images');
+        $filePath = $category->image_url;
+        if ($request->file('image')) {
+            Storage::delete($category->image_url);
+            $filePath = optional($request->file('image'))->store('public/images');
+        }
 
         $category->update([
             'name' => $request->name,
             'description' => $request->description,
-            'image_url' => Storage::url($filePath),
+            'image_url' => $filePath,
             'status' => $request->status,
         ]);
 

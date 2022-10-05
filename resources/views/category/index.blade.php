@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    @include('components.admin.header', ['parent' => 'Categories', 'child' => 'Category List'])
+    @include('components.admin.header', ['parent' => null, 'child' => __('messages.categories')])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Post-->
@@ -64,8 +64,9 @@
                             <thead>
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th class="min-w-250px">{{ __('messages.category') }}</th>
+                                    <th class="min-w-200px">{{ __('messages.category') }}</th>
                                     <th class="min-w-150px">{{ __('messages.category_description') }}</th>
+                                    <th class="min-w-80px">{{ __('messages.status') }}</th>
                                     <th class="text-end min-w-70px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -80,14 +81,15 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Thumbnail-->
-                                                <a href="" class="symbol symbol-50px">
+                                                <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
+                                                    class="symbol symbol-50px">
                                                     <span class="symbol-label"
                                                         style="{{ 'background-image:url(' . asset(Storage::url($category->image_url)) . ');' }}"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
                                                 <div class="ms-5">
                                                     <!--begin::Title-->
-                                                    <a href=""
+                                                    <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
                                                         class="text-gray-800 text-hover-primary fs-5 fw-bolder"
                                                         data-kt-ecommerce-category-filter="category_name">{{ $category->name }}</a>
                                                     <!--end::Title-->
@@ -97,6 +99,13 @@
                                         <!--end::Category=-->
                                         <td>
                                             <div>{!! $category->description !!}</div>
+                                        </td>
+                                        <td>
+                                            @if ($category->status === 'published')
+                                                <span class="badge badge-success text-capitalize">{{ $category->status }}</span>
+                                            @else
+                                                <span class="badge badge-danger text-capitalize">{{ $category->status }}</span>
+                                            @endif
                                         </td>
                                         <!--begin::Action=-->
                                         <td class="text-end">
@@ -119,7 +128,7 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="../../demo8/dist/apps/ecommerce/catalog/add-category.html"
+                                                    <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
                                                         class="menu-link px-3">{{ __('messages.edit') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -143,14 +152,14 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light"
                                                         data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
-                                                        <form
-                                                            action="{{ route('categories.destroy', ['category' => $category->id]) }}"
-                                                            method="POST"
-                                                        >
-                                                            @csrf
-                                                            @method("DELETE")
-                                                            <button type="submit" class="btn btn-danger">{{ __('messages.confirm') }}</button>
-                                                        </form>
+                                                    <form
+                                                        action="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-danger">{{ __('messages.confirm') }}</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

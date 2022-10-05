@@ -21,4 +21,11 @@ return [
     'cancel' => 'Hủy',
     'edit' => 'Chỉnh sửa',
     'delete' => 'Xóa',
+    'delete_confirm' => 'Bạn có chắc chắn muốn xóa?',
+    'confirm' => 'Xác nhận',
+    'successfully' => 'Thành công!',
+    'categories' => 'Danh mục',
+    'edit_category' => 'Chỉnh sửa danh mục',
+    'status' => 'Trạng thái',
+    'category_info' => 'Thông tin danh mục',
 ];

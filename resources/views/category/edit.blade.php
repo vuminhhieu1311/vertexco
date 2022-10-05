@@ -1,16 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('components.admin.header', ['parent' => __('messages.categories'), 'child' => __('messages.add_category')])
+    @include('components.admin.header', [
+        'parent' => __('messages.categories'),
+        'child' => __('messages.edit_category'),
+    ])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Post-->
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
-                <form method="POST" action="{{ route('categories.store') }}" enctype='multipart/form-data'
-                    id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row">
+                <form method="POST" action="{{ route('categories.update', ['category' => $category->id]) }}"
+                    enctype='multipart/form-data' id="kt_ecommerce_add_category_form"
+                    class="form d-flex flex-column flex-lg-row">
                     @csrf
+                    @method('PUT')
                     <!--begin::Aside column-->
                     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                         <!--begin::Thumbnail settings-->
@@ -29,7 +34,7 @@
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-empty image-input-outline mb-3"
                                     data-kt-image-input="true"
-                                    style="{{ 'background-image: url(' . asset('metronic/assets/media/svg/files/blank-image.svg') . ')' }}">
+                                    style="{{ 'background-image: url(' . asset(Storage::url($category->image_url)) . ')' }}">
                                     <!--begin::Preview existing avatar-->
                                     <div class="image-input-wrapper w-150px h-150px"></div>
                                     <!--end::Preview existing avatar-->
@@ -89,11 +94,13 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" name="status" data-control="select2"
+                                <select class="form-select mb-2" name="status"" data-control="select2"
                                     data-hide-search="true" data-placeholder="Select an option"
                                     id="kt_ecommerce_add_category_status_select">
-                                    <option value="published" selected="selected">Published</option>
-                                    <option value="unpublished">Unpublished</option>
+                                    <option value="published" selected="{{ $category->status === 'published' }}">Published
+                                    </option>
+                                    <option value="unpublished" selected="{{ $category->status === 'unpublished' }}">
+                                        Unpublished</option>
                                 </select>
                                 <!--end::Select2-->
                                 <div class="d-none mt-10">
@@ -125,7 +132,8 @@
                                     <label class="required form-label">{{ __('messages.category_name') }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="text" name="name" class="form-control mb-2" value="" />
+                                    <input type="text" name="name" class="form-control mb-2"
+                                        value="{{ $category->name }}" />
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->
@@ -138,7 +146,8 @@
                                     <div id="category-description-editor" class="min-h-200px mb-2"></div>
                                     <!--end::Editor-->
                                 </div>
-                                <input type="hidden" id="category-description" name="description" />
+                                <input type="hidden" id="category-description" name="description"
+                                    value="{{ $category->description }}" />
                                 <!--end::Input group-->
                             </div>
                             <!--end::Card header-->
@@ -190,11 +199,13 @@
             theme: 'snow' // or 'bubble'
         });
 
+        fullEditor.root.innerHTML = $('#category-description').val();
+
         $('#submit-btn').on('click', (e) => {
             e.preventDefault();
             const description = fullEditor.root.innerHTML;
             $('#category-description').val(description)
-            $( "#kt_ecommerce_add_category_form" ).submit();
+            $("#kt_ecommerce_add_category_form").submit();
         })
     </script>
 @endsection

@@ -24,4 +24,8 @@ return [
     'delete_confirm' => 'Are you sure you want to delete?',
     'confirm' => 'Confirm',
     'successfully' => 'Successfully!',
+    'categories' => 'Categories',
+    'edit_category' => 'Edit Category',
+    'status' => 'Status',
+    'category_info' => 'Category info',
 ];
