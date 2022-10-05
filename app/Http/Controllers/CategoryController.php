@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::latest()->get();
 
         return view('category.index', compact('categories'));
     }
@@ -44,7 +44,9 @@ class CategoryController extends Controller
     {
         $filePath = $category->image_url;
         if ($request->file('image')) {
-            Storage::delete($category->image_url);
+            if ($filePath) {
+                Storage::delete($category->image_url);
+            }
             $filePath = optional($request->file('image'))->store('public/images');
         }
 

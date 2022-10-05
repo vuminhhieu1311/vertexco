@@ -28,4 +28,12 @@ return [
     'edit_category' => 'Edit Category',
     'status' => 'Status',
     'category_info' => 'Category info',
+    'products' => 'Products',
+    'add_product' => 'Add product',
+    'avatar' => 'Avatar',
+    'product_info' => 'Product information',
+    'description' => 'Description',
+    'quantity' => 'Quantity',
+    'price' => 'Price',
+    'media' => 'Media',
 ];

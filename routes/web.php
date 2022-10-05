@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
 
     Route::resources([
         'categories' => CategoryController::class,
+        'products' => ProductController::class,
     ]);
 });
 
