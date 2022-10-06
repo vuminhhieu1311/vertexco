@@ -12,8 +12,9 @@
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Form-->
-                <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row"
-                    data-kt-redirect="../../demo8/dist/apps/ecommerce/catalog/products.html">
+                <form method="POST" action="{{ route('products.store') }}" enctype='multipart/form-data'
+                    id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
+                    @csrf
                     <!--begin::Aside column-->
                     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                         <!--begin::Thumbnail settings-->
@@ -90,8 +91,9 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" data-hide-search="true"
-                                    data-placeholder="Select an option" id="kt_ecommerce_add_product_status_select">
+                                <select class="form-select mb-2" name="status" data-control="select2"
+                                    data-hide-search="true" data-placeholder="Select an option"
+                                    id="kt_ecommerce_add_product_status_select">
                                     <option value="published" selected="selected">Published</option>
                                     <option value="inactive">Inactive</option>
                                     <option value="draft">Draft</option>
@@ -122,19 +124,11 @@
                             <div class="card-body pt-0">
                                 <!--begin::Input group-->
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
-                                    data-allow-clear="true" multiple="multiple">
-                                    <option></option>
-                                    <option value="Computers">Computers</option>
-                                    <option value="Watches">Watches</option>
-                                    <option value="Headphones">Headphones</option>
-                                    <option value="Footwear">Footwear</option>
-                                    <option value="Cameras">Cameras</option>
-                                    <option value="Shirts">Shirts</option>
-                                    <option value="Household">Household</option>
-                                    <option value="Handbags">Handbags</option>
-                                    <option value="Wines">Wines</option>
-                                    <option value="Sandals">Sandals</option>
+                                <select class="form-select mb-2" name="category_ids[]" data-control="select2"
+                                    data-placeholder="Select an option" data-allow-clear="true" multiple>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                                 <!--end::Select2-->
                                 <!--end::Input group-->
@@ -166,7 +160,7 @@
                                             <label class="required form-label">{{ __('messages.name') }}</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="text" name="product_name" class="form-control mb-2"
+                                            <input type="text" name="name" class="form-control mb-2"
                                                 placeholder="Product name" value="" />
                                             <!--end::Input-->
                                         </div>
@@ -177,11 +171,11 @@
                                             <label class="form-label">{{ __('messages.description') }}</label>
                                             <!--end::Label-->
                                             <!--begin::Editor-->
-                                            <div id="kt_ecommerce_add_product_description"
-                                                name="kt_ecommerce_add_product_description" class="min-h-200px mb-2">
+                                            <div id="product-description-editor" class="min-h-200px mb-2">
                                             </div>
                                             <!--end::Editor-->
                                         </div>
+                                        <input type="hidden" id="product-description" name="description" />
                                         <!--end::Input group-->
                                         <div class="d-flex gap-5">
                                             <!--begin::Input group-->
@@ -225,7 +219,7 @@
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-2">
                                             <!--begin::Dropzone-->
-                                            <div class="dropzone" id="kt_ecommerce_add_product_media">
+                                            <div class="dropzone" id="add_product_media">
                                                 <!--begin::Message-->
                                                 <div class="dz-message needsclick">
                                                     <!--begin::Icon-->
@@ -253,12 +247,11 @@
                         <!--end::Product info-->
                         <div class="d-flex justify-content-end">
                             <!--begin::Button-->
-                            <a href="../../demo8/dist/apps/ecommerce/catalog/products.html"
-                                id="kt_ecommerce_add_product_cancel"
+                            <a href="" id="kt_ecommerce_add_product_cancel"
                                 class="btn btn-light me-5">{{ __('messages.cancel') }}</a>
                             <!--end::Button-->
                             <!--begin::Button-->
-                            <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                            <button type="submit" id="submit-btn" class="btn btn-primary">
                                 <span class="indicator-label">{{ __('messages.save_changes') }}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -284,4 +277,58 @@
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
     <!--end::Page Custom Javascript-->
+    <script>
+        var fullEditor = new Quill('#product-description-editor', {
+            modules: {
+                toolbar: [
+                    [{
+                        header: [1, 2, false]
+                    }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block']
+                ]
+            },
+            placeholder: 'Type your text here...',
+            theme: 'snow' // or 'bubble'
+        });
+
+        var images = [];
+
+        var myDropzone = new Dropzone("#add_product_media", {
+            url: '#',
+            paramName: 'file', // The name that will be used to transfer the file
+            maxFiles: 10,
+            maxFilesize: 10, // MB
+            addRemoveLinks: true,
+            accept: function(file, done) {
+                images.push({
+                    name: file.name,
+                    file,
+                });
+            }
+        });
+
+        $('#submit-btn').on('click', (e) => {
+            e.preventDefault();
+            const description = fullEditor.root.innerHTML;
+            $('#product-description').val(description);
+            const formData = new FormData(document.getElementById('kt_ecommerce_add_product_form'));
+            images.forEach((image) => {
+                formData.append('images[]', image.file, image.name);
+            });
+
+            $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                url: '/products',
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(response) {
+                    window.location.href = '/products';
+                }
+            });
+        })
+    </script>
 @endsection

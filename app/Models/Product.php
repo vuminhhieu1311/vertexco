@@ -25,4 +25,14 @@ class Product extends Model
         'user_id',
         'discount_id',
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }
