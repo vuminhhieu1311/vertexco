@@ -193,8 +193,8 @@
         $('#submit-btn').on('click', (e) => {
             e.preventDefault();
             const description = fullEditor.root.innerHTML;
-            $('#category-description').val(description)
-            $( "#kt_ecommerce_add_category_form" ).submit();
+            $('#category-description').val(description);
+            $('#kt_ecommerce_add_category_form').submit();
         })
     </script>
 @endsection
