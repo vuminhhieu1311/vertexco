@@ -42,14 +42,14 @@ class ProductController extends Controller
 
             $product->categories()->attach($request->category_ids);
 
-            foreach ($request->file('images') as $image) {
+            foreach ($request->file('images', []) as $image) {
                 $filePath = $image->store('public/images');
                 $product->images()->create(['url' => $filePath]);
             }
 
-            return response()->json($product);
-
             DB::commit();
+
+            return response()->json($product->load('categories', 'images'));
         } catch (\Exception $e) {
             DB::rollBack();
 

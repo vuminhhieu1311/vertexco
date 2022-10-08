@@ -58,7 +58,7 @@
                                 <!--end::Select2-->
                             </div>
                             <!--begin::Add product-->
-                            <a href="../../demo8/dist/apps/ecommerce/catalog/add-product.html" class="btn btn-primary">Add
+                            <a href="{{ route('products.create') }}" class="btn btn-primary">Add
                                 Product</a>
                             <!--end::Add product-->
                         </div>
