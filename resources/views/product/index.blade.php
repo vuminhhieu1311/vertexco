@@ -9,8 +9,8 @@
 
 @section('content')
     @include('components.admin.header', [
-        'parent' => __('messages.products'),
-        'child' => __('messages.add_product'),
+        'parent' => null,
+        'child' => __('messages.products'),
     ])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -225,9 +225,10 @@
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-ecommerce-product-filter="delete_row">{{ __('messages.delete') }}</a>
+                                                <div class="menu-item px-3" data-bs-toggle="modal"
+                                                    data-bs-target="#kt_modal_{{ $product->id }}">
+                                                    <div class="menu-link px-3">
+                                                        {{ __('messages.delete') }}</div>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -236,6 +237,25 @@
                                         <!--end::Action=-->
                                     </tr>
                                     <!--end::Table row-->
+                                    <div class="modal fade" tabindex="-1" id="kt_modal_{{ $product->id }}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body lead">{{ __('messages.delete_confirm') }}</div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
+                                                    <form
+                                                        action="{{ route('products.destroy', ['product' => $product->id]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-danger">{{ __('messages.confirm') }}</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </tbody>
                             <!--end::Table body-->

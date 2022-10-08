@@ -332,6 +332,6 @@
                     window.location.href = '/products';
                 }
             });
-        })
+        });
     </script>
 @endsection
