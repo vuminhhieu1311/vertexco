@@ -205,7 +205,7 @@
             e.preventDefault();
             const description = fullEditor.root.innerHTML;
             $('#category-description').val(description)
-            $("#kt_ecommerce_add_category_form").submit();
+            $('#kt_ecommerce_add_category_form').submit();
         })
     </script>
 @endsection

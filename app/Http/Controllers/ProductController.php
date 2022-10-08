@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -26,7 +27,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        try  {
+        try {
             DB::beginTransaction();
             $filePath = optional($request->file('avatar'))->store('public/images');
 
@@ -49,7 +50,7 @@ class ProductController extends Controller
 
             DB::commit();
 
-            return response()->json($product->load('categories', 'images'));
+            return response()->json($product);
         } catch (\Exception $e) {
             DB::rollBack();
 
@@ -64,12 +65,49 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        //
+        $categories = Category::latest()->get();
+        $product->category_ids = $product->categories->pluck('id')->toArray();
+
+        return view('product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $filePath = $product->avatar_url;
+            if ($request->file('avatar')) {
+                if ($filePath) {
+                    Storage::delete($product->avatar_url);
+                }
+                $filePath = optional($request->file('avatar'))->store('public/images');
+            }
+
+            $product->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+                'status' => $request->status,
+                'avatar_url' => $filePath,
+            ]);
+
+            $product->categories()->sync($request->category_ids);
+
+//            foreach ($request->file('images', []) as $image) {
+//                $filePath = $image->store('public/images');
+//                $product->images()->create(['url' => $filePath]);
+//            }
+
+            DB::commit();
+
+            return redirect()->route('products.index')
+                ->with('success', __('messages.successfully'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
     }
 
     public function destroy(Product $product)
