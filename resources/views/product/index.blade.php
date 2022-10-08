@@ -50,10 +50,9 @@
                                 <!--begin::Select2-->
                                 <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
                                     data-placeholder="Status" data-kt-ecommerce-product-filter="status">
-                                    <option></option>
                                     <option value="all">All</option>
                                     <option value="published">Published</option>
-                                    <option value="scheduled">Scheduled</option>
+                                    <option value="scheduled">Draft</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
                                 <!--end::Select2-->
@@ -74,12 +73,12 @@
                             <thead>
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th class="min-w-150px">Product</th>
-                                    <th class="min-w-70px">Qty</th>
-                                    <th class="min-w-100px">Price</th>
-                                    <th class="min-w-100px">Rating</th>
-                                    <th class="min-w-100px">Status</th>
-                                    <th class="text-end min-w-70px">Actions</th>
+                                    <th class="min-w-150px">{{ __('messages.product') }}</th>
+                                    <th class="min-w-70px">{{ __('messages.quantity') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.price') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.rating') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.status') }}</th>
+                                    <th class="text-end min-w-70px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
@@ -93,7 +92,8 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Thumbnail-->
-                                                <a href="" class="symbol symbol-50px">
+                                                <a href="{{ route('products.edit', ['product' => $product->id]) }}"
+                                                    class="symbol symbol-50px">
                                                     <span class="symbol-label"
                                                         style="{{ 'background-image:url(' . asset(Storage::url($product->avatar_url)) . ');' }}"></span>
                                                 </a>
@@ -188,16 +188,21 @@
                                         <td class="pe-0" data-order="Inactive">
                                             <!--begin::Badges-->
                                             @if ($product->status === 'published')
-                                                <div class="badge badge-light-success text-capitalize">{{ $product->status }}</div>
+                                                <div class="badge badge-light-success text-capitalize">
+                                                    {{ $product->status }}</div>
+                                            @elseif($product->status === 'inactive')
+                                                <div class="badge badge-light-danger text-capitalize">
+                                                    {{ $product->status }}</div>
                                             @else
-                                                <div class="badge badge-light-danger text-capitalize">{{ $product->status }}</div>
+                                                <div class="badge badge-light-warning text-capitalize">
+                                                    {{ $product->status }}</div>
                                             @endif
                                             <!--end::Badges-->
                                         </td>
                                         <!--end::Status=-->
                                         <!--begin::Action=-->
                                         <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
+                                            <div class="btn btn-sm btn-light btn-active-light-primary"
                                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0">
@@ -209,20 +214,20 @@
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                            </a>
+                                            </div>
                                             <!--begin::Menu-->
                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="../../demo8/dist/apps/ecommerce/catalog/edit-product.html"
-                                                        class="menu-link px-3">Edit</a>
+                                                    <a href="{{ route('products.edit', ['product' => $product->id]) }}"
+                                                        class="menu-link px-3">{{ __('messages.edit') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
                                                     <a href="#" class="menu-link px-3"
-                                                        data-kt-ecommerce-product-filter="delete_row">Delete</a>
+                                                        data-kt-ecommerce-product-filter="delete_row">{{ __('messages.delete') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>

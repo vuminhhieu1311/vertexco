@@ -36,4 +36,6 @@ return [
     'quantity' => 'Số lượng',
     'price' => 'Giá',
     'media' => 'Hình ảnh',
+    'rating' => 'Đánh giá',
+    'product' => 'Sản phẩm',
 ];

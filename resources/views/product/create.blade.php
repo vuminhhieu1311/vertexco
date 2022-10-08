@@ -278,6 +278,7 @@
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
     <!--end::Page Custom Javascript-->
     <script>
+        // Description editor
         var fullEditor = new Quill('#product-description-editor', {
             modules: {
                 toolbar: [
@@ -292,6 +293,7 @@
             theme: 'snow' // or 'bubble'
         });
 
+        // Product images
         var images = [];
 
         var myDropzone = new Dropzone("#add_product_media", {
@@ -308,6 +310,7 @@
             }
         });
 
+        // Add product submit
         $('#submit-btn').on('click', (e) => {
             e.preventDefault();
             const description = fullEditor.root.innerHTML;

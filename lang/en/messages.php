@@ -36,4 +36,6 @@ return [
     'quantity' => 'Quantity',
     'price' => 'Price',
     'media' => 'Media',
+    'rating' => 'Rating',
+    'product' => 'Product',
 ];
