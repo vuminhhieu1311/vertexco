@@ -243,25 +243,6 @@
                                         <!--end::Action=-->
                                     </tr>
                                     <!--end::Table row-->
-                                    <div class="modal fade" tabindex="-1" id="kt_modal_{{ $product->id }}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-body lead">{{ __('messages.delete_confirm') }}</div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light"
-                                                        data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
-                                                    <form
-                                                        action="{{ route('products.destroy', ['product' => $product->id]) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-danger">{{ __('messages.confirm') }}</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 @endforeach
                             </tbody>
                             <!--end::Table body-->
@@ -287,6 +268,7 @@
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
     <!--end::Page Custom Javascript-->
     <script>
+        // Deletebutton clicked
         $('.delete-btn').click((e) => {
             const urlRequest = $(e.target).data('url');
             const productId = $(e.target).data('id');

@@ -76,7 +76,7 @@
                             <tbody class="fw-bold text-gray-600">
                                 @foreach ($categories as $category)
                                     <!--begin::Table row-->
-                                    <tr>
+                                    <tr id="{{ 'category-item-' . $category->id }}">
                                         <!--begin::Category=-->
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -133,9 +133,10 @@
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_{{ $category->id }}">
-                                                    <div class="menu-link px-3">
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-link px-3 delete-btn"
+                                                        data-url="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                                                        data-id="{{ $category->id }}">
                                                         {{ __('messages.delete') }}</div>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -145,25 +146,6 @@
                                         <!--end::Action=-->
                                     </tr>
                                     <!--end::Table row-->
-                                    <div class="modal fade" tabindex="-1" id="kt_modal_{{ $category->id }}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-body lead">{{ __('messages.delete_confirm') }}</div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light"
-                                                        data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
-                                                    <form
-                                                        action="{{ route('categories.destroy', ['category' => $category->id]) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-danger">{{ __('messages.confirm') }}</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 @endforeach
                             </tbody>
                             <!--end::Table body-->
@@ -188,4 +170,33 @@
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/categories.js') }}"></script>
     <!--end::Page Custom Javascript-->
+    <script>
+        // Deletebutton clicked
+        $('.delete-btn').click((e) => {
+            const urlRequest = $(e.target).data('url');
+            const categoryId = $(e.target).data('id');
+            Swal.fire({
+                title: 'Are you sure you want to delete?',
+                icon: 'warning',
+                buttonsStyling: false,
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                customClass: {
+                    confirmButton: "btn btn-danger",
+                    cancelButton: 'btn btn-light',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: urlRequest,
+                        success: function(data) {
+                            $(`#category-item-${categoryId}`).remove();
+                        },
+                        error: function() {}
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
