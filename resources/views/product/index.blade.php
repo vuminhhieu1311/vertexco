@@ -19,9 +19,7 @@
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 @if (Session::get('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
+                    <input id="success-message" type="hidden" value="{{ Session::get('success') }}" />
                 @endif
                 <!--begin::Products-->
                 <div class="card card-flush">
@@ -268,6 +266,10 @@
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
     <!--end::Page Custom Javascript-->
     <script>
+        if ($('#success-message').val()) {
+            toastr.success($('#success-message').val());
+        }
+
         // Deletebutton clicked
         $('.delete-btn').click((e) => {
             const urlRequest = $(e.target).data('url');
@@ -289,6 +291,7 @@
                         url: urlRequest,
                         success: function(data) {
                             $(`#product-item-${productId}`).remove();
+                            toastr.success('Delete successfully!');
                         },
                         error: function() {}
                     });
