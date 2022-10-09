@@ -183,29 +183,6 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/save-category.js') }} "></script>
+    <script src="{{ Vite::asset('resources/js/category/edit.js') }}"></script>
     <!--end::Page Custom Javascript-->
-    <script>
-        var fullEditor = new Quill('#category-description-editor', {
-            modules: {
-                toolbar: [
-                    [{
-                        header: [1, 2, false]
-                    }],
-                    ['bold', 'italic', 'underline'],
-                    ['image', 'code-block']
-                ]
-            },
-            placeholder: 'Type your text here...',
-            theme: 'snow' // or 'bubble'
-        });
-
-        fullEditor.root.innerHTML = $('#category-description').val();
-
-        $('#submit-btn').on('click', (e) => {
-            e.preventDefault();
-            const description = fullEditor.root.innerHTML;
-            $('#category-description').val(description)
-            $('#kt_ecommerce_add_category_form').submit();
-        })
-    </script>
 @endsection

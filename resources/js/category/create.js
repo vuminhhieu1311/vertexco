@@ -1,0 +1,22 @@
+// Description editor
+var fullEditor = new Quill('#category-description-editor', {
+    modules: {
+        toolbar: [
+            [{
+                header: [1, 2, false]
+            }],
+            ['bold', 'italic', 'underline'],
+            ['image', 'code-block']
+        ]
+    },
+    placeholder: 'Type your text here...',
+    theme: 'snow' // or 'bubble'
+});
+
+// Add category submit event
+$('#submit-btn').on('click', (e) => {
+    e.preventDefault();
+    const description = fullEditor.root.innerHTML;
+    $('#category-description').val(description);
+    $('#kt_ecommerce_add_category_form').submit();
+});

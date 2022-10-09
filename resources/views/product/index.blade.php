@@ -264,39 +264,6 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/product/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
-    <script>
-        if ($('#success-message').val()) {
-            toastr.success($('#success-message').val());
-        }
-
-        // Deletebutton clicked
-        $('.delete-btn').click((e) => {
-            const urlRequest = $(e.target).data('url');
-            const productId = $(e.target).data('id');
-            Swal.fire({
-                title: 'Are you sure you want to delete?',
-                icon: 'warning',
-                buttonsStyling: false,
-                showCancelButton: true,
-                confirmButtonText: 'Delete',
-                customClass: {
-                    confirmButton: "btn btn-danger",
-                    cancelButton: 'btn btn-light',
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'DELETE',
-                        url: urlRequest,
-                        success: function(data) {
-                            $(`#product-item-${productId}`).remove();
-                            toastr.success('Delete successfully!');
-                        },
-                        error: function() {}
-                    });
-                }
-            });
-        });
-    </script>
 @endsection
