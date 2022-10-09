@@ -70,6 +70,9 @@
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">*.png, *.jpg, *.jpeg</div>
                                 <!--end::Description-->
+                                @error('image')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -132,9 +135,13 @@
                                     <label class="required form-label">{{ __('messages.category_name') }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="text" name="name" class="form-control mb-2"
+                                    <input type="text" name="name"
+                                        class="form-control mb-2 @error('name') is-invalid @enderror"
                                         value="{{ $category->name }}" />
                                     <!--end::Input-->
+                                    @error('name')
+                                        <div class="text-danger"><small>{{ $message }}</small></div>
+                                    @enderror
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
@@ -149,6 +156,9 @@
                                 <input type="hidden" id="category-description" name="description"
                                     value="{{ $category->description }}" />
                                 <!--end::Input group-->
+                                @error('description')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                             <!--end::Card header-->
                         </div>

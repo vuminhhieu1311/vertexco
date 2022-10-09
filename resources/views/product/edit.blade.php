@@ -12,8 +12,9 @@
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Form-->
-                <form method="POST" action="{{ route('products.update', ['product' => $product->id]) }}" enctype='multipart/form-data'
-                    id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
+                <form method="POST" action="{{ route('products.update', ['product' => $product->id]) }}"
+                    enctype='multipart/form-data' id="kt_ecommerce_add_product_form"
+                    class="form d-flex flex-column flex-lg-row">
                     @csrf
                     @method('PUT')
                     {{-- <input type="hidden" id="product-id-value" value="{{ $product->id }}" /> --}}
@@ -258,7 +259,7 @@
                         <!--end::Product info-->
                         <div class="d-flex justify-content-end">
                             <!--begin::Button-->
-                            <a href="" id="kt_ecommerce_add_product_cancel"
+                            <a href="{{ route('products.index') }}" id="kt_ecommerce_add_product_cancel"
                                 class="btn btn-light me-5">{{ __('messages.cancel') }}</a>
                             <!--end::Button-->
                             <!--begin::Button-->

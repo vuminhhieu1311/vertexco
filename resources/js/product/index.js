@@ -3,11 +3,12 @@ $('.delete-btn').click((e) => {
     const urlRequest = $(e.target).data('url');
     const productId = $(e.target).data('id');
     Swal.fire({
-        title: 'Are you sure you want to delete?',
+        title: 'Bạn có chắc chắn muốn xóa?',
         icon: 'warning',
         buttonsStyling: false,
         showCancelButton: true,
-        confirmButtonText: 'Delete',
+        confirmButtonText: 'Xác nhận',
+        cancelButtonText: 'Hủy',
         customClass: {
             confirmButton: "btn btn-danger",
             cancelButton: 'btn btn-light',
@@ -19,7 +20,7 @@ $('.delete-btn').click((e) => {
                 url: urlRequest,
                 success: function(data) {
                     $(`#product-item-${productId}`).remove();
-                    toastr.success('Delete successfully!');
+                    toastr.success('Xóa thành công!');
                 },
                 error: function() {}
             });

@@ -9,7 +9,6 @@ var fullEditor = new Quill('#category-description-editor', {
             ['image', 'code-block']
         ]
     },
-    placeholder: 'Type your text here...',
     theme: 'snow' // or 'bubble'
 });
 

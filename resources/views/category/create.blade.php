@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('components.admin.header', ['parent' => __('messages.categories'), 'child' => __('messages.add_category')])
+    @include('components.admin.header', [
+        'parent' => __('messages.categories'),
+        'child' => __('messages.add_category'),
+    ])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Post-->
@@ -65,6 +68,9 @@
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">*.png, *.jpg, *.jpeg</div>
                                 <!--end::Description-->
+                                @error('image')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -95,6 +101,9 @@
                                     <option value="published" selected="selected">Published</option>
                                     <option value="unpublished">Unpublished</option>
                                 </select>
+                                @error('status')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                                 <!--end::Select2-->
                                 <div class="d-none mt-10">
                                     <input class="form-control" id="kt_ecommerce_add_category_status_datepicker"
@@ -125,8 +134,12 @@
                                     <label class="required form-label">{{ __('messages.category_name') }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="text" name="name" class="form-control mb-2" value="" />
+                                    <input type="text" name="name"
+                                        class="form-control mb-2 @error('name') is-invalid @enderror" value="">
                                     <!--end::Input-->
+                                    @error('name')
+                                        <div class="text-danger"><small>{{ $message }}</small></div>
+                                    @enderror
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
@@ -140,6 +153,9 @@
                                 </div>
                                 <input type="hidden" id="category-description" name="description" />
                                 <!--end::Input group-->
+                                @error('description')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                             <!--end::Card header-->
                         </div>

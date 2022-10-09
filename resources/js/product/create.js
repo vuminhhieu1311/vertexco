@@ -9,7 +9,6 @@ var fullEditor = new Quill('#product-description-editor', {
             ['image', 'code-block']
         ]
     },
-    placeholder: 'Type your text here...',
     theme: 'snow' // or 'bubble'
 });
 
@@ -22,7 +21,7 @@ var myDropzone = new Dropzone("#add_product_media", {
     maxFiles: 10,
     maxFilesize: 10, // MB
     addRemoveLinks: true,
-    accept: function(file, done) {
+    accept: function (file, done) {
         images.push({
             name: file.name,
             file,
@@ -48,9 +47,21 @@ $('#submit-btn').on('click', (e) => {
         processData: false,
         contentType: false,
         cache: false,
-        success: function(response) {
-            window.localStorage.setItem('success', 'Create successfully!');
+        success: function () {
+            window.localStorage.setItem('success', 'Thêm mới thành công!');
             window.location.href = '/products';
-        }
+        },
+        error: function (data) {
+            if (data.status === 422) {
+                Object.entries(data.responseJSON.errors).forEach(([key, val]) => {
+                    $(`#error-message-${key}`).append(`<small>${val[0]}</small>`);
+                    $(`#error-message-${key}`).css('display', 'block');
+                    const inputElement = $(`#error-message-${key}`).parent().children('input');
+                    if (inputElement) {
+                        inputElement.addClass('is-invalid');
+                    }
+                });
+            }
+        },
     });
 });

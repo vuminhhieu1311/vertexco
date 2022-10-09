@@ -9,7 +9,6 @@ var fullEditor = new Quill('#product-description-editor', {
             ['image', 'code-block']
         ]
     },
-    placeholder: 'Type your text here...',
     theme: 'snow' // or 'bubble'
 });
 fullEditor.root.innerHTML = $('#product-description').val();

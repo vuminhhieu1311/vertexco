@@ -67,6 +67,7 @@
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">*.png, *.jpg, *.jpeg</div>
                                 <!--end::Description-->
+                                <div id="error-message-avatar" class="text-danger"></div>
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -163,6 +164,7 @@
                                             <input type="text" name="name" class="form-control mb-2"
                                                 placeholder="Product name" value="" />
                                             <!--end::Input-->
+                                            <div id="error-message-name" class="text-danger"></div>
                                         </div>
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
@@ -187,6 +189,7 @@
                                                 <input type="number" name="quantity" class="form-control mb-2"
                                                     value="" />
                                                 <!--end::Input-->
+                                                <div id="error-message-quantity" class="text-danger"></div>
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
@@ -198,6 +201,7 @@
                                                 <input type="text" name="price" class="form-control mb-2"
                                                     value="" />
                                                 <!--end::Input-->
+                                                <div id="error-message-price" class="text-danger"></div>
                                             </div>
                                             <!--end::Input group-->
                                         </div>
@@ -247,7 +251,7 @@
                         <!--end::Product info-->
                         <div class="d-flex justify-content-end">
                             <!--begin::Button-->
-                            <a href="" id="kt_ecommerce_add_product_cancel"
+                            <a href="{{ route('products.index') }}" id="kt_ecommerce_add_product_cancel"
                                 class="btn btn-light me-5">{{ __('messages.cancel') }}</a>
                             <!--end::Button-->
                             <!--begin::Button-->
