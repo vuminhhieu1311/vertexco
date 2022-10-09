@@ -189,7 +189,8 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{ route('categories.index') }}">
+                            <a class="menu-link @if (Route::is('categories.*')) active @endif"
+                                href="{{ route('categories.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -197,7 +198,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('products.index') }}">
+                            <a class="menu-link @if (Route::is('products.*')) active @endif"
+                                href="{{ route('products.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
