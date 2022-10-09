@@ -168,7 +168,7 @@
     <!--end::Content-->
 @endsection
 
-@section('additional_scripts')
+@section('js')
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->

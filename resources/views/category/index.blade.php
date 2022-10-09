@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('additional_styles')
+@section('css')
     <!--begin::Page Vendor Stylesheets(used by this page)-->
     <link href="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
@@ -181,7 +181,7 @@
     <!--end::Content-->
 @endsection
 
-@section('additional_scripts')
+@section('js')
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->

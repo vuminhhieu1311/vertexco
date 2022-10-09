@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('additional_styles')
+@section('css')
     <!--begin::Page Vendor Stylesheets(used by this page)-->
     <link href="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
@@ -92,7 +92,7 @@
                             <tbody class="fw-bold text-gray-600">
                                 @foreach ($products as $product)
                                     <!--begin::Table row-->
-                                    <tr>
+                                    <tr id="{{ 'product-item-' . $product->id }}">
                                         <!--begin::Category=-->
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -230,9 +230,10 @@
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_{{ $product->id }}">
-                                                    <div class="menu-link px-3">
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-link px-3 delete-btn"
+                                                        data-url="{{ route('products.destroy', ['product' => $product->id]) }}"
+                                                        data-id="{{ $product->id }}">
                                                         {{ __('messages.delete') }}</div>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -278,11 +279,39 @@
     <!--end::Content-->
 @endsection
 
-@section('additional_scripts')
+@section('js')
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
     <!--end::Page Custom Javascript-->
+    <script>
+        $('.delete-btn').click((e) => {
+            const urlRequest = $(e.target).data('url');
+            const productId = $(e.target).data('id');
+            Swal.fire({
+                title: 'Are you sure you want to delete?',
+                icon: 'warning',
+                buttonsStyling: false,
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                customClass: {
+                    confirmButton: "btn btn-danger",
+                    cancelButton: 'btn btn-light',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: urlRequest,
+                        success: function(data) {
+                            $(`#product-item-${productId}`).remove();
+                        },
+                        error: function() {}
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

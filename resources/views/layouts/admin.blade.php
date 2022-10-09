@@ -19,7 +19,7 @@
     <link href="{{ asset('metronic/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('metronic/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
-    @yield('additional_styles')
+    @yield('css')
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -56,7 +56,7 @@
             }
         });
     </script>
-    @yield('additional_scripts')
+    @yield('js')
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 </body>
