@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
@@ -18,6 +20,20 @@ class Image extends Model
         'url',
         'product_id',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['link'];
+
+    protected function link(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => asset(Storage::url($this->url)),
+        );
+    }
 
     public function product()
     {

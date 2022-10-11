@@ -22,10 +22,17 @@ Route::middleware(['auth', 'localization'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
+
     Route::get('/update-language/{lang}', [
         UserController::class,
         'updateLanguage',
     ])->name('update-language');
+
+    Route::prefix('products')->group(function () {
+        Route::get('/{product}/images', [ProductController::class, 'showProductImages']);
+        Route::delete('/{product}/images/{imageId}', [ProductController::class, 'deleteProductImage']);
+        Route::post('/{product}/images', [ProductController::class, 'storeProductImage']);
+    });
 
     Route::resources([
         'categories' => CategoryController::class,

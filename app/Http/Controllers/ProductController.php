@@ -95,11 +95,6 @@ class ProductController extends Controller
 
             $product->categories()->sync($request->category_ids);
 
-//            foreach ($request->file('images', []) as $image) {
-//                $filePath = $image->store('public/images');
-//                $product->images()->create(['url' => $filePath]);
-//            }
-
             DB::commit();
 
             return redirect()->route('products.index')
@@ -114,5 +109,27 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         return $product->delete();
+    }
+
+    public function showProductImages(Product $product)
+    {
+        return response()->json($product->images);
+    }
+
+    public function deleteProductImage(Product $product, $imageId)
+    {
+        if ($imageId) {
+            return $product->images()->whereId($imageId)->delete();
+        }
+
+        return null;
+    }
+
+    public function storeProductImage(Request $request, Product $product)
+    {
+        $filePath = optional($request->file('image'))->store('public/images');
+        $product->images()->create(['url' => $filePath]);
+
+        return response()->json('success');
     }
 }
