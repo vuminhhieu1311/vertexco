@@ -135,7 +135,7 @@
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="name"
-                                        class="form-control mb-2 @error('name') is-invalid @enderror" value="">
+                                        class="form-control mb-2 @error('name') is-invalid @enderror" value="{{ old('name') }}">
                                     <!--end::Input-->
                                     @error('name')
                                         <div class="text-danger"><small>{{ $message }}</small></div>
@@ -151,7 +151,7 @@
                                     <div id="category-description-editor" class="min-h-200px mb-2"></div>
                                     <!--end::Editor-->
                                 </div>
-                                <input type="hidden" id="category-description" name="description" />
+                                <input type="hidden" id="category-description" name="description" value="{{ old('description') }}" />
                                 <!--end::Input group-->
                                 @error('description')
                                     <div class="text-danger"><small>{{ $message }}</small></div>

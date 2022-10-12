@@ -53,6 +53,14 @@ $('#submit-btn').on('click', (e) => {
         },
         error: function (data) {
             if (data.status === 422) {
+                $('.error-message').each(function() {
+                    $(this).html('');
+                    const inputElement = $(this).parent().children('input');
+                    if (inputElement) {
+                        inputElement.removeClass('is-invalid');
+                    }
+                });
+
                 Object.entries(data.responseJSON.errors).forEach(([key, val]) => {
                     $(`#error-message-${key}`).append(`<small>${val[0]}</small>`);
                     $(`#error-message-${key}`).css('display', 'block');

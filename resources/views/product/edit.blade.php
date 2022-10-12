@@ -70,6 +70,9 @@
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">*.png, *.jpg, *.jpeg</div>
                                 <!--end::Description-->
+                                @error('avatar')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -174,6 +177,9 @@
                                             <input type="text" name="name" class="form-control mb-2"
                                                 placeholder="Product name" value="{{ $product->name }}" />
                                             <!--end::Input-->
+                                            @error('name')
+                                                <div class="text-danger"><small>{{ $message }}</small></div>
+                                            @enderror
                                         </div>
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
@@ -199,6 +205,9 @@
                                                 <input type="number" name="quantity" class="form-control mb-2"
                                                     value="{{ $product->quantity }}" />
                                                 <!--end::Input-->
+                                                @error('quantity')
+                                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                                @enderror
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
@@ -210,6 +219,9 @@
                                                 <input type="text" name="price" class="form-control mb-2"
                                                     value="{{ $product->price }}" />
                                                 <!--end::Input-->
+                                                @error('price')
+                                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                                @enderror
                                             </div>
                                             <!--end::Input group-->
                                         </div>

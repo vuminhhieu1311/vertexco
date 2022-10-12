@@ -12,6 +12,8 @@ var fullEditor = new Quill('#category-description-editor', {
     theme: 'snow' // or 'bubble'
 });
 
+fullEditor.root.innerHTML = $('#category-description').val();
+
 // Add category submit event
 $('#submit-btn').on('click', (e) => {
     e.preventDefault();
