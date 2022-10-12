@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,7 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function store(CategoryRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         $filePath = optional($request->file('image'))->store('public/images');
 
@@ -40,7 +41,7 @@ class CategoryController extends Controller
         return view('category.edit', compact('category'));
     }
 
-    public function update(CategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
         $filePath = $category->image_url;
         if ($request->file('image')) {
