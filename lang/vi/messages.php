@@ -38,4 +38,7 @@ return [
     'media' => 'Hình ảnh',
     'rating' => 'Đánh giá',
     'product' => 'Sản phẩm',
+    'roles' => 'Vai trò',
+    'manage_permissions' => 'Phân quyền',
+    'permissions' => 'Quyền',
 ];

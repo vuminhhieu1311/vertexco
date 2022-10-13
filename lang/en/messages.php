@@ -38,4 +38,7 @@ return [
     'media' => 'Media',
     'rating' => 'Rating',
     'product' => 'Product',
+    'roles' => 'Roles',
+    'manage_permissions' => 'Permissions',
+    'permissions' => 'Permisisons',
 ];
