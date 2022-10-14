@@ -40,5 +40,7 @@ return [
     'product' => 'Product',
     'roles' => 'Roles',
     'manage_permissions' => 'Permissions',
-    'permissions' => 'Permisisons',
+    'permissions' => 'Permissions',
+    'role_name' => 'Role name',
+    'role_permissions' => 'Role permissions',
 ];

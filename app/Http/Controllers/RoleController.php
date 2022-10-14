@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
     public function index()
     {
-        $roles = Role::with('permissions')->get();
+        $permissions = Permission::all();
+        $roles = Role::latest()->get();
 
-        return view('roles.index', compact('roles'));
+        foreach ($roles as $role) {
+            $role->permissionNames = $role->getPermissionNames();
+        }
+
+        return view('roles.index', compact('roles', 'permissions'));
     }
 
     /**
@@ -44,7 +50,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -58,16 +64,25 @@ class RoleController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $role->update([
+                'name' => $request->name,
+            ]);
+            $role->syncPermissions($request->permissions);
+
+            DB::commit();
+
+            return redirect()->route('roles.index')
+                ->with('success', __('messages.successfully'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
     }
 
     /**
