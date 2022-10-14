@@ -43,4 +43,6 @@ return [
     'permissions' => 'Permissions',
     'role_name' => 'Role name',
     'role_permissions' => 'Role permissions',
+    'update_role' => 'Update role',
+    'add_role' => 'Add new role',
 ];

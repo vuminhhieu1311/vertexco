@@ -12,7 +12,7 @@ class RoleController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-        $roles = Role::latest()->get();
+        $roles = Role::latest()->with('permissions')->get();
 
         foreach ($roles as $role) {
             $role->permissionNames = $role->getPermissionNames();
@@ -21,25 +21,25 @@ class RoleController extends Controller
         return view('roles.index', compact('roles', 'permissions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $role = Role::create([
+                'name' => $request->name,
+            ]);
+            $role->givePermissionTo($request->permissions);
+
+            DB::commit();
+
+            return redirect()->route('roles.index')
+                ->with('success', __('messages.successfully'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
     }
 
     /**
@@ -50,18 +50,6 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        dd($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     public function update(Request $request, Role $role)
