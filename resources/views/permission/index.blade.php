@@ -16,6 +16,9 @@
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Post-->
         <div class="post d-flex flex-column-fluid" id="kt_post">
+            @if (Session::get('success'))
+                <input id="success-message" type="hidden" value="{{ Session::get('success') }}" />
+            @endif
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Card-->
@@ -50,13 +53,168 @@
                                         </td>
                                         <!--end::Assigned to=-->
                                         <!--begin::Action=-->
-                                        <td class="text-center">
-                                            <!--begin::Update-->
-                                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                                <i class="fas fa-pen"></i>
-                                            </button>
-                                            <!--end::Update-->
+                                        <td>
+                                            <div class="text-center">
+                                                <!--begin::Update-->
+                                                <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#kt_modal_update_permission_{{ $permission->id }}">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                                <!--end::Update-->
+                                            </div>
+                                            <!--begin::Modal - Update permissions-->
+                                            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+                                                id="kt_modal_update_permission_{{ $permission->id }}">
+                                                <!--begin::Modal dialog-->
+                                                <div class="modal-dialog modal-dialog-centered mw-650px">
+                                                    <!--begin::Modal content-->
+                                                    <div class="modal-content">
+                                                        <!--begin::Modal header-->
+                                                        <div class="modal-header">
+                                                            <!--begin::Modal title-->
+                                                            <h2 class="fw-bolder">{{ __('messages.update_permission') }}
+                                                            </h2>
+                                                            <!--end::Modal title-->
+                                                            <!--begin::Close-->
+                                                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                                                data-bs-dismiss="modal">
+                                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                                                <span class="svg-icon svg-icon-1">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="6" y="17.3137"
+                                                                            width="16" height="2" rx="1"
+                                                                            transform="rotate(-45 6 17.3137)"
+                                                                            fill="black" />
+                                                                        <rect x="7.41422" y="6" width="16"
+                                                                            height="2" rx="1"
+                                                                            transform="rotate(45 7.41422 6)"
+                                                                            fill="black" />
+                                                                    </svg>
+                                                                </span>
+                                                                <!--end::Svg Icon-->
+                                                            </div>
+                                                            <!--end::Close-->
+                                                        </div>
+                                                        <!--end::Modal header-->
+                                                        <!--begin::Modal body-->
+                                                        <div class="modal-body scroll-y mx-5 my-7">
+                                                            <!--begin::Form-->
+                                                            <form method="POST"
+                                                                action="{{ route('permissions.update', ['permission' => $permission->id]) }}"
+                                                                id="kt_modal_update_role_form" class="form">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <!--begin::Scroll-->
+                                                                <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                                                    id="kt_modal_update_role_scroll" data-kt-scroll="true"
+                                                                    data-kt-scroll-activate="{default: false, lg: true}"
+                                                                    data-kt-scroll-max-height="auto"
+                                                                    data-kt-scroll-dependencies="#kt_modal_update_role_header"
+                                                                    data-kt-scroll-wrappers="#kt_modal_update_role_scroll"
+                                                                    data-kt-scroll-offset="300px">
+                                                                    <!--begin::Input group-->
+                                                                    <div class="fv-row mb-10">
+                                                                        <!--begin::Label-->
+                                                                        <label class="fs-5 fw-bolder form-label mb-2">
+                                                                            <span
+                                                                                class="required">{{ __('messages.permission_name') }}</span>
+                                                                        </label>
+                                                                        <!--end::Label-->
+                                                                        <!--begin::Input-->
+                                                                        <input class="form-control form-control-solid"
+                                                                            readonly
+                                                                            value="{{ $permission->display_name }}" />
+                                                                        <!--end::Input-->
+                                                                    </div>
+                                                                    <!--end::Input group-->
+                                                                    <!--begin::Permissions-->
+                                                                    <div class="fv-row">
+                                                                        <!--begin::Label-->
+                                                                        <label
+                                                                            class="fs-5 fw-bolder form-label mb-2">{{ __('messages.assign_to_roles') }}</label>
+                                                                        <!--end::Label-->
+                                                                        <!--begin::Table wrapper-->
+                                                                        <div class="table-responsive">
+                                                                            <!--begin::Table-->
+                                                                            <table
+                                                                                class="table align-middle table-row-dashed fs-6 gy-5">
+                                                                                <!--begin::Table body-->
+                                                                                <tbody class="text-gray-600 fw-bold">
+                                                                                    @foreach ($roles as $role)
+                                                                                        <!--end::Table row-->
+                                                                                        <tr>
+                                                                                            <!--begin::Label-->
+                                                                                            <td class="text-gray-800">
+                                                                                                {{ $role->name }}
+                                                                                            </td>
+                                                                                            <!--end::Label-->
+                                                                                            <!--begin::Input group-->
+                                                                                            <td>
+                                                                                                <!--begin::Wrapper-->
+                                                                                                <div class="d-flex">
+                                                                                                    <!--begin::Checkbox-->
+                                                                                                    <label
+                                                                                                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                                                                                                        @if ($permission->roleNames->contains($role->name))
+                                                                                                            <input
+                                                                                                                class="form-check-input"
+                                                                                                                type="checkbox"
+                                                                                                                value="{{ $role->name }}"
+                                                                                                                name="roles[]"
+                                                                                                                checked />
+                                                                                                        @else
+                                                                                                            <input
+                                                                                                                class="form-check-input"
+                                                                                                                type="checkbox"
+                                                                                                                value="{{ $role->name }}"
+                                                                                                                name="roles[]" />
+                                                                                                        @endif
+                                                                                                    </label>
+                                                                                                    <!--end::Checkbox-->
+                                                                                                </div>
+                                                                                                <!--end::Wrapper-->
+                                                                                            </td>
+                                                                                            <!--end::Input group-->
+                                                                                        </tr>
+                                                                                        <!--end::Table row-->
+                                                                                    @endforeach
+                                                                                </tbody>
+                                                                                <!--end::Table body-->
+                                                                            </table>
+                                                                            <!--end::Table-->
+                                                                        </div>
+                                                                        <!--end::Table wrapper-->
+                                                                    </div>
+                                                                    <!--end::Permissions-->
+                                                                </div>
+                                                                <!--end::Scroll-->
+                                                                <!--begin::Actions-->
+                                                                <div class="text-end pt-15">
+                                                                    <button type="reset" class="btn btn-light me-3"
+                                                                        data-bs-dismiss="modal">{{ __('messages.cancel') }}</button>
+                                                                    <button type="submit" class="btn btn-primary"
+                                                                        data-kt-roles-modal-action="submit">
+                                                                        <span
+                                                                            class="indicator-label">{{ __('messages.save_changes') }}</span>
+                                                                        <span class="indicator-progress">Please wait...
+                                                                            <span
+                                                                                class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                                    </button>
+                                                                </div>
+                                                                <!--end::Actions-->
+                                                            </form>
+                                                            <!--end::Form-->
+                                                        </div>
+                                                        <!--end::Modal body-->
+                                                    </div>
+                                                    <!--end::Modal content-->
+                                                </div>
+                                                <!--end::Modal dialog-->
+                                            </div>
+                                            <!--end::Modal - Update permissions-->
                                         </td>
                                         <!--end::Action=-->
                                     </tr>
@@ -69,113 +227,6 @@
                     <!--end::Card body-->
                 </div>
                 <!--end::Card-->
-                <!--begin::Modal - Update permissions-->
-                <div class="modal fade" id="kt_modal_update_permission" tabindex="-1" aria-hidden="true">
-                    <!--begin::Modal dialog-->
-                    <div class="modal-dialog modal-dialog-centered mw-650px">
-                        <!--begin::Modal content-->
-                        <div class="modal-content">
-                            <!--begin::Modal header-->
-                            <div class="modal-header">
-                                <!--begin::Modal title-->
-                                <h2 class="fw-bolder">Update Permission</h2>
-                                <!--end::Modal title-->
-                                <!--begin::Close-->
-                                <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                    data-kt-permissions-modal-action="close">
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                                    <span class="svg-icon svg-icon-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
-                                                rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-                                            <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                                transform="rotate(45 7.41422 6)" fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </div>
-                                <!--end::Close-->
-                            </div>
-                            <!--end::Modal header-->
-                            <!--begin::Modal body-->
-                            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                                <!--begin::Notice-->
-                                <!--begin::Notice-->
-                                <div
-                                    class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-9 p-6">
-                                    <!--begin::Icon-->
-                                    <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
-                                    <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.3" x="2" y="2" width="20" height="20"
-                                                rx="10" fill="black" />
-                                            <rect x="11" y="14" width="7" height="2" rx="1"
-                                                transform="rotate(-90 11 14)" fill="black" />
-                                            <rect x="11" y="17" width="2" height="2" rx="1"
-                                                transform="rotate(-90 11 17)" fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                    <!--end::Icon-->
-                                    <!--begin::Wrapper-->
-                                    <div class="d-flex flex-stack flex-grow-1">
-                                        <!--begin::Content-->
-                                        <div class="fw-bold">
-                                            <div class="fs-6 text-gray-700">
-                                                <strong class="me-1">Warning!</strong>By editing the permission name, you
-                                                might break the system permissions functionality. Please ensure you're
-                                                absolutely certain before proceeding.
-                                            </div>
-                                        </div>
-                                        <!--end::Content-->
-                                    </div>
-                                    <!--end::Wrapper-->
-                                </div>
-                                <!--end::Notice-->
-                                <!--end::Notice-->
-                                <!--begin::Form-->
-                                <form id="kt_modal_update_permission_form" class="form" action="#">
-                                    <!--begin::Input group-->
-                                    <div class="fv-row mb-7">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-bold form-label mb-2">
-                                            <span class="required">Permission Name</span>
-                                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover"
-                                                data-bs-trigger="hover" data-bs-html="true"
-                                                data-bs-content="Permission names is required to be unique."></i>
-                                        </label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input class="form-control form-control-solid"
-                                            placeholder="Enter a permission name" name="permission_name" />
-                                        <!--end::Input-->
-                                    </div>
-                                    <!--end::Input group-->
-                                    <!--begin::Actions-->
-                                    <div class="text-center pt-15">
-                                        <button type="reset" class="btn btn-light me-3"
-                                            data-kt-permissions-modal-action="cancel">Discard</button>
-                                        <button type="submit" class="btn btn-primary"
-                                            data-kt-permissions-modal-action="submit">
-                                            <span class="indicator-label">Submit</span>
-                                            <span class="indicator-progress">Please wait...
-                                                <span
-                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                        </button>
-                                    </div>
-                                    <!--end::Actions-->
-                                </form>
-                                <!--end::Form-->
-                            </div>
-                            <!--end::Modal body-->
-                        </div>
-                        <!--end::Modal content-->
-                    </div>
-                    <!--end::Modal dialog-->
-                </div>
-                <!--end::Modal - Update permissions-->
             </div>
             <!--end::Container-->
         </div>
