@@ -242,7 +242,7 @@
                         </div>
                         <div class="menu-item">
                             <a class="menu-link @if (Route::is('permissions.*')) active @endif"
-                                href="{{ route('roles.index') }}">
+                                href="{{ route('permissions.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

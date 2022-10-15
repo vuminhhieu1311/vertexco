@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'categories' => CategoryController::class,
         'products' => ProductController::class,
         'roles' => RoleController::class,
+        'permissions' => PermissionController::class,
     ]);
 });
 
