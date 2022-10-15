@@ -11,6 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        abort(500);
         $categories = Category::latest()->get();
 
         return view('category.index', compact('categories'));
