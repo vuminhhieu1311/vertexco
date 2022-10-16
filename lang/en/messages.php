@@ -51,4 +51,11 @@ return [
     'update_permission' => 'Update permission',
     'assign_to_roles' => 'Assign to roles',
     'users' => 'Users',
+    'user' => 'User',
+    'role' => 'Role',
+    'phone_number' => 'Phone number',
+    'address' => 'Address',
+    'joined_date' => 'Joined date',
+    'add_user' => 'Add user',
+    'update_user' => 'Update user',
 ];

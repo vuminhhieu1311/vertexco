@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -20,8 +20,22 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::where('is_admin', true)->latest()->get();
+        $users = User::latest()->get();
+        $roles = Role::latest()->get();
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users', 'roles'));
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $user->syncRoles($request->role);
+
+        return redirect()->route('users.index')
+            ->with('success', __('messages.successfully'));
     }
 }
