@@ -41,6 +41,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'products' => ProductController::class,
         'roles' => RoleController::class,
         'permissions' => PermissionController::class,
+        'users' => UserController::class,
     ]);
 });
 

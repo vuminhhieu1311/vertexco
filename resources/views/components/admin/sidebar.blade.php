@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item here menu-accordion @if (Route::is('roles.*') || Route::is('permissions.*')) show @endif">
+                    class="menu-item here menu-accordion @if (Route::is('roles.*') || Route::is('permissions.*') || Route::is('users.*')) show @endif">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
@@ -247,6 +247,15 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">{{ __('messages.permissions') }}</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link @if (Route::is('users.*')) active @endif"
+                                href="{{ route('users.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ __('messages.users') }}</span>
                             </a>
                         </div>
                     </div>

@@ -50,4 +50,5 @@ return [
     'assign_to' => 'Assign to',
     'update_permission' => 'Update permission',
     'assign_to_roles' => 'Assign to roles',
+    'users' => 'Users',
 ];
