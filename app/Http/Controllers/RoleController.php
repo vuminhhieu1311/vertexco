@@ -77,5 +77,21 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $this->authorize('update', $role);
+
+        try {
+            DB::beginTransaction();
+
+            $role->permissions()->detach();
+            $role->users()->detach();
+            $role->delete();
+
+            DB::commit();
+
+            return true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
     }
 }

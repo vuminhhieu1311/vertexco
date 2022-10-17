@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\PermissionName;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -52,9 +53,21 @@ class PermissionSeeder extends Seeder
             'display_name' => 'Quản lý phân quyền hệ thống',
         ]);
 
-        Role::create(['name' => 'Quản trị viên hệ thống']);
+        $role = Role::create(['name' => 'Quản trị viên hệ thống']);
         Role::create(['name' => 'Quản lý cửa hàng']);
         Role::create(['name' => 'Nhân viên bán hàng']);
         Role::create(['name' => 'Cộng tác viên bán hàng']);
+
+        $role->syncPermissions([
+            PermissionName::MANAGE_PRODUCTS,
+            PermissionName::MANAGE_CATEGORIES,
+            PermissionName::MANAGE_ORDERS,
+            PermissionName::MANAGE_REVIEWS,
+            PermissionName::MANAGE_DISCOUNTS,
+            PermissionName::MANAGE_USERS,
+            PermissionName::MANAGE_PERMISSIONS,
+        ]);
+
+        User::find(1)->assignRole('Quản trị viên hệ thống');
     }
 }

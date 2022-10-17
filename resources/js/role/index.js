@@ -1,7 +1,7 @@
 // Delete button clicked
 $('.delete-btn').click((e) => {
     const urlRequest = $(e.target).data('url');
-    const categoryId = $(e.target).data('id');
+    const id = $(e.target).data('id');
     Swal.fire({
         title: 'Bạn có chắc chắn muốn xóa?',
         icon: 'warning',
@@ -19,7 +19,7 @@ $('.delete-btn').click((e) => {
                 type: 'DELETE',
                 url: urlRequest,
                 success: function(data) {
-                    $(`#category-item-${categoryId}`).remove();
+                    $(`#role-item-${id}`).remove();
                     toastr.success('Xóa thành công!');
                 },
                 error: function() {}

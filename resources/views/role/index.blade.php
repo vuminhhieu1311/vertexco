@@ -41,7 +41,7 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5 g-xl-9">
                     @foreach ($roles as $role)
                         <!--begin::Col-->
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="{{ 'role-item-' . $role->id }}">
                             <!--begin::Card-->
                             <div class="card card-flush h-md-100">
                                 <!--begin::Card header-->
@@ -76,8 +76,11 @@
                                 <!--end::Card body-->
                                 <!--begin::Card footer-->
                                 <div class="card-footer flex-wrap pt-0">
-                                    <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal"
-                                        data-bs-target="#kt_modal_update_role_{{ $role->id }}">Edit Role</button>
+                                    <button type="button" class="btn btn-primary my-1 me-3" data-bs-toggle="modal"
+                                        data-bs-target="#kt_modal_update_role_{{ $role->id }}">{{ __('messages.edit') }}</button>
+                                    <button type="button" class="btn btn-light btn-active-light-primary my-1 delete-btn"
+                                        data-url="{{ route('roles.destroy', ['role' => $role->id]) }}"
+                                        data-id="{{ $role->id }}">{{ __('messages.delete') }}</button>
                                 </div>
                                 <!--end::Card footer-->
                             </div>
@@ -390,5 +393,6 @@
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/user-management/roles/list/add.js') }}"></script>
     <script src="{{ asset('metronic/assets/js/custom/apps/user-management/roles/list/update-role.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/role/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection
