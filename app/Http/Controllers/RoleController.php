@@ -12,6 +12,8 @@ class RoleController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', Role::class);
+
         $permissions = Permission::all();
         $roles = Role::latest()->with('permissions')->get();
 
@@ -24,6 +26,8 @@ class RoleController extends Controller
 
     public function store(StoreRoleRequest $request)
     {
+        $this->authorize('create', Role::class);
+
         try {
             DB::beginTransaction();
 
@@ -34,7 +38,7 @@ class RoleController extends Controller
 
             DB::commit();
 
-            return redirect()->route('role.index')
+            return redirect()->route('roles.index')
                 ->with('success', __('messages.successfully'));
         } catch (\Exception $e) {
             DB::rollBack();
@@ -49,6 +53,8 @@ class RoleController extends Controller
 
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        $this->authorize('update', $role);
+
         try {
             DB::beginTransaction();
 
@@ -59,7 +65,7 @@ class RoleController extends Controller
 
             DB::commit();
 
-            return redirect()->route('role.index')
+            return redirect()->route('roles.index')
                 ->with('success', __('messages.successfully'));
         } catch (\Exception $e) {
             DB::rollBack();
@@ -68,8 +74,8 @@ class RoleController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $this->authorize('update', $role);
     }
 }

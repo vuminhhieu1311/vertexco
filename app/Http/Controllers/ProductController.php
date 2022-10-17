@@ -15,6 +15,7 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', Product::class);
         $products = Product::latest()->get();
 
         return view('product.index', compact('products'));
@@ -22,6 +23,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Product::class);
         $categories = Category::latest()->get();
 
         return view('product.create', compact('categories'));
@@ -29,6 +31,8 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        $this->authorize('create', Product::class);
+
         try {
             DB::beginTransaction();
             $filePath = optional($request->file('avatar'))->store('public/images');
@@ -67,6 +71,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $this->authorize('update', $product);
         $categories = Category::latest()->get();
         $product->category_ids = $product->categories->pluck('id')->toArray();
 
@@ -75,6 +80,8 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, Product $product)
     {
+        $this->authorize('update', $product);
+
         try {
             DB::beginTransaction();
             $filePath = $product->avatar_url;
@@ -109,6 +116,8 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        $this->authorize('delete', $product);
+
         return $product->delete();
     }
 
@@ -119,6 +128,8 @@ class ProductController extends Controller
 
     public function deleteProductImage(Product $product, $imageId)
     {
+        $this->authorize('update', $product);
+
         if ($imageId) {
             return $product->images()->whereId($imageId)->delete();
         }
@@ -128,6 +139,8 @@ class ProductController extends Controller
 
     public function storeProductImage(Request $request, Product $product)
     {
+        $this->authorize('update', $product);
+
         $filePath = optional($request->file('image'))->store('public/images');
         $product->images()->create(['url' => $filePath]);
 

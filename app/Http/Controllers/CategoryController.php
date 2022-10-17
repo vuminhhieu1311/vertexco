@@ -11,6 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', Category::class);
         $categories = Category::latest()->get();
 
         return view('category.index', compact('categories'));
@@ -18,11 +19,13 @@ class CategoryController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Category::class);
         return view('category.create');
     }
 
     public function store(StoreCategoryRequest $request)
     {
+        $this->authorize('create', Category::class);
         $filePath = optional($request->file('image'))->store('public/images');
 
         Category::create([
@@ -38,11 +41,13 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
+        $this->authorize('update', $category);
         return view('category.edit', compact('category'));
     }
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        $this->authorize('update', $category);
         $filePath = $category->image_url;
         if ($request->file('image')) {
             if ($filePath) {
@@ -64,6 +69,8 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        $this->authorize('delete', $category);
+
         return $category->delete();
     }
 }

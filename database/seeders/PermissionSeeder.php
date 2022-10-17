@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\PermissionName;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,31 +24,31 @@ class PermissionSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         Permission::create([
-            'name' => 'manage products',
+            'name' => PermissionName::MANAGE_PRODUCTS,
             'display_name' => 'Quản lý sản phẩm',
         ]);
         Permission::create([
-            'name' => 'manage categories',
+            'name' => PermissionName::MANAGE_CATEGORIES,
             'display_name' => 'Quản lý danh mục sản phẩm',
         ]);
         Permission::create([
-            'name' => 'manage orders',
+            'name' => PermissionName::MANAGE_ORDERS,
             'display_name' => 'Quản lý đơn hàng',
         ]);
         Permission::create([
-            'name' => 'manage reviews',
+            'name' => PermissionName::MANAGE_REVIEWS,
             'display_name' => 'Quản lý đánh giá, bình luận',
         ]);
         Permission::create([
-            'name' => 'manage discounts',
+            'name' => PermissionName::MANAGE_DISCOUNTS,
             'display_name' => 'Quản lý mã giảm giá',
         ]);
         Permission::create([
-            'name' => 'manage users',
+            'name' => PermissionName::MANAGE_USERS,
             'display_name' => 'Quản lý tài khoản người dùng',
         ]);
         Permission::create([
-            'name' => 'manage permissions',
+            'name' => PermissionName::MANAGE_PERMISSIONS,
             'display_name' => 'Quản lý phân quyền hệ thống',
         ]);
 
