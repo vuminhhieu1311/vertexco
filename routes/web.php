@@ -5,8 +5,6 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +17,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [ProductController::class, 'getPublishedProducts'])->name('home');
 
 Route::middleware(['auth', 'localization'])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
     Route::get('/update-language/{lang}', [
         UserController::class,
         'updateLanguage',

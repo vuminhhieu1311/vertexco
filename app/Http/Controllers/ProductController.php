@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProductStatus;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
@@ -145,5 +146,13 @@ class ProductController extends Controller
         $product->images()->create(['url' => $filePath]);
 
         return response()->json('success');
+    }
+
+    public function getPublishedProducts(Request $request)
+    {
+        $products = Product::where('status', ProductStatus::PUBLISHED)
+            ->latest()->get();
+
+        return view('home', compact('products'));
     }
 }
