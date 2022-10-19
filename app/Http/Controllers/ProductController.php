@@ -153,6 +153,6 @@ class ProductController extends Controller
         $products = Product::where('status', ProductStatus::PUBLISHED)
             ->latest()->get();
 
-        return view('home', compact('products'));
+        return view('customer.home', compact('products'));
     }
 }

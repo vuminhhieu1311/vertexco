@@ -25,6 +25,10 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'updateLanguage',
     ])->name('update-language');
 
+    Route::get('/dashboard', function() {
+        return view('dashboard');
+    })->name('dashboard');
+
     Route::prefix('products')->group(function () {
         Route::get('/{product}/images', [ProductController::class, 'showProductImages']);
         Route::delete('/{product}/images/{imageId}', [ProductController::class, 'deleteProductImage']);
