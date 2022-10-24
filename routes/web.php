@@ -17,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [ProductController::class, 'getPublishedProducts'])->name('home');
+Route::middleware('localization')->group(function () {
+    Route::get('/', [ProductController::class, 'getPublishedProducts'])->name('home');
+    Route::prefix('products')->group(function () {
+        Route::get('/{product}', [ProductController::class, 'show']);
+    });
+});
 
 Route::middleware(['auth', 'localization'])->group(function () {
     Route::get('/update-language/{lang}', [

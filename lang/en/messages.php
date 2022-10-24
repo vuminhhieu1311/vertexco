@@ -59,4 +59,6 @@ return [
     'add_user' => 'Add user',
     'update_user' => 'Update user',
     'dashboard' => 'Dashboard',
+    'featured_products' => 'Featured products',
+    'add_to_cart' => 'Add to cart',
 ];

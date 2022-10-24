@@ -11,19 +11,21 @@
                     <!-- .shop-page-content -->
                     <div class="shop-page-content">
                         <div class="sec-title style-three">
-                            <h2>Featured Product</h2>
+                            <h2>{{ __('messages.featured_products') }}</h2>
                         </div>
                         <div class="row">
                             @foreach ($products as $product)
-                            <div class="col-lg-4 single-shop-item">
-                                <img style="height: 250px;" src="{{ asset(Storage::url($product->avatar_url)) }}" alt="">
-                                <div class="meta">
-                                    <h4><a href="#">Woo Album #1</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, con sectetur adipiscing elit,</p>
-                                    <span>Price: <b>$24.5</b></span>
-                                    <a href="#" class="add-to-cart hvr-bounce-to-right">Add to cart</a>
+                                <div class="col-lg-4 single-shop-item">
+                                    <img style="height: 250px;" src="{{ asset(Storage::url($product->avatar_url)) }}"
+                                        alt="">
+                                    <div class="meta">
+                                        <h4><a href="#">{{ $product->name }}</a></h4>
+                                        <p>{!! $product->description !!}</p>
+                                        <span>{{ __('messages.price') }}: <b>{{ $product->price }} VND</b></span>
+                                        <a href="#"
+                                            class="add-to-cart hvr-bounce-to-right">{{ __('messages.add_to_cart') }}</a>
+                                    </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>

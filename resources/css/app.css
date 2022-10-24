@@ -1,3 +1,16 @@
 .dz-progress {
     display: none;
 }
+
+.carousel-control {
+    width: 0px !important;
+    /* background: white !important; */
+}
+
+/* .bg-green {
+    background-color: #6aaf08 !important;
+}
+
+.bg-green:hover {
+    background-color: #6aaf08 !important;
+} */

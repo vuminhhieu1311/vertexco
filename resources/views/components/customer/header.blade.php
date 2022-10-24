@@ -7,7 +7,7 @@
             <div class="outer-box">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index-1.html"><img src="garden-plant/images/logo.png" alt="garnen-help"></a>
+                    <a href="index-1.html"><img src="{{ asset('garden-plant/images/logo.png') }}" alt="garnen-help"></a>
                 </div>
                 <!-- Main Menu -->
                 <nav class="main-menu">
@@ -185,7 +185,7 @@
 </header>
 <!--End Main Header -->
 <!--Page Title-->
-<section class="page-title" style="background-image:url(garden-plant/images/background/page-title-1.jpg);">
+<section class="page-title" style="{{ 'background-image:url(' . asset('garden-plant/images/background/page-title-1.jpg') .  ');'}}"">
     <div class="auto-container">
         <h1 style="padding-top: 50px;">Shop Page</h1>
     </div>
