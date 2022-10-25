@@ -16,10 +16,15 @@
                         <div class="row">
                             @foreach ($products as $product)
                                 <div class="col-lg-4 single-shop-item">
-                                    <img style="height: 250px;" src="{{ asset(Storage::url($product->avatar_url)) }}"
-                                        alt="">
+                                    <a href="{{ route('products.detail', ['product' => $product->id]) }}">
+                                        <img style="height: 250px;" src="{{ asset(Storage::url($product->avatar_url)) }}">
+                                    </a>
                                     <div class="meta">
-                                        <h4><a href="#">{{ $product->name }}</a></h4>
+                                        <h4>
+                                            <a href="{{ route('products.detail', ['product' => $product->id]) }}">
+                                                {{ $product->name }}
+                                            </a>
+                                        </h4>
                                         <p>{!! $product->description !!}</p>
                                         <span>{{ __('messages.price') }}: <b>{{ $product->price }} VND</b></span>
                                         <a href="#"

@@ -18,7 +18,7 @@ class Localization
      */
     public function handle(Request $request, Closure $next)
     {
-        App::setLocale(Auth::user()->lang);
+        App::setLocale(optional(Auth::user())->lang ?? 'vi');
 
         return $next($request);
     }

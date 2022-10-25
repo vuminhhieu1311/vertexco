@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('localization')->group(function () {
     Route::get('/', [ProductController::class, 'getPublishedProducts'])->name('home');
     Route::prefix('products')->group(function () {
-        Route::get('/{product}', [ProductController::class, 'show']);
+        Route::get('/{product}/show', [ProductController::class, 'show'])->name('products.detail');
     });
 });
 
