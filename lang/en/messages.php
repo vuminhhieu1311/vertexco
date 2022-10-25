@@ -61,4 +61,6 @@ return [
     'dashboard' => 'Dashboard',
     'featured_products' => 'Featured products',
     'add_to_cart' => 'Add to cart',
+    'sign_out' => 'Sign out',
+    'my_cart' => 'My cart',
 ];

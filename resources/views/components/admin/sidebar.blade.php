@@ -133,7 +133,7 @@
                             <div class="menu-item px-5" id="logout-btn">
                                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <div class="menu-link px-5">Sign Out</div>
+                                    <div class="menu-link px-5">{{ __('messages.sign_out') }}</div>
                                 </form>
                             </div>
                             <!--end::Menu item-->

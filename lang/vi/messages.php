@@ -60,4 +60,6 @@ return [
     'dashboard' => 'Trang chủ',
     'featured_products' => 'Sản phẩm nổi bật',
     'add_to_cart' => 'Thêm vào giỏ hàng',
+    'sign_out' => 'Đăng xuất',
+    'my_cart' => 'Giỏ hàng',
 ];

@@ -13,7 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="{{ asset('garden-plant/css/bootstrap-margin-padding.css') }}" rel="stylesheet">
     <link href="{{ asset('garden-plant/css/responsive.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 <body>
     <div class="page-wrapper">
         <!-- Preloader -->
@@ -30,4 +32,5 @@
     <script src="{{ asset('garden-plant/js/js-collection.js') }}"></script>
     <script src="{{ asset('garden-plant/js/script.js') }}"></script>
 </body>
+
 </html>
