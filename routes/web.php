@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
@@ -38,6 +39,11 @@ Route::middleware(['auth', 'localization'])->group(function () {
         Route::get('/{product}/images', [ProductController::class, 'showProductImages']);
         Route::delete('/{product}/images/{imageId}', [ProductController::class, 'deleteProductImage']);
         Route::post('/{product}/images', [ProductController::class, 'storeProductImage']);
+    });
+
+    Route::prefix('cart')->group(function () {
+        Route::get('/', [CartController::class, 'show'])->name('cart.show');
+        Route::post('/save/product/{product}', [CartController::class, 'save'])->name('cart.save');
     });
 
     Route::resources([

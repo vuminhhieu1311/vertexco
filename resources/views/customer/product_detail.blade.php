@@ -49,9 +49,16 @@
                                     <h3>{{ $product->name }}</h3>
                                     {!! $product->description !!}
                                     <span>{{ __('messages.price') }} : <b>{{ $product->price }} VND</b></span>
-                                    <span>{{ __('messages.quantity') }} : <input type="text" value="1"> </span>
-                                    <a href="#"
-                                        class="add-to-cart hvr-bounce-to-right">{{ __('messages.add_to_cart') }}</a>
+                                    <form method="POST" action="{{ route('cart.save', ['product' => $product->id]) }}">
+                                        @csrf
+                                        <span>{{ __('messages.quantity') }} :
+                                            <input type="text" name="quantity" value="1">
+                                        </span>
+                                        <a class="add-to-cart hvr-bounce-to-right">
+                                            <button type="submit"
+                                                style="background:transparent">{{ __('messages.add_to_cart') }}</button>
+                                        </a>
+                                    </form>
                                 </div>
                             </div>
                             <div class="product-details-tab-title row">
