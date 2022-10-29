@@ -59,4 +59,9 @@ class User extends Authenticatable
             get: fn () => optional($this->getRoleNames())[0],
         );
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

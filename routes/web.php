@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -46,12 +48,15 @@ Route::middleware(['auth', 'localization'])->group(function () {
         Route::post('/save/product/{product}', [CartController::class, 'save'])->name('cart.save');
     });
 
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
     Route::resources([
         'categories' => CategoryController::class,
         'products' => ProductController::class,
         'roles' => RoleController::class,
         'permissions' => PermissionController::class,
         'users' => UserController::class,
+        'orders' => OrderController::class,
     ]);
 });
 

@@ -8,11 +8,11 @@
                     <table class="table cart-table">
                         <thead>
                             <tr>
-                                <th class="preview">Preview</th>
-                                <th class="product">Product</th>
-                                <th class="price">Price</th>
-                                <th class="quantity">Quantity</th>
-                                <th class="total">Total</th>
+                                <th class="preview">{{ __('messages.product_image') }}</th>
+                                <th class="product">{{ __('messages.product_name') }}</th>
+                                <th class="price">{{ __('messages.price') }}</th>
+                                <th class="quantity">{{ __('messages.quantity') }}</th>
+                                <th class="total">{{ __('messages.total2') }}</th>
                                 <th class="del-item">&nbsp;</th>
                             </tr>
                         </thead>
@@ -20,22 +20,17 @@
                             @foreach ($cart as $id => $item)
                                 <tr>
                                     <td class="preview">
-                                        <img src="{{ asset(Storage::url($item->options->avatar_url)) }}" style="width:200px;height:200px;">
+                                        <img src="{{ asset(Storage::url($item->options->avatar_url)) }}"
+                                            style="width:200px;height:200px;">
                                     </td>
                                     <td class="product">{{ $item->name }}</td>
-                                    <td class="price">{{ $item->price }} </td>
+                                    <td class="price">@money($item->price, 'VND')</td>
                                     <td class="quantity">
-                                        <div class="select-box">
-                                            <select>
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                            </select>
-                                        </div>
+                                        <input type="number" class="form-control"
+                                            placeholder="{{ __('messages.quantity') }}" value="{{ $item->qty }}"
+                                            required>
                                     </td>
-                                    <td class="total">
-                                        $25
-                                    </td>
+                                    <td class="total">@money($item->price * $item->qty, 'VND')</td>
                                     <td class="del-item">
                                         <i class="fa fa-close"></i>
                                     </td>
@@ -48,10 +43,10 @@
             </div>
             <div class="cart-total-box row mt-40">
                 <div class="col-lg-5 col-sm-6 col-xs-12 pull-right">
-                    <div class="proceed-to-checkout">
-                        <span class="">Total: <span>$25</span></span>
-                        <a href="#" class="hvr-bounce-to-right">Proceed to
-                            checkout</a>
+                    <div class="proceed-to-checkout" style="display:flex;align-items:center">
+                        <span class="mr-20" style="font-size: 20px;font-weight:600;">{{ __('messages.subtotal') }}:
+                            <span>@money($priceTotal, 'VND')</span></span>
+                        <a href="{{ route('checkout') }}" class="hvr-bounce-to-right">{{ __('messages.checkout') }}</a>
                     </div>
                 </div>
             </div>

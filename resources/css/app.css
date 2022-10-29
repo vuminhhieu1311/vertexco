@@ -7,10 +7,6 @@
     /* background: white !important; */
 }
 
-/* .bg-green {
-    background-color: #6aaf08 !important;
+.form-control:focus {
+    border-color: #6aaf08;
 }
-
-.bg-green:hover {
-    background-color: #6aaf08 !important;
-} */

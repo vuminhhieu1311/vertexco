@@ -21,4 +21,9 @@ class Order extends Model
         'note',
         'user_id',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_order');
+    }
 }

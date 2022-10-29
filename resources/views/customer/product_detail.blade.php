@@ -49,14 +49,13 @@
                                     <h3>{{ $product->name }}</h3>
                                     {!! $product->description !!}
                                     <span>{{ __('messages.price') }} : <b>{{ $product->price }} VND</b></span>
-                                    <form method="POST" action="{{ route('cart.save', ['product' => $product->id]) }}">
+                                    <form id="cart-form" method="POST" action="{{ route('cart.save', ['product' => $product->id]) }}">
                                         @csrf
                                         <span>{{ __('messages.quantity') }} :
                                             <input type="text" name="quantity" value="1">
                                         </span>
-                                        <a class="add-to-cart hvr-bounce-to-right">
-                                            <button type="submit"
-                                                style="background:transparent">{{ __('messages.add_to_cart') }}</button>
+                                        <a id="cart-btn" class="add-to-cart hvr-bounce-to-right">
+                                            {{ __('messages.add_to_cart') }}
                                         </a>
                                     </form>
                                 </div>
@@ -136,4 +135,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('#cart-btn').on('click', (e) => {
+            e.preventDefault();
+            $('#cart-form').submit();
+        });
+    </script>
 @endsection

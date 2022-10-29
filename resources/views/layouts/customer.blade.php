@@ -30,6 +30,7 @@
     <script src="{{ asset('garden-plant/js/revolution.min.js') }}"></script>
     <script src="{{ asset('garden-plant/js/js-collection.js') }}"></script>
     <script src="{{ asset('garden-plant/js/script.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

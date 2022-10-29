@@ -11,8 +11,9 @@ class CartController extends Controller
     public function show()
     {
         $cart = Cart::content();
+        $priceTotal = Cart::priceTotal();
 
-        return view('customer.cart', compact('cart'));
+        return view('customer.cart', compact('cart', 'priceTotal'));
     }
 
     public function save(Request $request, Product $product)
