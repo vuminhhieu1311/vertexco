@@ -50,8 +50,10 @@ class OrderController extends Controller
 
             DB::commit();
 
-            return redirect()->route('home')
-                ->with('order_success', __('messages.order_successfully'));
+            alert()->success(__('messages.order_successfully'))
+                ->showConfirmButton('OK', '#6aaf08')->autoClose(5000);
+
+            return redirect()->route('home');
         } catch (\Exception $e) {
             DB::rollBack();
 

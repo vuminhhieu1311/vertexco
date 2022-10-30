@@ -73,4 +73,5 @@ return [
     'product_image' => 'Hình ảnh',
     'product_name' => 'Tên sản phẩm',
     'total2' => 'Tổng',
+    'order_successfully' => 'Bạn đã đặt hàng thành công',
 ];

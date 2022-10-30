@@ -74,4 +74,5 @@ return [
     'product_image' => 'Product image',
     'product_name' => 'Product name',
     'total2' => 'Total',
+    'order_successfully' => 'You have made an order successfully',
 ];
