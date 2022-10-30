@@ -29,4 +29,18 @@ class StoreCategoryRequest extends FormRequest
             'status' => 'required',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => __('messages.category_name'),
+            'image' => __('messages.category_image'),
+            'status' => __('messages.status'),
+        ];
+    }
 }

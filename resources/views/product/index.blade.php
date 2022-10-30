@@ -61,8 +61,8 @@
                                 <!--end::Select2-->
                             </div>
                             <!--begin::Add product-->
-                            <a href="{{ route('products.create') }}" class="btn btn-primary">Add
-                                Product</a>
+                            <a href="{{ route('products.create') }}"
+                                class="btn btn-primary">{{ __('messages.add_product') }}</a>
                             <!--end::Add product-->
                         </div>
                         <!--end::Card toolbar-->
@@ -206,7 +206,8 @@
                                         <!--begin::Action=-->
                                         <td class="text-end">
                                             <div class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                {{ __('messages.actions') }}
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                                 <span class="svg-icon svg-icon-5 m-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

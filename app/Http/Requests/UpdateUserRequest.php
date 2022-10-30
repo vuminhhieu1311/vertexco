@@ -36,4 +36,18 @@ class UpdateUserRequest extends FormRequest
             'role' => 'required|string',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => __('messages.name'),
+            'email' => 'Email',
+            'role' => __('messages.role'),
+        ];
+    }
 }

@@ -31,4 +31,20 @@ class StoreProductRequest extends FormRequest
             'quantity' => 'required|integer',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => __('messages.product_name'),
+            'avatar' => __('messages.avatar'),
+            'status' => __('messages.status'),
+            'price' => __('messages.price'),
+            'quantity' => __('messages.quantity'),
+        ];
+    }
 }

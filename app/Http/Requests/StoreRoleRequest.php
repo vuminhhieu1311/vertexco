@@ -27,4 +27,16 @@ class StoreRoleRequest extends FormRequest
             'name' => 'required|unique:roles|max:255',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => __('messages.role_name'),
+        ];
+    }
 }
