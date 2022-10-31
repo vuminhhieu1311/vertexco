@@ -1,7 +1,7 @@
 @extends('layouts.customer')
 
 @section('content')
-    <section class="cart-page p-60" id="sidebar-section">
+    <section class="cart-page p-60" id="sidebar-section" style="min-height:400px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-6 col-lg-offset-0 col-md-offset-0 col-sm-offset-3">
@@ -26,13 +26,15 @@
                                     <td class="product">{{ $item->name }}</td>
                                     <td class="price">@money($item->price, 'VND')</td>
                                     <td class="quantity">
-                                        <input type="number" class="form-control"
-                                            placeholder="{{ __('messages.quantity') }}" value="{{ $item->qty }}"
-                                            required>
+                                        <input id="quantity-input" type="number" class="form-control"
+                                            placeholder="{{ __('messages.quantity') }}" value="{{ $item->qty }}" required
+                                            min="1" data-url="{{ route('cart.update', ['id' => $id]) }}">
                                     </td>
                                     <td class="total">@money($item->price * $item->qty, 'VND')</td>
                                     <td class="del-item">
-                                        <i class="fa fa-close"></i>
+                                        <a href="{{ route('cart.remove', ['id' => $id]) }}">
+                                            <i class="fa fa-close"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -52,4 +54,26 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script>
+        $("#quantity-input").on("input", function() {
+            const quantity = $(this).val();
+            const url = $(this).data('url');
+
+            if (quantity) {
+                $.ajax({
+                    type: 'PUT',
+                    url,
+                    data: {
+                        quantity,
+                    },
+                    success: function(res) {
+                        console.log(res)
+                    },
+                });
+            }
+        });
+    </script>
 @endsection
