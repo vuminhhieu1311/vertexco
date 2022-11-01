@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\OrderStatus;
-use App\Enums\ProductStatus;
 use App\Models\Order;
-use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +45,8 @@ class OrderController extends Controller
             foreach (Cart::content() as $item) {
                 $order->products()->attach($item->id, ['quantity' => $item->qty]);
             }
+
+            Cart::destroy();
 
             DB::commit();
 

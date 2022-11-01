@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cart as $id => $item)
+                            @foreach (Cart::content() as $id => $item)
                                 <tr>
                                     <td class="preview">
                                         <img src="{{ asset(Storage::url($item->options->avatar_url)) }}"
@@ -47,7 +47,7 @@
                 <div class="col-lg-5 col-sm-6 col-xs-12 pull-right">
                     <div class="proceed-to-checkout" style="display:flex;align-items:center">
                         <span class="mr-20" style="font-size: 20px;font-weight:600;">{{ __('messages.subtotal') }}:
-                            <span>@money($priceTotal, 'VND')</span></span>
+                            <span>@money(Cart::priceTotal(), 'VND')</span></span>
                         <a href="{{ route('checkout') }}" class="hvr-bounce-to-right">{{ __('messages.checkout') }}</a>
                     </div>
                 </div>

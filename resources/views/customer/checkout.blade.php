@@ -53,16 +53,16 @@
                         <div class="row">
                             <div class="col-lg-12 order-box">
                                 <ul>
-                                    @foreach ($cart as $id => $item)
+                                    @foreach (Cart::content() as $id => $item)
                                         <li>
                                             {{ $item->name }} X {{ $item->qty }}
                                             <span>@money($item->price * $item->qty, 'VND')</span>
                                         </li>
                                     @endforeach
-                                    <li>{{ __('messages.subtotal') }}<span class="bold">@money($subtotal, 'VND')</span></li>
-                                    <li>{{ __('messages.tax') }}<span class="bold">@money($tax, 'VND')</span></li>
+                                    <li>{{ __('messages.subtotal') }}<span class="bold">@money(Cart::subtotal(), 'VND')</span></li>
+                                    <li>{{ __('messages.tax') }}<span class="bold">@money(Cart::tax(), 'VND')</span></li>
                                     <li class="total">{{ __('messages.total') }}<span
-                                            class="bold">@money($total, 'VND')</span></li>
+                                            class="bold">@money(Cart::total(), 'VND')</span></li>
                                     <li>
                                         <a href="#" type="submit" id="order-btn" class="place-order">
                                             {{ __('messages.place_order') }}

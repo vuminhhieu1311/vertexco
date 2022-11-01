@@ -10,10 +10,7 @@ class CartController extends Controller
 {
     public function show()
     {
-        $cart = Cart::content();
-        $priceTotal = Cart::priceTotal();
-
-        return view('customer.cart', compact('cart', 'priceTotal'));
+        return view('customer.cart');
     }
 
     public function save(Request $request, Product $product)
@@ -28,6 +25,8 @@ class CartController extends Controller
                 'avatar_url' => $product->avatar_url,
             ],
         ]);
+
+        Cart::setGlobalTax(8);
 
         return redirect()->route('cart.show');
     }
