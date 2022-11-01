@@ -105,4 +105,9 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function getOrderHistory()
+    {
+        return view('customer.order_history');
+    }
 }

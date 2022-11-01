@@ -75,4 +75,6 @@ return [
     'product_name' => 'Product name',
     'total2' => 'Total',
     'order_successfully' => 'You have made an order successfully',
+    'home' => 'Home',
+    'my_order' => 'My order',
 ];

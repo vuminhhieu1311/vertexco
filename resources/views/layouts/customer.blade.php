@@ -16,7 +16,7 @@
     <link href="{{ asset('garden-plant/css/responsive.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @yield('css')
 <body>
     <div class="page-wrapper">
         @include('components.customer.header')

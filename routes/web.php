@@ -51,6 +51,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
     });
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::get('/order-history', [OrderController::class, 'getOrderHistory'])->name('order_history');
 
     Route::resources([
         'categories' => CategoryController::class,

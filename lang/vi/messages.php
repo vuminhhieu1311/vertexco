@@ -74,4 +74,6 @@ return [
     'product_name' => 'Tên sản phẩm',
     'total2' => 'Tổng',
     'order_successfully' => 'Bạn đã đặt hàng thành công',
+    'home' => 'Trang chủ',
+    'my_order' => 'Đơn hàng',
 ];

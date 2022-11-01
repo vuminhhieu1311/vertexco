@@ -23,15 +23,8 @@
                     </div>
                     <div class="navbar-collapse collapse clearfix">
                         <ul class="navigation">
-                            <li class="dropdown current"><a href="{{ route('home') }}">Home</a>
-                            </li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li class="dropdown"><a href="#">Feature Service</a>
-                                <ul>
-                                    <li><a href="feature-service-one.html">Feature Service One</a></li>
-                                    <li><a href="feature-service-two.html">Feature Service Two</a></li>
-                                    <li><a href="feature-service-details.html">Feature Service Details</a></li>
-                                </ul>
+                            <li class="dropdown">
+                                <a href="{{ route('home') }}">{{ __('messages.home') }}</a>
                             </li>
                             <li class="dropdown"><a href="#">{{ __('messages.language') }}</a>
                                 <ul>
@@ -39,6 +32,15 @@
                                     <li><a href="{{ route('update-language', ['lang' => 'vi']) }}">Vietnam</a></li>
                                 </ul>
                             </li>
+                            <li><a href="{{ route('order_history') }}">{{ __('messages.my_order') }}</a></li>
+                            <li class="dropdown"><a href="#">Feature Service</a>
+                                <ul>
+                                    <li><a href="feature-service-one.html">Feature Service One</a></li>
+                                    <li><a href="feature-service-two.html">Feature Service Two</a></li>
+                                    <li><a href="feature-service-details.html">Feature Service Details</a></li>
+                                </ul>
+                            </li>
+
                             @if (!auth()->user())
                                 <li><a href="{{ route('login') }}">{{ __('messages.sign_in') }}</a></li>
                             @else
