@@ -77,4 +77,13 @@ return [
     'order_successfully' => 'You have made an order successfully',
     'home' => 'Home',
     'my_order' => 'My order',
+    'order_id' => 'Order ID',
+    'pending' => 'Pending',
+    'canceled' => 'Canceled',
+    'paid' => 'Paid',
+    'delivered' => 'Delivered',
+    'delivering' => 'Delivering',
+    'confirmed' => 'Confirmed',
+    'view_detail' => 'View detail',
+    'cancel_order' => 'Cancel order',
 ];

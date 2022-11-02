@@ -76,4 +76,13 @@ return [
     'order_successfully' => 'Bạn đã đặt hàng thành công',
     'home' => 'Trang chủ',
     'my_order' => 'Đơn hàng',
+    'order_id' => 'Mã đơn hàng',
+    'pending' => 'Chờ xác nhận',
+    'canceled' => 'Bị huỷ',
+    'paid' => 'Đã thanh toán',
+    'delivered' => 'Giao hàng thành công',
+    'delivering' => 'Đang giao hàng',
+    'confirmed' => 'Xác nhận',
+    'view_detail' => 'Xem chi tiết',
+    'cancel_order' => 'Huỷ đơn hàng',
 ];

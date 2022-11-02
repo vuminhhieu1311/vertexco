@@ -10,6 +10,7 @@
             padding-top: 10px !important;
             padding-bottom: 10px !important;
         }
+
         .appoinment-btn {
             top: 15px !important;
         }
@@ -82,300 +83,100 @@
                             <thead>
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th class="min-w-100px">Order ID</th>
-                                    <th class="min-w-175px">Customer</th>
-                                    <th class="text-end min-w-70px">Status</th>
-                                    <th class="text-end min-w-100px">Total</th>
-                                    <th class="text-end min-w-100px">Date Added</th>
-                                    <th class="text-end min-w-100px">Date Modified</th>
-                                    <th class="text-end min-w-100px">Actions</th>
+                                    <th class="min-w-20px">{{ __('messages.order_id') }}</th>
+                                    <th class="min-w-70px">{{ __('messages.status') }}</th>
+                                    <th class="text-center min-w-100px">{{ __('messages.total') }}</th>
+                                    <th class="text-center min-w-100px">{{ __('messages.creation_date') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.billing_address') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.note') }}</th>
+                                    <th class="text-end w-70px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
                             <!--end::Table head-->
                             <!--begin::Table body-->
                             <tbody class="fw-bold text-gray-600">
-                                <!--begin::Table row-->
-                                <tr>
-                                    <!--begin::Order ID=-->
-                                    <td data-kt-ecommerce-order-filter="order_id">
-                                        <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
-                                            class="text-gray-800 text-hover-primary fw-bolder">13104</a>
-                                    </td>
-                                    <!--end::Order ID=-->
-                                    <!--begin::Customer=-->
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="../../demo8/dist/apps/user-management/users/view.html">
-                                                    <div class="symbol-label">
-                                                        <img src="assets/media/avatars/300-21.jpg" alt="Ethan Wilder"
-                                                            class="w-100" />
+                                @foreach ($orders as $order)
+                                    <!--begin::Table row-->
+                                    <tr id="{{ 'order-item-' . $order->id }}">
+                                        <!--begin::Order ID=-->
+                                        <td>
+                                            <a href=""
+                                                class="text-gray-800 text-hover-primary fw-bolder">EG000{{ $order->id }}</a>
+                                        </td>
+                                        <!--end::Order ID=-->
+                                        <!--begin::Status=-->
+                                        <td class="pe-0">
+                                            <!--begin::Badges-->
+                                            @include('components.status', [
+                                                'status' => $order->status,
+                                            ])
+                                            <!--end::Badges-->
+                                        </td>
+                                        <!--end::Status=-->
+                                        <!--begin::Total=-->
+                                        <td class="text-center pe-0">
+                                            <span class="fw-bolder">@money($order->total, 'VND')</span>
+                                        </td>
+                                        <!--end::Total=-->
+                                        <!--begin::Date Added=-->
+                                        <td class="text-center">
+                                            <span class="fw-bolder">{{ $order->created_at->format('d/m/Y') }}</span>
+                                        </td>
+                                        <!--end::Date Added=-->
+                                        <!--begin::Date Added=-->
+                                        <td>
+                                            <span class="fw-bolder">{{ $order->delivery_address }}</span>
+                                        </td>
+                                        <!--end::Date Added=-->
+                                        <!--begin::Date Added=-->
+                                        <td>
+                                            <span class="fw-bolder">{{ $order->note }}</span>
+                                        </td>
+                                        <!--end::Date Added=-->
+                                        <!--begin::Action=-->
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
+                                                data-kt-menu-trigger="click"
+                                                data-kt-menu-placement="bottom-end">{{ __('messages.actions') }}
+                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                                                <span class="svg-icon svg-icon-5 m-0">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <path
+                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                                            fill="black" />
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                            <!--begin::Menu-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                                data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
+                                                        class="menu-link px-3">{{ __('messages.view_detail') }}</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                @if ($order->status === 'pending')
+                                                    <!--begin::Menu item-->
+                                                    <div class="menu-item px-3">
+                                                        <div class="menu-link px-3 cancel-btn"
+                                                            data-url="{{ route('orders.destroy', ['order' => $order->id]) }}"
+                                                            data-id="{{ $order->id }}">
+                                                            {{ __('messages.cancel_order') }}
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                    <!--end::Menu item-->
+                                                @endif
                                             </div>
-                                            <!--end::Avatar-->
-                                            <div class="ms-5">
-                                                <!--begin::Title-->
-                                                <a href="../../demo8/dist/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary fs-5 fw-bolder">Ethan
-                                                    Wilder</a>
-                                                <!--end::Title-->
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <!--end::Customer=-->
-                                    <!--begin::Status=-->
-                                    <td class="text-end pe-0" data-order="Failed">
-                                        <!--begin::Badges-->
-                                        <div class="badge badge-light-danger">Failed</div>
-                                        <!--end::Badges-->
-                                    </td>
-                                    <!--end::Status=-->
-                                    <!--begin::Total=-->
-                                    <td class="text-end pe-0">
-                                        <span class="fw-bolder">$66.00</span>
-                                    </td>
-                                    <!--end::Total=-->
-                                    <!--begin::Date Added=-->
-                                    <td class="text-end" data-order="2021-12-25">
-                                        <span class="fw-bolder">25/12/2021</span>
-                                    </td>
-                                    <!--end::Date Added=-->
-                                    <!--begin::Date Modified=-->
-                                    <td class="text-end" data-order="2021-12-30">
-                                        <span class="fw-bolder">30/12/2021</span>
-                                    </td>
-                                    <!--end::Date Modified=-->
-                                    <!--begin::Action=-->
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-5 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </a>
-                                        <!--begin::Menu-->
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
-                                                    class="menu-link px-3">View</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo8/dist/apps/ecommerce/sales/edit-order.html"
-                                                    class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                    data-kt-ecommerce-order-filter="delete_row">Delete</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu-->
-                                    </td>
-                                    <!--end::Action=-->
-                                </tr>
-                                <!--end::Table row-->
-                                <!--begin::Table row-->
-                                <tr>
-                                    <!--begin::Order ID=-->
-                                    <td data-kt-ecommerce-order-filter="order_id">
-                                        <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
-                                            class="text-gray-800 text-hover-primary fw-bolder">13106</a>
-                                    </td>
-                                    <!--end::Order ID=-->
-                                    <!--begin::Customer=-->
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="../../demo8/dist/apps/user-management/users/view.html">
-                                                    <div class="symbol-label">
-                                                        <img src="assets/media/avatars/300-9.jpg" alt="Francis Mitcham"
-                                                            class="w-100" />
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
-                                            <div class="ms-5">
-                                                <!--begin::Title-->
-                                                <a href="../../demo8/dist/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary fs-5 fw-bolder">Francis
-                                                    Mitcham</a>
-                                                <!--end::Title-->
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <!--end::Customer=-->
-                                    <!--begin::Status=-->
-                                    <td class="text-end pe-0" data-order="Completed">
-                                        <!--begin::Badges-->
-                                        <div class="badge badge-light-success">Completed</div>
-                                        <!--end::Badges-->
-                                    </td>
-                                    <!--end::Status=-->
-                                    <!--begin::Total=-->
-                                    <td class="text-end pe-0">
-                                        <span class="fw-bolder">$309.00</span>
-                                    </td>
-                                    <!--end::Total=-->
-                                    <!--begin::Date Added=-->
-                                    <td class="text-end" data-order="2021-12-25">
-                                        <span class="fw-bolder">25/12/2021</span>
-                                    </td>
-                                    <!--end::Date Added=-->
-                                    <!--begin::Date Modified=-->
-                                    <td class="text-end" data-order="2021-12-28">
-                                        <span class="fw-bolder">28/12/2021</span>
-                                    </td>
-                                    <!--end::Date Modified=-->
-                                    <!--begin::Action=-->
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-5 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </a>
-                                        <!--begin::Menu-->
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
-                                                    class="menu-link px-3">View</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo8/dist/apps/ecommerce/sales/edit-order.html"
-                                                    class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                    data-kt-ecommerce-order-filter="delete_row">Delete</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu-->
-                                    </td>
-                                    <!--end::Action=-->
-                                </tr>
-                                <!--end::Table row-->
-                                <!--begin::Table row-->
-                                <tr>
-                                    <!--begin::Order ID=-->
-                                    <td data-kt-ecommerce-order-filter="order_id">
-                                        <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
-                                            class="text-gray-800 text-hover-primary fw-bolder">13113</a>
-                                    </td>
-                                    <!--end::Order ID=-->
-                                    <!--begin::Customer=-->
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="../../demo8/dist/apps/user-management/users/view.html">
-                                                    <div class="symbol-label fs-3 bg-light-danger text-danger">E</div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
-                                            <div class="ms-5">
-                                                <!--begin::Title-->
-                                                <a href="../../demo8/dist/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary fs-5 fw-bolder">Emma Bold</a>
-                                                <!--end::Title-->
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <!--end::Customer=-->
-                                    <!--begin::Status=-->
-                                    <td class="text-end pe-0" data-order="Processing">
-                                        <!--begin::Badges-->
-                                        <div class="badge badge-light-primary">Processing</div>
-                                        <!--end::Badges-->
-                                    </td>
-                                    <!--end::Status=-->
-                                    <!--begin::Total=-->
-                                    <td class="text-end pe-0">
-                                        <span class="fw-bolder">$264.00</span>
-                                    </td>
-                                    <!--end::Total=-->
-                                    <!--begin::Date Added=-->
-                                    <td class="text-end" data-order="2021-12-20">
-                                        <span class="fw-bolder">20/12/2021</span>
-                                    </td>
-                                    <!--end::Date Added=-->
-                                    <!--begin::Date Modified=-->
-                                    <td class="text-end" data-order="2021-12-21">
-                                        <span class="fw-bolder">21/12/2021</span>
-                                    </td>
-                                    <!--end::Date Modified=-->
-                                    <!--begin::Action=-->
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-5 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </a>
-                                        <!--begin::Menu-->
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
-                                                    class="menu-link px-3">View</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="../../demo8/dist/apps/ecommerce/sales/edit-order.html"
-                                                    class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                    data-kt-ecommerce-order-filter="delete_row">Delete</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu-->
-                                    </td>
-                                    <!--end::Action=-->
-                                </tr>
-                                <!--end::Table row-->
+                                            <!--end::Menu-->
+                                        </td>
+                                        <!--end::Action=-->
+                                    </tr>
+                                    <!--end::Table row-->
+                                @endforeach
                             </tbody>
                             <!--end::Table body-->
                         </table>
@@ -396,5 +197,6 @@
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
-	<script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/sales/listing.js') }}"></script>
+    <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/sales/listing.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/customer/order_history.js') }}"></script>
 @endsection

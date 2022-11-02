@@ -95,19 +95,21 @@ class OrderController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Order $order)
     {
-        //
+        if ($order->status === OrderStatus::PENDING) {
+            $order->update([
+                'status' => OrderStatus::CANCELED,
+            ]);
+        }
+
+        return $order;
     }
 
     public function getOrderHistory()
     {
-        return view('customer.order_history');
+        $orders = Auth::user()->orders;
+
+        return view('customer.order_history', compact('orders'));
     }
 }
