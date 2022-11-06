@@ -25,7 +25,6 @@
                                                 {{ $product->name }}
                                             </a>
                                         </h4>
-                                        <p>{!! $product->description !!}</p>
                                         <span>{{ __('messages.price') }}: <b>{{ $product->price }} VND</b></span>
                                         <a href="#"
                                             class="add-to-cart hvr-bounce-to-right">{{ __('messages.add_to_cart') }}</a>

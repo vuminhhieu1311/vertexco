@@ -85,4 +85,5 @@ return [
     'confirmed' => 'Xác nhận',
     'view_detail' => 'Xem chi tiết',
     'cancel_order' => 'Huỷ đơn hàng',
+    'orders' => 'Đơn hàng',
 ];

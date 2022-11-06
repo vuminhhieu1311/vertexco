@@ -86,4 +86,5 @@ return [
     'confirmed' => 'Confirmed',
     'view_detail' => 'View detail',
     'cancel_order' => 'Cancel order',
+    'orders' => 'Orders',
 ];
