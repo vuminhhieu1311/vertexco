@@ -187,13 +187,13 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
+                                                    <a href="{{ route('orders.show', ['order' => $order->id]) }}"
                                                         class="menu-link px-3">View</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="../../demo8/dist/apps/ecommerce/sales/edit-order.html"
+                                                    <a href="{{ route('orders.edit', ['order' => $order->id]) }}"
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -232,6 +232,5 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/sales/listing.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/product/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection
