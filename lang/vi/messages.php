@@ -86,4 +86,10 @@ return [
     'view_detail' => 'Xem chi tiết',
     'cancel_order' => 'Huỷ đơn hàng',
     'orders' => 'Đơn hàng',
+    'order_detail' => 'Order detail',
+    'customer_detail' => 'Thông tin khách hàng',
+    'order_review' => 'Đánh giá đơn hàng',
+    'customer' => 'Khách hàng',
+    'last_modified' => 'Chỉnh sửa lần cuối',
+    'order' => 'Đơn hàng',
 ];

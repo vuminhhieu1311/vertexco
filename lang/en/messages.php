@@ -87,4 +87,10 @@ return [
     'view_detail' => 'View detail',
     'cancel_order' => 'Cancel order',
     'orders' => 'Orders',
+    'order_detail' => 'Order detail',
+    'customer_detail' => 'Customer detail',
+    'order_review' => 'Order review',
+    'customer' => 'Customer',
+    'last_modified' => 'Last modified',
+    'order' => 'Order',
 ];
