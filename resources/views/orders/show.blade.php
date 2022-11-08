@@ -63,7 +63,8 @@
                                                 <td class="fw-bolder text-end">
                                                     <select class="form-select mb-2" name="status" data-control="select2"
                                                         data-hide-search="true" data-placeholder="Select an option"
-                                                        id="kt_ecommerce_add_category_status_select">
+                                                        id="status-select"
+                                                        data-url="{{ route('orders.update', ['order' => $order->id]) }}">
                                                         <option value="pending"
                                                             @if ($order->status === 'pending') selected @endif>Pending
                                                         </option>
@@ -413,4 +414,5 @@
 @endsection
 
 @section('js')
+    <script src="{{ Vite::asset('resources/js/order/show.js') }}"></script>
 @endsection

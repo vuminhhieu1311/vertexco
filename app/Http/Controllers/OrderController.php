@@ -71,7 +71,9 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
-        //
+        return $order->update([
+            'status' =>  $request->status,
+        ]);
     }
 
     public function destroy(Order $order)

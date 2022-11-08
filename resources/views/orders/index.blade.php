@@ -128,7 +128,8 @@
                                                 <!--end::Avatar-->
                                                 <div class="ms-5">
                                                     <!--begin::Title-->
-                                                    <div class="text-gray-800 text-hover-primary fs-5 fw-bolder">{{ $order->user->name }}</div>
+                                                    <div class="text-gray-800 text-hover-primary fs-5 fw-bolder">
+                                                        {{ $order->user->name }}</div>
                                                     <!--end::Title-->
                                                 </div>
                                             </div>
@@ -185,8 +186,9 @@
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-ecommerce-order-filter="delete_row">{{ __('messages.cancel') }}</a>
+                                                    <div class="menu-link px-3 cancel-btn"
+                                                        data-url="{{ route('orders.destroy', ['order' => $order->id]) }}"
+                                                        data-id="{{ $order->id }}">{{ __('messages.cancel') }}</div>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -218,5 +220,6 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/sales/listing.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/order/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection
