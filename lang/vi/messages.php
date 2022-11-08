@@ -82,7 +82,7 @@ return [
     'paid' => 'Đã thanh toán',
     'delivered' => 'Giao hàng thành công',
     'delivering' => 'Đang giao hàng',
-    'confirmed' => 'Xác nhận',
+    'confirmed' => 'Đã xác nhận',
     'view_detail' => 'Xem chi tiết',
     'cancel_order' => 'Huỷ đơn hàng',
     'orders' => 'Đơn hàng',
@@ -92,4 +92,7 @@ return [
     'customer' => 'Khách hàng',
     'last_modified' => 'Chỉnh sửa lần cuối',
     'order' => 'Đơn hàng',
+    'search_order' => 'Tìm kiếm đơn hàng',
+    'all' => 'Tất cả',
+    'pick_date_range' => 'Chọn khoảng thời gian',
 ];

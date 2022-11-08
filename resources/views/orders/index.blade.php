@@ -40,7 +40,8 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-order-filter="search"
-                                    class="form-control form-control-solid w-250px ps-14" placeholder="Search Order" />
+                                    class="form-control form-control-solid w-250px ps-14"
+                                    placeholder="{{ __('messages.search_order') }}" />
                             </div>
                             <!--end::Search-->
                         </div>
@@ -50,7 +51,7 @@
                             <!--begin::Flatpickr-->
                             <div class="input-group w-250px">
                                 <input class="form-control form-control-solid rounded rounded-end-0"
-                                    placeholder="Pick date range" id="kt_ecommerce_sales_flatpickr" />
+                                    placeholder="{{ __('messages.pick_date_range') }}" id="kt_ecommerce_sales_flatpickr" />
                                 <button class="btn btn-icon btn-light" id="kt_ecommerce_sales_flatpickr_clear">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr088.svg-->
                                     <span class="svg-icon svg-icon-2">
@@ -70,18 +71,13 @@
                                 <!--begin::Select2-->
                                 <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
                                     data-placeholder="Status" data-kt-ecommerce-order-filter="status">
-                                    <option></option>
-                                    <option value="all">All</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                    <option value="Completed">Completed</option>
-                                    <option value="Denied">Denied</option>
-                                    <option value="Expired">Expired</option>
-                                    <option value="Failed">Failed</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Processing">Processing</option>
-                                    <option value="Refunded">Refunded</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Delivering">Delivering</option>
+                                    <option value="all">{{ __('messages.all') }}</option>
+                                    <option value="{{ __('messages.pending') }}">{{ __('messages.pending') }}</option>
+                                    <option value="{{ __('messages.confirmed') }}">{{ __('messages.confirmed') }}</option>
+                                    <option value="{{ __('messages.delivering') }}">{{ __('messages.delivering') }}</option>
+                                    <option value="{{ __('messages.delivered') }}">{{ __('messages.delivered') }}</option>
+                                    <option value="{{ __('messages.paid') }}">{{ __('messages.paid') }}</option>
+                                    <option value="{{ __('messages.canceled') }}">{{ __('messages.canceled') }}</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>

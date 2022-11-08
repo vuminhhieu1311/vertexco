@@ -56,7 +56,7 @@ var KTAppEcommerceSalesListing = function () {
             if (value === 'all') {
                 value = '';
             }
-            datatable.column(3).search(value).draw();
+            datatable.column(2).search(value).draw();
         });
     }
 
@@ -71,14 +71,13 @@ var KTAppEcommerceSalesListing = function () {
             function (settings, data, dataIndex) {
                 var min = minDate;
                 var max = maxDate;
-                var dateAdded = new Date(moment($(data[5]).text(), 'DD/MM/YYYY'));
-                var dateModified = new Date(moment($(data[6]).text(), 'DD/MM/YYYY'));
+                var dateAdded = new Date(moment($(data[4]).text(), 'DD/MM/YYYY'));
 
                 if (
                     (min === null && max === null) ||
-                    (min === null && max >= dateModified) ||
+                    (min === null && max >= dateAdded) ||
                     (min <= dateAdded && max === null) ||
-                    (min <= dateAdded && max >= dateModified)
+                    (min <= dateAdded && max >= dateAdded)
                 ) {
                     return true;
                 }

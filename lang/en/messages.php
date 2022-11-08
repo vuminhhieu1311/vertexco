@@ -93,4 +93,7 @@ return [
     'customer' => 'Customer',
     'last_modified' => 'Last modified',
     'order' => 'Order',
+    'search_order' => 'Search order',
+    'all' => 'All',
+    'pick_date_range' => 'Pick date range',
 ];
