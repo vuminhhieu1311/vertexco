@@ -25,3 +25,19 @@ $('.cancel-btn').click((e) => {
         }
     });
 });
+
+$('.confirm-btn').click((e) => {
+    const url = $(e.target).data('url');
+
+    $.ajax({
+        type: 'PUT',
+        url,
+        data: {
+            status: 'confirmed',
+        },
+        success: function (res) {
+            window.localStorage.setItem('success', 'Xác nhận đơn hàng thành công!');
+            window.location.href = '/orders';
+        },
+    });
+});

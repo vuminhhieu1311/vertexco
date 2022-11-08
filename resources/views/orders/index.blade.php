@@ -180,13 +180,24 @@
                                                         class="menu-link px-3">{{ __('messages.view_detail') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <div class="menu-link px-3 cancel-btn"
-                                                        data-url="{{ route('orders.destroy', ['order' => $order->id]) }}"
-                                                        data-id="{{ $order->id }}">{{ __('messages.cancel') }}</div>
-                                                </div>
-                                                <!--end::Menu item-->
+                                                @if ($order->status !== 'canceled')
+                                                    <!--begin::Menu item-->
+                                                    <div class="menu-item px-3">
+                                                        <div class="menu-link px-3 cancel-btn"
+                                                            data-url="{{ route('orders.destroy', ['order' => $order->id]) }}"
+                                                            data-id="{{ $order->id }}">{{ __('messages.cancel') }}</div>
+                                                    </div>
+                                                    <!--end::Menu item-->
+                                                @endif
+                                                @if ($order->status === 'pending')
+                                                    <!--begin::Menu item-->
+                                                    <div class="menu-item px-3">
+                                                        <div class="menu-link px-3 confirm-btn"
+                                                            data-url="{{ route('orders.update', ['order' => $order->id]) }}"
+                                                            data-id="{{ $order->id }}">{{ __('messages.confirm') }}</div>
+                                                    </div>
+                                                    <!--end::Menu item-->
+                                                @endif
                                             </div>
                                             <!--end::Menu-->
                                         </td>
