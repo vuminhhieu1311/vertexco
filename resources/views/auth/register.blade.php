@@ -6,11 +6,6 @@
         style="background-image: url(metronic/assets/media/illustrations/sketchy-1/14.png">
         <!--begin::Content-->
         <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-            <!--begin::Logo-->
-            <a href="" class="mb-12">
-                <img alt="Logo" src="{{ asset('metronic/assets/media/logos/logo-1.svg') }}" class="h-40px" />
-            </a>
-            <!--end::Logo-->
             <!--begin::Wrapper-->
             <div class="w-lg-600px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                 <!--begin::Form-->

@@ -7,8 +7,9 @@
             <div class="outer-box">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="{{ route('home') }}"><img src="{{ asset('garden-plant/images/logo.png') }}"
-                            alt="garnen-help"></a>
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('logo.png') }}" style="height:100px;width:300px;" alt="logo">
+                    </a>
                 </div>
                 <!-- Main Menu -->
                 <nav class="main-menu">

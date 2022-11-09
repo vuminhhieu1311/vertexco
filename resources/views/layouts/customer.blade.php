@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>E-garden</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
     <!-- Stylesheets -->
     <link href="{{ asset('garden-plant/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('garden-plant/css/style.css') }}" rel="stylesheet">
