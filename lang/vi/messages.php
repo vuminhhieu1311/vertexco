@@ -95,4 +95,7 @@ return [
     'search_order' => 'Tìm kiếm đơn hàng',
     'all' => 'Tất cả',
     'pick_date_range' => 'Chọn khoảng thời gian',
+    'published' => 'Công khai',
+    'unpublished' => 'Không công khai',
+    'draft' => 'Bản nháp',
 ];

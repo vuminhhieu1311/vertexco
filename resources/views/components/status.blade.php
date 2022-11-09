@@ -10,4 +10,10 @@
     <div class="badge badge-dark">{{ __('messages.delivering') }}</div>
 @elseif ($status === 'confirmed')
     <div class="badge badge-primary">{{ __('messages.confirmed') }}</div>
+@elseif ($status === 'published')
+    <div class="badge badge-success">{{ __('messages.published') }}</div>
+@elseif ($status === 'unpublished')
+    <div class="badge badge-danger">{{ __('messages.unpublished') }}</div>
+@elseif ($status === 'draft')
+    <div class="badge badge-warning">{{ __('messages.draft') }}</div>
 @endif

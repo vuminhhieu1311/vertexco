@@ -16,7 +16,7 @@ class OrderController extends Controller
         $orders = Order::with('user')
             ->latest()->get();
 
-        return view('orders.index', compact('orders'));
+        return view('order.index', compact('orders'));
     }
 
     /**
@@ -61,7 +61,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        return view('orders.show', compact('order'));
+        return view('order.show', compact('order'));
     }
 
     public function edit(Order $order)

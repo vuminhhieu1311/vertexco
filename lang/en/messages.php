@@ -96,4 +96,7 @@ return [
     'search_order' => 'Search order',
     'all' => 'All',
     'pick_date_range' => 'Pick date range',
+    'published' => 'Published',
+    'unpublished' => 'Unpublished',
+    'draft' => 'Draft',
 ];

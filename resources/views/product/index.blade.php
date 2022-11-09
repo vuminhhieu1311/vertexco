@@ -53,10 +53,11 @@
                                 <!--begin::Select2-->
                                 <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
                                     data-placeholder="Status" data-kt-ecommerce-product-filter="status">
-                                    <option value="all">All</option>
-                                    <option value="published">Published</option>
-                                    <option value="scheduled">Draft</option>
-                                    <option value="inactive">Inactive</option>
+                                    <option value="all">{{ __('messages.all') }}</option>
+                                    <option value="{{ __('messages.published') }}">{{ __('messages.published') }}</option>
+                                    <option value="{{ __('messages.unpublished') }}">{{ __('messages.unpublished') }}
+                                    </option>
+                                    <option value="{{ __('messages.draft') }}">{{ __('messages.draft') }}</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
@@ -190,16 +191,9 @@
                                         <!--begin::Status=-->
                                         <td class="pe-0" data-order="Inactive">
                                             <!--begin::Badges-->
-                                            @if ($product->status === 'published')
-                                                <div class="badge badge-light-success text-capitalize">
-                                                    {{ $product->status }}</div>
-                                            @elseif($product->status === 'inactive')
-                                                <div class="badge badge-light-danger text-capitalize">
-                                                    {{ $product->status }}</div>
-                                            @else
-                                                <div class="badge badge-light-warning text-capitalize">
-                                                    {{ $product->status }}</div>
-                                            @endif
+                                            @include('components.status', [
+                                                'status' => $product->status,
+                                            ])
                                             <!--end::Badges-->
                                         </td>
                                         <!--end::Status=-->
