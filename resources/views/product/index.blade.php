@@ -42,7 +42,8 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-product-filter="search"
-                                    class="form-control form-control-solid w-250px ps-14" placeholder="Search Product" />
+                                    class="form-control form-control-solid w-250px ps-14"
+                                    placeholder="{{ __('messages.search_product') }}" />
                             </div>
                             <!--end::Search-->
                         </div>

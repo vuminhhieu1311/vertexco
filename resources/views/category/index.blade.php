@@ -39,7 +39,8 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-category-filter="search"
-                                    class="form-control form-control-solid w-250px ps-14" placeholder="Search Category" />
+                                    class="form-control form-control-solid w-250px ps-14"
+                                    placeholder="{{ __('messages.search_category') }}" />
                             </div>
                             <!--end::Search-->
                         </div>
@@ -100,9 +101,11 @@
                                         </td>
                                         <td>
                                             @if ($category->status === 'published')
-                                                <span class="badge badge-success text-capitalize">{{ $category->status }}</span>
+                                                <span
+                                                    class="badge badge-success text-capitalize">{{ $category->status }}</span>
                                             @else
-                                                <span class="badge badge-danger text-capitalize">{{ $category->status }}</span>
+                                                <span
+                                                    class="badge badge-danger text-capitalize">{{ $category->status }}</span>
                                             @endif
                                         </td>
                                         <!--begin::Action=-->

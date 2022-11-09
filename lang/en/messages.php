@@ -99,4 +99,7 @@ return [
     'published' => 'Published',
     'unpublished' => 'Unpublished',
     'draft' => 'Draft',
+    'search_user' => 'Search user',
+    'search_category' => 'Search category',
+    'search_product' => 'Search product',
 ];

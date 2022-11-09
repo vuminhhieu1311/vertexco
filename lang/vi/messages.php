@@ -98,4 +98,7 @@ return [
     'published' => 'Công khai',
     'unpublished' => 'Không công khai',
     'draft' => 'Bản nháp',
+    'search_user' => 'Tìm kiếm người dùng',
+    'search_category' => 'Tìm kiếm danh mục',
+    'search_product' => 'Tìm kiếm sản phẩm',
 ];
