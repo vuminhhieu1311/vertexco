@@ -102,4 +102,5 @@ return [
     'search_user' => 'Search user',
     'search_category' => 'Search category',
     'search_product' => 'Search product',
+    'add_new_user' => 'Add new user',
 ];

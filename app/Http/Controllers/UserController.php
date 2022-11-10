@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -35,6 +38,23 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+        ]);
+
+        $user->syncRoles($request->role);
+
+        return redirect()->route('users.index')
+            ->with('success', __('messages.successfully'));
+    }
+
+    public function store(StoreUserRequest $request, User $user)
+    {
+        $this->authorize('create', $user);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'is_admin' => (bool) $request->role,
         ]);
 
         $user->syncRoles($request->role);

@@ -101,4 +101,5 @@ return [
     'search_user' => 'Tìm kiếm người dùng',
     'search_category' => 'Tìm kiếm danh mục',
     'search_product' => 'Tìm kiếm sản phẩm',
+    'add_new_user' => 'Thêm người dùng mới',
 ];
