@@ -98,8 +98,12 @@
                                 <select class="form-select mb-2" name="status" data-control="select2"
                                     data-hide-search="true" data-placeholder="Select an option"
                                     id="kt_ecommerce_add_category_status_select">
-                                    <option value="published" selected="selected">Published</option>
-                                    <option value="unpublished">Unpublished</option>
+                                    <option value="published" selected>
+                                        {{ __('messages.published') }}
+                                    </option>
+                                    <option value="unpublished">
+                                        {{ __('messages.unpublished') }}
+                                    </option>
                                 </select>
                                 @error('status')
                                     <div class="text-danger"><small>{{ $message }}</small></div>
@@ -135,7 +139,8 @@
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="name"
-                                        class="form-control mb-2 @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                                        class="form-control mb-2 @error('name') is-invalid @enderror"
+                                        value="{{ old('name') }}">
                                     <!--end::Input-->
                                     @error('name')
                                         <div class="text-danger"><small>{{ $message }}</small></div>
@@ -151,7 +156,8 @@
                                     <div id="category-description-editor" class="min-h-200px mb-2"></div>
                                     <!--end::Editor-->
                                 </div>
-                                <input type="hidden" id="category-description" name="description" value="{{ old('description') }}" />
+                                <input type="hidden" id="category-description" name="description"
+                                    value="{{ old('description') }}" />
                                 <!--end::Input group-->
                                 @error('description')
                                     <div class="text-danger"><small>{{ $message }}</small></div>

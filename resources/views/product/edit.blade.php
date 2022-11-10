@@ -100,11 +100,15 @@
                                 <select class="form-select mb-2" name="status" data-control="select2"
                                     data-hide-search="true" data-placeholder="Select an option"
                                     id="kt_ecommerce_add_product_status_select">
-                                    <option value="published" selected="{{ $product->status === 'published' }}">Published
+                                    <option value="published" @if ($product->status === 'published') selected @endif>
+                                        {{ __('messages.published') }}
                                     </option>
-                                    <option value="inactive" selected="{{ $product->status === 'inactive' }}">Inactive
+                                    <option value="unpublished" @if ($product->status === 'unpublished') selected @endif>
+                                        {{ __('messages.unpublished') }}
                                     </option>
-                                    <option value="draft" selected="{{ $product->status === 'draft' }}">Draft</option>
+                                    <option value="draft" @if ($product->status === 'draft') selected @endif>
+                                        {{ __('messages.draft') }}
+                                    </option>
                                 </select>
                                 <!--end::Select2-->
                                 <!--begin::Datepicker-->

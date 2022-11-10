@@ -67,7 +67,7 @@
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">*.png, *.jpg, *.jpeg</div>
                                 <!--end::Description-->
-                                <div id="error-message-avatar" class="text-danger"></div>
+                                <div id="error-message-avatar" class="error-message text-danger"></div>
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -95,9 +95,9 @@
                                 <select class="form-select mb-2" name="status" data-control="select2"
                                     data-hide-search="true" data-placeholder="Select an option"
                                     id="kt_ecommerce_add_product_status_select">
-                                    <option value="published" selected="selected">Published</option>
-                                    <option value="inactive">Inactive</option>
-                                    <option value="draft">Draft</option>
+                                    <option value="published" selected="selected">{{ __('messages.published') }}</option>
+                                    <option value="inactive">{{ __('messages.unpublished') }}</option>
+                                    <option value="draft">{{ __('messages.draft') }}</option>
                                 </select>
                                 <!--end::Select2-->
                                 <!--begin::Datepicker-->
@@ -164,7 +164,7 @@
                                             <input type="text" name="name" class="form-control mb-2"
                                                 placeholder="Product name" value="" />
                                             <!--end::Input-->
-                                            <div id="error-message-name" class="text-danger"></div>
+                                            <div id="error-message-name" class="error-message text-danger"></div>
                                         </div>
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
@@ -189,7 +189,7 @@
                                                 <input type="number" name="quantity" class="form-control mb-2"
                                                     value="" />
                                                 <!--end::Input-->
-                                                <div id="error-message-quantity" class="text-danger"></div>
+                                                <div id="error-message-quantity" class="error-message text-danger"></div>
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
@@ -201,7 +201,7 @@
                                                 <input type="text" name="price" class="form-control mb-2"
                                                     value="" />
                                                 <!--end::Input-->
-                                                <div id="error-message-price" class="text-danger"></div>
+                                                <div id="error-message-price" class="error-message text-danger"></div>
                                             </div>
                                             <!--end::Input group-->
                                         </div>

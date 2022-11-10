@@ -100,10 +100,12 @@
                                 <select class="form-select mb-2" name="status"" data-control="select2"
                                     data-hide-search="true" data-placeholder="Select an option"
                                     id="kt_ecommerce_add_category_status_select">
-                                    <option value="published" selected="{{ $category->status === 'published' }}">Published
+                                    <option value="published" @if ($category->status === 'published') selected @endif>
+                                        {{ __('messages.published') }}
                                     </option>
-                                    <option value="unpublished" selected="{{ $category->status === 'unpublished' }}">
-                                        Unpublished</option>
+                                    <option value="unpublished" @if ($category->status === 'unpublished') selected @endif>
+                                        {{ __('messages.unpublished') }}
+                                    </option>
                                 </select>
                                 <!--end::Select2-->
                                 <div class="d-none mt-10">

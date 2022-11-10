@@ -100,13 +100,10 @@
                                             <div>{!! $category->description !!}</div>
                                         </td>
                                         <td>
-                                            @if ($category->status === 'published')
-                                                <span
-                                                    class="badge badge-success text-capitalize">{{ $category->status }}</span>
-                                            @else
-                                                <span
-                                                    class="badge badge-danger text-capitalize">{{ $category->status }}</span>
-                                            @endif
+
+                                            @include('components.status', [
+                                                'status' => $category->status,
+                                            ])
                                         </td>
                                         <!--begin::Action=-->
                                         <td class="text-end">

@@ -120,7 +120,7 @@
                                         <!--end::Qty=-->
                                         <!--begin::Price=-->
                                         <td class="pe-0">
-                                            <span class="fw-bolder text-dark">{{ $product->price }}</span>
+                                            <span class="fw-bolder text-dark">@money($product->price, 'VND')</span>
                                         </td>
                                         <!--end::Price=-->
                                         <!--begin::Rating-->
