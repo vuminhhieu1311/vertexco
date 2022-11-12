@@ -48,7 +48,10 @@
                     <div class="proceed-to-checkout" style="display:flex;align-items:center">
                         <span class="mr-20" style="font-size: 20px;font-weight:600;">{{ __('messages.subtotal') }}:
                             <span>@money(Cart::priceTotal(), 'VND')</span></span>
-                        <a href="{{ route('checkout') }}" class="hvr-bounce-to-right">{{ __('messages.checkout') }}</a>
+                        @if (Cart::count())
+                            <a href="{{ route('checkout') }}"
+                                class="hvr-bounce-to-right">{{ __('messages.checkout') }}</a>
+                        @endif
                     </div>
                 </div>
             </div>

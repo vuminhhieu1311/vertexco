@@ -1,4 +1,4 @@
-@extends('layouts.customer')
+@extends('layouts.order_history')
 
 @section('css')
     <link href="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
@@ -13,6 +13,10 @@
 
         .appoinment-btn {
             top: 15px !important;
+        }
+
+        .order-date-picker input {
+            height: 43px;
         }
     </style>
 @endsection
@@ -45,29 +49,46 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-order-filter="search"
-                                    class="form-control form-control-solid w-250px ps-14" placeholder="Search Order" />
+                                    class="form-control form-control-solid w-250px ps-14"
+                                    placeholder="{{ __('messages.search_order') }}" style="height:43px" />
                             </div>
                             <!--end::Search-->
                         </div>
                         <!--end::Card title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                            <!--begin::Flatpickr-->
+                            <div class="input-group w-250px order-date-picker">
+                                <input class="form-control form-control-solid rounded rounded-end-0"
+                                    placeholder="{{ __('messages.pick_date_range') }}" id="kt_ecommerce_sales_flatpickr"
+                                    style="height:60px" />
+                                <button class="btn btn-icon btn-light" id="kt_ecommerce_sales_flatpickr_clear">
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr088.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="7.05025" y="15.5356" width="12" height="2"
+                                                rx="1" transform="rotate(-45 7.05025 15.5356)" fill="black" />
+                                            <rect x="8.46447" y="7.05029" width="12" height="2" rx="1"
+                                                transform="rotate(45 8.46447 7.05029)" fill="black" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </button>
+                            </div>
+                            <!--end::Flatpickr-->
                             <div class="w-100 mw-150px">
                                 <!--begin::Select2-->
                                 <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
                                     data-placeholder="Status" data-kt-ecommerce-order-filter="status">
-                                    <option></option>
-                                    <option value="all">All</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                    <option value="Completed">Completed</option>
-                                    <option value="Denied">Denied</option>
-                                    <option value="Expired">Expired</option>
-                                    <option value="Failed">Failed</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Processing">Processing</option>
-                                    <option value="Refunded">Refunded</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Delivering">Delivering</option>
+                                    <option value="all">{{ __('messages.all') }}</option>
+                                    <option value="{{ __('messages.pending') }}">{{ __('messages.pending') }}</option>
+                                    <option value="{{ __('messages.confirmed') }}">{{ __('messages.confirmed') }}</option>
+                                    <option value="{{ __('messages.delivering') }}">{{ __('messages.delivering') }}
+                                    </option>
+                                    <option value="{{ __('messages.delivered') }}">{{ __('messages.delivered') }}</option>
+                                    <option value="{{ __('messages.paid') }}">{{ __('messages.paid') }}</option>
+                                    <option value="{{ __('messages.canceled') }}">{{ __('messages.canceled') }}</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
@@ -83,13 +104,13 @@
                             <thead>
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th class="min-w-20px">{{ __('messages.order_id') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.order_id') }}</th>
                                     <th class="min-w-70px">{{ __('messages.status') }}</th>
-                                    <th class="text-center min-w-100px">{{ __('messages.total') }}</th>
-                                    <th class="text-center min-w-100px">{{ __('messages.creation_date') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.total') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.creation_date') }}</th>
                                     <th class="min-w-100px">{{ __('messages.billing_address') }}</th>
                                     <th class="min-w-100px">{{ __('messages.note') }}</th>
-                                    <th class="text-end w-70px">{{ __('messages.actions') }}</th>
+                                    <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
@@ -99,14 +120,13 @@
                                 @foreach ($orders as $order)
                                     <!--begin::Table row-->
                                     <tr>
-                                        <!--begin::Order ID=-->
-                                        <td>
-                                            <a href=""
+                                        <td data-kt-ecommerce-order-filter="order_id">
+                                            <a href="{{ route('orders.show', ['order' => $order->id]) }}"
                                                 class="text-gray-800 text-hover-primary fw-bolder">EG000{{ $order->id }}</a>
                                         </td>
                                         <!--end::Order ID=-->
                                         <!--begin::Status=-->
-                                        <td class="pe-0">
+                                        <td class="pe-0" data-order="Failed">
                                             <!--begin::Badges-->
                                             @include('components.status', [
                                                 'status' => $order->status,
@@ -115,25 +135,23 @@
                                         </td>
                                         <!--end::Status=-->
                                         <!--begin::Total=-->
-                                        <td class="text-center pe-0">
+                                        <td class="pe-0">
                                             <span class="fw-bolder">@money($order->total, 'VND')</span>
                                         </td>
                                         <!--end::Total=-->
                                         <!--begin::Date Added=-->
-                                        <td class="text-center">
+                                        <td data-order="2021-12-25">
                                             <span class="fw-bolder">{{ $order->created_at->format('d/m/Y') }}</span>
                                         </td>
                                         <!--end::Date Added=-->
-                                        <!--begin::Date Added=-->
                                         <td>
                                             <span class="fw-bolder">{{ $order->delivery_address }}</span>
                                         </td>
-                                        <!--end::Date Added=-->
-                                        <!--begin::Date Added=-->
-                                        <td>
+                                        <!--begin::Date Modified=-->
+                                        <td data-order="2021-12-30">
                                             <span class="fw-bolder">{{ $order->note }}</span>
                                         </td>
-                                        <!--end::Date Added=-->
+                                        <!--end::Date Modified=-->
                                         <!--begin::Action=-->
                                         <td class="text-end">
                                             <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
@@ -155,7 +173,7 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="../../demo8/dist/apps/ecommerce/sales/details.html"
+                                                    <a href="{{ route('orders.show', ['order' => $order->id]) }}"
                                                         class="menu-link px-3">{{ __('messages.view_detail') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -194,9 +212,8 @@
 @endsection
 
 @section('js')
+    <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/sales/listing.js') }}"></script>
+    <!--end::Page Vendors Javascript-->
     <script src="{{ Vite::asset('resources/js/customer/order_history.js') }}"></script>
 @endsection

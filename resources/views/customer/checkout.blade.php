@@ -78,11 +78,13 @@
                                     <li>{{ __('messages.tax') }}<span class="bold">@money(Cart::tax(), 'VND')</span></li>
                                     <li class="total">{{ __('messages.total') }}<span
                                             class="bold">@money(Cart::total(), 'VND')</span></li>
-                                    <li>
-                                        <a href="#" type="submit" id="order-btn" class="place-order">
-                                            {{ __('messages.place_order') }}
-                                            </button>
-                                    </li>
+                                    @if (Cart::count())
+                                        <li>
+                                            <a href="#" type="submit" id="order-btn" class="place-order">
+                                                {{ __('messages.place_order') }}
+                                                </button>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
