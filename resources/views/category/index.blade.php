@@ -66,7 +66,7 @@
                                     <th class="min-w-200px">{{ __('messages.category') }}</th>
                                     <th class="min-w-150px">{{ __('messages.category_description') }}</th>
                                     <th class="min-w-80px">{{ __('messages.status') }}</th>
-                                    <th class="text-end min-w-70px">{{ __('messages.actions') }}</th>
+                                    <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>

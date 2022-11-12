@@ -93,13 +93,13 @@
                             <thead>
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th class="min-w-20px">{{ __('messages.order_id') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.order_id') }}</th>
                                     <th class="min-w-175px">{{ __('messages.customer') }}</th>
                                     <th class="min-w-70px">{{ __('messages.status') }}</th>
                                     <th class="min-w-100px">{{ __('messages.total') }}</th>
                                     <th class="min-w-100px">{{ __('messages.creation_date') }}</th>
                                     <th class="min-w-100px">{{ __('messages.note') }}</th>
-                                    <th class="text-end w-120px">{{ __('messages.actions') }}</th>
+                                    <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>

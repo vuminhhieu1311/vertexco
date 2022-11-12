@@ -279,7 +279,7 @@
                                     <th class="min-w-125px">{{ __('messages.phone_number') }}</th>
                                     <th class="min-w-125px">{{ __('messages.address') }}</th>
                                     <th class="min-w-125px">{{ __('messages.joined_date') }}</th>
-                                    <th class="text-end min-w-100px">{{ __('messages.actions') }}</th>
+                                    <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>

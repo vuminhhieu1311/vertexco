@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\OrderStatus;
+use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class OrderController extends Controller
     /**
      * @throws \Exception
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
         try {
             DB::beginTransaction();

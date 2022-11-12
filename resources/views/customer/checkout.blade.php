@@ -16,6 +16,9 @@
                                 <label>{{ __('messages.name') }} <span style="color:red">*</span></label>
                                 <input name="name" type="text" value="{{ auth()->user()->name }}"
                                     placeholder="{{ __('messages.name') }}">
+                                @error('name')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -23,6 +26,9 @@
                                 <label>{{ __('messages.address') }} <span style="color:red">*</span></label>
                                 <input name="address" type="text" value="{{ auth()->user()->address }}"
                                     placeholder="{{ __('messages.address') }}">
+                                @error('address')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -30,17 +36,26 @@
                                 <label>Email <span style="color:red">*</span></label>
                                 <input name="email" type="text" value="{{ auth()->user()->email }}"
                                     placeholder="Email">
+                                @error('email')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                             <div class="col-lg-6">
                                 <label>{{ __('messages.phone_number') }} <span style="color:red">*</span></label>
                                 <input name="phone_number" type="text" value="{{ auth()->user()->phone_number }}"
                                     placeholder="{{ __('messages.phone_number') }}">
+                                @error('phone_number')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <label>{{ __('messages.note') }}</label>
                                 <textarea name="note" placeholder="{{ __('messages.note') }}"></textarea>
+                                @error('note')
+                                    <div class="text-danger"><small>{{ $message }}</small></div>
+                                @enderror
                             </div>
                         </div>
                     </div>
