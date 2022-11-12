@@ -56,10 +56,11 @@
                 <!-- Main Menu End-->
                 <!--Cart Button-->
                 <div class="appoinment-btn">
-                    <a class="thm-btn pt-5 pb-5 mt-5 letter-spacing-1" href="{{ route('cart.show') }}"
+                    <a class="thm-btn pt-5 pb-5 p-20 mt-5 letter-spacing-1" href="{{ route('cart.show') }}"
                         style="display:flex;align-items:center">
                         <span class="material-icons-outlined mr-10" style="font-size:18px">shopping_cart</span>
                         {{ __('messages.my_cart') }}
+                        <span id="cart-count">&nbsp;({{ Cart::count() }})</span>
                     </a>
                 </div>
             </div>

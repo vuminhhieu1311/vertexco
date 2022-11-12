@@ -90,7 +90,7 @@ class OrderController extends Controller
 
     public function getOrderHistory()
     {
-        $orders = Auth::user()->orders;
+        $orders = Auth::user()->orders()->latest()->get();
 
         return view('customer.order_history', compact('orders'));
     }

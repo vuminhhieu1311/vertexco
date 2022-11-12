@@ -1,5 +1,9 @@
 @extends('layouts.customer')
 
+@section('css')
+    <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet" />
+@endsection
+
 @section('content')
     <!--Sidebar Section-->
     <div class="sidebar-section no-bg" id="sidebar-section">
@@ -26,7 +30,7 @@
                                             </a>
                                         </h4>
                                         <span>{{ __('messages.price') }}: <b>@money($product->price, 'VND')</b></span>
-                                        <a href="#"
+                                        <a data-url="{{ route('cart.store', ['product' => $product->id]) }}"
                                             class="add-to-cart hvr-bounce-to-right">{{ __('messages.add_to_cart') }}</a>
                                     </div>
                                 </div>
@@ -184,4 +188,5 @@
 
 @section('js')
     <script src="{{ Vite::asset('resources/js/customer/home.js') }}"></script>
+    <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
 @endsection

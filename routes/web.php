@@ -46,6 +46,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
     Route::prefix('cart')->group(function () {
         Route::get('/', [CartController::class, 'show'])->name('cart.show');
         Route::post('/save/product/{product}', [CartController::class, 'save'])->name('cart.save');
+        Route::post('/store/product/{product}', [CartController::class, 'store'])->name('cart.store');
         Route::put('/update/{id}', [CartController::class, 'update'])->name('cart.update');
         Route::get('/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
     });

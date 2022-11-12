@@ -42,4 +42,22 @@ class CartController extends Controller
 
         return redirect()->route('cart.show');
     }
+
+    public function store(Request $request, Product $product)
+    {
+        Cart::add([
+            'id' => $product->id,
+            'name' => $product->name,
+            'qty' => (int) $request->quantity,
+            'price' => $product->price,
+            'weight' => 1,
+            'options' => [
+                'avatar_url' => $product->avatar_url,
+            ],
+        ]);
+
+        Cart::setGlobalTax(8);
+
+        return Cart::count();
+    }
 }
