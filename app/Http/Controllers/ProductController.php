@@ -151,6 +151,9 @@ class ProductController extends Controller
     public function getPublishedProducts(Request $request)
     {
         $products = Product::where('status', ProductStatus::PUBLISHED)
+            ->when(request('name'), function ($query) {
+                return $query->where('name', 'LIKE', '%' . request('name') . '%');
+            })
             ->latest()->get();
 
         return view('customer.home', compact('products'));

@@ -25,7 +25,7 @@
                                                 {{ $product->name }}
                                             </a>
                                         </h4>
-                                        <span>{{ __('messages.price') }}: <b>{{ $product->price }} VND</b></span>
+                                        <span>{{ __('messages.price') }}: <b>@money($product->price, 'VND')</b></span>
                                         <a href="#"
                                             class="add-to-cart hvr-bounce-to-right">{{ __('messages.add_to_cart') }}</a>
                                     </div>
@@ -41,13 +41,12 @@
                     <aside class="sidebar">
                         <!-- Search Form -->
                         <div class="widget search-form">
-                            <h3>Search</h3>
-                            <form method="post" action="http://vision.to/garden-plant/blog.html">
-                                <div class="form-group">
-                                    <input type="search" name="search" value="" placeholder="Search">
-                                    <button type="submit" name="submit"><span class="fa fa-search"></span></button>
-                                </div>
-                            </form>
+                            <h3>{{ __('messages.search_product') }}</h3>
+                            <div class="form-group">
+                                <input id="search-input" type="search" name="name" value="{{ request()->get('name') }}"
+                                    placeholder="{{ __('messages.search_product') }}">
+                                <button id="search-btn"><span class="fa fa-search"></span></button>
+                            </div>
                         </div>
                         <!-- Recent Posts -->
                         <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
@@ -181,4 +180,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="{{ Vite::asset('resources/js/customer/home.js') }}"></script>
 @endsection
