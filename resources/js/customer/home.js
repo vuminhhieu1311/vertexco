@@ -29,5 +29,19 @@ $('.add-to-cart').on('click', (e) => {
             toastr.options.positionClass = 'toast-top-center';
             toastr.success('Thêm vào giỏ hàng thành công.');
         },
+        error: function(e) {
+            if (e.status === 401) {
+                window.location.href = '/login';
+            }
+        },
     });
+});
+
+$('.category-filter').on('click', (e) => {
+    e.preventDefault();
+    const categoryId = $(e.target).data('id');
+    urlParams.delete('category_id');
+    urlParams.append('category_id', categoryId);
+
+    window.location.href = `/?${urlParams.toString()}`;
 });

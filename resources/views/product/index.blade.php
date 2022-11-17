@@ -105,7 +105,7 @@
                                                 <!--end::Thumbnail-->
                                                 <div class="ms-5">
                                                     <!--begin::Title-->
-                                                    <a href=""
+                                                    <a href="{{ route('products.edit', ['product' => $product->id]) }}"
                                                         class="text-gray-800 text-hover-primary fs-5 fw-bolder"
                                                         data-kt-ecommerce-product-filter="product_name">{{ $product->name }}</a>
                                                     <!--end::Title-->

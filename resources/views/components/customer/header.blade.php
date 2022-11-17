@@ -72,7 +72,19 @@
 <section class="page-title"
     style="{{ 'background-image:url(' . asset('garden-plant/images/background/page-title-1.jpg') . ');' }}"">
     <div class="auto-container">
-        <h1 style="padding-top: 50px;">Shop Page</h1>
+        <h1 style="padding-top: 50px;">
+            @if (Route::is('home'))
+                E-garden
+            @elseif (Route::is('products.detail'))
+                {{ __('messages.product_detail') }}
+            @elseif (Route::is('order_history'))
+                {{ __('messages.my_order') }}
+            @elseif (Route::is('cart.*'))
+                {{ __('messages.my_cart') }}
+            @elseif (Route::is('checkout'))
+                {{ __('messages.checkout') }}
+            @endif
+        </h1>
     </div>
     <!--Go Down Button-->
     <div class="go-down">

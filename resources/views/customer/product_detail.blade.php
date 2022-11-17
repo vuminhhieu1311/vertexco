@@ -7,7 +7,7 @@
             <div class="auto-container">
                 <div class="row clearfix">
                     <!--Content Side-->
-                    <div class="col-md-9 col-sm-8 col-xs-12 content-side pull-right">
+                    <div class="content-side pull-right">
                         <!--Services Section-->
                         <!-- .product-details-page-content -->
                         <div class="product-details-page-content">
@@ -103,33 +103,6 @@
                                 </div>
                             </div>
                         </div> <!-- /.product-details-page-content -->
-                    </div>
-                    <!--Sidebar-->
-                    <div class="col-md-3 col-sm-4 col-xs-12 pull-left">
-                        <aside class="sidebar">
-                            <!-- Search Form -->
-                            <div class="widget search-form">
-                                <h3>Search</h3>
-
-                                <form method="post" action="http://vision.to/garden-plant/blog.html">
-                                    <div class="form-group">
-                                        <input type="search" name="search" value="" placeholder="Search">
-                                        <button type="submit" name="submit"><span class="fa fa-search"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!--Categories-->
-                            <div class="widget links-widget">
-                                <h3>CATEGORIES</h3>
-                                <ul>
-                                    <li><a href="#">Logistics Management</a></li>
-                                    <li><a href="#">Cargo Transport</a></li>
-                                    <li><a href="#">Chain Supply Management</a></li>
-                                    <li><a href="#">Warehouse</a></li>
-                                    <li><a href="#">Distribution Network</a></li>
-                                </ul>
-                            </div>
-                        </aside>
                     </div>
                 </div>
             </div>

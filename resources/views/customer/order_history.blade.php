@@ -7,8 +7,7 @@
     <link href="{{ asset('metronic/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <style>
         .appoinment-btn a {
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
+            padding: 9px 20px !important;
         }
 
         .appoinment-btn {

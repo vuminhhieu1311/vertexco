@@ -52,133 +52,17 @@
                                 <button id="search-btn"><span class="fa fa-search"></span></button>
                             </div>
                         </div>
-                        <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title">
-                                <h3>Recent Posts</h3>
-                            </div>
-                            <div class="post">
-                                <div class="post-thumb"><a href="#"><img
-                                            src="garden-plant/images/resource/thumb-1.jpg" alt=""></a></div>
-                                <h4><a href="#">Fusce in odio ac diam finibus tempus.</a></h4>
-                            </div>
-                            <div class="post">
-                                <div class="post-thumb"><a href="#"><img
-                                            src="garden-plant/images/resource/thumb-2.jpg" alt=""></a></div>
-                                <h4><a href="#">Massa sem dignissim elit: Sit amet cursus massa</a></h4>
-                            </div>
-                            <div class="post">
-                                <div class="post-thumb"><a href="#"><img
-                                            src="garden-plant/images/resource/thumb-3.jpg" alt=""></a></div>
-                                <h4><a href="#">Ellentesque non laoreet risus, id elementum purus. </a></h4>
-                            </div>
-                        </div>
-                        <!--Categories-->
-                        <div class="widget links-widget">
-                            <h3>CATEGORIES</h3>
-                            <ul>
-                                <li><a href="#">Logistics Management</a></li>
-                                <li><a href="#">Cargo Transport</a></li>
-                                <li><a href="#">Chain Supply Management</a></li>
-                                <li><a href="#">Warehouse</a></li>
-                                <li><a href="#">Distribution Network</a></li>
-                            </ul>
-                        </div>
-                        <!--Links Widget-->
                         <div class="widget popular-tags">
-                            <h3>popular Tags</h3>
+                            <h3>{{ __('messages.categories') }}</h3>
                             <div class="tags">
-                                <a href="#">transport</a>
-                                <a href="#">Frieght</a>
-                                <a href="#">Warehouse</a>
-                                <a href="#">Logistics</a>
-                                <a href="#">Cargo</a>
-                                <a href="#">GARDEN CARE</a>
-                                <a href="#">Warehouse</a>
-                                <a href="#">Security</a>
+                                @foreach ($categories as $category)
+                                    <a class="category-filter" data-id="{{ $category->id }}">{{ $category->name }}</a>
+                                @endforeach
                             </div>
                         </div>
-
-                        <!--Reviews Widget-->
-                        <div class="widget review-widget">
-                            <h3>Testimonials</h3>
-                            <!--Testimonials Slider-->
-                            <div class="testimonial-slider">
-                                <div class="slider">
-                                    <article class="slide-item">
-                                        <div class="slide-content">
-                                            <p>“Pellentesque a massa risus. Cras convallis finibus porta. Integer in
-                                                ligula leo. Cras quis consequat nisl, at malesuada sapien. Mauris
-                                                ultricies nisi eget velit bibendum, sit amet euismod mi gravida.”
-                                            </p>
-                                        </div>
-                                        <div class="slide-info">
-                                            <figure class="author-thumb img-circle"><a href="#"><img
-                                                        class="img-circle"
-                                                        src="garden-plant/images/resource/author-thumb-2.jpg"
-                                                        alt=""></a></figure>
-                                            <div class="author-info">
-                                                <h5>William Perez</h5>
-                                                <p>Melbourne</p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="slide-item">
-                                        <div class="slide-content">
-                                            <p>“Pellentesque a massa risus. Cras convallis finibus porta. Integer in
-                                                ligula leo. Cras quis consequat nisl, at malesuada sapien. Mauris,
-                                                sit amet euismod mi gravida.”</p>
-                                        </div>
-                                        <div class="slide-info">
-                                            <figure class="author-thumb img-circle"><a href="#"><img
-                                                        class="img-circle"
-                                                        src="garden-plant/images/resource/author-thumb-3.jpg"
-                                                        alt=""></a></figure>
-                                            <div class="author-info">
-                                                <h5>Sara Millin</h5>
-                                                <p>Melbourne</p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="slide-item">
-                                        <div class="slide-content">
-                                            <p>“Pellentesque a massa risus. Cras convallis finibus porta. Integer in
-                                                ligula leo. Cras quis consequat nisl, at malesuada sapien. Mauris
-                                                ultricies nisi eget velit bibendum, sit gravida.”</p>
-                                        </div>
-                                        <div class="slide-info">
-                                            <figure class="author-thumb img-circle"><a href="#"><img
-                                                        class="img-circle"
-                                                        src="garden-plant/images/resource/author-thumb-2.jpg"
-                                                        alt=""></a></figure>
-                                            <div class="author-info">
-                                                <h5>William Perez</h5>
-                                                <p>Melbourne</p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="slide-item">
-                                        <div class="slide-content">
-                                            <p>“Pellentesque a massa risus. Cras convallis finibus porta. Integer in
-                                                ligula leo. velit bibendum, sit amet euismod mi gravida. Cum sociis
-                                                natoque penatibus et magnis dis parturient montes, nascetur
-                                                ridiculus mus.”</p>
-                                        </div>
-                                        <div class="slide-info">
-                                            <figure class="author-thumb img-circle"><a href="#"><img
-                                                        class="img-circle"
-                                                        src="garden-plant/images/resource/author-thumb-3.jpg"
-                                                        alt=""></a></figure>
-                                            <div class="author-info">
-                                                <h5>Sara Millin</h5>
-                                                <p>Melbourne</p>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/" class="theme-btn btn-theme-grey rounded-btn" style="padding:5px 20px">
+                            {{ __('messages.clear_filter') }}
+                        </a>
                     </aside>
                 </div>
             </div>

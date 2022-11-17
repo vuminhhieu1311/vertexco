@@ -102,4 +102,6 @@ return [
     'search_category' => 'Tìm kiếm danh mục',
     'search_product' => 'Tìm kiếm sản phẩm',
     'add_new_user' => 'Thêm người dùng mới',
+    'clear_filter' => 'Xóa lọc',
+    'product_detail' => 'Chi tiết sản phẩm',
 ];

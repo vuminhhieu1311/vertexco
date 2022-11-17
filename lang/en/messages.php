@@ -103,4 +103,6 @@ return [
     'search_category' => 'Search category',
     'search_product' => 'Search product',
     'add_new_user' => 'Add new user',
+    'clear_filter' => 'Clear filter',
+    'product_detail' => 'Product detail',
 ];

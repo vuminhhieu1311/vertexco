@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CategoryStatus;
 use App\Enums\ProductStatus;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -150,12 +151,19 @@ class ProductController extends Controller
 
     public function getPublishedProducts(Request $request)
     {
+        $categories = Category::where('status', CategoryStatus::PUBLISHED) ->latest()->get();
+
         $products = Product::where('status', ProductStatus::PUBLISHED)
             ->when(request('name'), function ($query) {
                 return $query->where('name', 'LIKE', '%' . request('name') . '%');
             })
+            ->when(request('category_id'), function ($query) {
+                return $query->whereHas('categories', function ($q) {
+                    return $q->where('categories.id', request('category_id'));
+                });
+            })
             ->latest()->get();
 
-        return view('customer.home', compact('products'));
+        return view('customer.home', compact('products', 'categories'));
     }
 }
