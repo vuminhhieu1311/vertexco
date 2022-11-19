@@ -105,4 +105,7 @@ return [
     'add_new_user' => 'Add new user',
     'clear_filter' => 'Clear filter',
     'product_detail' => 'Product detail',
+    'goal' => 'Goal',
+    'customers' => 'Customers',
+    'latest_orders' => 'Latest orders',
 ];

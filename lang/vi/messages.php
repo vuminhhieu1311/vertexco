@@ -104,4 +104,7 @@ return [
     'add_new_user' => 'Thêm người dùng mới',
     'clear_filter' => 'Xóa lọc',
     'product_detail' => 'Chi tiết sản phẩm',
+    'goal' => 'Mục tiêu',
+    'customers' => 'Khách hàng',
+    'latest_orders' => 'Đơn hàng mới',
 ];
