@@ -108,4 +108,5 @@ return [
     'goal' => 'Goal',
     'customers' => 'Customers',
     'latest_orders' => 'Latest orders',
+    'sales_this_year' => 'Sales this year',
 ];

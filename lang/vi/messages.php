@@ -107,4 +107,5 @@ return [
     'goal' => 'Mục tiêu',
     'customers' => 'Khách hàng',
     'latest_orders' => 'Đơn hàng mới',
+    'sales_this_year' => 'Doanh thu năm nay',
 ];

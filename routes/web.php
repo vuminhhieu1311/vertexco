@@ -35,6 +35,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
     ])->name('update-language');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/report/sales', [DashboardController::class, 'sales'])->name('report.sales');
 
     Route::prefix('products')->group(function () {
         Route::get('/{product}/images', [ProductController::class, 'showProductImages']);
