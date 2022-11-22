@@ -29,6 +29,8 @@ var myDropzone = new Dropzone("#add_product_media", {
     }
 });
 
+$("#discount-deadline-picker").flatpickr();
+
 // Add product submit
 $('#submit-btn').on('click', (e) => {
     e.preventDefault();

@@ -47,6 +47,8 @@ class ProductController extends Controller
                 'status' => $request->status,
                 'user_id' => Auth::id(),
                 'avatar_url' => $filePath,
+                'discount' => $request->discount,
+                'discount_deadline' => $request->discount_deadline,
             ]);
 
             $product->categories()->attach($request->category_ids);
@@ -101,6 +103,8 @@ class ProductController extends Controller
                 'quantity' => $request->quantity,
                 'status' => $request->status,
                 'avatar_url' => $filePath,
+                'discount' => $request->discount,
+                'discount_deadline' => $request->discount_deadline,
             ]);
 
             $product->categories()->sync($request->category_ids);

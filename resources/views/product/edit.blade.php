@@ -154,6 +154,33 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Category & tags-->
+                        <!--begin::Discount-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>{{ __('messages.product_discount') }}</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <label class="form-label">{{ __('messages.discount') }} (%)</label>
+                                <input type="number" min="1" name="discount" class="form-control mb-2"
+                                    placeholder="%" value="{{ $product->discount }}" />
+                                <!--begin::Datepicker-->
+                                <div class="mt-10">
+                                    <label class="form-label">{{ __('messages.discount_deadline') }}</label>
+                                    <input class="form-control" name="discount_deadline" id="discount-deadline-picker"
+                                        placeholder="Pick date &amp; time" value="{{ $product->discount_deadline }}" />
+                                </div>
+                                <!--end::Datepicker-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Discount-->
                     </div>
                     <!--end::Aside column-->
                     <!--begin::Main column-->

@@ -19,7 +19,7 @@ class CartController extends Controller
             'id' => $product->id,
             'name' => $product->name,
             'qty' => (int) $request->quantity,
-            'price' => $product->price,
+            'price' => $product->final_price,
             'weight' => 1,
             'options' => [
                 'avatar_url' => $product->avatar_url,
@@ -49,7 +49,7 @@ class CartController extends Controller
             'id' => $product->id,
             'name' => $product->name,
             'qty' => (int) $request->quantity,
-            'price' => $product->price,
+            'price' => $product->final_price,
             'weight' => 1,
             'options' => [
                 'avatar_url' => $product->avatar_url,

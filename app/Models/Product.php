@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,7 +25,12 @@ class Product extends Model
         'status',
         'avatar_url',
         'user_id',
-        'discount_id',
+        'discount',
+        'discount_deadline',
+    ];
+
+    protected $appends = [
+        'final_price',
     ];
 
     public function categories()
@@ -39,5 +46,27 @@ class Product extends Model
     public function categoryProducts()
     {
         return $this->hasMany(CategoryProduct::class);
+    }
+
+    protected function finalPrice(): Attribute
+    {
+        $price = $this->price;
+
+        if ($this->discount) {
+            if ($this->discount_deadline) {
+                $now = Carbon::now();
+                $discountDeadline = Carbon::createFromFormat('Y-m-d', $this->discount_deadline);
+
+                if ($now->lte($discountDeadline)) {
+                    $price = $this->price - ($this->price * $this->discount / 100);
+                }
+            } else {
+                $price = $this->price - ($this->price * $this->discount / 100);
+            }
+        }
+
+        return Attribute::make(
+            get: fn () => $price,
+        );
     }
 }

@@ -108,4 +108,7 @@ return [
     'customers' => 'Khách hàng',
     'latest_orders' => 'Đơn hàng mới',
     'sales_this_year' => 'Doanh thu năm nay',
+    'product_discount' => 'Giảm giá sản phẩm',
+    'discount_deadline' => 'Giảm giá đến',
+    'discount' => 'Giảm giá',
 ];

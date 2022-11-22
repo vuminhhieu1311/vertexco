@@ -29,7 +29,13 @@
                                                 {{ $product->name }}
                                             </a>
                                         </h4>
-                                        <span>{{ __('messages.price') }}: <b>@money($product->price, 'VND')</b></span>
+                                        <span style="display:flex;justify-content:center;align-items:center">
+                                            {{ __('messages.price') }}:&nbsp;
+                                            @if ($product->price != $product->final_price)
+                                                <span style="text-decoration:line-through;">@money($product->price, 'VND')</span>&nbsp;
+                                            @endif
+                                            <b>@money($product->final_price, 'VND')</b>
+                                        </span>
                                         <a data-url="{{ route('cart.store', ['product' => $product->id]) }}"
                                             class="add-to-cart hvr-bounce-to-right">{{ __('messages.add_to_cart') }}</a>
                                     </div>

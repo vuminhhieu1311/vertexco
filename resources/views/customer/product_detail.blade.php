@@ -48,7 +48,13 @@
                                 <div class="col-lg-6">
                                     <h3>{{ $product->name }}</h3>
                                     {!! $product->description !!}
-                                    <span>{{ __('messages.price') }} : <b>@money($product->price, 'VND')</b></span>
+                                    <span style="display:flex;">
+                                        <span>{{ __('messages.price') }}:</span>&nbsp;&nbsp;
+                                        @if ($product->price != $product->final_price)
+                                            <span style="text-decoration:line-through;">@money($product->price, 'VND')</span>
+                                        @endif
+                                        <b>@money($product->final_price, 'VND')</b>
+                                    </span>
                                     <form id="cart-form" method="POST" action="{{ route('cart.save', ['product' => $product->id]) }}">
                                         @csrf
                                         <span>{{ __('messages.quantity') }} :

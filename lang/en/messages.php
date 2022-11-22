@@ -109,4 +109,7 @@ return [
     'customers' => 'Customers',
     'latest_orders' => 'Latest orders',
     'sales_this_year' => 'Sales this year',
+    'product_discount' => 'Product discount',
+    'discount_deadline' => 'Discoutn deadline',
+    'discount' => 'Discount',
 ];

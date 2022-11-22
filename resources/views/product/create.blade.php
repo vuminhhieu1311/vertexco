@@ -137,6 +137,33 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Category & tags-->
+                        <!--begin::Discount-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>{{ __('messages.product_discount') }}</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <label class="form-label">{{ __('messages.discount') }} (%)</label>
+                                <input type="number" min="1" name="discount" class="form-control mb-2"
+                                    placeholder="%" value="" />
+                                <!--begin::Datepicker-->
+                                <div class="mt-10">
+                                    <label class="form-label">{{ __('messages.discount_deadline') }}</label>
+                                    <input class="form-control" name="discount_deadline" id="discount-deadline-picker"
+                                        placeholder="Pick date &amp; time" />
+                                </div>
+                                <!--end::Datepicker-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Discount-->
                     </div>
                     <!--end::Aside column-->
                     <!--begin::Main column-->
@@ -187,7 +214,7 @@
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="quantity" class="form-control mb-2"
-                                                    value="" />
+                                                    value="" min="1" />
                                                 <!--end::Input-->
                                                 <div id="error-message-quantity" class="error-message text-danger"></div>
                                             </div>
@@ -198,8 +225,8 @@
                                                 <label class="required form-label">{{ __('messages.price') }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="text" name="price" class="form-control mb-2"
-                                                    value="" />
+                                                <input type="number" name="price" class="form-control mb-2"
+                                                    value="" min="1" />
                                                 <!--end::Input-->
                                                 <div id="error-message-price" class="error-message text-danger"></div>
                                             </div>

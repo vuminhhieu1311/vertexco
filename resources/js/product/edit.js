@@ -42,6 +42,8 @@ var myDropzone = new Dropzone("#add_product_media", {
     },
 });
 
+$("#discount-deadline-picker").flatpickr();
+
 $.ajax({
     type: 'GET',
     url: `/products/${productId}/images`,
