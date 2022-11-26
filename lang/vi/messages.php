@@ -113,4 +113,5 @@ return [
     'discount' => 'Giảm giá',
     'comment' => 'Đánh giá',
     'submit' => 'Lưu',
+    'review' => 'Đánh giá',
 ];

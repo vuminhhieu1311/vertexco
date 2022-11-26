@@ -70,6 +70,8 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $product->load('ratings.user');
+
         return view('customer.product_detail', compact('product'));
     }
 

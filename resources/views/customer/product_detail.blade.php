@@ -1,5 +1,30 @@
 @extends('layouts.customer')
 
+@section('css')
+    <style>
+        .star-rating {
+            display: flex;
+            align-items: center;
+            font-size: 1.25em;
+        }
+
+        .back-stars {
+            display: flex;
+            color: #ccc;
+            position: relative;
+        }
+
+        .front-stars {
+            display: flex;
+            color: #FFBC0B;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            transition: all .5s
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="page-wrapper">
         <!--Sidebar Section-->
@@ -55,7 +80,8 @@
                                         @endif
                                         <b>@money($product->final_price, 'VND')</b>
                                     </span>
-                                    <form id="cart-form" method="POST" action="{{ route('cart.save', ['product' => $product->id]) }}">
+                                    <form id="cart-form" method="POST"
+                                        action="{{ route('cart.save', ['product' => $product->id]) }}">
                                         @csrf
                                         <span>{{ __('messages.quantity') }} :
                                             <input type="text" name="quantity" value="1">
@@ -69,9 +95,13 @@
                             <div class="product-details-tab-title row">
                                 <div class="col-lg-12">
                                     <ul>
-                                        <li data-tab-name="description" class="active"><span>Descripton</span></li>
+                                        <li data-tab-name="description" class="active">
+                                            <span>{{ __('messages.description') }}</span>
+                                        </li>
                                         <li data-tab-name="specification"><span>Specification</span></li>
-                                        <li data-tab-name="review"><span>Review (0)</span></li>
+                                        <li data-tab-name="review"><span>{{ __('messages.review') }}
+                                                ({{ $product->ratings->count() }})</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -93,19 +123,35 @@
                                         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                                         sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                                 </div>
-                                <div class="col-lg-12" id="review">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur.</p>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                        sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                <div class="col-lg-12" id="review" style="padding-bottom:15px;">
+                                    @foreach ($product->ratings as $rating)
+                                        <div style="display:flex;margin-bottom:20px;">
+                                            <img src="{{ Avatar::create($rating->user->name)->setFontSize(30)->toBase64() }}"
+                                                style="height:45px;" />
+                                            <div style="margin-left:10px;">
+                                                @php
+                                                    $percent = ($rating->rating / 5) * 100;
+                                                @endphp
+                                                <div class="star-rating">
+                                                    <div class="back-stars">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <div class="front-stars" style="width: {{ $percent }}%">
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>{{ $rating->comment }}</div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div> <!-- /.product-details-page-content -->

@@ -114,4 +114,5 @@ return [
     'discount' => 'Discount',
     'comment' => 'Comment',
     'submit' => 'Submit',
+    'review' => "Review",
 ];
