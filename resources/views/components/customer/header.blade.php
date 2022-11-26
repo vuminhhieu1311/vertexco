@@ -83,6 +83,8 @@
                 {{ __('messages.my_cart') }}
             @elseif (Route::is('checkout'))
                 {{ __('messages.checkout') }}
+            @elseif (Route::is('order_detail'))
+                {{ __('messages.my_order') }}
             @endif
         </h1>
     </div>

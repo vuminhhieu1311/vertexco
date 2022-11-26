@@ -112,4 +112,6 @@ return [
     'product_discount' => 'Product discount',
     'discount_deadline' => 'Discoutn deadline',
     'discount' => 'Discount',
+    'comment' => 'Comment',
+    'submit' => 'Submit',
 ];

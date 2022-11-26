@@ -111,4 +111,6 @@ return [
     'product_discount' => 'Giảm giá sản phẩm',
     'discount_deadline' => 'Giảm giá đến',
     'discount' => 'Giảm giá',
+    'comment' => 'Đánh giá',
+    'submit' => 'Lưu',
 ];

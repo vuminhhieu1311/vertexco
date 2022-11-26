@@ -172,7 +172,7 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('orders.show', ['order' => $order->id]) }}"
+                                                    <a href="{{ route('order_detail', ['order' => $order->id]) }}"
                                                         class="menu-link px-3">{{ __('messages.view_detail') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->

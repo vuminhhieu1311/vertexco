@@ -53,6 +53,8 @@ Route::middleware(['auth', 'localization'])->group(function () {
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::get('/order-history', [OrderController::class, 'getOrderHistory'])->name('order_history');
+    Route::get('/order-history/{order}', [OrderController::class, 'getOrderDetail'])->name('order_detail');
+    Route::post('/orders/{order}/rate', [OrderController::class, 'rateOrder'])->name('orders.rate');
 
     Route::resources([
         'categories' => CategoryController::class,

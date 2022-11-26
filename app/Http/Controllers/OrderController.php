@@ -94,4 +94,22 @@ class OrderController extends Controller
 
         return view('customer.order_history', compact('orders'));
     }
+
+    public function getOrderDetail(Order $order)
+    {
+        $order->rating = $order->ratings()->first();
+
+        return view('customer.order_detail', compact('order'));
+    }
+
+    public function rateOrder(Request $request, Order $order)
+    {
+        $order->rate($request->rating, $request->comment);
+
+        foreach ($order->products as $product) {
+            $product->rate($request->rating, $request->comment);
+        }
+
+        return redirect()->back()->with('success', __('messages.successfully'));
+    }
 }
