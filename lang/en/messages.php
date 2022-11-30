@@ -116,4 +116,6 @@ return [
     'submit' => 'Submit',
     'review' => 'Review',
     'instruction' => 'Planning instruction',
+    'manage_comments' => 'Manage comments',
+    'search' => 'Search',
 ];

@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'permissions' => PermissionController::class,
         'users' => UserController::class,
         'orders' => OrderController::class,
+        'ratings' => RatingController::class,
     ]);
 });
 

@@ -111,8 +111,10 @@ return [
     'product_discount' => 'Giảm giá sản phẩm',
     'discount_deadline' => 'Giảm giá đến',
     'discount' => 'Giảm giá',
-    'comment' => 'Đánh giá',
+    'comment' => 'Bình luận',
     'submit' => 'Lưu',
     'review' => 'Đánh giá',
     'instruction' => 'Hướng dẫn trồng',
+    'manage_comments' => 'Quản lý bình luận',
+    'search' => 'Tìm kiếm',
 ];

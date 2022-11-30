@@ -10,7 +10,7 @@
 @section('content')
     @include('components.admin.header', [
         'parent' => null,
-        'child' => __('messages.products'),
+        'child' => __('messages.manage_comments'),
     ])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -43,31 +43,11 @@
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-product-filter="search"
                                     class="form-control form-control-solid w-250px ps-14"
-                                    placeholder="{{ __('messages.search_product') }}" />
+                                    placeholder="{{ __('messages.search') }}" />
                             </div>
                             <!--end::Search-->
                         </div>
                         <!--end::Card title-->
-                        <!--begin::Card toolbar-->
-                        <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                            <div class="w-100 mw-150px">
-                                <!--begin::Select2-->
-                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                    data-placeholder="Status" data-kt-ecommerce-product-filter="status">
-                                    <option value="all">{{ __('messages.all') }}</option>
-                                    <option value="{{ __('messages.published') }}">{{ __('messages.published') }}</option>
-                                    <option value="{{ __('messages.unpublished') }}">{{ __('messages.unpublished') }}
-                                    </option>
-                                    <option value="{{ __('messages.draft') }}">{{ __('messages.draft') }}</option>
-                                </select>
-                                <!--end::Select2-->
-                            </div>
-                            <!--begin::Add product-->
-                            <a href="{{ route('products.create') }}"
-                                class="btn btn-primary">{{ __('messages.add_product') }}</a>
-                            <!--end::Add product-->
-                        </div>
-                        <!--end::Card toolbar-->
                     </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
@@ -78,67 +58,64 @@
                             <thead>
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th class="min-w-150px">{{ __('messages.product') }}</th>
-                                    <th class="min-w-70px">{{ __('messages.quantity') }}</th>
-                                    <th class="min-w-100px">{{ __('messages.price') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.customer') }}</th>
                                     <th class="min-w-100px">{{ __('messages.rating') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.comment') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.order') }}</th>
                                     <th class="min-w-100px">{{ __('messages.status') }}</th>
-                                    <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
+                                    <th class="text-end min-w-100px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
                             <!--end::Table head-->
                             <!--begin::Table body-->
                             <tbody class="fw-bold text-gray-600">
-                                @foreach ($products as $product)
+                                @foreach ($ratings as $rating)
                                     <!--begin::Table row-->
-                                    <tr id="{{ 'product-item-' . $product->id }}">
-                                        <!--begin::Category=-->
+                                    <tr>
+                                        <!--begin::Customer=-->
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <!--begin::Thumbnail-->
-                                                <a href="{{ route('products.edit', ['product' => $product->id]) }}"
-                                                    class="symbol symbol-50px">
-                                                    <span class="symbol-label"
-                                                        style="{{ 'background-image:url(' . asset(Storage::url($product->avatar_url)) . ');' }}"></span>
-                                                </a>
-                                                <!--end::Thumbnail-->
-                                                <div class="ms-5">
+                                                <!--begin:: Avatar -->
+                                                <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+                                                    <img src="{{ Avatar::create($rating->user->name)->toBase64() }}" />
+                                                </div>
+                                                <!--end::Avatar-->
+                                                <div class="ms-2">
                                                     <!--begin::Title-->
-                                                    <a href="{{ route('products.edit', ['product' => $product->id]) }}"
-                                                        class="text-gray-800 text-hover-primary fs-5 fw-bolder"
-                                                        data-kt-ecommerce-product-filter="product_name">{{ $product->name }}</a>
+                                                    <div class="text-gray-800 text-hover-primary fs-5 fw-bolder">
+                                                        {{ $rating->user->name }}</div>
                                                     <!--end::Title-->
                                                 </div>
                                             </div>
                                         </td>
-                                        <!--end::Category=-->
+                                        <!--end::Customer=-->
+                                        <!--begin::Rating-->
+                                        <td class="pe-0" data-order="rating-3">
+                                            @include('components.view_rating', [
+                                                'rating' => $rating->rating,
+                                            ])
+                                        </td>
+                                        <!--end::Rating-->
                                         <!--begin::Qty=-->
-                                        <td class="pe-0" data-order="29">
-                                            <span class="fw-bolder ms-3">{{ $product->quantity }}</span>
+                                        <td>
+                                            <span class="fw-bolder">{{ $rating->comment }}</span>
                                         </td>
                                         <!--end::Qty=-->
                                         <!--begin::Price=-->
                                         <td class="pe-0">
-                                            <span class="fw-bolder text-dark">@money($product->price, 'VND')</span>
+                                            <span class="fw-bolder text-dark">ggg</span>
                                         </td>
                                         <!--end::Price=-->
-                                        <!--begin::Rating-->
+                                        <!--begin::Status-->
                                         <td class="pe-0" data-order="rating-3">
-                                            @include('components.view_rating', [
-                                                'rating' => round($product->averageRating),
-                                            ])
-                                        </td>
-                                        <!--end::Rating-->
-                                        <!--begin::Status=-->
-                                        <td class="pe-0" data-order="Inactive">
                                             <!--begin::Badges-->
                                             @include('components.status', [
-                                                'status' => $product->status,
+                                                'status' => 'published',
                                             ])
                                             <!--end::Badges-->
                                         </td>
-                                        <!--end::Status=-->
+                                        <!--end::Status-->
                                         <!--begin::Action=-->
                                         <td class="text-end">
                                             <div class="btn btn-sm btn-light btn-active-light-primary"
@@ -160,15 +137,15 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('products.edit', ['product' => $product->id]) }}"
+                                                    <a href="{{ route('products.edit', ['product' => $rating->id]) }}"
                                                         class="menu-link px-3">{{ __('messages.edit') }}</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
                                                     <div class="menu-link px-3 delete-btn"
-                                                        data-url="{{ route('products.destroy', ['product' => $product->id]) }}"
-                                                        data-id="{{ $product->id }}">
+                                                        data-url="{{ route('products.destroy', ['product' => $rating->id]) }}"
+                                                        data-id="{{ $rating->id }}">
                                                         {{ __('messages.delete') }}</div>
                                                 </div>
                                                 <!--end::Menu item-->
