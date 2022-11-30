@@ -49,6 +49,7 @@ class ProductController extends Controller
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
+                'instruction' => $request->instruction,
             ]);
 
             $product->categories()->attach($request->category_ids);
@@ -107,6 +108,7 @@ class ProductController extends Controller
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
+                'instruction' => $request->instruction,
             ]);
 
             $product->categories()->sync($request->category_ids);

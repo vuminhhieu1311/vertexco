@@ -226,6 +226,19 @@
                                         <input type="hidden" id="product-description" name="description"
                                             value="{{ $product->description }}" />
                                         <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-10 fv-row">
+                                            <!--begin::Label-->
+                                            <label class="form-label">{{ __('messages.instruction') }}</label>
+                                            <!--end::Label-->
+                                            <!--begin::Editor-->
+                                            <div id="product-instruction-editor" class="min-h-200px mb-2">
+                                            </div>
+                                            <!--end::Editor-->
+                                        </div>
+                                        <input type="hidden" id="product-instruction" name="instruction"
+                                            value="{{ $product->instruction }}" />
+                                        <!--end::Input group-->
                                         <div class="d-flex gap-5">
                                             <!--begin::Input group-->
                                             <div class="fv-row w-100">

@@ -114,4 +114,5 @@ return [
     'comment' => 'Đánh giá',
     'submit' => 'Lưu',
     'review' => 'Đánh giá',
+    'instruction' => 'Hướng dẫn trồng',
 ];

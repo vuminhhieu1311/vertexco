@@ -28,6 +28,7 @@ class Product extends Model
         'user_id',
         'discount',
         'discount_deadline',
+        'instruction',
     ];
 
     protected $appends = [

@@ -12,6 +12,20 @@ var fullEditor = new Quill('#product-description-editor', {
     theme: 'snow' // or 'bubble'
 });
 
+// Instruction editor
+var instructionEditor = new Quill('#product-instruction-editor', {
+    modules: {
+        toolbar: [
+            [{
+                header: [1, 2, false]
+            }],
+            ['bold', 'italic', 'underline'],
+            ['image', 'code-block']
+        ]
+    },
+    theme: 'snow' // or 'bubble'
+});
+
 // Product images
 var images = [];
 
@@ -36,6 +50,8 @@ $('#submit-btn').on('click', (e) => {
     e.preventDefault();
     const description = fullEditor.root.innerHTML;
     $('#product-description').val(description);
+    const instruction = instructionEditor.root.innerHTML;
+    $('#product-instruction').val(instruction);
     const formData = new FormData(document.getElementById('kt_ecommerce_add_product_form'));
     images.forEach((image) => {
         formData.append('images[]', image.file, image.name);

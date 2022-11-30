@@ -13,6 +13,22 @@ var fullEditor = new Quill('#product-description-editor', {
 });
 fullEditor.root.innerHTML = $('#product-description').val();
 
+// Instruction editor
+var instructionEditor = new Quill('#product-instruction-editor', {
+    modules: {
+        toolbar: [
+            [{
+                header: [1, 2, false]
+            }],
+            ['bold', 'italic', 'underline'],
+            ['image', 'code-block']
+        ]
+    },
+    theme: 'snow' // or 'bubble'
+});
+instructionEditor.root.innerHTML = $('#product-instruction').val();
+
+
 // Dropzone product images
 const productId = $('#product-id-value').val();
 
@@ -60,5 +76,7 @@ $('#submit-btn').on('click', (e) => {
     e.preventDefault();
     const description = fullEditor.root.innerHTML;
     $('#product-description').val(description);
+    const instruction = instructionEditor.root.innerHTML;
+    $('#product-instruction').val(instruction);
     $('#kt_ecommerce_add_product_form').submit();
 });
