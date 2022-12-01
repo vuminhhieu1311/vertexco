@@ -118,4 +118,6 @@ return [
     'instruction' => 'Planning instruction',
     'manage_comments' => 'Manage comments',
     'search' => 'Search',
+    'active' => 'Active',
+    'hidden' => 'Hidden',
 ];

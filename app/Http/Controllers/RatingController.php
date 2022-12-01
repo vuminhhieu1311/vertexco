@@ -16,4 +16,11 @@ class RatingController extends Controller
 
         return view('rating.index', compact('ratings'));
     }
+
+    public function update(Request $request, Rating $rating)
+    {
+        $rating->is_active = $request->status;
+
+        return $rating->save();
+    }
 }

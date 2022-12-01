@@ -63,7 +63,6 @@
                                     <th class="min-w-100px">{{ __('messages.comment') }}</th>
                                     <th class="min-w-100px">{{ __('messages.order') }}</th>
                                     <th class="min-w-100px">{{ __('messages.status') }}</th>
-                                    <th class="text-end min-w-100px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
@@ -104,55 +103,24 @@
                                         <!--end::Qty=-->
                                         <!--begin::Price=-->
                                         <td class="pe-0">
-                                            <span class="fw-bolder text-dark">ggg</span>
+                                            <a href="{{ route('orders.show', ['order' => $rating->rateable->id]) }}"
+                                                class="text-gray-800 text-hover-primary fw-bolder">EG000{{ $rating->rateable->id }}</a>
                                         </td>
                                         <!--end::Price=-->
                                         <!--begin::Status-->
                                         <td class="pe-0" data-order="rating-3">
-                                            <!--begin::Badges-->
-                                            @include('components.status', [
-                                                'status' => 'published',
-                                            ])
-                                            <!--end::Badges-->
+                                            <select class="status-select form-select mb-2" name="status"
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Select an option"
+                                                data-url="{{ route('ratings.update', ['rating' => $rating->id]) }}">
+                                                <option value="1" @if ($rating->is_active === 1) selected @endif>
+                                                    {{ __('messages.active') }}</option>
+                                                <option value="0" @if ($rating->is_active === 0) selected @endif>
+                                                    {{ __('messages.hidden') }}</option>
+                                            </select>
+                                            <!--end::Select2-->
                                         </td>
                                         <!--end::Status-->
-                                        <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <div class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                {{ __('messages.actions') }}
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </div>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('products.edit', ['product' => $rating->id]) }}"
-                                                        class="menu-link px-3">{{ __('messages.edit') }}</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <div class="menu-link px-3 delete-btn"
-                                                        data-url="{{ route('products.destroy', ['product' => $rating->id]) }}"
-                                                        data-id="{{ $rating->id }}">
-                                                        {{ __('messages.delete') }}</div>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
-                                        </td>
-                                        <!--end::Action=-->
                                     </tr>
                                     <!--end::Table row-->
                                 @endforeach
@@ -177,7 +145,6 @@
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/product/index.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/rating/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

@@ -117,4 +117,6 @@ return [
     'instruction' => 'Hướng dẫn trồng',
     'manage_comments' => 'Quản lý bình luận',
     'search' => 'Tìm kiếm',
+    'active' => 'Công khai',
+    'hidden' => 'Bị ẩn',
 ];
