@@ -62,6 +62,8 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+        $order->rating = $order->ratings()->first();
+
         return view('order.show', compact('order'));
     }
 

@@ -24,7 +24,7 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:products,name,' . optional($this->route('product'))->id,
+            'name' => 'required|max:255',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',
             'price' => 'required|integer',

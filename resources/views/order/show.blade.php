@@ -272,11 +272,20 @@
                                 </div>
                                 <!--end::Card header-->
                                 <!--begin::Card body-->
-                                {{-- <div class="card-body pt-0">Unit 1/23 Hastings Road,
-                                    <br />Melbourne 3000,
-                                    <br />Victoria,
-                                    <br />Australia.
-                                </div> --}}
+                                <div class="card-body pt-0">
+                                    @if ($order->rating)
+                                        <div>
+                                            <img
+                                                src="{{ Avatar::create($order->user->name)->setFontSize(10)->toBase64() }}" />
+                                            <div>
+                                                @include('components.view_rating', [
+                                                    'rating' => $order->rating->rating,
+                                                ])
+                                                <div class="mt-2">{{ $order->rating->comment }}</div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                                 <!--end::Card body-->
                             </div>
                             <!--end::Payment address-->
