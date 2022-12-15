@@ -274,9 +274,9 @@
                                 <!--begin::Card body-->
                                 <div class="card-body pt-0">
                                     @if ($order->rating)
-                                        <div>
-                                            <img
-                                                src="{{ Avatar::create($order->user->name)->setFontSize(10)->toBase64() }}" />
+                                        <div class="d-flex align-items-center">
+                                            <img style="height:50px;margin-right:10px;"
+                                                src="{{ Avatar::create($order->user->name)->setFontSize(35)->toBase64() }}" />
                                             <div>
                                                 @include('components.view_rating', [
                                                     'rating' => $order->rating->rating,
