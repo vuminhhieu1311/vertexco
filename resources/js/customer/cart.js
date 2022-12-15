@@ -10,7 +10,7 @@ $("#quantity-input").on("input", function() {
                 quantity,
             },
             success: function(res) {
-                console.log(res)
+                window.location.href = '/cart';
             },
         });
     }

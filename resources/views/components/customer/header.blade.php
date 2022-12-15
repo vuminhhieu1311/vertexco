@@ -34,14 +34,6 @@
                                 </ul>
                             </li>
                             <li><a href="{{ route('order_history') }}">{{ __('messages.my_order') }}</a></li>
-                            <li class="dropdown"><a href="#">Feature Service</a>
-                                <ul>
-                                    <li><a href="feature-service-one.html">Feature Service One</a></li>
-                                    <li><a href="feature-service-two.html">Feature Service Two</a></li>
-                                    <li><a href="feature-service-details.html">Feature Service Details</a></li>
-                                </ul>
-                            </li>
-
                             @if (!auth()->user())
                                 <li><a href="{{ route('login') }}">{{ __('messages.sign_in') }}</a></li>
                             @else

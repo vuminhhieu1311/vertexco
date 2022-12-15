@@ -10,7 +10,7 @@
 @section('content')
     @include('components.admin.header', [
         'parent' => null,
-        'child' => __('messages.roles'),
+        'child' => __('messages.users'),
     ])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
