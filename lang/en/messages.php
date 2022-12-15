@@ -120,4 +120,6 @@ return [
     'search' => 'Search',
     'active' => 'Active',
     'hidden' => 'Hidden',
+    'best_sellers' => 'Best sellers',
+    'order_total' => 'Order total',
 ];

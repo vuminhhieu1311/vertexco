@@ -119,4 +119,6 @@ return [
     'search' => 'Tìm kiếm',
     'active' => 'Công khai',
     'hidden' => 'Bị ẩn',
+    'best_sellers' => 'Sản phẩm bán chạy',
+    'order_total' => 'Số đơn bán ra',
 ];

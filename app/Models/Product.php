@@ -50,6 +50,11 @@ class Product extends Model
         return $this->hasMany(CategoryProduct::class);
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'product_order');
+    }
+
     protected function finalPrice(): Attribute
     {
         $price = $this->price;

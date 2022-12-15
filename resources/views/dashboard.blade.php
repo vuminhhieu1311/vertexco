@@ -149,6 +149,111 @@
                             <div class="card-header pt-7">
                                 <!--begin::Title-->
                                 <h3 class="card-title align-items-start flex-column">
+                                    <span class="card-label fw-bolder text-dark">{{ __('messages.best_sellers') }}</span>
+                                </h3>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body">
+                                <!--begin::Table-->
+                                <table class="table align-middle table-row-dashed fs-6 gy-5"
+                                    id="kt_ecommerce_products_table">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                            <th class="min-w-150px">{{ __('messages.product') }}</th>
+                                            <th class="min-w-70px">{{ __('messages.order_total') }}</th>
+                                            <th class="min-w-70px">{{ __('messages.quantity') }}</th>
+                                            <th class="min-w-100px">{{ __('messages.price') }}</th>
+                                            <th class="min-w-100px">{{ __('messages.rating') }}</th>
+                                            <th class="min-w-100px">{{ __('messages.status') }}</th>
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody class="fw-bold text-gray-600">
+                                        @foreach ($products as $product)
+                                            <!--begin::Table row-->
+                                            <tr id="{{ 'product-item-' . $product->id }}">
+                                                <!--begin::Category=-->
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <!--begin::Thumbnail-->
+                                                        <a href="{{ route('products.edit', ['product' => $product->id]) }}"
+                                                            class="symbol symbol-50px">
+                                                            <span class="symbol-label"
+                                                                style="{{ 'background-image:url(' . asset(Storage::url($product->avatar_url)) . ');' }}"></span>
+                                                        </a>
+                                                        <!--end::Thumbnail-->
+                                                        <div class="ms-5">
+                                                            <!--begin::Title-->
+                                                            <a href="{{ route('products.edit', ['product' => $product->id]) }}"
+                                                                class="text-gray-800 text-hover-primary fs-5 fw-bolder"
+                                                                data-kt-ecommerce-product-filter="product_name">{{ $product->name }}</a>
+                                                            <!--end::Title-->
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <!--end::Category=-->
+                                                <!--begin::Qty=-->
+                                                <td class="pe-0" data-order="29">
+                                                    <span class="fw-bolder ms-3">{{ $product->orders_count }}</span>
+                                                </td>
+                                                <!--end::Qty=-->
+                                                <!--begin::Qty=-->
+                                                <td class="pe-0" data-order="29">
+                                                    <span class="fw-bolder ms-3">{{ $product->quantity }}</span>
+                                                </td>
+                                                <!--end::Qty=-->
+                                                <!--begin::Price=-->
+                                                <td class="pe-0">
+                                                    <span class="fw-bolder text-dark">@money($product->price, 'VND')</span>
+                                                </td>
+                                                <!--end::Price=-->
+                                                <!--begin::Rating-->
+                                                <td class="pe-0" data-order="rating-3">
+                                                    @include('components.view_rating', [
+                                                        'rating' => round($product->averageRating),
+                                                    ])
+                                                </td>
+                                                <!--end::Rating-->
+                                                <!--begin::Status=-->
+                                                <td class="pe-0" data-order="Inactive">
+                                                    <!--begin::Badges-->
+                                                    @include('components.status', [
+                                                        'status' => $product->status,
+                                                    ])
+                                                    <!--end::Badges-->
+                                                </td>
+                                                <!--end::Status=-->
+                                            </tr>
+                                            <!--end::Table row-->
+                                        @endforeach
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Table Widget 4-->
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Row-->
+                <!--begin::Row-->
+                <div class="row gy-5 g-xl-10">
+                    <!--begin::Col-->
+                    <div class="col-xl-12 mb-5 mb-xl-10">
+                        <!--begin::Table Widget 4-->
+                        <div class="card card-flush h-xl-100">
+                            <!--begin::Card header-->
+                            <div class="card-header pt-7">
+                                <!--begin::Title-->
+                                <h3 class="card-title align-items-start flex-column">
                                     <span class="card-label fw-bolder text-dark">{{ __('messages.latest_orders') }}</span>
                                 </h3>
                                 <!--end::Title-->

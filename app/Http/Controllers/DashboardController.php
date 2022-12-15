@@ -18,8 +18,12 @@ class DashboardController extends Controller
             ->whereStatus(OrderStatus::PENDING)
             ->latest()->take(15)->get();
         $users = User::take(6)->get();
+        $products = Product::withCount('orders')
+            ->orderBy('orders_count', 'desc')
+            ->having('orders_count', '!=', 0)
+            ->take(15)->get();
 
-        return view('dashboard', compact('ordersCount', 'customersCount', 'orders', 'users'));
+        return view('dashboard', compact('ordersCount', 'customersCount', 'orders', 'users', 'products'));
     }
 
     public function sales()
