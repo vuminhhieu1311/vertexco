@@ -20,4 +20,5 @@ return [
         'string' => ':attribute phải có ít nhất :min ký tự.',
     ],
     'integer' => ':attribute phải là một số.',
+    'unique' => ':attribute đã tồn tại.',
 ];

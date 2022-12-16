@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -24,7 +25,11 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('categories')->ignore(optional($this->route('category'))->id)
+            ],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',
         ];

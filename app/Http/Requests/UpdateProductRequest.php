@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -24,7 +25,11 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('products')->ignore(optional($this->route('product'))->id)
+            ],
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',
             'price' => 'required|integer',
