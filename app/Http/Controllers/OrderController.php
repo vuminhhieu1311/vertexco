@@ -39,6 +39,7 @@ class OrderController extends Controller
                 'total' => Cart::total(),
                 'delivery_address' => $request->address,
                 'note' => $request->note,
+                'tax' => Cart::tax(),
             ]);
 
             foreach (Cart::content() as $item) {
