@@ -66,22 +66,22 @@
                                                         id="status-select"
                                                         data-url="{{ route('orders.update', ['order' => $order->id]) }}">
                                                         <option value="pending"
-                                                            @if ($order->status === 'pending') selected @endif>Pending
+                                                            @if ($order->status === 'pending') selected @endif>{{ __('messages.pending') }}
                                                         </option>
                                                         <option value="confirmed"
-                                                            @if ($order->status === 'confirmed') selected @endif>Confirmed
+                                                            @if ($order->status === 'confirmed') selected @endif>{{ __('messages.confirmed') }}
                                                         </option>
                                                         <option value="delivering"
-                                                            @if ($order->status === 'delivering') selected @endif>Delivering
+                                                            @if ($order->status === 'delivering') selected @endif>{{ __('messages.delivering') }}
                                                         </option>
                                                         <option value="delivered"
-                                                            @if ($order->status === 'delivered') selected @endif>Delivered
+                                                            @if ($order->status === 'delivered') selected @endif>{{ __('messages.delivered') }}
                                                         </option>
                                                         <option value="paid"
-                                                            @if ($order->status === 'paid') selected @endif>Paid
+                                                            @if ($order->status === 'paid') selected @endif>{{ __('messages.paid') }}
                                                         </option>
                                                         <option value="canceled"
-                                                            @if ($order->status === 'canceled') selected @endif>Canceled
+                                                            @if ($order->status === 'canceled') selected @endif>{{ __('messages.canceled') }}
                                                         </option>
                                                     </select>
                                                 </td>
