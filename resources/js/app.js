@@ -1,5 +1,3 @@
-import './bootstrap';
-
 // Logout button clicked
 $('#logout-btn').click((e) => {
     e.preventDefault();
