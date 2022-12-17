@@ -51,12 +51,12 @@
                                     <div class="carousel-inner" role="listbox">
                                         <div class="item active">
                                             <img style="height:500px;width:500px;"
-                                                src="{{ asset(Storage::url($product->avatar_url)) }}">
+                                                src="{{ asset($product->avatar_url) }}">
                                         </div>
                                         @foreach ($product->images as $image)
                                             <div class="item">
                                                 <img style="height:500px;width:500px;"
-                                                    src="{{ asset(Storage::url($image->url)) }}">
+                                                    src="{{ asset($image->url) }}">
                                             </div>
                                         @endforeach
                                     </div>

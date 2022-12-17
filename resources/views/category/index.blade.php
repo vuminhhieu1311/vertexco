@@ -83,7 +83,7 @@
                                                 <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
                                                     class="symbol symbol-50px">
                                                     <span class="symbol-label"
-                                                        style="{{ 'background-image:url(' . asset(Storage::url($category->image_url)) . ');' }}"></span>
+                                                        style="{{ 'background-image:url(' . asset($category->image_url) . ');' }}"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
                                                 <div class="ms-5">

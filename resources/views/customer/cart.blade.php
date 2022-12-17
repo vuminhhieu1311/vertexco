@@ -20,7 +20,7 @@
                             @foreach (Cart::content() as $id => $item)
                                 <tr>
                                     <td class="preview">
-                                        <img src="{{ asset(Storage::url($item->options->avatar_url)) }}"
+                                        <img src="{{ asset($item->options->avatar_url) }}"
                                             style="width:200px;height:200px;">
                                     </td>
                                     <td class="product">{{ $item->name }}</td>

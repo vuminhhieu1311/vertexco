@@ -371,7 +371,7 @@
                                                             <!--begin::Thumbnail-->
                                                             <a href="" class="symbol symbol-50px">
                                                                 <span class="symbol-label"
-                                                                    style="{{ 'background-image:url(' . asset(Storage::url($product->avatar_url)) . ');' }}"></span>
+                                                                    style="{{ 'background-image:url(' . asset($product->avatar_url) . ');' }}"></span>
                                                             </a>
                                                             <!--end::Thumbnail-->
                                                             <!--begin::Title-->

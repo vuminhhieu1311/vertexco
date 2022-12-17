@@ -21,7 +21,7 @@
                             @foreach ($products as $product)
                                 <div class="col-lg-4 single-shop-item">
                                     <a href="{{ route('products.detail', ['product' => $product->id]) }}">
-                                        <img style="height: 250px;" src="{{ asset(Storage::url($product->avatar_url)) }}">
+                                        <img style="height: 250px;" src="{{ asset($product->avatar_url) }}">
                                     </a>
                                     <div class="meta">
                                         <h4>

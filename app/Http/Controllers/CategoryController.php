@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $this->authorize('create', Category::class);
-        $filePath = optional($request->file('image'))->store('public/images');
+        $filePath = optional($request->file('image'))->store('images', ['disk' => 'public_storage']);
 
         Category::create([
             'name' => $request->name,

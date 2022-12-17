@@ -34,7 +34,7 @@
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-empty image-input-outline mb-3"
                                     data-kt-image-input="true"
-                                    style="{{ 'background-image: url(' . asset(Storage::url($category->image_url)) . ')' }}">
+                                    style="{{ 'background-image: url(' . asset($category->image_url) . ')' }}">
                                     <!--begin::Preview existing avatar-->
                                     <div class="image-input-wrapper w-150px h-150px"></div>
                                     <!--end::Preview existing avatar-->
