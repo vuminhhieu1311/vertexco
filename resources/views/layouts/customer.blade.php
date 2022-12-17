@@ -16,7 +16,7 @@
     <link href="{{ asset('garden-plant/css/bootstrap-margin-padding.css') }}" rel="stylesheet">
     <link href="{{ asset('garden-plant/css/responsive.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
     @yield('css')
 <body>
     <div class="page-wrapper">
@@ -31,6 +31,7 @@
     <script src="{{ asset('garden-plant/js/revolution.min.js') }}"></script>
     <script src="{{ asset('garden-plant/js/js-collection.js') }}"></script>
     <script src="{{ asset('garden-plant/js/script.js') }}"></script>
+    <script src="{{ asset('resources/js/app.js') }}"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

@@ -1,0 +1,12 @@
+.dz-progress {
+    display: none;
+}
+
+.carousel-control {
+    width: 0px !important;
+    /* background: white !important; */
+}
+
+.form-control:focus {
+    border-color: #6aaf08;
+}

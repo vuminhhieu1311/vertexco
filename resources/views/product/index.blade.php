@@ -201,6 +201,6 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/product/index.js') }}"></script>
+    <script src="{{ asset('resources/js/product/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

@@ -326,7 +326,7 @@
     <script src="{{ asset('metronic/assets/plugins/custom/vis-timeline/vis-timeline.bundle.js') }}"></script>
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/widgets.bundle.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/dashboard_1.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/dashboard_2.js') }}"></script>
+    <script src="{{ asset('resources/js/dashboard_1.js') }}"></script>
+    <script src="{{ asset('resources/js/dashboard_2.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

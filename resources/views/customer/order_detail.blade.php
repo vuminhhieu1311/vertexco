@@ -449,5 +449,5 @@
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
-    <script src="{{ Vite::asset('resources/js/customer/order_history.js') }}"></script>
+    <script src="{{ asset('resources/js/customer/order_history.js') }}"></script>
 @endsection

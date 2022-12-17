@@ -77,6 +77,6 @@
 @endsection
 
 @section('js')
-    <script src="{{ Vite::asset('resources/js/customer/home.js') }}"></script>
+    <script src="{{ asset('resources/js/customer/home.js') }}"></script>
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
 @endsection

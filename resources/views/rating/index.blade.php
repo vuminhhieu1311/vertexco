@@ -145,6 +145,6 @@
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="{{ Vite::asset('resources/js/rating/index.js') }}"></script>
+    <script src="{{ asset('resources/js/rating/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

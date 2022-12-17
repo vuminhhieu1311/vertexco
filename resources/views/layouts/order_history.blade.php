@@ -16,7 +16,7 @@
     <link href="{{ asset('garden-plant/css/bootstrap-margin-padding.css') }}" rel="stylesheet">
     <link href="{{ asset('garden-plant/css/responsive.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
     @yield('css')
 <body>
     <div class="page-wrapper">
@@ -26,6 +26,7 @@
     </div>
     <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('resources/js/app.js') }}"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

@@ -60,5 +60,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ Vite::asset('resources/js/customer/cart.js') }}"></script>
+    <script src="{{ asset('resources/js/customer/cart.js') }}"></script>
 @endsection

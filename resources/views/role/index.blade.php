@@ -393,6 +393,6 @@
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/user-management/roles/list/add.js') }}"></script>
     <script src="{{ asset('metronic/assets/js/custom/apps/user-management/roles/list/update-role.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/role/index.js') }}"></script>
+    <script src="{{ asset('resources/js/role/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

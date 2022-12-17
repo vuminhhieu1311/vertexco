@@ -195,6 +195,6 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/save-category.js') }} "></script>
-    <script src="{{ Vite::asset('resources/js/category/edit.js') }}"></script>
+    <script src="{{ asset('resources/js/category/edit.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

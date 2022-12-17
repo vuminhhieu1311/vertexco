@@ -423,5 +423,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ Vite::asset('resources/js/order/show.js') }}"></script>
+    <script src="{{ asset('resources/js/order/show.js') }}"></script>
 @endsection

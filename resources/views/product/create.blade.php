@@ -319,6 +319,6 @@
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/product/create.js') }}"></script>
+    <script src="{{ asset('resources/js/product/create.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection
