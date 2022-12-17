@@ -50,10 +50,7 @@ class CategoryController extends Controller
         $this->authorize('update', $category);
         $filePath = $category->image_url;
         if ($request->file('image')) {
-            if ($filePath) {
-                Storage::delete($category->image_url);
-            }
-            $filePath = optional($request->file('image'))->store('public/images');
+            $filePath = optional($request->file('image'))->store('images', ['disk' => 'public_storage']);
         }
 
         $category->update([

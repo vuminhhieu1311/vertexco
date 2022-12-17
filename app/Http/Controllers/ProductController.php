@@ -37,7 +37,7 @@ class ProductController extends Controller
 
         try {
             DB::beginTransaction();
-            $filePath = optional($request->file('avatar'))->store('public/images');
+            $filePath = optional($request->file('avatar'))->store('images', ['disk' => 'public_storage']);
 
             $product = Product::create([
                 'name' => $request->name,
@@ -55,7 +55,7 @@ class ProductController extends Controller
             $product->categories()->attach($request->category_ids);
 
             foreach ($request->file('images', []) as $image) {
-                $filePath = $image->store('public/images');
+                $filePath = $image->store('images', ['disk' => 'public_storage']);
                 $product->images()->create(['url' => $filePath]);
             }
 
@@ -93,10 +93,7 @@ class ProductController extends Controller
             DB::beginTransaction();
             $filePath = $product->avatar_url;
             if ($request->file('avatar')) {
-                if ($filePath) {
-                    Storage::delete($product->avatar_url);
-                }
-                $filePath = optional($request->file('avatar'))->store('public/images');
+                $filePath = optional($request->file('avatar'))->store('images', ['disk' => 'public_storage']);
             }
 
             $product->update([
@@ -151,7 +148,7 @@ class ProductController extends Controller
     {
         $this->authorize('update', $product);
 
-        $filePath = optional($request->file('image'))->store('public/images');
+        $filePath = optional($request->file('image'))->store('images', ['disk' => 'public_storage']);
         $product->images()->create(['url' => $filePath]);
 
         return response()->json('success');
