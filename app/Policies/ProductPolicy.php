@@ -54,7 +54,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        return $user->can(PermissionName::MANAGE_PRODUCTS) && $product->user_id === $user->id;
+        return $user->can(PermissionName::MANAGE_PRODUCTS);
     }
 
     /**
@@ -66,6 +66,6 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->can(PermissionName::MANAGE_PRODUCTS) && $product->user_id === $user->id;
+        return $user->can(PermissionName::MANAGE_PRODUCTS);
     }
 }
