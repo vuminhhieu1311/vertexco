@@ -373,10 +373,10 @@
                                                     <td class="text-end">{{ $product->pivot->quantity }}</td>
                                                     <!--end::Quantity-->
                                                     <!--begin::Price-->
-                                                    <td class="text-end">@money($product->price, 'VND')</td>
+                                                    <td class="text-end">@money($product->pivot->price, 'VND')</td>
                                                     <!--end::Price-->
                                                     <!--begin::Total-->
-                                                    <td class="text-end">@money($product->price * $product->pivot->quantity, 'VND')</td>
+                                                    <td class="text-end">@money($product->pivot->price * $product->pivot->quantity, 'VND')</td>
                                                     <!--end::Total-->
                                                 </tr>
                                                 <!--end::Products-->

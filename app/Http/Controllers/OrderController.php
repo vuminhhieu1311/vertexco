@@ -43,7 +43,10 @@ class OrderController extends Controller
             ]);
 
             foreach (Cart::content() as $item) {
-                $order->products()->attach($item->id, ['quantity' => $item->qty]);
+                $order->products()->attach($item->id, [
+                    'quantity' => $item->qty,
+                    'price' => $item->price,
+                ]);
             }
 
             Cart::destroy();
