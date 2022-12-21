@@ -26,7 +26,7 @@
     </div>
     <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('resources/js/app.js') }}"></script>
+    <script src="{{ asset('resources/js/main.js') }}"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

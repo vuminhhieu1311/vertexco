@@ -31,7 +31,7 @@
     <script src="{{ asset('garden-plant/js/revolution.min.js') }}"></script>
     <script src="{{ asset('garden-plant/js/js-collection.js') }}"></script>
     <script src="{{ asset('garden-plant/js/script.js') }}"></script>
-    <script src="{{ asset('resources/js/app.js') }}"></script>
+    <script src="{{ asset('resources/js/main.js') }}"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

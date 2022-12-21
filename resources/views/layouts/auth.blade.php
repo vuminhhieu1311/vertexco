@@ -33,7 +33,7 @@
     <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('resources/js/app.js') }}"></script>
+    <script src="{{ asset('resources/js/main.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <!--end::Javascript-->
 </body>
