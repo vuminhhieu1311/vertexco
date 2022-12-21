@@ -167,7 +167,7 @@ class ProductController extends Controller
                     return $q->where('categories.id', request('category_id'));
                 });
             })
-            ->latest()->get();
+            ->latest()->paginate(9);
 
         return view('customer.home', compact('products', 'categories'));
     }

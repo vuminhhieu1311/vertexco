@@ -2,6 +2,15 @@
 
 @section('css')
     <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet" />
+    <style>
+        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+            background-color: #6aaf08;
+            border-color: #6aaf08;
+        }
+        .pagination>li>a, .pagination>li>span {
+            color: #7E7E7E;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -41,6 +50,9 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+                        <div style="text-align:center">
+                            {{ $products->links() }}
                         </div>
                     </div>
                     <!-- /.shop-page-content -->
