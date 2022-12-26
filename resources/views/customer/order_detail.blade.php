@@ -393,13 +393,13 @@
                                                     <td class="text-end">{{ $product->id }}</td>
                                                     <!--end::SKU-->
                                                     <!--begin::Quantity-->
-                                                    <td class="text-end">2</td>
+                                                    <td class="text-end">{{ $product->pivot->quantity }}</td>
                                                     <!--end::Quantity-->
                                                     <!--begin::Price-->
-                                                    <td class="text-end">$120.00</td>
+                                                    <td class="text-end">@money($product->pivot->price, 'VND')</td>
                                                     <!--end::Price-->
                                                     <!--begin::Total-->
-                                                    <td class="text-end">$240.00</td>
+                                                    <td class="text-end">@money($product->pivot->price * $product->pivot->quantity, 'VND')</td>
                                                     <!--end::Total-->
                                                 </tr>
                                                 <!--end::Products-->
@@ -407,13 +407,13 @@
                                             <!--begin::Subtotal-->
                                             <tr>
                                                 <td colspan="4" class="text-end">{{ __('messages.subtotal') }}</td>
-                                                <td class="text-end">@money($order->total, 'VND')</td>
+                                                <td class="text-end">@money($order->total - $order->tax, 'VND')</td>
                                             </tr>
                                             <!--end::Subtotal-->
                                             <!--begin::VAT-->
                                             <tr>
                                                 <td colspan="4" class="text-end">VAT (8%)</td>
-                                                <td class="text-end">@money($order->total, 'VND')</td>
+                                                <td class="text-end">@money($order->tax, 'VND')</td>
                                             </tr>
                                             <!--end::VAT-->
                                             <!--begin::Grand total-->
