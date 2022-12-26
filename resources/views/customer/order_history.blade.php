@@ -120,7 +120,7 @@
                                     <!--begin::Table row-->
                                     <tr>
                                         <td data-kt-ecommerce-order-filter="order_id">
-                                            <a href="{{ route('orders.show', ['order' => $order->id]) }}"
+                                            <a href="{{ route('order_detail', ['order' => $order->id]) }}"
                                                 class="text-gray-800 text-hover-primary fw-bolder">EG000{{ $order->id }}</a>
                                         </td>
                                         <!--end::Order ID=-->
