@@ -94,12 +94,12 @@
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                     <th class="min-w-100px">{{ __('messages.order_id') }}</th>
-                                    <th class="min-w-175px">{{ __('messages.customer') }}</th>
-                                    <th class="min-w-70px">{{ __('messages.status') }}</th>
-                                    <th class="min-w-100px">{{ __('messages.total') }}</th>
+                                    <th class="min-w-150px">{{ __('messages.customer') }}</th>
+                                    <th class="min-w-150px">{{ __('messages.total') }}</th>
                                     <th class="min-w-100px">{{ __('messages.creation_date') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.status') }}</th>
                                     <th class="min-w-100px">{{ __('messages.note') }}</th>
-                                    <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
+                                    <th class="text-center min-w-100px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
@@ -122,7 +122,7 @@
                                                     <img src="{{ Avatar::create($order->user->name)->toBase64() }}" />
                                                 </div>
                                                 <!--end::Avatar-->
-                                                <div class="ms-5">
+                                                <div class="ms-2">
                                                     <!--begin::Title-->
                                                     <div class="text-gray-800 text-hover-primary fs-5 fw-bolder">
                                                         {{ $order->user->name }}</div>
@@ -131,15 +131,6 @@
                                             </div>
                                         </td>
                                         <!--end::Customer=-->
-                                        <!--begin::Status=-->
-                                        <td class="pe-0" data-order="Failed">
-                                            <!--begin::Badges-->
-                                            @include('components.status', [
-                                                'status' => $order->status,
-                                            ])
-                                            <!--end::Badges-->
-                                        </td>
-                                        <!--end::Status=-->
                                         <!--begin::Total=-->
                                         <td class="pe-0">
                                             <span class="fw-bolder">@money($order->total, 'VND')</span>
@@ -150,14 +141,39 @@
                                             <span class="fw-bolder">{{ $order->created_at->format('d/m/Y') }}</span>
                                         </td>
                                         <!--end::Date Added=-->
+                                        <!--begin::Status=-->
+                                        <td class="pe-0" data-order="Failed">
+                                            <select class="status-select form-select form-select-sm mb-2" name="status"
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Select an option"
+                                                data-url="{{ route('orders.update', ['order' => $order->id]) }}">
+                                                <option value="pending" @if ($order->status === 'pending') selected @endif>
+                                                    {{ __('messages.pending') }}
+                                                </option>
+                                                <option value="delivering"
+                                                    @if ($order->status === 'delivering') selected @endif>
+                                                    {{ __('messages.delivering') }}
+                                                </option>
+                                                <option value="delivered"
+                                                    @if ($order->status === 'delivered') selected @endif>
+                                                    {{ __('messages.delivered') }}
+                                                </option>
+                                                <option value="canceled" @if ($order->status === 'canceled') selected @endif>
+                                                    {{ __('messages.canceled') }}
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <!--end::Status=-->
                                         <!--begin::Date Modified=-->
                                         <td data-order="2021-12-30">
                                             <span class="fw-bolder">{{ $order->note }}</span>
                                         </td>
                                         <!--end::Date Modified=-->
                                         <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
+                                        <td class="text-center">
+                                            <a href="{{ route('orders.show', ['order' => $order->id]) }}"
+                                                class="menu-link px-3"><i class="fas fa-eye"></i></a>
+                                            {{-- <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
                                                 data-kt-menu-trigger="click"
                                                 data-kt-menu-placement="bottom-end">{{ __('messages.actions') }}
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -185,7 +201,8 @@
                                                     <div class="menu-item px-3">
                                                         <div class="menu-link px-3 cancel-btn"
                                                             data-url="{{ route('orders.destroy', ['order' => $order->id]) }}"
-                                                            data-id="{{ $order->id }}">{{ __('messages.cancel') }}</div>
+                                                            data-id="{{ $order->id }}">{{ __('messages.cancel') }}
+                                                        </div>
                                                     </div>
                                                     <!--end::Menu item-->
                                                 @endif
@@ -194,11 +211,12 @@
                                                     <div class="menu-item px-3">
                                                         <div class="menu-link px-3 confirm-btn"
                                                             data-url="{{ route('orders.update', ['order' => $order->id]) }}"
-                                                            data-id="{{ $order->id }}">{{ __('messages.confirm') }}</div>
+                                                            data-id="{{ $order->id }}">{{ __('messages.confirm') }}
+                                                        </div>
                                                     </div>
                                                     <!--end::Menu item-->
                                                 @endif
-                                            </div>
+                                            </div> --}}
                                             <!--end::Menu-->
                                         </td>
                                         <!--end::Action=-->

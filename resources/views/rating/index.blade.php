@@ -109,7 +109,7 @@
                                         <!--end::Price=-->
                                         <!--begin::Status-->
                                         <td class="pe-0" data-order="rating-3">
-                                            <select class="status-select form-select mb-2" name="status"
+                                            <select class="status-select form-select form-select-sm mb-2" name="status"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Select an option"
                                                 data-url="{{ route('ratings.update', ['rating' => $rating->id]) }}">
