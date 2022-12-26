@@ -294,7 +294,7 @@
                                             <!--begin:: Avatar -->
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <div>
-                                                    <div class="symbol-label fs-3 bg-light-warning text-warning">C</div>
+                                                    <img src="{{ Avatar::create($user->name)->toBase64() }}" class="h-50px" />
                                                 </div>
                                             </div>
                                             <!--end::Avatar-->
