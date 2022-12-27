@@ -159,6 +159,9 @@ class ProductController extends Controller
         $categories = Category::where('status', CategoryStatus::PUBLISHED) ->latest()->get();
 
         $products = Product::where('status', ProductStatus::PUBLISHED)
+            ->where('quantity', '>', 0)
+            ->withCount('orders')
+            ->orderBy('orders_count', 'desc')
             ->when(request('name'), function ($query) {
                 return $query->where('name', 'LIKE', '%' . request('name') . '%');
             })

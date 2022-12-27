@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\OrderStatus;
 use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
+use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,11 @@ class OrderController extends Controller
             ]);
 
             foreach (Cart::content() as $item) {
+                $product = Product::find($item->id);
+                $quantity = $product->quantity - 1;
+                $product->quantity = $quantity;
+                $product->save();
+
                 $order->products()->attach($item->id, [
                     'quantity' => $item->qty,
                     'price' => $item->price,
@@ -78,9 +84,30 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
-        return $order->update([
-            'status' =>  $request->status,
-        ]);
+        try {
+            DB::beginTransaction();
+
+            if ($request->status === OrderStatus::CANCELED) {
+                foreach ($order->products as $product) {
+                    $quantity = $product->quantity + 1;
+                    $product->quantity = $quantity;
+                    $product->save();
+                }
+            }
+
+            $res = $order->update([
+                'status' =>  $request->status,
+            ]);
+
+            DB::commit();
+
+            return $res;
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
+
     }
 
     public function destroy(Order $order)
