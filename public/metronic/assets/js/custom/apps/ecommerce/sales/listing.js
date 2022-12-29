@@ -71,7 +71,7 @@ var KTAppEcommerceSalesListing = function () {
             function (settings, data, dataIndex) {
                 var min = minDate;
                 var max = maxDate;
-                var dateAdded = new Date(moment($(data[4]).text(), 'DD/MM/YYYY'));
+                var dateAdded = new Date(moment($(data[3]).text(), 'DD/MM/YYYY'));
 
                 if (
                     (min === null && max === null) ||

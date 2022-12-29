@@ -45,7 +45,7 @@ class OrderController extends Controller
 
             foreach (Cart::content() as $item) {
                 $product = Product::find($item->id);
-                $quantity = $product->quantity - 1;
+                $quantity = $product->quantity - $item->qty;
                 $product->quantity = $quantity;
                 $product->save();
 
@@ -89,7 +89,7 @@ class OrderController extends Controller
 
             if ($request->status === OrderStatus::CANCELED) {
                 foreach ($order->products as $product) {
-                    $quantity = $product->quantity + 1;
+                    $quantity = $product->quantity + $product->pivot->quantity;
                     $product->quantity = $quantity;
                     $product->save();
                 }
@@ -107,18 +107,33 @@ class OrderController extends Controller
 
             throw $e;
         }
-
     }
 
     public function destroy(Order $order)
     {
-        if ($order->status === OrderStatus::PENDING) {
-            $order->update([
-                'status' => OrderStatus::CANCELED,
-            ]);
-        }
+        try {
+            DB::beginTransaction();
 
-        return $order;
+            if ($order->status === OrderStatus::PENDING) {
+                foreach ($order->products as $product) {
+                    $quantity = $product->quantity + $product->pivot->quantity;
+                    $product->quantity = $quantity;
+                    $product->save();
+                }
+
+                $order->update([
+                    'status' => OrderStatus::CANCELED,
+                ]);
+            }
+
+            DB::commit();
+
+            return $order;
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
     }
 
     public function getOrderHistory()

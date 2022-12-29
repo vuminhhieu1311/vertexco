@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Cart::content() as $id => $item)
+                            @foreach ($cart as $id => $item)
                                 <tr>
                                     <td class="preview">
                                         <img src="{{ asset($item->options->avatar_url) }}"
@@ -28,7 +28,7 @@
                                     <td class="quantity">
                                         <input id="quantity-input" type="number" class="form-control"
                                             placeholder="{{ __('messages.quantity') }}" value="{{ $item->qty }}" required
-                                            min="1" data-url="{{ route('cart.update', ['id' => $id]) }}">
+                                            min="1" max="{{ $item->product_quantity }}" data-url="{{ route('cart.update', ['id' => $id]) }}">
                                     </td>
                                     <td class="total">@money($item->price * $item->qty, 'VND')</td>
                                     <td class="del-item">
