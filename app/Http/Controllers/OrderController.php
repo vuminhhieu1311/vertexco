@@ -13,10 +13,53 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $orders = Order::with('user')
-            ->latest()->get();
+            ->latest()
+            ->when($request->query('from') && $request->query('to'), function ($query) {
+                return $query->whereBetween('created_at', [request('from'), request('to')]);
+            })
+            ->when($request->query('keyword'), function ($query) {
+                return $query->where(function ($q) {
+                    return $q->whereHas('user', function ($q1) {
+                            return $q1->where('users.name', 'LIKE', '%' . request('keyword') . '%');
+                        })
+                        ->orWhere('code', 'LIKE', '%' . request('keyword') . '%')
+                        ->orWhere('note', 'LIKE', '%' . request('keyword') . '%');
+                });
+            })
+            ->when($request->query('status'), function ($query) {
+                return $query->where('status', request('status'));
+            })
+            ->when($request->query('total'), function ($query) {
+                $total = request('total');
+                if ($total === 'under 500') {
+                    return $query->where('total', '<', 500000);
+                }
+                if ($total === 'from 500 to 1000') {
+                    return $query->where('total', '>=', 500000)
+                        ->where('total', '<=', 1000000);
+                }
+                if ($total === 'from 1000 to 2000') {
+                    return $query->where('total', '>=', 1000000)
+                        ->where('total', '<=', 2000000);
+                }
+                if ($total === 'from 2000 to 3000') {
+                    return $query->where('total', '>=', 2000000)
+                        ->where('total', '<=', 3000000);
+                }
+                if ($total === 'from 3000 to 5000') {
+                    return $query->where('total', '>=', 3000000)
+                        ->where('total', '<=', 5000000);
+                }
+                if ($total === 'from 5000') {
+                    return $query->where('total', '>=', 5000000);
+                }
+
+                return null;
+            })
+            ->get();
 
         return view('order.index', compact('orders'));
     }

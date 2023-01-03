@@ -40,7 +40,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-order-filter="search"
-                                    class="form-control form-control-solid w-250px ps-14"
+                                    class="keyword-filter form-control form-control-solid w-250px ps-14"
                                     placeholder="{{ __('messages.search_order') }}" />
                             </div>
                             <!--end::Search-->
@@ -67,17 +67,29 @@
                                 </button>
                             </div>
                             <!--end::Flatpickr-->
-                            <div class="w-100 mw-150px">
+                            <div class="w-150 mw-150px">
                                 <!--begin::Select2-->
-                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
+                                <select class="status-filter form-select form-select-solid" data-control="select2" data-hide-search="true"
                                     data-placeholder="Status" data-kt-ecommerce-order-filter="status">
-                                    <option value="all">{{ __('messages.all') }}</option>
-                                    <option value="{{ __('messages.pending') }}">{{ __('messages.pending') }}</option>
-                                    <option value="{{ __('messages.confirmed') }}">{{ __('messages.confirmed') }}</option>
-                                    <option value="{{ __('messages.delivering') }}">{{ __('messages.delivering') }}</option>
-                                    <option value="{{ __('messages.delivered') }}">{{ __('messages.delivered') }}</option>
-                                    <option value="{{ __('messages.paid') }}">{{ __('messages.paid') }}</option>
-                                    <option value="{{ __('messages.canceled') }}">{{ __('messages.canceled') }}</option>
+                                    <option value="-1">Tất cả trạng thái</option>
+                                    <option value="pending">{{ __('messages.pending') }}</option>
+                                    <option value="delivering">{{ __('messages.delivering') }}</option>
+                                    <option value="delivered">{{ __('messages.delivered') }}</option>
+                                    <option value="canceled">{{ __('messages.canceled') }}</option>
+                                </select>
+                                <!--end::Select2-->
+                            </div>
+                            <div class="w-150 mw-150px">
+                                <!--begin::Select2-->
+                                <select class="total-filter form-select form-select-solid" data-control="select2" data-hide-search="true"
+                                    data-placeholder="Tổng tiền" data-kt-ecommerce-order-filter="status">
+                                    <option value="-1">Tất cả khoảng tiền</option>
+                                    <option value="under 500">Dưới 500.000</option>
+                                    <option value="from 500 to 1000">Từ 500.000 đến 1 triệu</option>
+                                    <option value="from 1000 to 2000">Từ 1 triệu đến 2 triệu</option>
+                                    <option value="from 2000 to 3000">Từ 2 triệu đến 3 triệu</option>
+                                    <option value="from 3000 to 5000">Từ 3 triệu đến 5 triệu</option>
+                                    <option value="from 5000">Trên 5 triệu</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
@@ -111,7 +123,7 @@
                                     <tr>
                                         <td data-kt-ecommerce-order-filter="order_id">
                                             <a href="{{ route('orders.show', ['order' => $order->id]) }}"
-                                                class="text-gray-800 text-hover-primary fw-bolder">EG000{{ $order->id }}</a>
+                                                class="text-gray-800 text-hover-primary fw-bolder">{{ $order->code }}</a>
                                         </td>
                                         <!--end::Order ID=-->
                                         <!--begin::Customer=-->
@@ -250,7 +262,6 @@
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/sales/listing.js') }}"></script>
     <script src="{{ asset('resources/js/order/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection
