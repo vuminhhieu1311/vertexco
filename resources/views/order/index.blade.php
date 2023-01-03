@@ -147,20 +147,26 @@
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Select an option"
                                                 data-url="{{ route('orders.update', ['order' => $order->id]) }}">
-                                                <option value="pending" @if ($order->status === 'pending') selected @endif>
-                                                    {{ __('messages.pending') }}
-                                                </option>
-                                                <option value="delivering"
-                                                    @if ($order->status === 'delivering') selected @endif>
-                                                    {{ __('messages.delivering') }}
-                                                </option>
-                                                <option value="delivered"
-                                                    @if ($order->status === 'delivered') selected @endif>
-                                                    {{ __('messages.delivered') }}
-                                                </option>
-                                                <option value="canceled" @if ($order->status === 'canceled') selected @endif>
-                                                    {{ __('messages.canceled') }}
-                                                </option>
+                                                @if ($order->status !== 'canceled')
+                                                    <option value="pending"
+                                                        @if ($order->status === 'pending') selected @endif>
+                                                        {{ __('messages.pending') }}
+                                                    </option>
+                                                    <option value="delivering"
+                                                        @if ($order->status === 'delivering') selected @endif>
+                                                        {{ __('messages.delivering') }}
+                                                    </option>
+                                                    <option value="delivered"
+                                                        @if ($order->status === 'delivered') selected @endif>
+                                                        {{ __('messages.delivered') }}
+                                                    </option>
+                                                @endif
+                                                @if ($order->status !== 'delivered')
+                                                    <option value="canceled"
+                                                        @if ($order->status === 'canceled') selected @endif>
+                                                        {{ __('messages.canceled') }}
+                                                    </option>
+                                                @endif
                                             </select>
                                         </td>
                                         <!--end::Status=-->

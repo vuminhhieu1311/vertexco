@@ -42,7 +42,7 @@ $('.confirm-btn').click((e) => {
     });
 });
 
-$(".status-select").on("input", function () {
+$('.status-select').on('input', function () {
     const status = $(this).val();
     const url = $(this).data('url');
 
@@ -54,7 +54,7 @@ $(".status-select").on("input", function () {
                 status,
             },
             success: function (res) {
-                toastr.success('Cập nhật trạng thái đơn hàng thành công!');
+                window.location.href = '/orders';
             },
         });
     }
