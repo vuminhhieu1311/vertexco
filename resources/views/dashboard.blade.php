@@ -126,6 +126,12 @@
                                 <span class="card-label fw-bolder text-dark">{{ __('messages.sales_this_year') }}</span>
                             </h3>
                             <!--end::Title-->
+                            <!--begin::Flatpickr-->
+                            <div class="input-group w-250px">
+                                <input class="form-control form-control-solid rounded rounded-end-0"
+                                    placeholder="{{ __('messages.pick_date_range') }}" id="kt_ecommerce_sales_flatpickr" />
+                            </div>
+                            <!--end::Flatpickr-->
                         </div>
                         <!--end::Header-->
                         <!--begin::Card body-->
@@ -322,6 +328,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('vendor/moment.js') }}"></script>
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('metronic/assets/plugins/custom/vis-timeline/vis-timeline.bundle.js') }}"></script>
     <!--begin::Page Custom Javascript(used by this page)-->

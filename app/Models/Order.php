@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use willvincent\Rateable\Rateable;
@@ -45,6 +46,32 @@ class Order extends Model
         static::created(function ($order) {
             $order->code = 'EG000' . $order->id;
             $order->save();
+
+            $statistic = Statistic::where('date', date('Y-m-d'))->first();
+
+            if ($statistic) {
+                $statistic->sales = $statistic->sales + $order->total;
+                $statistic->total_orders = $statistic->total_orders + 1;
+                $statistic->save();
+            } else {
+                Statistic::create([
+                    'date' => date('Y-m-d'),
+                    'sales' => $order->total,
+                    'total_orders' => 1,
+                ]);
+            }
+        });
+
+        static::updated(function ($order) {
+            if ($order->status === OrderStatus::CANCELED) {
+                $statistic = Statistic::where('date', $order->created_at->format('Y-m-d'))->first();
+
+                if ($statistic) {
+                    $statistic->sales = $statistic->sales - $order->total;
+                    $statistic->total_orders = $statistic->total_orders - 1;
+                    $statistic->save();
+                }
+            }
         });
     }
 }

@@ -118,6 +118,7 @@ $('.status-select').on('input', function () {
                 status,
             },
             success: function (res) {
+                window.localStorage.setItem('success', 'Cập nhật trạng thái đơn hàng thành công!');
                 window.location.href = '/orders';
             },
         });

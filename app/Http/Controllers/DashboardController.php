@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Enums\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Statistic;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -26,21 +28,21 @@ class DashboardController extends Controller
         return view('dashboard', compact('ordersCount', 'customersCount', 'orders', 'users', 'products'));
     }
 
-    public function sales()
+    public function sales(Request $request)
     {
-        $months = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'];
+        $from = $request->query('from');
+        $to = $request->query('to');
+        $dates = [];
         $data = [];
 
-        foreach ($months as $key => $value) {
-            $total = (int) Order::whereYear('created_at', now()->year)
-                ->whereMonth('created_at', $key + 1)
-                ->select([DB::raw("SUM(total) as total")])
-                ->first()?->total;
+        $statistics = Statistic::whereBetween('date', [$from, $to])
+            ->orderBy('date', 'ASC')->get();
 
-            $data[] = $total;
-
+        foreach ($statistics as $statistic) {
+            $dates[] = $statistic->date;
+            $data[] = $statistic->sales;
         }
 
-        return response()->json(compact('months', 'data'));
+        return response()->json(compact('dates', 'data'));
     }
 }

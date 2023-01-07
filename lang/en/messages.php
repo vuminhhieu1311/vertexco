@@ -108,7 +108,7 @@ return [
     'goal' => 'Goal',
     'customers' => 'Customers',
     'latest_orders' => 'Latest orders',
-    'sales_this_year' => 'Sales this year',
+    'sales_this_year' => 'Sales',
     'product_discount' => 'Product discount',
     'discount_deadline' => 'Discoutn deadline',
     'discount' => 'Discount',
