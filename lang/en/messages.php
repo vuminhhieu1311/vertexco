@@ -122,4 +122,5 @@ return [
     'hidden' => 'Hidden',
     'best_sellers' => 'Best sellers',
     'order_total' => 'Order total',
+    'remain_quantity' => 'Remaining quantity',
 ];

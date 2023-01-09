@@ -121,4 +121,5 @@ return [
     'hidden' => 'Bị ẩn',
     'best_sellers' => 'Sản phẩm bán chạy',
     'order_total' => 'Số đơn bán ra',
+    'remain_quantity' => 'Số lượng còn lại',
 ];

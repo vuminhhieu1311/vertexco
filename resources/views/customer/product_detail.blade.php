@@ -80,12 +80,18 @@
                                         @endif
                                         <b>@money($product->final_price, 'VND')</b>
                                     </span>
+                                    <div style="display:flex;">
+                                        <span>{{ __('messages.remain_quantity') }}: </span>
+                                        <span style="margin-left:15px">{{ $product->quantity }}</span>
+                                    </div>
                                     <form id="cart-form" method="POST"
                                         action="{{ route('cart.save', ['product' => $product->id]) }}">
                                         @csrf
-                                        <span>{{ __('messages.quantity') }} :
-                                            <input type="text" name="quantity" value="1">
-                                        </span>
+                                        <div style="display:flex;">
+                                            <span>Số lượng muốn mua:</span>
+                                            <input style="width:60px;margin-left:15px" name="quantity" type="number" class="form-control" value="1"
+                                                    min="1" max="{{ $product->quantity }}">
+                                        </div>
                                         <a id="cart-btn" class="add-to-cart hvr-bounce-to-right">
                                             {{ __('messages.add_to_cart') }}
                                         </a>
