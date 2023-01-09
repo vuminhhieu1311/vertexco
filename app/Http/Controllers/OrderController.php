@@ -18,7 +18,8 @@ class OrderController extends Controller
         $orders = Order::with('user')
             ->latest()
             ->when($request->query('from') && $request->query('to'), function ($query) {
-                return $query->whereBetween('created_at', [request('from'), request('to')]);
+                return $query->whereDate('created_at', '>=', request('from'))
+                    ->whereDate('created_at', '<=', request('to'));
             })
             ->when($request->query('keyword'), function ($query) {
                 return $query->where(function ($q) {
