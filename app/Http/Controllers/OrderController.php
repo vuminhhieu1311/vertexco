@@ -74,7 +74,6 @@ class OrderController extends Controller
 
             Auth::user()->update([
                 'name' => $request->name,
-                'address' => $request->address,
                 'phone_number' => $request->phone_number,
             ]);
 

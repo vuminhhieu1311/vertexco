@@ -35,6 +35,8 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'updateLanguage',
     ])->name('update-language');
 
+    Route::get('/my-account', [UserController::class, 'editProfile'])->name('user.profile');
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/report/sales', [DashboardController::class, 'sales'])->name('report.sales');
 

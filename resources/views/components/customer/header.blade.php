@@ -33,6 +33,7 @@
                                     <li><a href="{{ route('update-language', ['lang' => 'vi']) }}">Vietnam</a></li>
                                 </ul>
                             </li>
+                            <li><a href="{{ route('user.profile') }}">Tài khoản</a></li>
                             <li><a href="{{ route('order_history') }}">{{ __('messages.my_order') }}</a></li>
                             @if (!auth()->user())
                                 <li><a href="{{ route('login') }}">{{ __('messages.sign_in') }}</a></li>
