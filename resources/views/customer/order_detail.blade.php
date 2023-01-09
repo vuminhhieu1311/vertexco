@@ -294,7 +294,7 @@
                                             'rating' => $order->rating->rating,
                                         ])
                                         <div class="mt-2">{{ $order->rating->comment }}</div>
-                                    @else
+                                    @elseif ($order->status === 'delivered')
                                         <form method="POST"
                                             action="{{ route('orders.rate', ['order' => $order->id]) }}">
                                             @csrf
