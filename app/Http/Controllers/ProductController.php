@@ -71,7 +71,11 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $product->load('ratings.user');
+        $product->load([
+          'ratings' => function($query) {
+            return $query->where('is_active', true);
+          }
+        ]);
 
         return view('customer.product_detail', compact('product'));
     }

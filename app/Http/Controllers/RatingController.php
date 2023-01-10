@@ -20,6 +20,14 @@ class RatingController extends Controller
     public function update(Request $request, Rating $rating)
     {
         $rating->is_active = $request->status;
+        $products = $rating->rateable->products;
+
+        foreach ($products as $product) {
+            $product->ratings()->where([
+                'user_id' => $rating->user_id,
+                'comment' => $rating->comment,
+            ])->update(['is_active' => $request->status]);
+        }
 
         return $rating->save();
     }

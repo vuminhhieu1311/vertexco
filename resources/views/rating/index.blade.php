@@ -113,9 +113,9 @@
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Select an option"
                                                 data-url="{{ route('ratings.update', ['rating' => $rating->id]) }}">
-                                                <option value="1" @if ($rating->is_active === 1) selected @endif>
+                                                <option value="1" @if ($rating->is_active == 1) selected @endif>
                                                     {{ __('messages.active') }}</option>
-                                                <option value="0" @if ($rating->is_active === 0) selected @endif>
+                                                <option value="0" @if ($rating->is_active == 0) selected @endif>
                                                     {{ __('messages.hidden') }}</option>
                                             </select>
                                             <!--end::Select2-->
