@@ -1,82 +1,32 @@
-// Description editor
-var fullEditor = new Quill('#product-description-editor', {
-    modules: {
-        toolbar: [
-            [{
-                header: [1, 2, false]
-            }],
-            ['bold', 'italic', 'underline'],
-            ['image', 'code-block']
-        ]
-    },
-    theme: 'snow' // or 'bubble'
-});
-fullEditor.root.innerHTML = $('#product-description').val();
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
-// Instruction editor
-var instructionEditor = new Quill('#product-instruction-editor', {
-    modules: {
-        toolbar: [
-            [{
-                header: [1, 2, false]
-            }],
-            ['bold', 'italic', 'underline'],
-            ['image', 'code-block']
-        ]
-    },
-    theme: 'snow' // or 'bubble'
-});
-instructionEditor.root.innerHTML = $('#product-instruction').val();
+/***/ "./resources/js/product/edit.js":
+/*!**************************************!*\
+  !*** ./resources/js/product/edit.js ***!
+  \**************************************/
+/***/ (() => {
 
+eval("// Description editor\nvar fullEditor = new Quill('#product-description-editor', {\n  modules: {\n    toolbar: [[{\n      header: [1, 2, false]\n    }], ['bold', 'italic', 'underline'], ['image', 'code-block']]\n  },\n  theme: 'snow' // or 'bubble'\n});\n\nfullEditor.root.innerHTML = $('#product-description').val();\n\n// Instruction editor\nvar instructionEditor = new Quill('#product-instruction-editor', {\n  modules: {\n    toolbar: [[{\n      header: [1, 2, false]\n    }], ['bold', 'italic', 'underline'], ['image', 'code-block']]\n  },\n  theme: 'snow' // or 'bubble'\n});\n\ninstructionEditor.root.innerHTML = $('#product-instruction').val();\n\n// Dropzone product images\nvar productId = $('#product-id-value').val();\nvar myDropzone = new Dropzone(\"#add_product_media\", {\n  url: \"/products/\".concat(productId, \"/images\"),\n  paramName: 'image',\n  // The name that will be used to transfer the file\n  maxFiles: 10,\n  maxFilesize: 10,\n  // MB\n  addRemoveLinks: true,\n  headers: {\n    'X-CSRF-TOKEN': $('meta[name=\"csrf-token\"]').attr('content')\n  },\n  accept: function accept(file, done) {\n    done();\n  },\n  removedfile: function removedfile(file) {\n    $.ajax({\n      type: 'DELETE',\n      url: \"/products/\".concat(productId, \"/images/\").concat(file.id),\n      success: function success(data) {\n        if (file.previewElement != null && file.previewElement.parentNode != null) {\n          file.previewElement.parentNode.removeChild(file.previewElement);\n        }\n        return this._updateMaxFilesReachedClass();\n      }\n    });\n  }\n});\n$(\"#discount-deadline-picker\").flatpickr();\n$.ajax({\n  type: 'GET',\n  url: \"/products/\".concat(productId, \"/images\"),\n  success: function success(data) {\n    data.forEach(function (image) {\n      var mockFile = {\n        name: 'Image',\n        size: 1000,\n        id: image.id\n      };\n      myDropzone.displayExistingFile(mockFile, image.link);\n    });\n  }\n});\n\n// Add product submit\n$('#submit-btn').on('click', function (e) {\n  e.preventDefault();\n  var description = fullEditor.root.innerHTML;\n  $('#product-description').val(description);\n  var instruction = instructionEditor.root.innerHTML;\n  $('#product-instruction').val(instruction);\n  $('#kt_ecommerce_add_product_form').submit();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJmdWxsRWRpdG9yIiwiUXVpbGwiLCJtb2R1bGVzIiwidG9vbGJhciIsImhlYWRlciIsInRoZW1lIiwicm9vdCIsImlubmVySFRNTCIsIiQiLCJ2YWwiLCJpbnN0cnVjdGlvbkVkaXRvciIsInByb2R1Y3RJZCIsIm15RHJvcHpvbmUiLCJEcm9wem9uZSIsInVybCIsImNvbmNhdCIsInBhcmFtTmFtZSIsIm1heEZpbGVzIiwibWF4RmlsZXNpemUiLCJhZGRSZW1vdmVMaW5rcyIsImhlYWRlcnMiLCJhdHRyIiwiYWNjZXB0IiwiZmlsZSIsImRvbmUiLCJyZW1vdmVkZmlsZSIsImFqYXgiLCJ0eXBlIiwiaWQiLCJzdWNjZXNzIiwiZGF0YSIsInByZXZpZXdFbGVtZW50IiwicGFyZW50Tm9kZSIsInJlbW92ZUNoaWxkIiwiX3VwZGF0ZU1heEZpbGVzUmVhY2hlZENsYXNzIiwiZmxhdHBpY2tyIiwiZm9yRWFjaCIsImltYWdlIiwibW9ja0ZpbGUiLCJuYW1lIiwic2l6ZSIsImRpc3BsYXlFeGlzdGluZ0ZpbGUiLCJsaW5rIiwib24iLCJlIiwicHJldmVudERlZmF1bHQiLCJkZXNjcmlwdGlvbiIsImluc3RydWN0aW9uIiwic3VibWl0Il0sInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9qcy9wcm9kdWN0L2VkaXQuanM/ZDQzYiJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBEZXNjcmlwdGlvbiBlZGl0b3JcbnZhciBmdWxsRWRpdG9yID0gbmV3IFF1aWxsKCcjcHJvZHVjdC1kZXNjcmlwdGlvbi1lZGl0b3InLCB7XG4gICAgbW9kdWxlczoge1xuICAgICAgICB0b29sYmFyOiBbXG4gICAgICAgICAgICBbe1xuICAgICAgICAgICAgICAgIGhlYWRlcjogWzEsIDIsIGZhbHNlXVxuICAgICAgICAgICAgfV0sXG4gICAgICAgICAgICBbJ2JvbGQnLCAnaXRhbGljJywgJ3VuZGVybGluZSddLFxuICAgICAgICAgICAgWydpbWFnZScsICdjb2RlLWJsb2NrJ11cbiAgICAgICAgXVxuICAgIH0sXG4gICAgdGhlbWU6ICdzbm93JyAvLyBvciAnYnViYmxlJ1xufSk7XG5mdWxsRWRpdG9yLnJvb3QuaW5uZXJIVE1MID0gJCgnI3Byb2R1Y3QtZGVzY3JpcHRpb24nKS52YWwoKTtcblxuLy8gSW5zdHJ1Y3Rpb24gZWRpdG9yXG52YXIgaW5zdHJ1Y3Rpb25FZGl0b3IgPSBuZXcgUXVpbGwoJyNwcm9kdWN0LWluc3RydWN0aW9uLWVkaXRvcicsIHtcbiAgICBtb2R1bGVzOiB7XG4gICAgICAgIHRvb2xiYXI6IFtcbiAgICAgICAgICAgIFt7XG4gICAgICAgICAgICAgICAgaGVhZGVyOiBbMSwgMiwgZmFsc2VdXG4gICAgICAgICAgICB9XSxcbiAgICAgICAgICAgIFsnYm9sZCcsICdpdGFsaWMnLCAndW5kZXJsaW5lJ10sXG4gICAgICAgICAgICBbJ2ltYWdlJywgJ2NvZGUtYmxvY2snXVxuICAgICAgICBdXG4gICAgfSxcbiAgICB0aGVtZTogJ3Nub3cnIC8vIG9yICdidWJibGUnXG59KTtcbmluc3RydWN0aW9uRWRpdG9yLnJvb3QuaW5uZXJIVE1MID0gJCgnI3Byb2R1Y3QtaW5zdHJ1Y3Rpb24nKS52YWwoKTtcblxuXG4vLyBEcm9wem9uZSBwcm9kdWN0IGltYWdlc1xuY29uc3QgcHJvZHVjdElkID0gJCgnI3Byb2R1Y3QtaWQtdmFsdWUnKS52YWwoKTtcblxudmFyIG15RHJvcHpvbmUgPSBuZXcgRHJvcHpvbmUoXCIjYWRkX3Byb2R1Y3RfbWVkaWFcIiwge1xuICAgIHVybDogYC9wcm9kdWN0cy8ke3Byb2R1Y3RJZH0vaW1hZ2VzYCxcbiAgICBwYXJhbU5hbWU6ICdpbWFnZScsIC8vIFRoZSBuYW1lIHRoYXQgd2lsbCBiZSB1c2VkIHRvIHRyYW5zZmVyIHRoZSBmaWxlXG4gICAgbWF4RmlsZXM6IDEwLFxuICAgIG1heEZpbGVzaXplOiAxMCwgLy8gTUJcbiAgICBhZGRSZW1vdmVMaW5rczogdHJ1ZSxcbiAgICBoZWFkZXJzOiB7XG4gICAgICAgICdYLUNTUkYtVE9LRU4nOiAkKCdtZXRhW25hbWU9XCJjc3JmLXRva2VuXCJdJykuYXR0cignY29udGVudCcpLFxuICAgIH0sXG4gICAgYWNjZXB0OiBmdW5jdGlvbiAoZmlsZSwgZG9uZSkge1xuICAgICAgICBkb25lKCk7XG4gICAgfSxcbiAgICByZW1vdmVkZmlsZTogZnVuY3Rpb24gKGZpbGUpIHtcbiAgICAgICAgJC5hamF4KHtcbiAgICAgICAgICAgIHR5cGU6ICdERUxFVEUnLFxuICAgICAgICAgICAgdXJsOiBgL3Byb2R1Y3RzLyR7cHJvZHVjdElkfS9pbWFnZXMvJHtmaWxlLmlkfWAsXG4gICAgICAgICAgICBzdWNjZXNzOiBmdW5jdGlvbiAoZGF0YSkge1xuICAgICAgICAgICAgICAgIGlmIChmaWxlLnByZXZpZXdFbGVtZW50ICE9IG51bGwgJiYgZmlsZS5wcmV2aWV3RWxlbWVudC5wYXJlbnROb2RlICE9IG51bGwpIHtcbiAgICAgICAgICAgICAgICAgICAgZmlsZS5wcmV2aWV3RWxlbWVudC5wYXJlbnROb2RlLnJlbW92ZUNoaWxkKGZpbGUucHJldmlld0VsZW1lbnQpO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICByZXR1cm4gdGhpcy5fdXBkYXRlTWF4RmlsZXNSZWFjaGVkQ2xhc3MoKTtcbiAgICAgICAgICAgIH0sXG4gICAgICAgIH0pO1xuICAgIH0sXG59KTtcblxuJChcIiNkaXNjb3VudC1kZWFkbGluZS1waWNrZXJcIikuZmxhdHBpY2tyKCk7XG5cbiQuYWpheCh7XG4gICAgdHlwZTogJ0dFVCcsXG4gICAgdXJsOiBgL3Byb2R1Y3RzLyR7cHJvZHVjdElkfS9pbWFnZXNgLFxuICAgIHN1Y2Nlc3M6IGZ1bmN0aW9uIChkYXRhKSB7XG4gICAgICAgIGRhdGEuZm9yRWFjaCgoaW1hZ2UpID0+IHtcbiAgICAgICAgICAgIGxldCBtb2NrRmlsZSA9IHsgbmFtZTogJ0ltYWdlJywgc2l6ZTogMTAwMCwgaWQ6IGltYWdlLmlkIH07XG4gICAgICAgICAgICBteURyb3B6b25lLmRpc3BsYXlFeGlzdGluZ0ZpbGUobW9ja0ZpbGUsIGltYWdlLmxpbmspO1xuICAgICAgICB9KTtcbiAgICB9LFxufSk7XG5cbi8vIEFkZCBwcm9kdWN0IHN1Ym1pdFxuJCgnI3N1Ym1pdC1idG4nKS5vbignY2xpY2snLCAoZSkgPT4ge1xuICAgIGUucHJldmVudERlZmF1bHQoKTtcbiAgICBjb25zdCBkZXNjcmlwdGlvbiA9IGZ1bGxFZGl0b3Iucm9vdC5pbm5lckhUTUw7XG4gICAgJCgnI3Byb2R1Y3QtZGVzY3JpcHRpb24nKS52YWwoZGVzY3JpcHRpb24pO1xuICAgIGNvbnN0IGluc3RydWN0aW9uID0gaW5zdHJ1Y3Rpb25FZGl0b3Iucm9vdC5pbm5lckhUTUw7XG4gICAgJCgnI3Byb2R1Y3QtaW5zdHJ1Y3Rpb24nKS52YWwoaW5zdHJ1Y3Rpb24pO1xuICAgICQoJyNrdF9lY29tbWVyY2VfYWRkX3Byb2R1Y3RfZm9ybScpLnN1Ym1pdCgpO1xufSk7XG4iXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0EsSUFBSUEsVUFBVSxHQUFHLElBQUlDLEtBQUssQ0FBQyw2QkFBNkIsRUFBRTtFQUN0REMsT0FBTyxFQUFFO0lBQ0xDLE9BQU8sRUFBRSxDQUNMLENBQUM7TUFDR0MsTUFBTSxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxLQUFLO0lBQ3hCLENBQUMsQ0FBQyxFQUNGLENBQUMsTUFBTSxFQUFFLFFBQVEsRUFBRSxXQUFXLENBQUMsRUFDL0IsQ0FBQyxPQUFPLEVBQUUsWUFBWSxDQUFDO0VBRS9CLENBQUM7RUFDREMsS0FBSyxFQUFFLE1BQU0sQ0FBQztBQUNsQixDQUFDLENBQUM7O0FBQ0ZMLFVBQVUsQ0FBQ00sSUFBSSxDQUFDQyxTQUFTLEdBQUdDLENBQUMsQ0FBQyxzQkFBc0IsQ0FBQyxDQUFDQyxHQUFHLEVBQUU7O0FBRTNEO0FBQ0EsSUFBSUMsaUJBQWlCLEdBQUcsSUFBSVQsS0FBSyxDQUFDLDZCQUE2QixFQUFFO0VBQzdEQyxPQUFPLEVBQUU7SUFDTEMsT0FBTyxFQUFFLENBQ0wsQ0FBQztNQUNHQyxNQUFNLEVBQUUsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxFQUFFLEtBQUs7SUFDeEIsQ0FBQyxDQUFDLEVBQ0YsQ0FBQyxNQUFNLEVBQUUsUUFBUSxFQUFFLFdBQVcsQ0FBQyxFQUMvQixDQUFDLE9BQU8sRUFBRSxZQUFZLENBQUM7RUFFL0IsQ0FBQztFQUNEQyxLQUFLLEVBQUUsTUFBTSxDQUFDO0FBQ2xCLENBQUMsQ0FBQzs7QUFDRkssaUJBQWlCLENBQUNKLElBQUksQ0FBQ0MsU0FBUyxHQUFHQyxDQUFDLENBQUMsc0JBQXNCLENBQUMsQ0FBQ0MsR0FBRyxFQUFFOztBQUdsRTtBQUNBLElBQU1FLFNBQVMsR0FBR0gsQ0FBQyxDQUFDLG1CQUFtQixDQUFDLENBQUNDLEdBQUcsRUFBRTtBQUU5QyxJQUFJRyxVQUFVLEdBQUcsSUFBSUMsUUFBUSxDQUFDLG9CQUFvQixFQUFFO0VBQ2hEQyxHQUFHLGVBQUFDLE1BQUEsQ0FBZUosU0FBUyxZQUFTO0VBQ3BDSyxTQUFTLEVBQUUsT0FBTztFQUFFO0VBQ3BCQyxRQUFRLEVBQUUsRUFBRTtFQUNaQyxXQUFXLEVBQUUsRUFBRTtFQUFFO0VBQ2pCQyxjQUFjLEVBQUUsSUFBSTtFQUNwQkMsT0FBTyxFQUFFO0lBQ0wsY0FBYyxFQUFFWixDQUFDLENBQUMseUJBQXlCLENBQUMsQ0FBQ2EsSUFBSSxDQUFDLFNBQVM7RUFDL0QsQ0FBQztFQUNEQyxNQUFNLEVBQUUsU0FBQUEsT0FBVUMsSUFBSSxFQUFFQyxJQUFJLEVBQUU7SUFDMUJBLElBQUksRUFBRTtFQUNWLENBQUM7RUFDREMsV0FBVyxFQUFFLFNBQUFBLFlBQVVGLElBQUksRUFBRTtJQUN6QmYsQ0FBQyxDQUFDa0IsSUFBSSxDQUFDO01BQ0hDLElBQUksRUFBRSxRQUFRO01BQ2RiLEdBQUcsZUFBQUMsTUFBQSxDQUFlSixTQUFTLGNBQUFJLE1BQUEsQ0FBV1EsSUFBSSxDQUFDSyxFQUFFLENBQUU7TUFDL0NDLE9BQU8sRUFBRSxTQUFBQSxRQUFVQyxJQUFJLEVBQUU7UUFDckIsSUFBSVAsSUFBSSxDQUFDUSxjQUFjLElBQUksSUFBSSxJQUFJUixJQUFJLENBQUNRLGNBQWMsQ0FBQ0MsVUFBVSxJQUFJLElBQUksRUFBRTtVQUN2RVQsSUFBSSxDQUFDUSxjQUFjLENBQUNDLFVBQVUsQ0FBQ0MsV0FBVyxDQUFDVixJQUFJLENBQUNRLGNBQWMsQ0FBQztRQUNuRTtRQUNBLE9BQU8sSUFBSSxDQUFDRywyQkFBMkIsRUFBRTtNQUM3QztJQUNKLENBQUMsQ0FBQztFQUNOO0FBQ0osQ0FBQyxDQUFDO0FBRUYxQixDQUFDLENBQUMsMkJBQTJCLENBQUMsQ0FBQzJCLFNBQVMsRUFBRTtBQUUxQzNCLENBQUMsQ0FBQ2tCLElBQUksQ0FBQztFQUNIQyxJQUFJLEVBQUUsS0FBSztFQUNYYixHQUFHLGVBQUFDLE1BQUEsQ0FBZUosU0FBUyxZQUFTO0VBQ3BDa0IsT0FBTyxFQUFFLFNBQUFBLFFBQVVDLElBQUksRUFBRTtJQUNyQkEsSUFBSSxDQUFDTSxPQUFPLENBQUMsVUFBQ0MsS0FBSyxFQUFLO01BQ3BCLElBQUlDLFFBQVEsR0FBRztRQUFFQyxJQUFJLEVBQUUsT0FBTztRQUFFQyxJQUFJLEVBQUUsSUFBSTtRQUFFWixFQUFFLEVBQUVTLEtBQUssQ0FBQ1Q7TUFBRyxDQUFDO01BQzFEaEIsVUFBVSxDQUFDNkIsbUJBQW1CLENBQUNILFFBQVEsRUFBRUQsS0FBSyxDQUFDSyxJQUFJLENBQUM7SUFDeEQsQ0FBQyxDQUFDO0VBQ047QUFDSixDQUFDLENBQUM7O0FBRUY7QUFDQWxDLENBQUMsQ0FBQyxhQUFhLENBQUMsQ0FBQ21DLEVBQUUsQ0FBQyxPQUFPLEVBQUUsVUFBQ0MsQ0FBQyxFQUFLO0VBQ2hDQSxDQUFDLENBQUNDLGNBQWMsRUFBRTtFQUNsQixJQUFNQyxXQUFXLEdBQUc5QyxVQUFVLENBQUNNLElBQUksQ0FBQ0MsU0FBUztFQUM3Q0MsQ0FBQyxDQUFDLHNCQUFzQixDQUFDLENBQUNDLEdBQUcsQ0FBQ3FDLFdBQVcsQ0FBQztFQUMxQyxJQUFNQyxXQUFXLEdBQUdyQyxpQkFBaUIsQ0FBQ0osSUFBSSxDQUFDQyxTQUFTO0VBQ3BEQyxDQUFDLENBQUMsc0JBQXNCLENBQUMsQ0FBQ0MsR0FBRyxDQUFDc0MsV0FBVyxDQUFDO0VBQzFDdkMsQ0FBQyxDQUFDLGdDQUFnQyxDQUFDLENBQUN3QyxNQUFNLEVBQUU7QUFDaEQsQ0FBQyxDQUFDIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL3Byb2R1Y3QvZWRpdC5qcy5qcyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/product/edit.js\n");
 
-// Dropzone product images
-const productId = $('#product-id-value').val();
+/***/ })
 
-var myDropzone = new Dropzone("#add_product_media", {
-    url: `/products/${productId}/images`,
-    paramName: 'image', // The name that will be used to transfer the file
-    maxFiles: 10,
-    maxFilesize: 10, // MB
-    addRemoveLinks: true,
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    },
-    accept: function (file, done) {
-        done();
-    },
-    removedfile: function (file) {
-        $.ajax({
-            type: 'DELETE',
-            url: `/products/${productId}/images/${file.id}`,
-            success: function (data) {
-                if (file.previewElement != null && file.previewElement.parentNode != null) {
-                    file.previewElement.parentNode.removeChild(file.previewElement);
-                }
-                return this._updateMaxFilesReachedClass();
-            },
-        });
-    },
-});
-
-$("#discount-deadline-picker").flatpickr();
-
-$.ajax({
-    type: 'GET',
-    url: `/products/${productId}/images`,
-    success: function (data) {
-        data.forEach((image) => {
-            let mockFile = { name: 'Image', size: 1000, id: image.id };
-            myDropzone.displayExistingFile(mockFile, image.link);
-        });
-    },
-});
-
-// Add product submit
-$('#submit-btn').on('click', (e) => {
-    e.preventDefault();
-    const description = fullEditor.root.innerHTML;
-    $('#product-description').val(description);
-    const instruction = instructionEditor.root.innerHTML;
-    $('#product-instruction').val(instruction);
-    $('#kt_ecommerce_add_product_form').submit();
-});
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./resources/js/product/edit.js"]();
+/******/ 	
+/******/ })()
+;
