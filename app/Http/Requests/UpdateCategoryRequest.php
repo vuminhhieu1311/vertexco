@@ -28,7 +28,7 @@ class UpdateCategoryRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
-                Rule::unique('categories')->ignore(optional($this->route('category'))->id)
+                Rule::unique('categories')->ignore(optional($this->route('category'))->id),
             ],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',

@@ -46,7 +46,7 @@ return [
 
         'public_storage' => [
             'driver' => 'local',
-            'root'   => public_path(),
+            'root' => public_path(),
         ],
 
         's3' => [

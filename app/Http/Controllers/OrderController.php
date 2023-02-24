@@ -24,10 +24,10 @@ class OrderController extends Controller
             ->when($request->query('keyword'), function ($query) {
                 return $query->where(function ($q) {
                     return $q->whereHas('user', function ($q1) {
-                            return $q1->where('users.name', 'LIKE', '%' . request('keyword') . '%');
-                        })
-                        ->orWhere('code', 'LIKE', '%' . request('keyword') . '%')
-                        ->orWhere('note', 'LIKE', '%' . request('keyword') . '%');
+                        return $q1->where('users.name', 'LIKE', '%'.request('keyword').'%');
+                    })
+                        ->orWhere('code', 'LIKE', '%'.request('keyword').'%')
+                        ->orWhere('note', 'LIKE', '%'.request('keyword').'%');
                 });
             })
             ->when($request->query('status'), function ($query) {
@@ -139,7 +139,7 @@ class OrderController extends Controller
             }
 
             $res = $order->update([
-                'status' =>  $request->status,
+                'status' => $request->status,
             ]);
 
             DB::commit();

@@ -44,7 +44,7 @@ class Order extends Model
     protected static function booted()
     {
         static::created(function ($order) {
-            $order->code = 'EG000' . $order->id;
+            $order->code = 'EG000'.$order->id;
             $order->save();
 
             $statistic = Statistic::where('date', date('Y-m-d'))->first();

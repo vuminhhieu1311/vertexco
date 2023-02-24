@@ -28,7 +28,7 @@ class UpdateProductRequest extends FormRequest
             'name' => [
                 'required',
                 'max:255',
-                Rule::unique('products')->ignore(optional($this->route('product'))->id)
+                Rule::unique('products')->ignore(optional($this->route('product'))->id),
             ],
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',

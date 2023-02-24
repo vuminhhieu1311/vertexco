@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Providers\AppServiceProvider;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -24,7 +23,7 @@ class CartController extends Controller
     public function save(Request $request, Product $product)
     {
         if ($request->quantity > $product->quantity) {
-            toast('Vui lòng nhập số lượng nhỏ hơn ' . $product->quantity,'error');
+            toast('Vui lòng nhập số lượng nhỏ hơn '.$product->quantity, 'error');
 
             return redirect()->back();
         }

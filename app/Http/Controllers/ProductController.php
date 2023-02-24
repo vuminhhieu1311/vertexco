@@ -11,7 +11,6 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -72,9 +71,9 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $product->load([
-          'ratings' => function($query) {
-            return $query->where('is_active', true);
-          }
+            'ratings' => function ($query) {
+                return $query->where('is_active', true);
+            },
         ]);
 
         return view('customer.product_detail', compact('product'));
@@ -160,14 +159,14 @@ class ProductController extends Controller
 
     public function getPublishedProducts(Request $request)
     {
-        $categories = Category::where('status', CategoryStatus::PUBLISHED) ->latest()->get();
+        $categories = Category::where('status', CategoryStatus::PUBLISHED)->latest()->get();
 
         $products = Product::where('status', ProductStatus::PUBLISHED)
             ->where('quantity', '>', 0)
             ->withCount('orders')
             ->orderBy('orders_count', 'desc')
             ->when(request('name'), function ($query) {
-                return $query->where('name', 'LIKE', '%' . request('name') . '%');
+                return $query->where('name', 'LIKE', '%'.request('name').'%');
             })
             ->when(request('category_id'), function ($query) {
                 return $query->whereHas('categories', function ($q) {
