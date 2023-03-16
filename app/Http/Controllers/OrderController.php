@@ -103,7 +103,7 @@ class OrderController extends Controller
             DB::commit();
 
             alert()->success(__('messages.order_successfully'))
-                ->showConfirmButton('OK', '#6aaf08')->autoClose(5000);
+                ->showConfirmButton('OK', '#e40046')->autoClose(5000);
 
             return redirect()->route('home');
         } catch (\Exception $e) {

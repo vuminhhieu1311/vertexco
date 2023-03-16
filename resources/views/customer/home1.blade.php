@@ -4,8 +4,8 @@
     <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet" />
     <style>
         .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-            background-color: #6aaf08;
-            border-color: #6aaf08;
+            background-color: #e40046;
+            border-color: #e40046;
         }
         .pagination>li>a, .pagination>li>span {
             color: #7E7E7E;
