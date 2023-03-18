@@ -71,7 +71,7 @@
                             <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"><a class="product-image" title="Product tilte is here"
+                                        <div class="item-img-info"><a class="product-image" title="{{ $product->name }}"
                                                 href="product-detail.html"> <img alt="Product tilte is here"
                                                     src="fabulous/images/products/product-fashion-10.jpg"> </a>
                                             <div class="new-label new-top-left">new</div>
@@ -90,7 +90,7 @@
                                     <div class="item-info">
                                         <div class="info-inner">
                                             <div class="item-title"> <a title="Product tilte is here"
-                                                    href="product-detail.html">Product tilte is here </a>
+                                                    href="product-detail.html">{{ $product->name }}</a>
                                             </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
@@ -98,12 +98,15 @@
                                                         class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="item-price">
-                                                    <div class="price-box"> <span class="regular-price"> <span
-                                                                class="price">$99.79</span></span>
-                                                        <p class="old-price"> <span class="price-label">Regular
-                                                                Price:</span>
-                                                            <span class="price"> $119.00 </span>
-                                                        </p>
+                                                    <div class="price-box">
+                                                        <span class="regular-price">
+                                                            <span class="price">@money($product->final_price, 'VND')</span>
+                                                        </span>
+                                                        @if ($product->price != $product->final_price)
+                                                            <p class="old-price">
+                                                                <span class="price">@money($product->price, 'VND')</span>
+                                                            </p>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="actions">
