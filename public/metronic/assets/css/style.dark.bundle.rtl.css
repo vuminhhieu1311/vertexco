@@ -7,7 +7,7 @@
   --bs-red: #dc3545;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
-  --bs-green: #198754;
+  --bs-green: #00B14F;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
   --bs-gray: #6D6D80;
@@ -46579,7 +46579,7 @@ label.rating-label:hover ~ .rating-label > .svg-icon svg:hover [fill]:not(.perma
   border: 1px dashed #323248 !important;
 }
 .explore-btn-outline:hover, .explore-btn-outline.active {
-  border: 1px dashed #50CD89 !important;
+  border: 1px dashed #00B14F !important;
   background-color: #E8FFF3;
 }
 
@@ -46595,11 +46595,11 @@ label.rating-label:hover ~ .rating-label > .svg-icon svg:hover [fill]:not(.perma
 }
 
 .explore-icon-success {
-  color: #50CD89;
+  color: #00B14F;
 }
 .explore-icon-success svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
-  fill: #50CD89;
+  fill: #00B14F;
 }
 .explore-icon-success svg:hover [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -46623,7 +46623,7 @@ label.rating-label:hover ~ .rating-label > .svg-icon svg:hover [fill]:not(.perma
 
 .explore-label-pro {
   color: #ffffff;
-  background-color: #50CD89;
+  background-color: #00B14F;
 }
 
 .stepper.stepper-links .stepper-nav {
