@@ -210,7 +210,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        @can('manage categories')
+                        @can(\App\Enums\PermissionName::MANAGE_CATEGORIES)
                             <div class="menu-item">
                                 <a class="menu-link @if (Route::is('categories.*')) active @endif"
                                     href="{{ route('categories.index') }}">
@@ -221,7 +221,7 @@
                                 </a>
                             </div>
                         @endcan
-                        @can('manage products')
+                        @can(\App\Enums\PermissionName::MANAGE_PRODUCTS)
                             <div class="menu-item">
                                 <a class="menu-link @if (Route::is('products.*')) active @endif"
                                     href="{{ route('products.index') }}">
@@ -232,7 +232,7 @@
                                 </a>
                             </div>
                         @endcan
-                        @can('manage categories')
+                        @can(\App\Enums\PermissionName::MANAGE_BRANDS)
                             <div class="menu-item">
                                 <a class="menu-link @if (Route::is('brands.*')) active @endif"
                                     href="{{ route('brands.index') }}">
@@ -245,7 +245,7 @@
                         @endcan
                     </div>
                 </div>
-                @can('manage orders')
+                @can(\App\Enums\PermissionName::MANAGE_ORDERS)
                     <div class="menu-item">
                         <a class="menu-link @if (Route::is('orders.*')) active @endif"
                             href="{{ route('orders.index') }}">
@@ -266,7 +266,7 @@
                         </a>
                     </div>
                 @endcan
-                @can('manage reviews')
+                @can(\App\Enums\PermissionName::MANAGE_REVIEWS)
                     <div class="menu-item">
                         <a class="menu-link @if (Route::is('ratings.*')) active @endif"
                             href="{{ route('ratings.index') }}">
@@ -287,7 +287,7 @@
                         </a>
                     </div>
                 @endcan
-                @can('manage permissions')
+                @can(\App\Enums\PermissionName::MANAGE_PERMISSIONS)
                     <div data-kt-menu-trigger="click"
                         class="menu-item here menu-accordion @if (Route::is('roles.*') || Route::is('permissions.*') || Route::is('users.*')) show @endif">
                         <span class="menu-link">

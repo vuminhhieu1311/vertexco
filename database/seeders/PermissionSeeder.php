@@ -32,6 +32,10 @@ class PermissionSeeder extends Seeder
             'display_name' => 'Quản lý danh mục sản phẩm',
         ]);
         Permission::create([
+            'name' => PermissionName::MANAGE_BRANDS,
+            'display_name' => 'Quản lý thương hiệu sản phẩm',
+        ]);
+        Permission::create([
             'name' => PermissionName::MANAGE_ORDERS,
             'display_name' => 'Quản lý đơn hàng',
         ]);
@@ -60,6 +64,7 @@ class PermissionSeeder extends Seeder
         $role->syncPermissions([
             PermissionName::MANAGE_PRODUCTS,
             PermissionName::MANAGE_CATEGORIES,
+            PermissionName::MANAGE_BRANDS,
             PermissionName::MANAGE_ORDERS,
             PermissionName::MANAGE_REVIEWS,
             PermissionName::MANAGE_DISCOUNTS,

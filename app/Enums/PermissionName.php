@@ -8,6 +8,8 @@ final class PermissionName
 
     public const MANAGE_CATEGORIES = 'manage categories';
 
+    public const MANAGE_BRANDS = 'manage brands';
+
     public const MANAGE_ORDERS = 'manage orders';
 
     public const MANAGE_REVIEWS = 'manage reviews';
