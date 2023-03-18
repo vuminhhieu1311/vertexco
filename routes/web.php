@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
@@ -22,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('ping', function () {
+    return 'pong';
+});
+
 Route::middleware('localization')->group(function () {
     Route::get('/', [ProductController::class, 'getPublishedProducts'])->name('home');
     Route::prefix('products')->group(function () {
@@ -60,6 +66,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
     Route::post('/orders/{order}/rate', [OrderController::class, 'rateOrder'])->name('orders.rate');
 
     Route::resources([
+        'brands' => BrandController::class,
         'categories' => CategoryController::class,
         'products' => ProductController::class,
         'roles' => RoleController::class,
@@ -68,8 +75,4 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'orders' => OrderController::class,
         'ratings' => RatingController::class,
     ]);
-});
-
-Route::get('test', function () {
-    \Illuminate\Support\Facades\Storage::delete('public/images/euRPxQ1l1W2RRVq8aEFonApOyRt490lPK6D5OUwF.jpg');
 });

@@ -127,4 +127,11 @@ return [
     'color' => 'Color',
     'size' => 'Size',
     'product_variants' => 'Product variants',
+    'brands' => 'Brands',
+    'brand_name' => 'Brand name',
+    'search_brand' => 'Search brand name',
+    'brand_description' => 'Brand description',
+    'add_brand' => 'Add brand',
+    'brand_image' => 'Brand logo',
+    'brand_info' => 'Brand information',
 ];

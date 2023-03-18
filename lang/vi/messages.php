@@ -126,4 +126,11 @@ return [
     'color' => 'Màu sắc',
     'size' => 'Kích cỡ',
     'product_variants' => 'Mẫu mã sản phẩm',
+    'brands' => 'Thương hiệu',
+    'brand_name' => 'Tên thương hiệu',
+    'search_brand' => 'Tìm kiếm thương hiệu',
+    'brand_description' => 'Mô tả thương hiệu',
+    'add_brand' => 'Thêm thương hiệu',
+    'brand_image' => 'Brand logo',
+    'brand_info' => 'Brand information',
 ];

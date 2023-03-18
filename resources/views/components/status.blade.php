@@ -1,19 +1,19 @@
 @if ($status === 'pending')
-    <div class="badge badge-warning">{{ __('messages.pending') }}</div>
+    <div class="badge badge-light-warning">{{ __('messages.pending') }}</div>
 @elseif ($status === 'canceled')
-    <div class="badge badge-danger">{{ __('messages.canceled') }}</div>
+    <div class="badge badge-light-danger">{{ __('messages.canceled') }}</div>
 @elseif ($status === 'paid')
-    <div class="badge badge-info">{{ __('messages.paid') }}</div>
+    <div class="badge badge-light-info">{{ __('messages.paid') }}</div>
 @elseif ($status === 'delivered')
-    <div class="badge badge-success">{{ __('messages.delivered') }}</div>
+    <div class="badge badge-light-success">{{ __('messages.delivered') }}</div>
 @elseif ($status === 'delivering')
-    <div class="badge badge-dark">{{ __('messages.delivering') }}</div>
+    <div class="badge badge-light-dark">{{ __('messages.delivering') }}</div>
 @elseif ($status === 'confirmed')
-    <div class="badge badge-primary">{{ __('messages.confirmed') }}</div>
+    <div class="badge badge-light-primary">{{ __('messages.confirmed') }}</div>
 @elseif ($status === 'published')
-    <div class="badge badge-success">{{ __('messages.published') }}</div>
+    <div class="badge badge-light-success">{{ __('messages.published') }}</div>
 @elseif ($status === 'unpublished')
-    <div class="badge badge-danger">{{ __('messages.unpublished') }}</div>
+    <div class="badge badge-light-danger">{{ __('messages.unpublished') }}</div>
 @elseif ($status === 'draft')
-    <div class="badge badge-warning">{{ __('messages.draft') }}</div>
+    <div class="badge badge-light-warning">{{ __('messages.draft') }}</div>
 @endif
