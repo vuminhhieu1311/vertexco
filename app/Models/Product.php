@@ -22,13 +22,12 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'quantity',
         'status',
         'avatar_url',
         'user_id',
         'discount',
         'discount_deadline',
-        'instruction',
+        'brand_id',
     ];
 
     protected $appends = [
@@ -53,6 +52,11 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'product_order');
+    }
+
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
     }
 
     protected function finalPrice(): Attribute

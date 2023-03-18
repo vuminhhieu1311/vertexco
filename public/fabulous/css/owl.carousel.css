@@ -1,4 +1,4 @@
-/* 
+/*
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
@@ -64,7 +64,7 @@
 	-ms-transform: translate3d(0, 0, 0);
 }
 /*
-* 	Owl Carousel Owl Demo Theme 
+* 	Owl Carousel Owl Demo Theme
 *	v1.3.3
 */
 
@@ -118,7 +118,7 @@
 .owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
 	filter: Alpha(Opacity=100);/*IE7 fix*/
 	opacity: 1;
-	background: #f82e56;
+	background: #FF7B54;
 }
 /* If PaginationNumbers is true */
 

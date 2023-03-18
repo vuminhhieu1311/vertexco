@@ -207,43 +207,74 @@
                                         <input type="hidden" id="product-description" name="description" />
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
-                                        <div class="mb-10 fv-row">
+                                        <div class="fv-row w-100">
                                             <!--begin::Label-->
-                                            <label class="form-label">{{ __('messages.instruction') }}</label>
+                                            <label class="required form-label">{{ __('messages.price') }}</label>
                                             <!--end::Label-->
-                                            <!--begin::Editor-->
-                                            <div id="product-instruction-editor" class="min-h-200px mb-2">
-                                            </div>
-                                            <!--end::Editor-->
+                                            <!--begin::Input-->
+                                            <input type="number" name="price" class="form-control mb-2"
+                                                value="" min="1" />
+                                            <!--end::Input-->
+                                            <div id="error-message-price" class="error-message text-danger"></div>
                                         </div>
-                                        <input type="hidden" id="product-instruction" name="instruction" />
                                         <!--end::Input group-->
-                                        <div class="d-flex gap-5">
+                                    </div>
+                                    <!--end::Card header-->
+                                </div>
+                                <!--end::General options-->
+                                <!--begin::General options-->
+                                <div class="card card-flush py-4">
+                                    <!--begin::Card header-->
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h2>{{ __('messages.product_variants') }}</h2>
+                                        </div>
+                                    </div>
+                                    <!--end::Card header-->
+                                    <!--begin::Card body-->
+                                    <div class="card-body pt-0" id="variants-container">
+                                        <div class="variant d-flex gap-5 mb-2" id="variant-1">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row w-100">
+                                                <!--begin::Label-->
+                                                <label class="required form-label">{{ __('messages.color') }}</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="number" name="colors[]" class="form-control mb-2" min="1" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row w-100">
+                                                <!--begin::Label-->
+                                                <label class="required form-label">{{ __('messages.size') }}</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="number" name="sizes[]" class="form-control mb-2"
+                                                    value="" min="1" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row w-100">
                                                 <!--begin::Label-->
                                                 <label class="required form-label">{{ __('messages.quantity') }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="number" name="quantity" class="form-control mb-2"
+                                                <input type="number" name="quantities[]" class="form-control mb-2"
                                                     value="" min="1" />
                                                 <!--end::Input-->
-                                                <div id="error-message-quantity" class="error-message text-danger"></div>
                                             </div>
                                             <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="fv-row w-100">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">{{ __('messages.price') }}</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="number" name="price" class="form-control mb-2"
-                                                    value="" min="1" />
-                                                <!--end::Input-->
-                                                <div id="error-message-price" class="error-message text-danger"></div>
+                                            <div style="display:flex;align-items:flex-end;padding-bottom:7px;">
+                                                <a href="#" class="remove-variant-btn btn btn-active-light-danger pe-5" style="opacity:0;cursor:default;">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
                                             </div>
-                                            <!--end::Input group-->
                                         </div>
+                                        <a href="#" id="add-variant-btn" class="btn btn-light-primary">
+                                            <i class="fas fa-plus me-2"></i> {{ __('messages.add') }}
+                                        </a>
                                     </div>
                                     <!--end::Card header-->
                                 </div>

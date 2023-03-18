@@ -30,7 +30,7 @@ class ProductController extends Controller
         return view('product.create', compact('categories'));
     }
 
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
         $this->authorize('create', Product::class);
 
@@ -42,13 +42,12 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
-                'quantity' => $request->quantity,
                 'status' => $request->status,
                 'user_id' => Auth::id(),
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
-                'instruction' => $request->instruction,
+                'brand_id' => $request->input('brand_id', 1),
             ]);
 
             $product->categories()->attach($request->category_ids);
@@ -56,6 +55,18 @@ class ProductController extends Controller
             foreach ($request->file('images', []) as $image) {
                 $filePath = $image->store('images', ['disk' => 'public_storage']);
                 $product->images()->create(['url' => $filePath]);
+            }
+
+            $colors = $request->input('colors', []);
+            $sizes = $request->input('sizes', []);
+            $quantities = $request->input('quantities', []);
+
+            foreach ($colors as $key => $color) {
+                $product->variants()->create([
+                    'size_id' => $sizes[$key],
+                    'color_id' => $color,
+                    'quantity' => $quantities[$key],
+                ]);
             }
 
             DB::commit();
@@ -162,7 +173,7 @@ class ProductController extends Controller
         $categories = Category::where('status', CategoryStatus::PUBLISHED)->latest()->get();
 
         $products = Product::where('status', ProductStatus::PUBLISHED)
-            ->where('quantity', '>', 0)
+//            ->where('quantity', '>', 0)
             ->withCount('orders')
             ->orderBy('orders_count', 'desc')
             ->when(request('name'), function ($query) {

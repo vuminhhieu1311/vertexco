@@ -123,4 +123,8 @@ return [
     'best_sellers' => 'Best sellers',
     'order_total' => 'Order total',
     'remain_quantity' => 'Remaining quantity',
+    'add' => 'Add',
+    'color' => 'Color',
+    'size' => 'Size',
+    'product_variants' => 'Product variants',
 ];

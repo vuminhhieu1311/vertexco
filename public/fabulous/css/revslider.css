@@ -186,7 +186,7 @@ z-index: 1;
 	letter-spacing: 2px;
 }
 .tp-caption.LargeTitle span {
-	color: #f82e56;
+	color: #FF7B54;
 	line-height: 100px;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -204,13 +204,13 @@ z-index: 1;
 }
 .buy-btn {
 	padding: 12px 20px;
-	border: 1px #f82e56 solid;
+	border: 1px #FF7B54 solid;
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
 	margin-left: 10px;
-	background: #f82e56;
+	background: #FF7B54;
 	border-radius: 3px;
 	letter-spacing: 2px;
 	font-family: 'Roboto', sans-serif;
@@ -518,7 +518,7 @@ z-index: 1;
 	font-size: 18px;
 }
 .jtv-dis-bar .jtv-social-icons li a:hover {
-	color: #f82e56;
+	color: #FF7B54;
 }
 @media only screen and (min-width: 250px) and (max-width: 479px) {
 .tp-caption.ExtraLargeTitle span {
@@ -529,7 +529,7 @@ z-index: 1;
 	font-size: 28px !important;line-height:35px !important;
 }
 .tp-caption.Title {
-	font-size: 13px !important; margin-bottom:15px !important; line-height:35px !important; margin-left:-15px !important; 
+	font-size: 13px !important; margin-bottom:15px !important; line-height:35px !important; margin-left:-15px !important;
 }
 .buy-btn {
 	font-size: 11px !important;
@@ -559,7 +559,7 @@ z-index: 1;
 	font-size: 32px !important;line-height:35px !important;
 }
 .tp-caption.Title {
-	font-size: 14px !important; margin-bottom:15px !important; line-height:25px !important; 
+	font-size: 14px !important; margin-bottom:15px !important; line-height:25px !important;
 }
 .buy-btn {
 	font-size: 12px !important;

@@ -122,4 +122,8 @@ return [
     'best_sellers' => 'Sản phẩm bán chạy',
     'order_total' => 'Số đơn bán ra',
     'remain_quantity' => 'Số lượng còn lại',
+    'add' => 'Thêm',
+    'color' => 'Màu sắc',
+    'size' => 'Kích cỡ',
+    'product_variants' => 'Mẫu mã sản phẩm',
 ];

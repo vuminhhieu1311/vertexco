@@ -12,20 +12,6 @@ var fullEditor = new Quill('#product-description-editor', {
     theme: 'snow' // or 'bubble'
 });
 
-// Instruction editor
-var instructionEditor = new Quill('#product-instruction-editor', {
-    modules: {
-        toolbar: [
-            [{
-                header: [1, 2, false]
-            }],
-            ['bold', 'italic', 'underline'],
-            ['image', 'code-block']
-        ]
-    },
-    theme: 'snow' // or 'bubble'
-});
-
 // Product images
 var images = [];
 
@@ -45,13 +31,34 @@ var myDropzone = new Dropzone("#add_product_media", {
 
 $("#discount-deadline-picker").flatpickr();
 
+let variantId = 1;
+// Add product variant
+$('#add-variant-btn').click(function (e) {
+    e.preventDefault();
+    var lastRow = $('.variant').last(); // select the last row
+    var newRow = lastRow.clone(); // clone the last row
+    newRow.find('input').val(''); // clear the values of the inputs in the new row
+    variantId++;
+    newRow.attr('id', 'variant-' + variantId);
+    newRow.find('a').css({
+        'opacity': 1,
+        'cursor': 'pointer',
+    });
+    lastRow.after(newRow); // insert the new row after the last row
+});
+
+$(document).on('click', '.remove-variant-btn', function(e) {
+    e.preventDefault();
+    if ($(this).css('opacity') == 1) {
+        $(this).parent().parent().remove();
+    }
+});
+
 // Add product submit
 $('#submit-btn').on('click', (e) => {
     e.preventDefault();
     const description = fullEditor.root.innerHTML;
     $('#product-description').val(description);
-    const instruction = instructionEditor.root.innerHTML;
-    $('#product-instruction').val(instruction);
     const formData = new FormData(document.getElementById('kt_ecommerce_add_product_form'));
     images.forEach((image) => {
         formData.append('images[]', image.file, image.name);
@@ -71,7 +78,7 @@ $('#submit-btn').on('click', (e) => {
         },
         error: function (data) {
             if (data.status === 422) {
-                $('.error-message').each(function() {
+                $('.error-message').each(function () {
                     $(this).html('');
                     const inputElement = $(this).parent().children('input');
                     if (inputElement) {
