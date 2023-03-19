@@ -133,4 +133,5 @@ return [
     'add_brand' => 'Thêm thương hiệu',
     'brand_image' => 'Brand logo',
     'brand_info' => 'Brand information',
+    'brand' => 'Thương hiệu',
 ];

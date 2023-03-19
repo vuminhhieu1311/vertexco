@@ -6,8 +6,11 @@ use App\Enums\CategoryStatus;
 use App\Enums\ProductStatus;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,11 +29,14 @@ class ProductController extends Controller
     {
         $this->authorize('create', Product::class);
         $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $colors = Color::all();
+        $sizes = Size::all();
 
-        return view('product.create', compact('categories'));
+        return view('product.create', compact('categories', 'brands', 'colors', 'sizes'));
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $this->authorize('create', Product::class);
 

@@ -30,7 +30,7 @@ class UpdateBrandRequest extends FormRequest
                 'max:255',
                 Rule::unique('brands')->ignore(optional($this->route('brand'))->id),
             ],
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
             'status' => 'required',
         ];
     }

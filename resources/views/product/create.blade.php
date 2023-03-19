@@ -137,6 +137,33 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Category & tags-->
+                        <!--begin::Brand-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>{{ __('messages.brand') }}</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Input group-->
+                                <!--begin::Select2-->
+                                <select class="form-select mb-2" name="brand_id" data-control="select2"
+                                    data-placeholder="Select an option">
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    @endforeach
+                                </select>
+                                <!--end::Select2-->
+                                <!--end::Input group-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Brand-->
                         <!--begin::Discount-->
                         <div class="card card-flush py-4">
                             <!--begin::Card header-->
@@ -233,44 +260,56 @@
                                     <!--end::Card header-->
                                     <!--begin::Card body-->
                                     <div class="card-body pt-0" id="variants-container">
-                                        <div class="variant d-flex gap-5 mb-2" id="variant-1">
-                                            <!--begin::Input group-->
-                                            <div class="fv-row w-100">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">{{ __('messages.color') }}</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="number" name="colors[]" class="form-control mb-2" min="1" />
-                                                <!--end::Input-->
+                                        <div class="variant" id="variant-1">
+                                            <div class="d-flex gap-5 mb-2">
+                                                <!--begin::Input group-->
+                                                <div class="fv-row w-100">
+                                                    <!--begin::Label-->
+                                                    <label class="required form-label">{{ __('messages.color') }}</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <select class="form-select mb-2" name="colors[]" placeholder="Select an option">
+                                                        @foreach ($colors as $color)
+                                                            <option value="{{ $color->id }}">{{ $color->value }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <!--end::Input-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row w-100">
+                                                    <!--begin::Label-->
+                                                    <label class="required form-label">{{ __('messages.size') }}</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <select class="form-select mb-2" name="sizes[]" placeholder="Select an option">
+                                                        @foreach ($sizes as $size)
+                                                            <option value="{{ $size->id }}">{{ $size->value }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <!--end::Input-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row w-100">
+                                                    <!--begin::Label-->
+                                                    <label class="required form-label">{{ __('messages.quantity') }}</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="number" name="quantities[]" class="form-control mb-2"
+                                                        value="" min="1" />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <div style="display:flex;align-items:flex-end;padding-bottom:7px;">
+                                                    <a href="#"
+                                                        class="remove-variant-btn btn btn-active-light-danger pe-5"
+                                                        style="opacity:0;cursor:default;">
+                                                        <i class="fas fa-minus"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="fv-row w-100">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">{{ __('messages.size') }}</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="number" name="sizes[]" class="form-control mb-2"
-                                                    value="" min="1" />
-                                                <!--end::Input-->
-                                            </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="fv-row w-100">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">{{ __('messages.quantity') }}</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="number" name="quantities[]" class="form-control mb-2"
-                                                    value="" min="1" />
-                                                <!--end::Input-->
-                                            </div>
-                                            <!--end::Input group-->
-                                            <div style="display:flex;align-items:flex-end;padding-bottom:7px;">
-                                                <a href="#" class="remove-variant-btn btn btn-active-light-danger pe-5" style="opacity:0;cursor:default;">
-                                                    <i class="fas fa-minus"></i>
-                                                </a>
-                                            </div>
+                                            <div class="error-message variant-error-message text-danger mb-5" style="margin-top:-8px;"></div>
                                         </div>
                                         <a href="#" id="add-variant-btn" class="btn btn-light-primary">
                                             <i class="fas fa-plus me-2"></i> {{ __('messages.add') }}

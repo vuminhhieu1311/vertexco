@@ -134,4 +134,5 @@ return [
     'add_brand' => 'Add brand',
     'brand_image' => 'Brand logo',
     'brand_info' => 'Brand information',
+    'brand' => 'Brand',
 ];
