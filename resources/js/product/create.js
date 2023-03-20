@@ -36,7 +36,6 @@ let variantId = 1;
 $('#add-variant-btn').click(function (e) {
     e.preventDefault();
     var lastRow = $('.variant').last(); // select the last row
-    console.log(lastRow);
     var newRow = lastRow.clone(); // clone the last row
     newRow.find('input').val(''); // clear the values of the inputs in the new row
     variantId++;

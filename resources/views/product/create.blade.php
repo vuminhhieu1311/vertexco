@@ -249,7 +249,7 @@
                                     <!--end::Card header-->
                                 </div>
                                 <!--end::General options-->
-                                <!--begin::General options-->
+                                <!--begin::Product variants-->
                                 <div class="card card-flush py-4">
                                     <!--begin::Card header-->
                                     <div class="card-header">
@@ -317,7 +317,7 @@
                                     </div>
                                     <!--end::Card header-->
                                 </div>
-                                <!--end::General options-->
+                                <!--end::Product variants-->
                                 <!--begin::Media-->
                                 <div class="card card-flush py-4">
                                     <!--begin::Card header-->

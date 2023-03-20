@@ -13,22 +13,6 @@ var fullEditor = new Quill('#product-description-editor', {
 });
 fullEditor.root.innerHTML = $('#product-description').val();
 
-// Instruction editor
-var instructionEditor = new Quill('#product-instruction-editor', {
-    modules: {
-        toolbar: [
-            [{
-                header: [1, 2, false]
-            }],
-            ['bold', 'italic', 'underline'],
-            ['image', 'code-block']
-        ]
-    },
-    theme: 'snow' // or 'bubble'
-});
-instructionEditor.root.innerHTML = $('#product-instruction').val();
-
-
 // Dropzone product images
 const productId = $('#product-id-value').val();
 
@@ -74,9 +58,65 @@ $.ajax({
 // Add product submit
 $('#submit-btn').on('click', (e) => {
     e.preventDefault();
+
+    if (validateProductVariants()) {
+        return;
+    }
+
     const description = fullEditor.root.innerHTML;
     $('#product-description').val(description);
-    const instruction = instructionEditor.root.innerHTML;
-    $('#product-instruction').val(instruction);
     $('#kt_ecommerce_add_product_form').submit();
 });
+
+let variantId = $('#product-variant-count').val();
+// Add product variant
+$('#add-variant-btn').click(function (e) {
+    e.preventDefault();
+    var lastRow = $('.variant').last(); // select the last row
+    var newRow = lastRow.clone(); // clone the last row
+    newRow.find('input').val(''); // clear the values of the inputs in the new row
+    variantId++;
+    newRow.attr('id', 'variant-' + variantId);
+    newRow.find('a').css({
+        'opacity': 1,
+        'cursor': 'pointer',
+    });
+    newRow.find('.variant-error-message').first().html('');
+    lastRow.after(newRow); // insert the new row after the last row
+});
+
+$(document).on('click', '.remove-variant-btn', function(e) {
+    e.preventDefault();
+    if ($(this).css('opacity') == 1) {
+        $(this).parent().parent().parent().remove();
+    }
+});
+
+function validateProductVariants() {
+    $('.variant-error-message').html('');
+
+    let hasError = false;
+    $('.variant').each(function() {
+        let isError = false;
+        $(this).find('select').each(function() {
+            if (!$(this).val()) {
+                // $(this).addClass('is-invalid');
+                isError = true;
+                return;
+            }
+        });
+        $(this).find('input').each(function() {
+            if (!$(this).val()) {
+                // $(this).addClass('is-invalid');
+                isError = true;
+                return;
+            }
+        });
+        if (isError) {
+            hasError = true;
+            $(this).find('.variant-error-message').html(`<small>Trường bắt buộc</small>`)
+        }
+    });
+
+    return hasError;
+}

@@ -53,7 +53,7 @@ class ProductController extends Controller
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
-                'brand_id' => $request->input('brand_id', 1),
+                'brand_id' => $request->brand_id,
             ]);
 
             $product->categories()->attach($request->category_ids);
@@ -100,9 +100,13 @@ class ProductController extends Controller
     {
         $this->authorize('update', $product);
         $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $colors = Color::all();
+        $sizes = Size::all();
         $product->category_ids = $product->categories->pluck('id')->toArray();
+        $product->load('variants');
 
-        return view('product.edit', compact('product', 'categories'));
+        return view('product.edit', compact('product', 'categories', 'brands', 'colors', 'sizes'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -120,15 +124,27 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
-                'quantity' => $request->quantity,
                 'status' => $request->status,
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
-                'instruction' => $request->instruction,
+                'brand_id' => $request->brand_id,
             ]);
 
             $product->categories()->sync($request->category_ids);
+            $product->variants()->delete();
+
+            $colors = $request->input('colors', []);
+            $sizes = $request->input('sizes', []);
+            $quantities = $request->input('quantities', []);
+
+            foreach ($colors as $key => $color) {
+                $product->variants()->create([
+                    'size_id' => $sizes[$key],
+                    'color_id' => $color,
+                    'quantity' => $quantities[$key],
+                ]);
+            }
 
             DB::commit();
 
