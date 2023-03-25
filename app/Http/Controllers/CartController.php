@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -22,12 +23,17 @@ class CartController extends Controller
 
     public function save(Request $request, Product $product)
     {
-        dd($request->all());
-        if ($request->quantity > $product->quantity) {
-            toast('Vui lòng nhập số lượng nhỏ hơn '.$product->quantity, 'error');
+//        if ($request->quantity > $product->quantity) {
+//            toast('Vui lòng nhập số lượng nhỏ hơn '.$product->quantity, 'error');
+//
+//            return redirect()->back();
+//        }
 
-            return redirect()->back();
-        }
+        $variant = ProductVariant::firstWhere([
+            'product_id' => $product->id,
+            'size_id' => $request->size_id,
+            'color_id' => $request->color_id,
+        ]);
 
         Cart::add([
             'id' => $product->id,
@@ -37,6 +43,9 @@ class CartController extends Controller
             'weight' => 1,
             'options' => [
                 'avatar_url' => $product->avatar_url,
+                'size' => $variant->size->value,
+                'color' => $variant->color->value,
+                'variant_id' => $variant->id,
             ],
         ]);
 
