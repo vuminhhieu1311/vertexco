@@ -93,7 +93,10 @@ class ProductController extends Controller
             },
         ]);
 
-        return view('customer.product_detail', compact('product'));
+        $colors = $product->variants->pluck('color')->unique();
+        $sizes = $product->variants->pluck('size')->unique();
+
+        return view('customer.product_detail', compact('product', 'sizes', 'colors'));
     }
 
     public function edit(Product $product)

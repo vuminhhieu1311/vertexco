@@ -304,23 +304,19 @@
     <div id="page">
         @include('components.customer.header')
         <!-- Main Container -->
-        <div class="main-container col2-left-layout">
-            <div class="container">
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
         <!-- Main Container End -->
         @include('components.customer.footer')
     </div>
 
     <!-- JavaScript -->
     <script src="{{ asset('fabulous/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('fabulous/js/jquery.min.js') }}"></script>
     <script src="{{ asset('fabulous/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('fabulous/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('fabulous/js/main.js') }}"></script>
     <script src="{{ asset('fabulous/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('fabulous/js/mob-menu.js') }}"></script>
+    <script src="{{ asset('fabulous/js/cloud-zoom.js') }}"></script>
     @yield('js')
 </body>
 </html>

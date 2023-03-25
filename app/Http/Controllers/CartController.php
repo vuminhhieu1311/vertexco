@@ -22,6 +22,7 @@ class CartController extends Controller
 
     public function save(Request $request, Product $product)
     {
+        dd($request->all());
         if ($request->quantity > $product->quantity) {
             toast('Vui lòng nhập số lượng nhỏ hơn '.$product->quantity, 'error');
 
