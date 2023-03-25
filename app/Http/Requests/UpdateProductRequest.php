@@ -30,7 +30,7 @@ class UpdateProductRequest extends FormRequest
                 'max:255',
                 Rule::unique('products')->ignore(optional($this->route('product'))->id),
             ],
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
             'status' => 'required',
             'price' => 'required|integer',
             'brand_id' => 'required|integer',
