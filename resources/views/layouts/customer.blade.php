@@ -6,6 +6,11 @@
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('fabulous/css/styles.css') }}" media="all">
+    <style>
+        .main-container {
+            min-height: calc(100vh - 193px) !important;
+        }
+    </style>
     @yield('css')
 </head>
 
@@ -317,6 +322,7 @@
     <script src="{{ asset('fabulous/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('fabulous/js/mob-menu.js') }}"></script>
     <script src="{{ asset('fabulous/js/cloud-zoom.js') }}"></script>
+    <script src="{{ asset('fabulous/js/revslider.js') }}"></script>
     @yield('js')
 </body>
 </html>

@@ -4,10 +4,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-sm-3 col-xs-12">
-
                     <!-- Header Logo -->
-                    <div class="logo"><a title="ecommerce Template" href="index.html"><img alt="ecommerce Template"
-                                src="fabulous/images/logo.png"></a></div>
+                    <div class="logo">
+                        <a title="ecommerce Template" href="{{ route('home') }}">
+                            <img src="{{ asset('logo.png') }}">
+                        </a>
+                    </div>
                     <!-- End Header Logo -->
                     <div class="nav-icon">
                         <div class="mega-container visible-lg visible-md visible-sm">
