@@ -5,6 +5,7 @@
     <title>Shoe Addict</title>
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fabulous/css/styles.css') }}" media="all">
     <style>
         .main-container {
@@ -323,6 +324,13 @@
     <script src="{{ asset('fabulous/js/mob-menu.js') }}"></script>
     <script src="{{ asset('fabulous/js/cloud-zoom.js') }}"></script>
     <script src="{{ asset('fabulous/js/revslider.js') }}"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+        });
+    </script>
     @yield('js')
 </body>
 </html>

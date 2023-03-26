@@ -24,25 +24,6 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($cart as $id => $item)
-                                                    {{-- <tr>
-                                                        <td class="preview">
-                                                            <img src="{{ asset($item->options->avatar_url) }}"
-                                                                style="width:200px;height:200px;">
-                                                        </td>
-                                                        <td class="product">{{ $item->name }}</td>
-                                                        <td class="price">@money($item->price, 'VND')</td>
-                                                        <td class="quantity">
-                                                            <input id="quantity-input" type="number" class="form-control"
-                                                                placeholder="{{ __('messages.quantity') }}" value="{{ $item->qty }}" required
-                                                                min="1" max="{{ $item->product_quantity }}" data-url="{{ route('cart.update', ['id' => $id]) }}">
-                                                        </td>
-                                                        <td class="total">@money($item->price * $item->qty, 'VND')</td>
-                                                        <td class="del-item">
-                                                            <a href="{{ route('cart.remove', ['id' => $id]) }}">
-                                                                <i class="fa fa-close"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr> --}}
                                                     <tr class="cart_item">
                                                         <td class="item-img">
                                                             <a href="#"><img
@@ -50,8 +31,11 @@
                                                         </td>
                                                         <td class="item-title">
                                                             <div style="text-align:left;padding-left:30px;">
-                                                                <div style="font-weight:600;font-size:14px;">{{ $item->name }}</div>
-                                                                <div style="font-style:italic;font-size:12px;">{{ $item->options->color }}, {{ $item->options->size }}</div>
+                                                                <div style="font-weight:600;font-size:14px;">
+                                                                    {{ $item->name }}</div>
+                                                                <div style="font-style:italic;font-size:12px;">
+                                                                    {{ $item->options->color }}, {{ $item->options->size }}
+                                                                </div>
                                                             </div>
                                                         </td>
                                                         <td class="item-price">@money($item->price, 'VND')</td>
@@ -60,11 +44,20 @@
                                                                 <div class="product-qty">
                                                                     <div class="cart-quantity">
                                                                         <div class="cart-plus-minus">
-                                                                            <div class="dec qtybutton">-</div>
+                                                                            <div class="dec qtybutton dec-btn"
+                                                                                data-id="{{ $id }}"
+                                                                                data-url="{{ route('cart.update', ['id' => $id]) }}">
+                                                                                -</div>
                                                                             <input value="{{ $item->qty }}"
-                                                                                name="qtybutton" class="cart-plus-minus-box"
-                                                                                type="text">
-                                                                            <div class="inc qtybutton">+</div>
+                                                                                name="qtybutton"
+                                                                                class="cart-plus-minus-box quantity-input"
+                                                                                type="text"
+                                                                                id="quantity-input-{{ $id }}"
+                                                                                data-url="{{ route('cart.update', ['id' => $id]) }}">
+                                                                            <div class="inc qtybutton inc-btn"
+                                                                                data-id="{{ $id }}"
+                                                                                data-url="{{ route('cart.update', ['id' => $id]) }}">
+                                                                                +</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -80,56 +73,18 @@
                                         </table>
                                     </div>
                                     <div class="cart-bottom-area" style="margin-bottom:30px;">
-                                        <div class="row">
-                                            <div class="col-md-8 col-sm-7 col-xs-12">
-                                                <div class="update-coupne-area">
-                                                    <div class="coupn-area">
-                                                        <div class="discount">
-                                                            <h3>Discount Codes</h3>
-                                                            <label for="coupon_code">Enter your coupon code if you
-                                                                have one.</label>
-                                                            <input type="hidden" value="0" id="remove-coupone"
-                                                                name="remove">
-                                                            <input type="text" value="" name="coupon_code"
-                                                                id="coupon_code" class="input-text fullwidth">
-                                                            <button value="Apply Coupon"
-                                                                onclick="discountForm.submit(false)" class="button coupon "
-                                                                title="Apply Coupon" type="button"><span>Apply
-                                                                    Coupon</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div class="process-checkout-btn text-right">
+                                            <div>
+                                                <span
+                                                    style="font-size: 16px;font-weight:600;">{{ __('messages.subtotal') }}:
+                                                    <span>@money(Cart::priceTotal(), 'VND')</span>
                                             </div>
-                                            <div class="col-md-4 col-sm-5 col-xs-12">
-                                                <div class="cart-total-area">
-                                                    <div class="catagory-title cat-tit-5 text-right">
-                                                        <h3>Cart Totals</h3>
-                                                    </div>
-                                                    <div class="sub-shipping">
-                                                        <p>Subtotal <span>$575.00</span></p>
-                                                        <p>Shipping <span>$75.00</span></p>
-                                                    </div>
-                                                    <div class="shipping-method text-right">
-                                                        <div class="shipp">
-                                                            <input type="radio" name="ship" id="pay-toggle1">
-                                                            <label for="pay-toggle1">Flat Rate</label>
-                                                        </div>
-                                                        <div class="shipp">
-                                                            <input type="radio" name="ship" id="pay-toggle3">
-                                                            <label for="pay-toggle3">Direct Bank Transfer</label>
-                                                        </div>
-                                                        <p><a href="#">Calculate Shipping</a></p>
-                                                    </div>
-                                                    <div class="process-cart-total">
-                                                        <p>Total <span>$500.00</span></p>
-                                                    </div>
-                                                    <div class="process-checkout-btn text-right">
-                                                        <button class="button btn-proceed-checkout"
-                                                            title="Proceed to Checkout" type="button"><span>Proceed to
-                                                                Checkout</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @if (Cart::count())
+                                                <a href="{{ route('checkout') }}">
+                                                    <button class="button btn-proceed-checkout" style="width:300px;margin-top:20px;"
+                                                        type="button"><span>{{ __('messages.checkout') }}</span></button>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </form>
