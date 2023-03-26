@@ -1,98 +1,168 @@
 @extends('layouts.customer')
 
+@section('css')
+    <style>
+        .checkout-area .input-box input {
+            background: white;
+        }
+    </style>
+@endsection
+
 @section('content')
-    <section id="checkout-content">
-        <div class="container">
+    <!-- main-container -->
+    <div class="main-container col1-layout">
+        <div class="main container">
             <div class="row">
-                <form id="checkout-form" method="POST" action="{{ route('orders.store') }}">
-                    @csrf
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 left-checkout">
-                        <div class="sec-title style-three">
-                            <h2>{{ __('messages.billing_address') }}</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>{{ __('messages.name') }} <span style="color:red">*</span></label>
-                                <input name="name" type="text" value="{{ auth()->user()->name }}"
-                                    placeholder="{{ __('messages.name') }}">
-                                @error('name')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>{{ __('messages.address') }} <span style="color:red">*</span></label>
-                                <input name="address" type="text" value="{{ auth()->user()->address }}"
-                                    placeholder="{{ __('messages.address') }}">
-                                @error('address')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label>Email <span style="color:red">*</span></label>
-                                <input name="email" type="text" value="{{ auth()->user()->email }}"
-                                    placeholder="Email">
-                                @error('email')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                            <div class="col-lg-6">
-                                <label>{{ __('messages.phone_number') }} <span style="color:red">*</span></label>
-                                <input name="phone_number" type="text" value="{{ auth()->user()->phone_number }}"
-                                    placeholder="{{ __('messages.phone_number') }}">
-                                @error('phone_number')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>{{ __('messages.note') }}</label>
-                                <textarea name="note" placeholder="{{ __('messages.note') }}"></textarea>
-                                @error('note')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
+                <div class="col-sm-12">
+                    <div class="product-area">
+                        <div class="content-tab-product-category">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane  fade in active" id="checkout">
+                                    <!-- Checkout are start-->
+                                    <div class="checkout-area">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-xs-12">
+                                                        <div class="billing-details checkout-payment-area"
+                                                            style="background:white;">
+                                                            <div class="contact-text right-side">
+                                                                <h2>{{ __('messages.billing_address') }}</h2>
+                                                                <form id="checkout-form" method="POST"
+                                                                    action="{{ route('orders.store') }}">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="input-box">
+                                                                                <label>{{ __('messages.name') }}
+                                                                                    <em>*</em></label>
+                                                                                <input type="text" name="name"
+                                                                                    value="{{ auth()->user()->name }}"
+                                                                                    class="info">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <div class="input-box">
+                                                                                <label>Email<em>*</em></label>
+                                                                                <input type="email" name="email"
+                                                                                    class="info"
+                                                                                    value="{{ auth()->user()->email }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <div class="input-box">
+                                                                                <label>{{ __('messages.phone_number') }}<em>*</em></label>
+                                                                                <input type="text" name="phone_number"
+                                                                                    class="info"
+                                                                                    value="{{ auth()->user()->phone_number }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="input-box">
+                                                                                <label>{{ __('messages.address') }}
+                                                                                    <em>*</em></label>
+                                                                                <input type="text" name="address"
+                                                                                    value="{{ auth()->user()->address }}"
+                                                                                    class="info mb-10">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="input-box">
+                                                                                <label>{{ __('messages.note') }}</label>
+                                                                                <textarea class="area-tex"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="checkout-payment-area"
+                                                                    style="background:white;">
+                                                                    <div class="checkout-total">
+                                                                        <h3>{{ __('messages.your_order') }}</h3>
+                                                                        <form action="#" method="post">
+                                                                            <div class="table-responsive">
+                                                                                <table class="checkout-area table">
+                                                                                    <tbody>
+                                                                                        @foreach (Cart::content() as $id => $item)
+                                                                                            <tr
+                                                                                                class="cart_item check-item prd-name">
+                                                                                                <td class="ctg-type">
+                                                                                                    <div>
+                                                                                                        {{ $item->name }}
+                                                                                                        ×
+                                                                                                        <span>{{ $item->qty }}</span>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        style="font-style:italic;font-size:12px;text-transform:capitalize;">
+                                                                                                        {{ $item->options->color }},
+                                                                                                        {{ $item->options->size }}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="cgt-des">
+                                                                                                    @money($item->price * $item->qty, 'VND')
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        @endforeach
+                                                                                        <tr class="cart_item">
+                                                                                            <td class="ctg-type">
+                                                                                                {{ __('messages.subtotal') }}
+                                                                                            </td>
+                                                                                            <td class="cgt-des">
+                                                                                                @money(Cart::subtotal(), 'VND')
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr class="cart_item">
+                                                                                            <td class="ctg-type">
+                                                                                                {{ __('messages.tax') }}
+                                                                                            </td>
+                                                                                            <td class="cgt-des">
+                                                                                                @money(Cart::tax(), 'VND')
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr class="cart_item">
+                                                                                            <td class="ctg-type crt-total">
+                                                                                                {{ __('messages.total') }}
+                                                                                            </td>
+                                                                                            <td class="cgt-des prc-total">
+                                                                                                @money(Cart::total(), 'VND') </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="text-right" style="margin-top:15px;">
+                                                                        @if (Cart::count())
+                                                                            <div class="input-box"><a id="order-btn"
+                                                                                    class="btn-def btn2"
+                                                                                    href="#">Place order</a>
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Checkout are end-->
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
-                        <div class="sec-title style-three">
-                            <h2>{{ __('messages.your_order') }}</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 order-box">
-                                <ul>
-                                    @foreach (Cart::content() as $id => $item)
-                                        <li>
-                                            {{ $item->name }} X {{ $item->qty }}
-                                            <span>@money($item->price * $item->qty, 'VND')</span>
-                                        </li>
-                                    @endforeach
-                                    <li>{{ __('messages.subtotal') }}<span class="bold">@money(Cart::subtotal(), 'VND')</span></li>
-                                    <li>{{ __('messages.tax') }}<span class="bold">@money(Cart::tax(), 'VND')</span></li>
-                                    <li class="total">{{ __('messages.total') }}<span
-                                            class="bold">@money(Cart::total(), 'VND')</span></li>
-                                    @if (Cart::count())
-                                        <li>
-                                            <a href="#" type="submit" id="order-btn" class="place-order">
-                                                {{ __('messages.place_order') }}
-                                                </button>
-                                        </li>
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!--End main-container -->
 @endsection
 
 @section('js')

@@ -27,6 +27,7 @@
                                                     <tr class="cart_item">
                                                         <td class="item-img">
                                                             <a href="#"><img
+                                                                    style="height:100px;object-fit:contain;background:white;"
                                                                     src="{{ asset($item->options->avatar_url) }}"></a>
                                                         </td>
                                                         <td class="item-title">
@@ -65,7 +66,8 @@
                                                         </td>
                                                         <td class="total-price"><strong>@money($item->price * $item->qty, 'VND')</strong></td>
                                                         <td class="remove-item">
-                                                            <a href="#"><i class="fa fa-trash-o"></i></a>
+                                                            <a href="{{ route('cart.remove', ['id' => $id]) }}"><i
+                                                                    class="fa fa-trash-o"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -81,7 +83,8 @@
                                             </div>
                                             @if (Cart::count())
                                                 <a href="{{ route('checkout') }}">
-                                                    <button class="button btn-proceed-checkout" style="width:300px;margin-top:20px;"
+                                                    <button class="button btn-proceed-checkout"
+                                                        style="width:300px;margin-top:20px;"
                                                         type="button"><span>{{ __('messages.checkout') }}</span></button>
                                                 </a>
                                             @endif
