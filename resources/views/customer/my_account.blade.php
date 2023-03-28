@@ -1,72 +1,84 @@
 @extends('layouts.customer')
 
 @section('content')
-    <section id="checkout-content">
-        <div class="container">
+    <!-- main-container -->
+    <div class="main-container col2-right-layout">
+        <div class="main container">
             <div class="row">
-                <form id="checkout-form" method="POST" action="{{ route('user-profile-information.update') }}">
-                    @csrf
-                    @method('PUT')
-                    <div class="left-checkout" style="width: 600px;margin-left: auto;margin-right: auto;">
-                        <div class="sec-title style-three">
-                            <h2>Thông tin tài khoản</h2>
-                            <div class="line"></div>
+                <section class="col-sm-2 col-xs-0">
+                </section>
+                <section class="col-sm-8 col-xs-12">
+                    <div class="col-main">
+                        <div class="my-account">
+                            <form id="checkout-form" method="POST" action="{{ route('user-profile-information.update') }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="page-title">
+                                    <h2>Thông tin tài khoản</h2>
+                                </div>
+                                <div class="row" style="margin-top:16px;">
+                                    <div class="col-sm-12 col-md-12 col-xs-12">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <div class="form-group">
+                                                    <label for="name">{{ __('messages.name') }} <span
+                                                            class="required">*</span></label>
+                                                    <input type="text" name="name" class="form-control"
+                                                        value="{{ auth()->user()->name }}"
+                                                        placeholder="{{ __('messages.name') }}">
+                                                    @error('name', 'updateProfileInformation')
+                                                        <div class="text-danger"><small>{{ $message }}</small></div>
+                                                    @enderror
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <label for="email">Email <span class="required">*</span></label>
+                                                    <input type="email" name="email" class="form-control"
+                                                        value="{{ auth()->user()->email }}" placeholder="Email">
+                                                    @error('email', 'updateProfileInformation')
+                                                        <div class="text-danger"><small>{{ $message }}</small></div>
+                                                    @enderror
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <label for="phone_number">{{ __('messages.phone_number') }} <span
+                                                            class="required">*</span></label>
+                                                    <input type="text" name="phone_number" class="form-control"
+                                                        value="{{ auth()->user()->phone_number }}"
+                                                        placeholder="{{ __('messages.phone_number') }}">
+                                                    @error('phone_number', 'updateProfileInformation')
+                                                        <div class="text-danger"><small>{{ $message }}</small></div>
+                                                    @enderror
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-group">
+                                                    <label for="address">{{ __('messages.address') }} <span
+                                                            class="required">*</span></label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        value="{{ auth()->user()->address }}"
+                                                        placeholder="{{ __('messages.address') }}">
+                                                    @error('address', 'updateProfileInformation')
+                                                        <div class="text-danger"><small>{{ $message }}</small></div>
+                                                    @enderror
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="buttons-set">
+                                    <button type="submit"
+                                        class="button login"><span>{{ __('messages.save_changes') }}</span></button>
+                                    <span class="required pull-right"><b>*</b> Trường bắt buộc</span>
+                                </div>
+                            </form>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>{{ __('messages.name') }} <span style="color:red">*</span></label>
-                                <input name="name" type="text" value="{{ auth()->user()->name }}"
-                                    placeholder="{{ __('messages.name') }}">
-                                @error('name')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>{{ __('messages.address') }} <span style="color:red">*</span></label>
-                                <input name="address" type="text" value="{{ auth()->user()->address }}"
-                                    placeholder="{{ __('messages.address') }}">
-                                @error('address')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>Email <span style="color:red">*</span></label>
-                                <input name="email" type="text" value="{{ auth()->user()->email }}"
-                                    placeholder="Email">
-                                @error('email')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>{{ __('messages.phone_number') }} <span style="color:red">*</span></label>
-                                <input name="phone_number" type="text" value="{{ auth()->user()->phone_number }}"
-                                    placeholder="{{ __('messages.phone_number') }}">
-                                @error('phone_number')
-                                    <div class="text-danger"><small>{{ $message }}</small></div>
-                                @enderror
-                            </div>
-                        </div>
-                        <button type="submit" class="theme-btn btn-theme-one rounded-btn" style="padding:6px 20px;">
-                            {{ __('messages.save_changes') }}
-                        </button>
                     </div>
-                </form>
+                </section>
             </div>
         </div>
-    </section>
-@endsection
-
-@section('js')
-    <script>
-        $('#order-btn').on('click', (e) => {
-            e.preventDefault();
-            $('#checkout-form').submit();
-        });
-    </script>
+    </div>
+    <!--End main-container -->
 @endsection

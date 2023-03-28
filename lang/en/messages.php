@@ -135,4 +135,5 @@ return [
     'brand_image' => 'Brand logo',
     'brand_info' => 'Brand information',
     'brand' => 'Brand',
+    'my_account' => 'My Account',
 ];

@@ -218,7 +218,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="fw-bolder text-end">
-                                                    <a href="../../demo8/dist/apps/user-management/users/view.html"
+                                                    <a href="#"
                                                         class="text-gray-600 text-hover-primary">{{ $order->user->email }}</a>
                                                 </td>
                                             </tr>
@@ -332,7 +332,7 @@
                                         <thead>
                                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                 <th class="min-w-175px">{{ __('messages.product') }}</th>
-                                                <th class="min-w-100px text-end">ID</th>
+                                                <th class="min-w-100px text-end">ID sản phẩm</th>
                                                 <th class="min-w-70px text-end">{{ __('messages.quantity') }}</th>
                                                 <th class="min-w-100px text-end">{{ __('messages.price') }}</th>
                                                 <th class="min-w-100px text-end">{{ __('messages.total2') }}</th>
@@ -341,7 +341,7 @@
                                         <!--end::Table head-->
                                         <!--begin::Table body-->
                                         <tbody class="fw-bold text-gray-600">
-                                            @foreach ($order->products as $product)
+                                            @foreach ($order->productVariants as $item)
                                                 <!--begin::Products-->
                                                 <tr>
                                                     <!--begin::Product-->
@@ -350,18 +350,17 @@
                                                             <!--begin::Thumbnail-->
                                                             <a href="" class="symbol symbol-50px">
                                                                 <span class="symbol-label"
-                                                                    style="{{ 'background-image:url(' . asset($product->avatar_url) . ');' }}"></span>
+                                                                    style="{{ 'background-image:url(' . asset($item->product->avatar_url) . ');' }}"></span>
                                                             </a>
                                                             <!--end::Thumbnail-->
                                                             <!--begin::Title-->
                                                             <div class="ms-5">
                                                                 <a href=""
                                                                     class="fw-bolder text-gray-600 text-hover-primary">
-                                                                    {{ $product->name }}
+                                                                    {{ $item->product->name }}
                                                                 </a>
                                                                 <div class="fs-7 text-muted">
-                                                                    {{ __('messages.creation_date') }}:
-                                                                    {{ $product->created_at->format('d/m/Y') }}
+                                                                    {{ $item->color->value }}, {{ $item->size->value }}
                                                                 </div>
                                                             </div>
                                                             <!--end::Title-->
@@ -369,16 +368,16 @@
                                                     </td>
                                                     <!--end::Product-->
                                                     <!--begin::SKU-->
-                                                    <td class="text-end">{{ $product->id }}</td>
+                                                    <td class="text-end">{{ $item->product_id }}</td>
                                                     <!--end::SKU-->
                                                     <!--begin::Quantity-->
-                                                    <td class="text-end">{{ $product->pivot->quantity }}</td>
+                                                    <td class="text-end">{{ $item->pivot->quantity }}</td>
                                                     <!--end::Quantity-->
                                                     <!--begin::Price-->
-                                                    <td class="text-end">@money($product->pivot->price, 'VND')</td>
+                                                    <td class="text-end">@money($item->pivot->price, 'VND')</td>
                                                     <!--end::Price-->
                                                     <!--begin::Total-->
-                                                    <td class="text-end">@money($product->pivot->price * $product->pivot->quantity, 'VND')</td>
+                                                    <td class="text-end">@money($item->pivot->price * $item->pivot->quantity, 'VND')</td>
                                                     <!--end::Total-->
                                                 </tr>
                                                 <!--end::Products-->

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fabulous/css/styles.css') }}" media="all">
+    <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet" type="text/css" />
     <style>
         .main-container {
             min-height: calc(100vh - 193px) !important;
@@ -275,7 +276,7 @@
         </ul>
         <div class="top-links">
             <ul class="links">
-                <li><a title="My Account" href="my-account.html">My Account</a></li>
+                <li><a href="{{ route('user.profile') }}">{{ __('messages.my_account') }}</a></li>
                 <li><a title="Wishlist" href="wishlist.html">Wishlist</a></li>
                 <li><a title="Checkout" href="checkout.html">Checkout</a></li>
                 <li><a title="Blog" href="blog.html"><span>Blog</span></a></li>

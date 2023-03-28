@@ -10,3 +10,16 @@
 .form-control:focus {
     border-color: #FF7B54;
 }
+
+.swal2-popup.swal2-toast .swal2-title {
+    font-size: 14px !important;
+}
+
+.text-danger {
+    color: #D9214E;
+}
+
+.text-danger small {
+    color: #D9214E;
+    text-transform: unset;
+}

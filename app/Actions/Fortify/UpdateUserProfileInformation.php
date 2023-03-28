@@ -17,7 +17,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
-        Validator::make($input, [
+        $validator = Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],
@@ -28,7 +28,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
-        ])->validateWithBag('updateProfileInformation');
+        ]);
+
+        $validator->setAttributeNames([
+            'name' => __('messages.name'),
+            'email' => 'Email',
+            'phone_number' => __('messages.phone_number'),
+            'address' => __('messages.address'),
+        ]);
+
+        $validator->validateWithBag('updateProfileInformation');
 
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
@@ -41,7 +50,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'phone_number' => $input['phone_number'],
             ])->save();
         }
-        toast(__('messages.successfully'), 'success');
+        toast(__('messages.successfully'), 'success')->autoClose(500000);;
     }
 
     /**

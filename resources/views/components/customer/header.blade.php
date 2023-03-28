@@ -310,7 +310,8 @@
                                         <div class="mini-cart">
                                             <div class="basket"><a class="basket-icon"
                                                     href="{{ route('cart.show') }}"><i
-                                                        class="fa fa-shopping-basket"></i> &nbsp;{{ __('messages.my_cart') }}
+                                                        class="fa fa-shopping-basket"></i>
+                                                    &nbsp;{{ __('messages.my_cart') }}
                                                     <span>({{ Cart::count() }})</span></>
                                             </div>
                                         </div>
@@ -352,7 +353,7 @@
                                         7890</a> <a href="mailto:support@example.com"><i class="fa fa-envelope"></i>
                                         support@example.com</a> </div>
                                 <ul class="links">
-                                    <li><a title="My Account" href="my-account.html">My Account</a></li>
+                                    <li><a href="{{ route('user.profile') }}">{{ __('messages.my_account') }}</a></li>
                                     <li><a title="My Wishlist" href="wishlist.html">Wishlist</a></li>
                                     <li><a title="Checkout" href="checkout.html">Checkout</a></li>
                                     <li><a title="Track Order" href="track-order.html">Track Order</a></li>
