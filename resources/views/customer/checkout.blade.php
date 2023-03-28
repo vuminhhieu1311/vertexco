@@ -139,9 +139,11 @@
                                                                     </div>
                                                                     <div class="text-right" style="margin-top:15px;">
                                                                         @if (Cart::count())
-                                                                            <div class="input-box"><a id="order-btn"
-                                                                                    class="btn-def btn2"
-                                                                                    href="#">Place order</a>
+                                                                            <div class="input-box">
+                                                                                <a id="order-btn" class="btn-def btn2"
+                                                                                    href="#">
+                                                                                    {{ __('messages.place_order') }}
+                                                                                </a>
                                                                             </div>
                                                                         @endif
                                                                     </div>

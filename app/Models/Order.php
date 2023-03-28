@@ -31,6 +31,12 @@ class Order extends Model
             ->withPivot('quantity', 'price');
     }
 
+    public function productVariants()
+    {
+        return $this->belongsToMany(ProductVariant::class, 'product_order')
+            ->withPivot('quantity', 'price');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

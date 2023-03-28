@@ -332,5 +332,6 @@
         });
     </script>
     @yield('js')
+    @include('sweetalert::alert')
 </body>
 </html>
