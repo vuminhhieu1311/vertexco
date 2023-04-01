@@ -325,6 +325,7 @@
     <script src="{{ asset('fabulous/js/mob-menu.js') }}"></script>
     <script src="{{ asset('fabulous/js/cloud-zoom.js') }}"></script>
     <script src="{{ asset('fabulous/js/revslider.js') }}"></script>
+    <script src="{{ asset('resources/js/main.js') }}"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

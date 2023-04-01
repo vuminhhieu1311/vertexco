@@ -1,4 +1,4 @@
-@extends('layouts.order_history')
+@extends('layouts.customer')
 
 @section('css')
     <link href="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
@@ -6,16 +6,8 @@
     <link href="{{ asset('metronic/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('metronic/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <style>
-        .appoinment-btn a {
-            padding: 9px 20px !important;
-        }
-
-        .appoinment-btn {
-            top: 15px !important;
-        }
-
-        .order-date-picker input {
-            height: 43px;
+        .basket-icon i {
+            color: #fff;
         }
     </style>
 @endsection
@@ -57,7 +49,7 @@
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                             <!--begin::Flatpickr-->
-                            <div class="input-group w-250px order-date-picker">
+                            <div class="input-group w-250px">
                                 <input class="form-control form-control-solid rounded rounded-end-0"
                                     placeholder="{{ __('messages.pick_date_range') }}" id="kt_ecommerce_sales_flatpickr"
                                     style="height:60px" />
@@ -211,6 +203,8 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->

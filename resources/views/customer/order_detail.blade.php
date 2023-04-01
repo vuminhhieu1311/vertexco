@@ -1,4 +1,4 @@
-@extends('layouts.order_history')
+@extends('layouts.customer')
 
 @section('css')
     <link href="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
@@ -6,16 +6,8 @@
     <link href="{{ asset('metronic/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('metronic/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <style>
-        .appoinment-btn a {
-            padding: 9px 20px !important;
-        }
-
-        .appoinment-btn {
-            top: 15px !important;
-        }
-
-        .order-date-picker input {
-            height: 43px;
+        .basket-icon i {
+            color: #fff;
         }
     </style>
 @endsection
@@ -72,29 +64,6 @@
                                                     </div>
                                                 </td>
                                                 <td class="fw-bolder text-end">
-                                                    {{-- <select class="form-select mb-2" name="status" data-control="select2"
-                                                        data-hide-search="true" data-placeholder="Select an option"
-                                                        id="status-select"
-                                                        data-url="{{ route('orders.update', ['order' => $order->id]) }}">
-                                                        <option value="pending"
-                                                            @if ($order->status === 'pending') selected @endif>Pending
-                                                        </option>
-                                                        <option value="confirmed"
-                                                            @if ($order->status === 'confirmed') selected @endif>Confirmed
-                                                        </option>
-                                                        <option value="delivering"
-                                                            @if ($order->status === 'delivering') selected @endif>Delivering
-                                                        </option>
-                                                        <option value="delivered"
-                                                            @if ($order->status === 'delivered') selected @endif>Delivered
-                                                        </option>
-                                                        <option value="paid"
-                                                            @if ($order->status === 'paid') selected @endif>Paid
-                                                        </option>
-                                                        <option value="canceled"
-                                                            @if ($order->status === 'canceled') selected @endif>Canceled
-                                                        </option>
-                                                    </select> --}}
                                                     <!--begin::Badges-->
                                                     @include('components.status', [
                                                         'status' => $order->status,
@@ -199,7 +168,7 @@
                                                             <a>
                                                                 <div class="symbol-label">
                                                                     <img
-                                                                        src="{{ Avatar::create($order->user->name)->setFontSize(10)->toBase64() }}" />
+                                                                        src="{{ Avatar::create($order->user->name)->toBase64() }}" />
                                                                 </div>
                                                             </a>
                                                         </div>
@@ -288,7 +257,7 @@
                                 </div>
                                 <!--end::Card header-->
                                 <!--begin::Card body-->
-                                <div class="ml-25">
+                                <div style="margin-left:28px;">
                                     @if ($order->rating)
                                         @include('components.view_rating', [
                                             'rating' => $order->rating->rating,
@@ -353,7 +322,7 @@
                                         <thead>
                                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                 <th class="min-w-175px">{{ __('messages.product') }}</th>
-                                                <th class="min-w-100px text-end">ID</th>
+                                                <th class="min-w-100px text-end">ID sản phẩm</th>
                                                 <th class="min-w-70px text-end">{{ __('messages.quantity') }}</th>
                                                 <th class="min-w-100px text-end">{{ __('messages.price') }}</th>
                                                 <th class="min-w-100px text-end">{{ __('messages.total2') }}</th>
@@ -362,7 +331,7 @@
                                         <!--end::Table head-->
                                         <!--begin::Table body-->
                                         <tbody class="fw-bold text-gray-600">
-                                            @foreach ($order->products as $product)
+                                            @foreach ($order->productVariants as $item)
                                                 <!--begin::Products-->
                                                 <tr>
                                                     <!--begin::Product-->
@@ -371,18 +340,17 @@
                                                             <!--begin::Thumbnail-->
                                                             <a href="" class="symbol symbol-50px">
                                                                 <span class="symbol-label"
-                                                                    style="{{ 'background-image:url(' . asset($product->avatar_url) . ');' }}"></span>
+                                                                    style="{{ 'background-image:url(' . asset($item->product->avatar_url) . ');' }}"></span>
                                                             </a>
                                                             <!--end::Thumbnail-->
                                                             <!--begin::Title-->
                                                             <div class="ms-5">
                                                                 <a href=""
                                                                     class="fw-bolder text-gray-600 text-hover-primary">
-                                                                    {{ $product->name }}
+                                                                    {{ $item->product->name }}
                                                                 </a>
                                                                 <div class="fs-7 text-muted">
-                                                                    {{ __('messages.creation_date') }}:
-                                                                    {{ $product->created_at->format('d/m/Y') }}
+                                                                    {{ $item->color->value }}, {{ $item->size->value }}
                                                                 </div>
                                                             </div>
                                                             <!--end::Title-->
@@ -390,16 +358,16 @@
                                                     </td>
                                                     <!--end::Product-->
                                                     <!--begin::SKU-->
-                                                    <td class="text-end">{{ $product->id }}</td>
+                                                    <td class="text-end">{{ $item->product->id }}</td>
                                                     <!--end::SKU-->
                                                     <!--begin::Quantity-->
-                                                    <td class="text-end">{{ $product->pivot->quantity }}</td>
+                                                    <td class="text-end">{{ $item->pivot->quantity }}</td>
                                                     <!--end::Quantity-->
                                                     <!--begin::Price-->
-                                                    <td class="text-end">@money($product->pivot->price, 'VND')</td>
+                                                    <td class="text-end">@money($item->pivot->price, 'VND')</td>
                                                     <!--end::Price-->
                                                     <!--begin::Total-->
-                                                    <td class="text-end">@money($product->pivot->price * $product->pivot->quantity, 'VND')</td>
+                                                    <td class="text-end">@money($item->pivot->price * $item->pivot->quantity, 'VND')</td>
                                                     <!--end::Total-->
                                                 </tr>
                                                 <!--end::Products-->
@@ -446,6 +414,8 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->

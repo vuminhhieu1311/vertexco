@@ -7,7 +7,7 @@
                     <!-- Header Logo -->
                     <div class="logo">
                         <a title="ecommerce Template" href="{{ route('home') }}">
-                            <img src="{{ asset('logo.png') }}">
+                            <img style="height:35px;" src="{{ asset('logo.png') }}">
                         </a>
                     </div>
                     <!-- End Header Logo -->
@@ -304,6 +304,15 @@
                                             class="fa fa-search hidden-xs hidden-lg hidden-md"></i></button>
                                 </form>
                             </div>
+                            <!-- Header Language -->
+                            <div class="language-box hidden-xs">
+                                <select class="selectpicker" data-width="fit">
+                                    <option>English</option>
+                                    <option>Francais</option>
+                                    <option>German</option>
+                                    <option>Español</option>
+                                </select>
+                            </div>
                             <div class="right_menu">
                                 <div class="menu_top">
                                     <div class="top-cart-contain pull-right">
@@ -317,47 +326,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Header Language -->
-                                <div class="language-box hidden-xs">
-                                    <select class="selectpicker" data-width="fit">
-                                        <option>English</option>
-                                        <option>Francais</option>
-                                        <option>German</option>
-                                        <option>Español</option>
-                                    </select>
-                                </div>
-                                <div class="currency-box hidden-xs">
-                                    <form class="form-inline">
-                                        <div class="input-group">
-                                            <div class="currency-addon">
-                                                <select class="currency-selector">
-                                                    <option data-symbol="$">USD</option>
-                                                    <option data-symbol="€">EUR</option>
-                                                    <option data-symbol="£">GBP</option>
-                                                    <option data-symbol="¥">JPY</option>
-                                                    <option data-symbol="$">CAD</option>
-                                                    <option data-symbol="$">AUD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <!-- End Header Currency -->
                             </div>
                         </div>
                         <div class="top_section hidden-xs">
                             <div class="toplinks">
                                 <div class="site-dir hidden-xs"> <a class="hidden-sm" href="#"><i
                                             class="fa fa-phone"></i> <strong>Hotline:</strong> +1 123 456
-                                        7890</a> <a href="mailto:support@example.com"><i class="fa fa-envelope"></i>
+                                        7890</a> <a href="#"><i class="fa fa-envelope"></i>
                                         support@example.com</a> </div>
                                 <ul class="links">
                                     <li><a href="{{ route('user.profile') }}">{{ __('messages.my_account') }}</a></li>
-                                    <li><a title="My Wishlist" href="wishlist.html">Wishlist</a></li>
-                                    <li><a title="Checkout" href="checkout.html">Checkout</a></li>
-                                    <li><a title="Track Order" href="track-order.html">Track Order</a></li>
-                                    <li><a title="Log In" href="login.html">Log In</a></li>
+                                    <li><a href="{{ route('order_history') }}">{{ __('messages.my_order') }}</a></li>
+                                    @if (auth()->user())
+                                        <li><a id="logout-btn" href="#">{{ __('messages.sign_out') }}</a></li>
+                                        <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <li><a href="{{ route('login') }}">{{ __('messages.sign_in') }}</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
