@@ -42,19 +42,10 @@
                             <div id="category-desc-slider" class="product-flexslider hidden-buttons">
                                 <div class="slider-items slider-width-col1 owl-carousel owl-theme">
                                     <div class="item"> <a href="#"><img alt="New Special Collection"
-                                                src="fabulous/images/new-special.jpg"></a>
-                                        <div class="cat-img-title cat-bg cat-box">
-                                            <h2 class="cat-heading">New Special<br>
-                                                Collection</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                                        </div>
+                                                src="{{ asset('banner5.jpeg') }}" style="height:400px;"></a>
                                     </div>
                                     <div class="item"> <a href="#"><img alt="New Fashion"
-                                                src="fabulous/images/new-fashion.jpg"></a>
-                                        <div class="cat-img-title cat-bg cat-box">
-                                            <h2 class="cat-heading">New Fashion</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                                        </div>
+                                                src="{{ asset('banner2.webp') }}" style="height:400px;"></a>
                                     </div>
                                 </div>
                             </div>
@@ -179,23 +170,16 @@
                                         </li>
                                     </ol>
                                     <div class="carousel-inner">
-                                        <div class="item active"><img src="fabulous/images/slide3.jpg" alt="New Arrivals">
+                                        <div class="item active"><img src="{{ asset('banner8.webp') }}" alt="New Arrivals">
                                             <div class="carousel-caption">
                                                 <h3><a title=" Sample Product" href="#">New Arrivals</a>
                                                 </h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                             </div>
                                         </div>
-                                        <div class="item"><img src="fabulous/images/slide1.jpg" alt="Top Fashion">
+                                        <div class="item"><img src="{{ asset('banner9.webp') }}" alt="Mid Season">
                                             <div class="carousel-caption">
                                                 <h3><a title=" Sample Product" href="#">Top Fashion</a>
-                                                </h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            </div>
-                                        </div>
-                                        <div class="item"><img src="fabulous/images/slide2.jpg" alt="Mid Season">
-                                            <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">Mid Season</a>
                                                 </h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                             </div>
