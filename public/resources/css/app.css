@@ -24,3 +24,23 @@
     text-transform: unset;
 }
 
+#product-search-input {
+    margin: 0;
+    width: 85%;
+    font-size: 13px;
+    height: 40px;
+    color: #fff;
+    padding: 0 2px;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+#product-search-input::-moz-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+}
+
+#product-search-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+}
+

@@ -1,19 +1,25 @@
-// var urlParams = new URLSearchParams(window.location.search);
+var urlParams = new URLSearchParams(window.location.search);
 
-// $('#search-input').keyup (function (e) {
-//     const keyword = $(this).val();
-//     urlParams.delete('name');
-//     urlParams.append('name', keyword);
+$('#product-filter-form').submit(function(event) {
+    event.preventDefault();
 
-//     if (e.which === 13) {
-//         window.location.href = `?${urlParams.toString()}`;
-//     }
-// });
+    urlParams.delete('brands[]');
+    urlParams.delete('categories[]');
 
-// $('#search-btn').on('click', (e) => {
-//     e.preventDefault();
-//     window.location.href = `?${urlParams.toString()}`;
-// });
+    var searchData = $(this).serializeArray();
+
+    searchData.forEach((item) => {
+        console.log(item.name);
+        urlParams.append(item.name + '[]', item.value);
+    })
+
+    window.location.href = `/?${urlParams.toString()}`;
+});
+
+$('#clear-filter-btn').on('click', (e) => {
+    e.preventDefault();
+    window.location.href = `/`;
+});
 
 // $('.add-to-cart').on('click', (e) => {
 //     e.preventDefault();
@@ -35,13 +41,4 @@
 //             }
 //         },
 //     });
-// });
-
-// $('.category-filter').on('click', (e) => {
-//     e.preventDefault();
-//     const categoryId = $(e.target).data('id');
-//     urlParams.delete('category_id');
-//     urlParams.append('category_id', categoryId);
-
-//     window.location.href = `/?${urlParams.toString()}`;
 // });

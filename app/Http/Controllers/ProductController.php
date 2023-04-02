@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\BrandStatus;
 use App\Enums\CategoryStatus;
 use App\Enums\ProductStatus;
 use App\Http\Requests\StoreProductRequest;
@@ -196,21 +197,27 @@ class ProductController extends Controller
     public function getPublishedProducts(Request $request)
     {
         $categories = Category::where('status', CategoryStatus::PUBLISHED)->latest()->get();
+        $brands = Brand::where('status', BrandStatus::PUBLISHED)->latest()->get();
 
         $products = Product::where('status', ProductStatus::PUBLISHED)
-//            ->where('quantity', '>', 0)
+            ->whereHas('variants', function ($query) {
+                return $query->where('quantity', '>', 0);
+            })
             ->withCount('orders')
             ->orderBy('orders_count', 'desc')
             ->when(request('name'), function ($query) {
                 return $query->where('name', 'LIKE', '%'.request('name').'%');
             })
-            ->when(request('category_id'), function ($query) {
+            ->when(request('categories'), function ($query) {
                 return $query->whereHas('categories', function ($q) {
-                    return $q->where('categories.id', request('category_id'));
+                    return $q->whereIn('categories.id', request('categories'));
                 });
+            })
+            ->when(request('brands'), function ($query) {
+                return $query->whereIn('brand_id', request('brands'));
             })
             ->latest()->paginate(9);
 
-        return view('customer.home', compact('products', 'categories'));
+        return view('customer.home', compact('products', 'categories', 'brands'));
     }
 }

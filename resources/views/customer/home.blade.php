@@ -117,198 +117,54 @@
                     <aside class="sidebar">
                         <div class="block block-layered-nav">
                             <div class="block-title">
-                                <h3>Shop By</h3>
+                                <h3>Bộ lọc</h3>
                             </div>
                             <div class="block-content">
-                                <p class="block-subtitle">Shopping Options</p>
-                                <dl id="narrow-by-list">
-                                    <dt class="odd">Price</dt>
-                                    <dd class="odd">
-                                        <ol>
-                                            <li><a href="#"><span class="price">$0.00</span> - <span
-                                                        class="price">$99.99</span></a> (6) </li>
-                                            <li><a href="#"><span class="price">$100.00</span> and
-                                                    above</a> (6) </li>
-                                        </ol>
-                                    </dd>
-                                    <dt class="even">Manufacturer</dt>
-                                    <dd class="even">
-                                        <ol>
-                                            <li><a href="#">Kids Dresses</a> (20) </li>
-                                            <li><a href="#">Unisex Clothing</a> (25) </li>
-                                            <li><a href="#">Winter Wear</a> (8) </li>
-                                            <li><a href="#">Garments</a> (5) </li>
-                                            <li><a href="#">Undergarments</a> (2) </li>
-                                        </ol>
-                                    </dd>
-                                    <dt class="odd">Clothing Material</dt>
-                                    <dd class="odd">
-                                        <ol class="bag-material">
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Cotton" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Cotton</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Denim" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Denim</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Linen" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Linen</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Rayon" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Rayon</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Synthetic" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Synthetic</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Satin" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Satin</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="pretty p-icon p-smooth">
-                                                    <input type="checkbox" name="Material" value="Silk" />
-                                                    <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                        <label>Silk</label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ol>
-                                    </dd>
-                                    <dt class="odd">Size</dt>
-                                    <div class="size-area">
-                                        <div class="size">
-                                            <ul>
-                                                <li><a href="#">S</a></li>
-                                                <li><a href="#">L</a></li>
-                                                <li><a href="#">M</a></li>
-                                                <li><a href="#">XL</a></li>
-                                                <li><a href="#">XXL</a></li>
-                                            </ul>
-                                        </div>
+                                <form id="product-filter-form" method="GET">
+                                    <dl id="narrow-by-list">
+                                        <dt class="even">{{ __('messages.categories') }}</dt>
+                                        <dd class="even">
+                                            <ol class="bag-material">
+                                                @foreach ($categories as $category)
+                                                    <li>
+                                                        <div class="pretty p-icon p-smooth">
+                                                            <input type="checkbox" name="categories"
+                                                                value="{{ $category->id }}"
+                                                                @if (in_array(strval($category->id), request()->query('categories', []))) checked @endif />
+                                                            <div class="state p-success"> <i class="icon fa fa-check"></i>
+                                                                <label>{{ $category->name }}</label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
+                                        </dd>
+                                        <dt class="odd">{{ __('messages.brands') }}</dt>
+                                        <dd class="odd">
+                                            <ol class="bag-material">
+                                                @foreach ($brands as $brand)
+                                                    <li>
+                                                        <div class="pretty p-icon p-smooth">
+                                                            <input type="checkbox" name="brands"
+                                                                value="{{ $brand->id }}"
+                                                                @if (in_array(strval($brand->id), request()->query('brands', []))) checked @endif />
+                                                            <div class="state p-success"> <i class="icon fa fa-check"></i>
+                                                                <label>{{ $brand->name }}</label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
+                                        </dd>
+                                    </dl>
+                                    <div class="ajax-checkout"
+                                        style="margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+                                        <button type="submit"
+                                            class="button button-compare"><span>{{ __('messages.search') }}</span></button>
+                                        <button id="clear-filter-btn"
+                                            class="button button-clear"><span>{{ __('messages.clear_filter') }}</span></button>
                                     </div>
-                                    <dt class="odd">Color</dt>
-                                    <dd class="odd">
-                                        <ol>
-                                            <li><a href="#">Green</a> (1) </li>
-                                            <li><a href="#">White</a> (5) </li>
-                                            <li><a href="#">Black</a> (5) </li>
-                                            <li><a href="#">Gray</a> (4) </li>
-                                            <li><a href="#">Dark Gray</a> (3) </li>
-                                            <li><a href="#">Blue</a> (1) </li>
-                                        </ol>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="block product-price-range ">
-                            <div class="block-title">
-                                <h3>Price</h3>
-                            </div>
-                            <div class="block-content">
-                                <div class="slider-range">
-                                    <div data-label-reasult="Range:" data-min="0" data-max="500" data-unit="$"
-                                        class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                        data-value-min="50" data-value-max="350">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                            style="left: 10%; width: 60%;"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                            style="left: 10%;"></span><span
-                                            class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                            style="left: 70%;"></span>
-                                    </div>
-                                    <div class="amount-range-price">Range: $10 - $550</div>
-                                    <ul class="check-box-list">
-                                        <li>
-                                            <div class="pretty p-icon p-smooth">
-                                                <input type="checkbox" name="cc" value="p1" />
-                                                <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                    <label for="p1"> $20 - $100<span class="count">(5)</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="pretty p-icon p-smooth">
-                                                <input type="checkbox" name="cc" value="p2" />
-                                                <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                    <label for="p1"> $100 - $300<span class="count">(12)</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="pretty p-icon p-smooth">
-                                                <input type="checkbox" name="cc" value="p3" />
-                                                <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                    <label for="p1"> $300 - $500<span class="count">(15)</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block block-compare">
-                            <div class="block-title ">Compare Products (2)</div>
-                            <div class="block-content">
-                                <ol id="compare-items">
-                                    <li class="item">
-                                        <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#"></a>
-                                        <a href="#" class="product-name"><i class="fa fa-angle-right"></i>Product
-                                            Title
-                                            Here</a>
-                                    </li>
-                                    <li class="item">
-                                        <input type="hidden" value="2174" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#"></a>
-                                        <a href="#" class="product-name"><i class="fa fa-angle-right"></i>Product
-                                            Title
-                                            Here</a>
-                                    </li>
-                                    <li class="item">
-                                        <input type="hidden" value="2175" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#"></a>
-                                        <a href="#" class="product-name"><i class="fa fa-angle-right"></i>Product
-                                            Title
-                                            Here</a>
-                                    </li>
-                                </ol>
-                                <div class="ajax-checkout">
-                                    <button type="submit" title="Submit"
-                                        class="button button-compare"><span>Compare</span></button>
-                                    <button type="submit" title="Submit"
-                                        class="button button-clear"><span>Clear</span></button>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <div class="custom-slider">
@@ -323,8 +179,7 @@
                                         </li>
                                     </ol>
                                     <div class="carousel-inner">
-                                        <div class="item active"><img src="fabulous/images/slide3.jpg"
-                                                alt="New Arrivals">
+                                        <div class="item active"><img src="fabulous/images/slide3.jpg" alt="New Arrivals">
                                             <div class="carousel-caption">
                                                 <h3><a title=" Sample Product" href="#">New Arrivals</a>
                                                 </h3>

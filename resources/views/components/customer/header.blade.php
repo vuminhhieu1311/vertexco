@@ -28,13 +28,11 @@
                     <div class="jtv-header-box">
                         <div class="search_cart_block">
                             <div class="search-box hidden-xs">
-                                <form id="search_mini_form" action="#" method="get">
-                                    <input id="search" type="text" name="q" value=""
-                                        class="searchbox" placeholder="Search entire store here..." maxlength="128">
-                                    <button type="submit" title="Search" class="search-btn-bg"
-                                        id="submit-button"><span class="hidden-sm">Search</span><i
-                                            class="fa fa-search hidden-xs hidden-lg hidden-md"></i></button>
-                                </form>
+                                <input id="product-search-input" type="text" class="searchbox"
+                                    placeholder="Search entire store here..." maxlength="128">
+                                <button class="search-btn-bg" id="product-search-btn"><span
+                                        class="hidden-sm">Search</span><i
+                                        class="fa fa-search hidden-xs hidden-lg hidden-md"></i></button>
                             </div>
                             <!-- Header Language -->
                             <div class="language-box hidden-xs">
