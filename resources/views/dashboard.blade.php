@@ -268,7 +268,7 @@
                             <!--begin::Card body-->
                             <div class="card-body">
                                 <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed fs-6 gy-3" id="kt_table_widget_4_table">
+                                <table class="table align-middle table-row-dashed fs-6 gy-3">
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
