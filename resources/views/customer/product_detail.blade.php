@@ -72,7 +72,7 @@
                             <div class="product-img-box col-lg-4 col-sm-5 col-xs-12">
                                 <div class="product-image">
                                     <div class="product-full">
-                                        <img id="product-zoom" style="height:400px;object-fit:contain;"
+                                        <img id="product-zoom" style="height:400px;object-fit:contain;background:#f6f6f6;"
                                             src="{{ asset($product->avatar_url) }}"
                                             data-zoom-image="{{ asset($product->avatar_url) }}">
                                     </div>
@@ -86,7 +86,7 @@
                                                             <a href="#" data-image="{{ asset($image->url) }}"
                                                                 data-zoom-image="{{ asset($image->url) }}">
                                                                 <img id="product-zoom"
-                                                                    style="height:100px;object-fit:contain;"
+                                                                    style="height:100px;object-fit:contain;background:#f6f6f6;"
                                                                     src="{{ asset($image->url) }}">
                                                             </a>
                                                         </div>

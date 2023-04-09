@@ -65,7 +65,7 @@
                                                     <a class="product-image"
                                                         href="{{ route('products.detail', ['product' => $product->id]) }}">
                                                         <img src="{{ asset($product->avatar_url) }}"
-                                                            style="height:300px;object-fit:contain;">
+                                                            style="height:300px;object-fit:contain;background:#f6f6f6;">
                                                     </a>
                                                     <div class="new-label new-top-left">new</div>
                                                     <div class="sale-label sale-top-right">sale</div>

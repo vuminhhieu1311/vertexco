@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Product::class);
-        $products = Product::latest()->get();
+        $products = Product::latest()->with('brand')->get();
 
         return view('product.index', compact('products'));
     }
