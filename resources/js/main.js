@@ -18,7 +18,7 @@ if ($('#success-message').val()) {
 // Search
 var urlParams = new URLSearchParams(window.location.search);
 
-$('#product-search-input').keyup (function (e) {
+$('.product-search-input').keyup(function (e) {
     const keyword = $(this).val();
     urlParams.delete('name');
     urlParams.append('name', keyword);
@@ -28,7 +28,12 @@ $('#product-search-input').keyup (function (e) {
     }
 });
 
-$('#product-search-btn').on('click', (e) => {
+$('.product-search-btn').on('click', (e) => {
     e.preventDefault();
     window.location.href = `?${urlParams.toString()}`;
+});
+
+$(".lang-select").change(function () {
+    var lang = $(this).val();
+    window.location.href = `/update-language/${lang}`;
 });

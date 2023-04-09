@@ -136,4 +136,5 @@ return [
     'brand_info' => 'Brand information',
     'brand' => 'Brand',
     'my_account' => 'My Account',
+    'filter' => 'Filter',
 ];

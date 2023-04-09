@@ -28,19 +28,17 @@
                     <div class="jtv-header-box">
                         <div class="search_cart_block">
                             <div class="search-box hidden-xs">
-                                <input id="product-search-input" type="text" class="searchbox"
-                                    placeholder="Search entire store here..." maxlength="128">
-                                <button class="search-btn-bg" id="product-search-btn"><span
-                                        class="hidden-sm">Search</span><i
+                                <input type="text" class="product-search-input search-input-box searchbox"
+                                    placeholder="Nhập tên sản phẩm..." maxlength="128">
+                                <button class="product-search-btn search-btn-bg"><span
+                                        class="hidden-sm">{{ __('messages.search') }}</span><i
                                         class="fa fa-search hidden-xs hidden-lg hidden-md"></i></button>
                             </div>
                             <!-- Header Language -->
                             <div class="language-box hidden-xs">
-                                <select class="selectpicker" data-width="fit">
-                                    <option>English</option>
-                                    <option>Francais</option>
-                                    <option>German</option>
-                                    <option>Español</option>
+                                <select class="lang-select selectpicker" data-width="fit" style="margin-top:1px;">
+                                    <option value="vi" @if (app()->getLocale() === 'vi') selected @endif>Tiếng Việt</option>
+                                    <option value="en" @if (app()->getLocale() === 'en') selected @endif>English</option>
                                 </select>
                             </div>
                             <div class="right_menu">

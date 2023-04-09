@@ -108,7 +108,7 @@
                     <aside class="sidebar">
                         <div class="block block-layered-nav">
                             <div class="block-title">
-                                <h3>Bộ lọc</h3>
+                                <h3>{{ __('messages.filter') }}</h3>
                             </div>
                             <div class="block-content">
                                 <form id="product-filter-form" method="GET">

@@ -135,4 +135,5 @@ return [
     'brand_info' => 'Brand information',
     'brand' => 'Thương hiệu',
     'my_account' => 'Tài khoản',
+    'filter' => 'Bộ lọc',
 ];
