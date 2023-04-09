@@ -40,8 +40,8 @@
                 <li><a href="{{ route('user.profile') }}">{{ __('messages.my_account') }}</a></li>
                 <li><a href="{{ route('order_history') }}">{{ __('messages.my_order') }}</a></li>
                 @if (auth()->user())
-                    <li><a id="logout-btn" href="#">{{ __('messages.sign_out') }}</a></li>
-                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                    <li><a id="logout-btn-mobile" href="#">{{ __('messages.sign_out') }}</a></li>
+                    <form id="logout-form-mobile" method="POST" action="{{ route('logout') }}">
                         @csrf
                     </form>
                 @else

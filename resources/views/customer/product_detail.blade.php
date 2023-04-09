@@ -36,6 +36,27 @@
             margin-right: 15px;
             color: #000;
         }
+
+        .star-rating {
+            display: flex;
+            align-items: center;
+            font-size: 1.25em;
+        }
+
+        .back-stars {
+            display: flex;
+            color: #ccc;
+            position: relative;
+        }
+
+        .front-stars {
+            display: flex;
+            color: #FFBC0B;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            transition: all .5s
+        }
     </style>
 @endsection
 
@@ -51,7 +72,6 @@
                             <div class="product-img-box col-lg-4 col-sm-5 col-xs-12">
                                 <div class="product-image">
                                     <div class="product-full">
-                                        <div class="new-label new-top-left"> New </div>
                                         <img id="product-zoom" style="height:400px;object-fit:contain;"
                                             src="{{ asset($product->avatar_url) }}"
                                             data-zoom-image="{{ asset($product->avatar_url) }}">
@@ -131,7 +151,8 @@
                                                     onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
                                                     class="reduced items-count" type="button"><i
                                                         class="fa fa-minus">&nbsp;</i></button>
-                                                <input type="text" class="input-text qty" value="1" maxlength="12" id="qty" name="quantity">
+                                                <input type="text" class="input-text qty" value="1" maxlength="12"
+                                                    id="qty" name="quantity">
                                                 <button
                                                     onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"
                                                     class="increase items-count" type="button"><i
@@ -153,7 +174,7 @@
                             <a href="#product_tabs_description" data-toggle="tab">{{ __('messages.description') }}</a>
                         </li>
                         <li>
-                            <a href="#reviews_tabs" data-toggle="tab">Reviews</a>
+                            <a href="#reviews_tabs" data-toggle="tab">{{ __('messages.rating') }}</a>
                         </li>
                     </ul>
                     <div id="productTabContent" class="tab-content">
@@ -164,246 +185,35 @@
                         </div>
                         <div class="tab-pane fade" id="reviews_tabs">
                             <div class="box-collateral box-reviews" id="customer-reviews">
-                                <div class="box-reviews1">
-                                    <div class="form-add">
-                                        <form id="review-form" method="post"
-                                            action="http://www.jtvcommerce.com/review/product/post/id/176/">
-                                            <h3>Write Your Own Review</h3>
-                                            <fieldset>
-                                                <h4>How do you rate this product? <em class="required">*</em></h4>
-                                                <span id="input-message-box"></span>
-                                                <table id="product-review-table" class="data-table">
-                                                    <thead>
-                                                        <tr class="first last">
-                                                            <th>&nbsp;</th>
-                                                            <th><span class="nobr">1 *</span></th>
-                                                            <th><span class="nobr">2 *</span></th>
-                                                            <th><span class="nobr">3 *</span></th>
-                                                            <th><span class="nobr">4 *</span></th>
-                                                            <th><span class="nobr">5 *</span></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class="first odd">
-                                                            <th>Price</th>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="11" id="Price_1" name="ratings[3]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="12" id="Price_2" name="ratings[3]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="13" id="Price_3" name="ratings[3]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="14" id="Price_4" name="ratings[3]"></td>
-                                                            <td class="value last"><input type="radio" class="radio"
-                                                                    value="15" id="Price_5" name="ratings[3]"></td>
-                                                        </tr>
-                                                        <tr class="even">
-                                                            <th>Value</th>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="6" id="Value_1" name="ratings[2]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="7" id="Value_2" name="ratings[2]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="8" id="Value_3" name="ratings[2]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="9" id="Value_4" name="ratings[2]"></td>
-                                                            <td class="value last"><input type="radio" class="radio"
-                                                                    value="10" id="Value_5" name="ratings[2]"></td>
-                                                        </tr>
-                                                        <tr class="last odd">
-                                                            <th>Quality</th>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="1" id="Quality_1" name="ratings[1]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="2" id="Quality_2" name="ratings[1]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="3" id="Quality_3" name="ratings[1]"></td>
-                                                            <td class="value"><input type="radio" class="radio"
-                                                                    value="4" id="Quality_4" name="ratings[1]"></td>
-                                                            <td class="value last"><input type="radio" class="radio"
-                                                                    value="5" id="Quality_5" name="ratings[1]"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <input type="hidden" value="" class="validate-rating"
-                                                    name="validate_rating">
-                                                <div class="review1">
-                                                    <ul class="form-list">
-                                                        <li>
-                                                            <label class="required"
-                                                                for="nickname_field">Nickname<em>*</em></label>
-                                                            <div class="input-box">
-                                                                <input type="text" class="input-text"
-                                                                    id="nickname_field" name="nickname">
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <label class="required"
-                                                                for="summary_field">Summary<em>*</em></label>
-                                                            <div class="input-box">
-                                                                <input type="text" class="input-text"
-                                                                    id="summary_field" name="title">
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="review2">
-                                                    <ul>
-                                                        <li>
-                                                            <label class="required "
-                                                                for="review_field">Review<em>*</em></label>
-                                                            <div class="input-box">
-                                                                <textarea rows="3" cols="5" id="review_field" name="detail"></textarea>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="buttons-set">
-                                                        <button class="button submit" title="Submit Review"
-                                                            type="submit"><span>Submit Review</span></button>
+                                <div class="box-reviews2">
+                                    @foreach ($product->ratings as $rating)
+                                        <div style="display:flex;margin-bottom:20px;">
+                                            <img src="{{ Avatar::create($rating->user->name)->setFontSize(40)->toBase64() }}"
+                                                style="height:40px;" />
+                                            <div style="margin-left:10px;margin-top:2px;">
+                                                @php
+                                                    $percent = ($rating->rating / 5) * 100;
+                                                @endphp
+                                                <div class="star-rating">
+                                                    <div class="back-stars">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <div class="front-stars" style="width: {{ $percent }}%">
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="box-reviews2">
-                                    <h3>Customer Reviews</h3>
-                                    <div class="box visible">
-                                        <ul>
-                                            <li>
-                                                <table class="ratings-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>Value</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Quality</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Price</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="review">
-                                                    <h6><a href="#">Lorem ipsum dolor sit amet</a></h6>
-                                                    <small>Review by <span>Sophia </span>on 15/01/2018 </small>
-                                                    <div class="review-txt">Pellentesque aliquet, sem eget laoreet
-                                                        ultrices, ipsum metus feugiat sem, quis fermentum turpis
-                                                        eros eget velit. Donec ac tempus ante.</div>
-                                                </div>
-                                            </li>
-                                            <li class="even">
-                                                <table class="ratings-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>Value</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Quality</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Price</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="review">
-                                                    <h6><a href="#">Lorem ipsum dolor sit amet</a></h6>
-                                                    <small>Review by <span>William</span>on 05/02/2018 </small>
-                                                    <div class="review-txt">Morbi ornare lectus quis justo gravida
-                                                        semper. Nulla tellus mi, vulputate adipiscing cursus eu,
-                                                        suscipit id nulla. Donec a neque libero.</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <table class="ratings-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>Value</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Quality</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Price</th>
-                                                            <td>
-                                                                <div class="rating"> <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i> <i
-                                                                        class="fa fa-star-o"></i>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="review">
-                                                    <h6><a href="#">Lorem ipsum dolor sit amet</a></h6>
-                                                    <small>Review by <span> Mason</span>on 10/02/2018 </small>
-                                                    <div class="review-txt last">Nam fringilla augue nec est
-                                                        tristique auctor. Donec non est at libero vulputate rutrum.
-                                                        Morbi ornare lectus quis justo gravida semper.</div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="actions"> <a class="button view-all" id="revies-button"
-                                            href="#"><span><span>View all</span></span></a> </div>
+                                                <div>{{ $rating->comment }}</div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

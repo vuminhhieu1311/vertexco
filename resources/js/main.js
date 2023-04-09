@@ -4,6 +4,11 @@ $('#logout-btn').click((e) => {
     $('#logout-form').submit();
 });
 
+$('#logout-btn-mobile').click((e) => {
+    e.preventDefault();
+    $('#logout-form-mobile').submit();
+});
+
 // Show success toast message
 const message = window.localStorage.getItem('success');
 if (message) {
