@@ -23,17 +23,17 @@ class CartController extends Controller
 
     public function save(Request $request, Product $product)
     {
-//        if ($request->quantity > $product->quantity) {
-//            toast('Vui lòng nhập số lượng nhỏ hơn '.$product->quantity, 'error');
-//
-//            return redirect()->back();
-//        }
-
         $variant = ProductVariant::firstWhere([
             'product_id' => $product->id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
         ]);
+
+        if ($request->quantity > $variant->quantity) {
+            toast('Vui lòng nhập số lượng nhỏ hơn '.$variant->quantity, 'error');
+
+            return redirect()->back();
+        }
 
         Cart::add([
             'id' => $product->id,
