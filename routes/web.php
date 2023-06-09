@@ -76,3 +76,6 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'ratings' => RatingController::class,
     ]);
 });
+
+Route::get('paypal-success', [OrderController::class, 'paypalSuccess']);
+Route::get('paypal-error', [OrderController::class, 'paypalError']);

@@ -16,4 +16,6 @@
     <div class="badge badge-light-danger">{{ __('messages.unpublished') }}</div>
 @elseif ($status === 'draft')
     <div class="badge badge-light-warning">{{ __('messages.draft') }}</div>
+@elseif ($status === 'Paypal paid')
+    <div class="badge badge-light-primary">{{ __('messages.paypal_paid') }}</div>
 @endif

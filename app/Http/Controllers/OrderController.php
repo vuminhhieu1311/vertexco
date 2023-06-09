@@ -6,16 +6,29 @@ use App\Enums\OrderStatus;
 use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
 use App\Models\ProductVariant;
+use Exception;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Omnipay\Omnipay;
 
 class OrderController extends Controller
 {
+    private $gateway;
+
+    public function __construct() {
+        $this->gateway = Omnipay::create('PayPal_Rest');
+        $this->gateway->setClientId(env('PAYPAL_CLIENT_ID'));
+        $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
+        $this->gateway->setTestMode(true);
+    }
+
     public function index(Request $request)
     {
         $orders = Order::with('user')
+            ->active()
             ->latest()
             ->when($request->query('from') && $request->query('to'), function ($query) {
                 return $query->whereDate('created_at', '>=', request('from'))
@@ -84,6 +97,7 @@ class OrderController extends Controller
                 'delivery_address' => $request->address,
                 'note' => $request->note,
                 'tax' => Cart::tax(),
+                'is_active' => false,
             ]);
 
             foreach (Cart::content() as $item) {
@@ -99,18 +113,29 @@ class OrderController extends Controller
                 ]);
             }
 
-            Cart::destroy();
-
             DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
+
+        // Thanh toán
+        if ($request->pay_method === 'PAYPAL') {
+            try {
+                $this->paypalCheckout($order, $request);
+            } catch (Exception $e) {
+                Log::error($e);
+            }
+        } else {
+            $order->is_active = true;
+            $order->save();
+            Cart::destroy();
 
             alert()->success(__('messages.order_successfully'))
                 ->showConfirmButton('OK', '#FF7B54')->autoClose(5000);
 
             return redirect()->route('home');
-        } catch (\Exception $e) {
-            DB::rollBack();
-
-            throw $e;
         }
     }
 
@@ -127,7 +152,7 @@ class OrderController extends Controller
             DB::beginTransaction();
 
             if ($request->status === OrderStatus::CANCELED) {
-                foreach ($order->products as $product) {
+                foreach ($order->productVariants as $product) {
                     $quantity = $product->quantity + $product->pivot->quantity;
                     $product->quantity = $quantity;
                     $product->save();
@@ -148,6 +173,9 @@ class OrderController extends Controller
         }
     }
 
+    /**
+     * @throws Exception
+     */
     public function destroy(Order $order)
     {
         try {
@@ -168,7 +196,7 @@ class OrderController extends Controller
             DB::commit();
 
             return $order;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             throw $e;
@@ -177,7 +205,7 @@ class OrderController extends Controller
 
     public function getOrderHistory()
     {
-        $orders = Auth::user()->orders()->latest()->get();
+        $orders = Auth::user()->orders()->active()->latest()->get();
 
         return view('customer.order_history', compact('orders'));
     }
@@ -198,5 +226,69 @@ class OrderController extends Controller
         }
 
         return redirect()->back()->with('success', __('messages.successfully'));
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function paypalCheckout(Order $order, Request $request)
+    {
+        try {
+            $amount = (float) $request->total_usd;
+            $response = $this->gateway->purchase(array(
+                'amount' => $amount,
+                'currency' => 'USD',
+                'returnUrl' => url('paypal-success'),
+                'cancelUrl' => url('paypal-error'),
+                'metadata' => array(
+                    'orderId' => $order->id,
+                ),
+            ))->send();
+
+            Log::info('Request Paypal', ['response' => $response]);
+
+            if ($response->isRedirect()) {
+                $order->payment_id = $response->getData()['id'];
+                $order->save();
+                $response->redirect();
+            }
+
+            toast('Có lỗi xảy ra. Vui lòng thử lại', 'error');
+            return redirect()->back();
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+    }
+
+    public function paypalSuccess(Request $request)
+    {
+        if ($request->input('paymentId') && $request->input('PayerID')) {
+            $transaction = $this->gateway->completePurchase(array(
+                'payer_id' => $request->input('PayerID'),
+                'transactionReference' => $request->input('paymentId')
+            ));
+
+            $response = $transaction->send();
+
+            $paymentId = $response->getData()['id'];
+            Order::where('payment_id', $paymentId)->update([
+                'status' => OrderStatus::PAYPAL_PAID,
+                'is_active' => true,
+            ]);
+
+            Cart::destroy();
+            alert()->success(__('messages.order_successfully'))
+                ->showConfirmButton('OK', '#FF7B54')->autoClose(5000);
+
+            return redirect()->route('home');
+        }
+
+        toast('Có lỗi xảy ra. Vui lòng thử lại', 'error');
+        return redirect()->route('checkout');
+    }
+
+    public function paypalError()
+    {
+        return redirect()->route('checkout');
     }
 }

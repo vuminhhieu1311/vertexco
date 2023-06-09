@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\OrderStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use willvincent\Rateable\Rateable;
@@ -23,7 +24,14 @@ class Order extends Model
         'note',
         'tax',
         'user_id',
+        'payment_id',
+        'is_active',
     ];
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('is_active', true);
+    }
 
     public function products()
     {

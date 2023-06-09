@@ -14,5 +14,7 @@ final class OrderStatus
 
     public const PAID = 'paid';
 
+    public const PAYPAL_PAID = 'Paypal paid';
+
     public const CANCELED = 'canceled';
 }

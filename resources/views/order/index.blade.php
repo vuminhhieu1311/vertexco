@@ -160,10 +160,16 @@
                                                 data-placeholder="Select an option"
                                                 data-url="{{ route('orders.update', ['order' => $order->id]) }}">
                                                 @if ($order->status !== 'canceled')
-                                                    <option value="pending"
-                                                        @if ($order->status === 'pending') selected @endif>
-                                                        {{ __('messages.pending') }}
+                                                    <option value="Paypal paid"
+                                                        @if ($order->status === 'Paypal paid') selected @endif>
+                                                        {{ __('messages.paypal_paid') }}
                                                     </option>
+                                                    @if ($order->status !== 'Paypal paid')
+                                                        <option value="pending"
+                                                            @if ($order->status === 'pending') selected @endif>
+                                                            {{ __('messages.pending') }}
+                                                        </option>
+                                                    @endif
                                                     <option value="delivering"
                                                         @if ($order->status === 'delivering') selected @endif>
                                                         {{ __('messages.delivering') }}

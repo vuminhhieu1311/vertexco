@@ -24,38 +24,39 @@
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <div class="row">
-                                                    <div class="col-md-6 col-xs-12">
-                                                        <div class="billing-details checkout-payment-area"
-                                                            style="background:white;">
-                                                            <div class="contact-text right-side">
-                                                                <h2>{{ __('messages.billing_address') }}</h2>
-                                                                <form id="checkout-form" method="POST"
-                                                                    action="{{ route('orders.store') }}">
-                                                                    @csrf
+                                                    <form id="checkout-form" method="POST"
+                                                          action="{{ route('orders.store') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="total_usd" value="{{ $totalUSD }}">
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <div class="billing-details checkout-payment-area"
+                                                                 style="background:white;">
+                                                                <div class="contact-text right-side">
+                                                                    <h2>{{ __('messages.billing_address') }}</h2>
                                                                     <div class="row">
                                                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                                                             <div class="input-box">
                                                                                 <label>{{ __('messages.name') }}
                                                                                     <em>*</em></label>
                                                                                 <input type="text" name="name"
-                                                                                    value="{{ auth()->user()->name }}"
-                                                                                    class="info">
+                                                                                       value="{{ auth()->user()->name }}"
+                                                                                       class="info">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                                                             <div class="input-box">
                                                                                 <label>Email<em>*</em></label>
                                                                                 <input type="email" name="email"
-                                                                                    class="info"
-                                                                                    value="{{ auth()->user()->email }}">
+                                                                                       class="info"
+                                                                                       value="{{ auth()->user()->email }}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                                                             <div class="input-box">
                                                                                 <label>{{ __('messages.phone_number') }}<em>*</em></label>
                                                                                 <input type="text" name="phone_number"
-                                                                                    class="info"
-                                                                                    value="{{ auth()->user()->phone_number }}">
+                                                                                       class="info"
+                                                                                       value="{{ auth()->user()->phone_number }}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -63,8 +64,8 @@
                                                                                 <label>{{ __('messages.address') }}
                                                                                     <em>*</em></label>
                                                                                 <input type="text" name="address"
-                                                                                    value="{{ auth()->user()->address }}"
-                                                                                    class="info mb-10">
+                                                                                       value="{{ auth()->user()->address }}"
+                                                                                       class="info mb-10">
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -74,21 +75,19 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </form>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-12">
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="checkout-payment-area"
-                                                                    style="background:white;">
-                                                                    <div class="checkout-total">
-                                                                        <h3>{{ __('messages.your_order') }}</h3>
-                                                                        <form action="#" method="post">
-                                                                            <div class="table-responsive">
-                                                                                <table class="checkout-area table">
-                                                                                    <tbody>
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="checkout-payment-area" style="background:white;">
+                                                                        <div class="checkout-total">
+                                                                            <h3>{{ __('messages.your_order') }}</h3>
+                                                                            <form action="#" method="post">
+                                                                                <div class="table-responsive">
+                                                                                    <table class="checkout-area table">
+                                                                                        <tbody>
                                                                                         @foreach (Cart::content() as $id => $item)
                                                                                             <tr
                                                                                                 class="cart_item check-item prd-name">
@@ -132,25 +131,37 @@
                                                                                             <td class="cgt-des prc-total">
                                                                                                 @money(Cart::total(), 'VND') </td>
                                                                                         </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <div class="text-right" style="margin-top:15px;">
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
                                                                         @if (Cart::count())
-                                                                            <div class="input-box">
-                                                                                <a id="order-btn" class="btn-def btn2"
-                                                                                    href="#">
-                                                                                    {{ __('messages.place_order') }}
-                                                                                </a>
+                                                                            <div class="payment-section" style="padding:20px;">
+                                                                                <div class="pay-toggle">
+                                                                                    <div class="pay-type-total">
+                                                                                        <div class="pay-type">
+                                                                                            <input type="radio" id="pay-toggle03" name="pay_method" value="COD" checked>
+                                                                                            <label for="pay-toggle03">Thanh toán khi nhận hàng</label>
+                                                                                        </div>
+                                                                                        <div class="pay-type">
+                                                                                            <input type="radio" id="pay-toggle04" name="pay_method" value="PAYPAL">
+                                                                                            <label for="pay-toggle04">Thanh toán qua Paypal</label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="input-box" style="margin-top:15px;">
+                                                                                        <a id="order-btn" class="btn-def btn2" href="#">
+                                                                                            {{ __('messages.place_order') }}
+                                                                                        </a>
+                                                                                    </div>                                                                            </form>
+                                                                                </div>
                                                                             </div>
                                                                         @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

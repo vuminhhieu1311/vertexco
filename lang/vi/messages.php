@@ -136,4 +136,5 @@ return [
     'brand' => 'Thương hiệu',
     'my_account' => 'Tài khoản',
     'filter' => 'Bộ lọc',
+    'paypal_paid' => 'Thanh toán qua Paypal',
 ];
