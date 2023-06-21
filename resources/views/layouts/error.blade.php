@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../../">
-		<title>E-garden</title>
+		<title>Shoe Addict</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta property="og:locale" content="en_US" />

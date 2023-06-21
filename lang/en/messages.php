@@ -7,7 +7,7 @@ return [
     'actions' => 'Actions',
     'name' => 'Name',
     'create_account' => 'Create an account',
-    'login_title' => 'Sign In to E-garden',
+    'login_title' => 'Sign In to Shoe Addict',
     'new_here' => 'New Here?',
     'password' => 'Password',
     'continue' => 'Continue',

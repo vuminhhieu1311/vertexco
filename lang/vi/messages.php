@@ -7,7 +7,7 @@ return [
     'actions' => 'Hành động',
     'name' => 'Tên',
     'create_account' => 'Tạo tài khoản',
-    'login_title' => 'Đăng nhập vào E-garden',
+    'login_title' => 'Đăng nhập vào Shoe Addict',
     'new_here' => 'Chưa có tài khoản?',
     'password' => 'Mật khẩu',
     'continue' => 'Tiếp tục',
