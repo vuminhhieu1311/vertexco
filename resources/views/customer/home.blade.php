@@ -113,23 +113,6 @@
                             <div class="block-content">
                                 <form id="product-filter-form" method="GET">
                                     <dl id="narrow-by-list">
-                                        <dt class="even">{{ __('messages.categories') }}</dt>
-                                        <dd class="even">
-                                            <ol class="bag-material">
-                                                @foreach ($categories as $category)
-                                                    <li>
-                                                        <div class="pretty p-icon p-smooth">
-                                                            <input type="checkbox" name="categories"
-                                                                value="{{ $category->id }}"
-                                                                @if (in_array(strval($category->id), request()->query('categories', []))) checked @endif />
-                                                            <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                                <label>{{ $category->name }}</label>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ol>
-                                        </dd>
                                         <dt class="odd">{{ __('messages.brands') }}</dt>
                                         <dd class="odd">
                                             <ol class="bag-material">
@@ -141,6 +124,23 @@
                                                                 @if (in_array(strval($brand->id), request()->query('brands', []))) checked @endif />
                                                             <div class="state p-success"> <i class="icon fa fa-check"></i>
                                                                 <label>{{ $brand->name }}</label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
+                                        </dd>
+                                        <dt class="even">{{ __('messages.categories') }}</dt>
+                                        <dd class="even">
+                                            <ol class="bag-material">
+                                                @foreach ($categories as $category)
+                                                    <li>
+                                                        <div class="pretty p-icon p-smooth">
+                                                            <input type="checkbox" name="categories"
+                                                                value="{{ $category->id }}"
+                                                                @if (in_array(strval($category->id), request()->query('categories', []))) checked @endif />
+                                                            <div class="state p-success"> <i class="icon fa fa-check"></i>
+                                                                <label>{{ $category->name }}</label>
                                                             </div>
                                                         </div>
                                                     </li>
