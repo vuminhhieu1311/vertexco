@@ -33,7 +33,7 @@ class UpdateProductRequest extends FormRequest
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
             'status' => 'required',
             'price' => 'required|integer',
-            'brand_id' => 'required|integer',
+            'quantity' => 'required|integer',
         ];
     }
 
@@ -49,7 +49,7 @@ class UpdateProductRequest extends FormRequest
             'avatar' => __('messages.avatar'),
             'status' => __('messages.status'),
             'price' => __('messages.price'),
-            'brand_id' => __('messages.brand'),
+            'quantity' => __('messages.quantity'),
         ];
     }
 }

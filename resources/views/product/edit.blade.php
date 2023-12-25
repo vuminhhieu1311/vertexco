@@ -155,34 +155,34 @@
                         </div>
                         <!--end::Category & tags-->
                         <!--begin::Brand-->
-                        <div class="card card-flush py-4">
-                            <!--begin::Card header-->
-                            <div class="card-header">
-                                <!--begin::Card title-->
-                                <div class="card-title">
-                                    <h2>{{ __('messages.brand') }}</h2>
-                                </div>
-                                <!--end::Card title-->
-                            </div>
-                            <!--end::Card header-->
-                            <!--begin::Card body-->
-                            <div class="card-body pt-0">
-                                <!--begin::Input group-->
-                                <!--begin::Select2-->
-                                <select class="form-select mb-2" name="brand_id" data-control="select2"
-                                    data-placeholder="Select an option">
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand->id }}"
-                                            @if ($product->brand_id === $brand->id) selected @endif>
-                                            {{ $brand->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <!--end::Select2-->
-                                <!--end::Input group-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
+{{--                        <div class="card card-flush py-4">--}}
+{{--                            <!--begin::Card header-->--}}
+{{--                            <div class="card-header">--}}
+{{--                                <!--begin::Card title-->--}}
+{{--                                <div class="card-title">--}}
+{{--                                    <h2>{{ __('messages.brand') }}</h2>--}}
+{{--                                </div>--}}
+{{--                                <!--end::Card title-->--}}
+{{--                            </div>--}}
+{{--                            <!--end::Card header-->--}}
+{{--                            <!--begin::Card body-->--}}
+{{--                            <div class="card-body pt-0">--}}
+{{--                                <!--begin::Input group-->--}}
+{{--                                <!--begin::Select2-->--}}
+{{--                                <select class="form-select mb-2" name="brand_id" data-control="select2"--}}
+{{--                                    data-placeholder="Select an option">--}}
+{{--                                    @foreach ($brands as $brand)--}}
+{{--                                        <option value="{{ $brand->id }}"--}}
+{{--                                            @if ($product->brand_id === $brand->id) selected @endif>--}}
+{{--                                            {{ $brand->name }}--}}
+{{--                                        </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                                <!--end::Select2-->--}}
+{{--                                <!--end::Input group-->--}}
+{{--                            </div>--}}
+{{--                            <!--end::Card body-->--}}
+{{--                        </div>--}}
                         <!--end::Brand-->
                         <!--begin::Discount-->
                         <div class="card card-flush py-4">
@@ -257,7 +257,7 @@
                                             value="{{ $product->description }}" />
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
-                                        <div class="fv-row w-100">
+                                        <div class="mb-10 fv-row w-100">
                                             <!--begin::Label-->
                                             <label class="required form-label">{{ __('messages.price') }}</label>
                                             <!--end::Label-->
@@ -270,95 +270,109 @@
                                             @enderror
                                         </div>
                                         <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="fv-row w-100">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">{{ __('messages.quantity') }}</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="text" name="quantity" class="form-control mb-2"
+                                                   value="{{ $product->quantity }}" />
+                                            <!--end::Input-->
+                                            @error('quantity')
+                                                <div class="text-danger"><small>{{ $message }}</small></div>
+                                            @enderror
+                                        </div>
+                                        <!--end::Input group-->
                                     </div>
                                     <!--end::Card header-->
                                 </div>
                                 <!--end::General options-->
                                 <!--begin::Product variants-->
-                                <div class="card card-flush py-4">
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>{{ __('messages.product_variants') }}</h2>
-                                        </div>
-                                    </div>
-                                    <!--end::Card header-->
-                                    <!--begin::Card body-->
-                                    <div class="card-body pt-0" id="variants-container">
-                                        <input id="product-variant-count" type="hidden"
-                                            value="{{ $product->variants->count() }}" />
-                                        @foreach ($product->variants as $key => $variant)
-                                            <div class="variant" id="variant-{{ $key + 1 }}">
-                                                <div class="d-flex gap-5 mb-2">
-                                                    <!--begin::Input group-->
-                                                    <div class="fv-row w-100">
-                                                        <!--begin::Label-->
-                                                        <label
-                                                            class="required form-label">{{ __('messages.color') }}</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <select class="form-select mb-2" name="colors[]"
-                                                            placeholder="Select an option">
-                                                            @foreach ($colors as $color)
-                                                                <option value="{{ $color->id }}"
-                                                                    @if ($variant->color_id === $color->id) selected @endif>
-                                                                    {{ $color->value }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                        <!--end::Input-->
-                                                    </div>
-                                                    <!--end::Input group-->
-                                                    <!--begin::Input group-->
-                                                    <div class="fv-row w-100">
-                                                        <!--begin::Label-->
-                                                        <label
-                                                            class="required form-label">{{ __('messages.size') }}</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <select class="form-select mb-2" name="sizes[]"
-                                                            placeholder="Select an option">
-                                                            @foreach ($sizes as $size)
-                                                                <option value="{{ $size->id }}"
-                                                                    @if ($variant->size_id === $size->id) selected @endif>
-                                                                    {{ $size->value }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <!--end::Input-->
-                                                    </div>
-                                                    <!--end::Input group-->
-                                                    <!--begin::Input group-->
-                                                    <div class="fv-row w-100">
-                                                        <!--begin::Label-->
-                                                        <label
-                                                            class="required form-label">{{ __('messages.quantity') }}</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <input type="number" name="quantities[]"
-                                                            class="form-control mb-2" value="{{ $variant->quantity }}"
-                                                            min="1" />
-                                                        <!--end::Input-->
-                                                    </div>
-                                                    <!--end::Input group-->
-                                                    <div style="display:flex;align-items:flex-end;padding-bottom:7px;">
-                                                        <a href="#"
-                                                            class="remove-variant-btn btn btn-active-light-danger pe-5"
-                                                            @if ($key !== 0) style="opacity:1"
-                                                            @else style="opacity:0;cursor:default;" @endif>
-                                                            <i class="fas fa-minus"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="error-message variant-error-message text-danger mb-5"
-                                                    style="margin-top:-8px;"></div>
-                                            </div>
-                                        @endforeach
-                                        <a href="#" id="add-variant-btn" class="btn btn-light-primary">
-                                            <i class="fas fa-plus me-2"></i> {{ __('messages.add') }}
-                                        </a>
-                                    </div>
-                                    <!--end::Card header-->
-                                </div>
+{{--                                <div class="card card-flush py-4">--}}
+{{--                                    <!--begin::Card header-->--}}
+{{--                                    <div class="card-header">--}}
+{{--                                        <div class="card-title">--}}
+{{--                                            <h2>{{ __('messages.product_variants') }}</h2>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card header-->--}}
+{{--                                    <!--begin::Card body-->--}}
+{{--                                    <div class="card-body pt-0" id="variants-container">--}}
+{{--                                        <input id="product-variant-count" type="hidden"--}}
+{{--                                            value="{{ $product->variants->count() }}" />--}}
+{{--                                        @foreach ($product->variants as $key => $variant)--}}
+{{--                                            <div class="variant" id="variant-{{ $key + 1 }}">--}}
+{{--                                                <div class="d-flex gap-5 mb-2">--}}
+{{--                                                    <!--begin::Input group-->--}}
+{{--                                                    <div class="fv-row w-100">--}}
+{{--                                                        <!--begin::Label-->--}}
+{{--                                                        <label--}}
+{{--                                                            class="required form-label">{{ __('messages.color') }}</label>--}}
+{{--                                                        <!--end::Label-->--}}
+{{--                                                        <!--begin::Input-->--}}
+{{--                                                        <select class="form-select mb-2" name="colors[]"--}}
+{{--                                                            placeholder="Select an option">--}}
+{{--                                                            @foreach ($colors as $color)--}}
+{{--                                                                <option value="{{ $color->id }}"--}}
+{{--                                                                    @if ($variant->color_id === $color->id) selected @endif>--}}
+{{--                                                                    {{ $color->value }}--}}
+{{--                                                                </option>--}}
+{{--                                                            @endforeach--}}
+{{--                                                        </select>--}}
+{{--                                                        <!--end::Input-->--}}
+{{--                                                    </div>--}}
+{{--                                                    <!--end::Input group-->--}}
+{{--                                                    <!--begin::Input group-->--}}
+{{--                                                    <div class="fv-row w-100">--}}
+{{--                                                        <!--begin::Label-->--}}
+{{--                                                        <label--}}
+{{--                                                            class="required form-label">{{ __('messages.size') }}</label>--}}
+{{--                                                        <!--end::Label-->--}}
+{{--                                                        <!--begin::Input-->--}}
+{{--                                                        <select class="form-select mb-2" name="sizes[]"--}}
+{{--                                                            placeholder="Select an option">--}}
+{{--                                                            @foreach ($sizes as $size)--}}
+{{--                                                                <option value="{{ $size->id }}"--}}
+{{--                                                                    @if ($variant->size_id === $size->id) selected @endif>--}}
+{{--                                                                    {{ $size->value }}</option>--}}
+{{--                                                            @endforeach--}}
+{{--                                                        </select>--}}
+{{--                                                        <!--end::Input-->--}}
+{{--                                                    </div>--}}
+{{--                                                    <!--end::Input group-->--}}
+{{--                                                    <!--begin::Input group-->--}}
+{{--                                                    <div class="fv-row w-100">--}}
+{{--                                                        <!--begin::Label-->--}}
+{{--                                                        <label--}}
+{{--                                                            class="required form-label">{{ __('messages.quantity') }}</label>--}}
+{{--                                                        <!--end::Label-->--}}
+{{--                                                        <!--begin::Input-->--}}
+{{--                                                        <input type="number" name="quantities[]"--}}
+{{--                                                            class="form-control mb-2" value="{{ $variant->quantity }}"--}}
+{{--                                                            min="1" />--}}
+{{--                                                        <!--end::Input-->--}}
+{{--                                                    </div>--}}
+{{--                                                    <!--end::Input group-->--}}
+{{--                                                    <div style="display:flex;align-items:flex-end;padding-bottom:7px;">--}}
+{{--                                                        <a href="#"--}}
+{{--                                                            class="remove-variant-btn btn btn-active-light-danger pe-5"--}}
+{{--                                                            @if ($key !== 0) style="opacity:1"--}}
+{{--                                                            @else style="opacity:0;cursor:default;" @endif>--}}
+{{--                                                            <i class="fas fa-minus"></i>--}}
+{{--                                                        </a>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="error-message variant-error-message text-danger mb-5"--}}
+{{--                                                    style="margin-top:-8px;"></div>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                        <a href="#" id="add-variant-btn" class="btn btn-light-primary">--}}
+{{--                                            <i class="fas fa-plus me-2"></i> {{ __('messages.add') }}--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card header-->--}}
+{{--                                </div>--}}
                                 <!--end::Product variants-->
                                 <!--begin::Media-->
                                 <div class="card card-flush py-4">

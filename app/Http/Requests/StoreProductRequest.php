@@ -28,7 +28,7 @@ class StoreProductRequest extends FormRequest
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
             'status' => 'required',
             'price' => 'required|integer',
-            'brand_id' => 'required|integer',
+            'quantity' => 'required|integer',
         ];
     }
 
@@ -44,7 +44,7 @@ class StoreProductRequest extends FormRequest
             'avatar' => __('messages.avatar'),
             'status' => __('messages.status'),
             'price' => __('messages.price'),
-            'brand_id' => __('messages.brand'),
+            'quantity' => __('messages.quantity'),
         ];
     }
 }

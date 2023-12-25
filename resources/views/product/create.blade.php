@@ -93,7 +93,7 @@
                             <div class="card-body pt-0">
                                 <!--begin::Select2-->
                                 <select class="form-select mb-2" name="status" data-control="select2"
-                                    data-hide-search="true" data-placeholder="Select an option"
+                                    data-hide-search="true" data-placeholder="{{ __('messages.status') }}"
                                     id="kt_ecommerce_add_product_status_select">
                                     <option value="published" selected="selected">{{ __('messages.published') }}</option>
                                     <option value="inactive">{{ __('messages.unpublished') }}</option>
@@ -126,7 +126,7 @@
                                 <!--begin::Input group-->
                                 <!--begin::Select2-->
                                 <select class="form-select mb-2" name="category_ids[]" data-control="select2"
-                                    data-placeholder="Select an option" data-allow-clear="true" multiple>
+                                    data-placeholder="{{ __('messages.categories') }}" data-allow-clear="true" multiple>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -138,31 +138,31 @@
                         </div>
                         <!--end::Category & tags-->
                         <!--begin::Brand-->
-                        <div class="card card-flush py-4">
-                            <!--begin::Card header-->
-                            <div class="card-header">
-                                <!--begin::Card title-->
-                                <div class="card-title">
-                                    <h2>{{ __('messages.brand') }}</h2>
-                                </div>
-                                <!--end::Card title-->
-                            </div>
-                            <!--end::Card header-->
-                            <!--begin::Card body-->
-                            <div class="card-body pt-0">
-                                <!--begin::Input group-->
-                                <!--begin::Select2-->
-                                <select class="form-select mb-2" name="brand_id" data-control="select2"
-                                    data-placeholder="Select an option">
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                    @endforeach
-                                </select>
-                                <!--end::Select2-->
-                                <!--end::Input group-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
+{{--                        <div class="card card-flush py-4">--}}
+{{--                            <!--begin::Card header-->--}}
+{{--                            <div class="card-header">--}}
+{{--                                <!--begin::Card title-->--}}
+{{--                                <div class="card-title">--}}
+{{--                                    <h2>{{ __('messages.brand') }}</h2>--}}
+{{--                                </div>--}}
+{{--                                <!--end::Card title-->--}}
+{{--                            </div>--}}
+{{--                            <!--end::Card header-->--}}
+{{--                            <!--begin::Card body-->--}}
+{{--                            <div class="card-body pt-0">--}}
+{{--                                <!--begin::Input group-->--}}
+{{--                                <!--begin::Select2-->--}}
+{{--                                <select class="form-select mb-2" name="brand_id" data-control="select2"--}}
+{{--                                    data-placeholder="Select an option">--}}
+{{--                                    @foreach ($brands as $brand)--}}
+{{--                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                                <!--end::Select2-->--}}
+{{--                                <!--end::Input group-->--}}
+{{--                            </div>--}}
+{{--                            <!--end::Card body-->--}}
+{{--                        </div>--}}
                         <!--end::Brand-->
                         <!--begin::Discount-->
                         <div class="card card-flush py-4">
@@ -184,7 +184,7 @@
                                 <div class="mt-10">
                                     <label class="form-label">{{ __('messages.discount_deadline') }}</label>
                                     <input class="form-control" name="discount_deadline" id="discount-deadline-picker"
-                                        placeholder="Pick date &amp; time" />
+                                        placeholder="{{ __('messages.discount_deadline') }}" />
                                 </div>
                                 <!--end::Datepicker-->
                             </div>
@@ -216,7 +216,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="name" class="form-control mb-2"
-                                                placeholder="Product name" value="" />
+                                                placeholder="{{ __('messages.name') }}" value="" />
                                             <!--end::Input-->
                                             <div id="error-message-name" class="error-message text-danger"></div>
                                         </div>
@@ -234,7 +234,7 @@
                                         <input type="hidden" id="product-description" name="description" />
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
-                                        <div class="fv-row w-100">
+                                        <div class="mb-10 fv-row w-100">
                                             <!--begin::Label-->
                                             <label class="required form-label">{{ __('messages.price') }}</label>
                                             <!--end::Label-->
@@ -245,78 +245,90 @@
                                             <div id="error-message-price" class="error-message text-danger"></div>
                                         </div>
                                         <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="fv-row w-100">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">{{ __('messages.quantity') }}</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="number" name="quantity" class="form-control mb-2"
+                                                   value="" min="1" />
+                                            <!--end::Input-->
+                                            <div id="error-message-quantity" class="error-message text-danger"></div>
+                                        </div>
+                                        <!--end::Input group-->
                                     </div>
                                     <!--end::Card header-->
                                 </div>
                                 <!--end::General options-->
                                 <!--begin::Product variants-->
-                                <div class="card card-flush py-4">
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>{{ __('messages.product_variants') }}</h2>
-                                        </div>
-                                    </div>
-                                    <!--end::Card header-->
-                                    <!--begin::Card body-->
-                                    <div class="card-body pt-0" id="variants-container">
-                                        <div class="variant" id="variant-1">
-                                            <div class="d-flex gap-5 mb-2">
-                                                <!--begin::Input group-->
-                                                <div class="fv-row w-100">
-                                                    <!--begin::Label-->
-                                                    <label class="required form-label">{{ __('messages.color') }}</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <select class="form-select mb-2" name="colors[]" placeholder="Select an option">
-                                                        @foreach ($colors as $color)
-                                                            <option value="{{ $color->id }}">{{ $color->value }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <!--end::Input-->
-                                                </div>
-                                                <!--end::Input group-->
-                                                <!--begin::Input group-->
-                                                <div class="fv-row w-100">
-                                                    <!--begin::Label-->
-                                                    <label class="required form-label">{{ __('messages.size') }}</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <select class="form-select mb-2" name="sizes[]" placeholder="Select an option">
-                                                        @foreach ($sizes as $size)
-                                                            <option value="{{ $size->id }}">{{ $size->value }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <!--end::Input-->
-                                                </div>
-                                                <!--end::Input group-->
-                                                <!--begin::Input group-->
-                                                <div class="fv-row w-100">
-                                                    <!--begin::Label-->
-                                                    <label class="required form-label">{{ __('messages.quantity') }}</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="number" name="quantities[]" class="form-control mb-2"
-                                                        value="" min="1" />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <!--end::Input group-->
-                                                <div style="display:flex;align-items:flex-end;padding-bottom:7px;">
-                                                    <a href="#"
-                                                        class="remove-variant-btn btn btn-active-light-danger pe-5"
-                                                        style="opacity:0;cursor:default;">
-                                                        <i class="fas fa-minus"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="error-message variant-error-message text-danger mb-5" style="margin-top:-8px;"></div>
-                                        </div>
-                                        <a href="#" id="add-variant-btn" class="btn btn-light-primary">
-                                            <i class="fas fa-plus me-2"></i> {{ __('messages.add') }}
-                                        </a>
-                                    </div>
-                                    <!--end::Card header-->
-                                </div>
+{{--                                <div class="card card-flush py-4">--}}
+{{--                                    <!--begin::Card header-->--}}
+{{--                                    <div class="card-header">--}}
+{{--                                        <div class="card-title">--}}
+{{--                                            <h2>{{ __('messages.product_variants') }}</h2>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card header-->--}}
+{{--                                    <!--begin::Card body-->--}}
+{{--                                    <div class="card-body pt-0" id="variants-container">--}}
+{{--                                        <div class="variant" id="variant-1">--}}
+{{--                                            <div class="d-flex gap-5 mb-2">--}}
+{{--                                                <!--begin::Input group-->--}}
+{{--                                                <div class="fv-row w-100">--}}
+{{--                                                    <!--begin::Label-->--}}
+{{--                                                    <label class="required form-label">{{ __('messages.color') }}</label>--}}
+{{--                                                    <!--end::Label-->--}}
+{{--                                                    <!--begin::Input-->--}}
+{{--                                                    <select class="form-select mb-2" name="colors[]" placeholder="Select an option">--}}
+{{--                                                        @foreach ($colors as $color)--}}
+{{--                                                            <option value="{{ $color->id }}">{{ $color->value }}</option>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </select>--}}
+{{--                                                    <!--end::Input-->--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Input group-->--}}
+{{--                                                <!--begin::Input group-->--}}
+{{--                                                <div class="fv-row w-100">--}}
+{{--                                                    <!--begin::Label-->--}}
+{{--                                                    <label class="required form-label">{{ __('messages.size') }}</label>--}}
+{{--                                                    <!--end::Label-->--}}
+{{--                                                    <!--begin::Input-->--}}
+{{--                                                    <select class="form-select mb-2" name="sizes[]" placeholder="Select an option">--}}
+{{--                                                        @foreach ($sizes as $size)--}}
+{{--                                                            <option value="{{ $size->id }}">{{ $size->value }}</option>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </select>--}}
+{{--                                                    <!--end::Input-->--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Input group-->--}}
+{{--                                                <!--begin::Input group-->--}}
+{{--                                                <div class="fv-row w-100">--}}
+{{--                                                    <!--begin::Label-->--}}
+{{--                                                    <label class="required form-label">{{ __('messages.quantity') }}</label>--}}
+{{--                                                    <!--end::Label-->--}}
+{{--                                                    <!--begin::Input-->--}}
+{{--                                                    <input type="number" name="quantities[]" class="form-control mb-2"--}}
+{{--                                                        value="" min="1" />--}}
+{{--                                                    <!--end::Input-->--}}
+{{--                                                </div>--}}
+{{--                                                <!--end::Input group-->--}}
+{{--                                                <div style="display:flex;align-items:flex-end;padding-bottom:7px;">--}}
+{{--                                                    <a href="#"--}}
+{{--                                                        class="remove-variant-btn btn btn-active-light-danger pe-5"--}}
+{{--                                                        style="opacity:0;cursor:default;">--}}
+{{--                                                        <i class="fas fa-minus"></i>--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="error-message variant-error-message text-danger mb-5" style="margin-top:-8px;"></div>--}}
+{{--                                        </div>--}}
+{{--                                        <a href="#" id="add-variant-btn" class="btn btn-light-primary">--}}
+{{--                                            <i class="fas fa-plus me-2"></i> {{ __('messages.add') }}--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Card header-->--}}
+{{--                                </div>--}}
                                 <!--end::Product variants-->
                                 <!--begin::Media-->
                                 <div class="card card-flush py-4">

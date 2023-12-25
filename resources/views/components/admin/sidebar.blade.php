@@ -232,17 +232,17 @@
                                 </a>
                             </div>
                         @endcan
-                        @can(\App\Enums\PermissionName::MANAGE_BRANDS)
-                            <div class="menu-item">
-                                <a class="menu-link @if (Route::is('brands.*')) active @endif"
-                                    href="{{ route('brands.index') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">{{ __('messages.brands') }}</span>
-                                </a>
-                            </div>
-                        @endcan
+{{--                        @can(\App\Enums\PermissionName::MANAGE_BRANDS)--}}
+{{--                            <div class="menu-item">--}}
+{{--                                <a class="menu-link @if (Route::is('brands.*')) active @endif"--}}
+{{--                                    href="{{ route('brands.index') }}">--}}
+{{--                                    <span class="menu-bullet">--}}
+{{--                                        <span class="bullet bullet-dot"></span>--}}
+{{--                                    </span>--}}
+{{--                                    <span class="menu-title">{{ __('messages.brands') }}</span>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        @endcan--}}
                     </div>
                 </div>
                 @can(\App\Enums\PermissionName::MANAGE_ORDERS)

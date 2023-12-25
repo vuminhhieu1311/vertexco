@@ -54,7 +54,8 @@ class ProductController extends Controller
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
-                'brand_id' => $request->brand_id,
+                'quantity' => $request->quantity,
+                'brand_id' => $request->brand_id ?? 0,
             ]);
 
             $product->categories()->attach($request->category_ids);
@@ -62,18 +63,6 @@ class ProductController extends Controller
             foreach ($request->file('images', []) as $image) {
                 $filePath = $image->store('images', ['disk' => 'public_storage']);
                 $product->images()->create(['url' => $filePath]);
-            }
-
-            $colors = $request->input('colors', []);
-            $sizes = $request->input('sizes', []);
-            $quantities = $request->input('quantities', []);
-
-            foreach ($colors as $key => $color) {
-                $product->variants()->create([
-                    'size_id' => $sizes[$key],
-                    'color_id' => $color,
-                    'quantity' => $quantities[$key],
-                ]);
             }
 
             DB::commit();
@@ -132,23 +121,10 @@ class ProductController extends Controller
                 'avatar_url' => $filePath,
                 'discount' => $request->discount,
                 'discount_deadline' => $request->discount_deadline,
-                'brand_id' => $request->brand_id,
+                'quantity' => $request->quantity,
             ]);
 
             $product->categories()->sync($request->category_ids);
-            $product->variants()->delete();
-
-            $colors = $request->input('colors', []);
-            $sizes = $request->input('sizes', []);
-            $quantities = $request->input('quantities', []);
-
-            foreach ($colors as $key => $color) {
-                $product->variants()->create([
-                    'size_id' => $sizes[$key],
-                    'color_id' => $color,
-                    'quantity' => $quantities[$key],
-                ]);
-            }
 
             DB::commit();
 

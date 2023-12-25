@@ -79,7 +79,7 @@
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                     <th class="min-w-150px">{{ __('messages.product') }}</th>
-                                    <th class="min-w-100px">{{ __('messages.brand') }}</th>
+                                    <th class="min-w-100px">{{ __('messages.quantity') }}</th>
                                     <th class="min-w-100px">{{ __('messages.price') }}</th>
                                     <th class="min-w-100px">{{ __('messages.rating') }}</th>
                                     <th class="min-w-100px">{{ __('messages.status') }}</th>
@@ -115,7 +115,7 @@
                                         <!--end::Category=-->
                                         <!--begin::Qty=-->
                                         <td class="pe-0" data-order="29">
-                                            <span class="fw-bolder ms-3">{{ $product->brand->name }}</span>
+                                            <span class="fw-bolder ms-3">{{ $product->quantity }}</span>
                                         </td>
                                         <!--end::Qty=-->
                                         <!--begin::Price=-->

@@ -27,6 +27,7 @@ class Product extends Model
         'user_id',
         'discount',
         'discount_deadline',
+        'quantity',
         'brand_id',
     ];
 
