@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\OrderStatus;
 use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\ProductVariant;
 use Exception;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -101,15 +102,15 @@ class OrderController extends Controller
             ]);
 
             foreach (Cart::content() as $item) {
-                $productVariant = ProductVariant::find($item->options->variant_id);
-                $quantity = $productVariant->quantity - $item->qty;
-                $productVariant->quantity = $quantity;
-                $productVariant->save();
+                $product = Product::find($item->id);
+                $quantity = $product->quantity - $item->qty;
+                $product->quantity = $quantity;
+                $product->save();
 
                 $order->products()->attach($item->id, [
                     'quantity' => $item->qty,
                     'price' => $item->price,
-                    'product_variant_id' => $item->options->variant_id,
+                    'product_variant_id' => 0,
                 ]);
             }
 

@@ -41,11 +41,20 @@
                         <div class="slider-items-products">
                             <div id="category-desc-slider" class="product-flexslider hidden-buttons">
                                 <div class="slider-items slider-width-col1 owl-carousel owl-theme">
+                                    <div class="item"> <a href="#"><img alt="New Fashion"
+                                                src="{{ asset('banner3.png') }}" style="height:350px;"></a>
+                                    </div>
                                     <div class="item"> <a href="#"><img alt="New Special Collection"
-                                                src="{{ asset('banner5.jpeg') }}" style="height:400px;"></a>
+                                                src="{{ asset('banner1.webp') }}" style="height:350px;"></a>
                                     </div>
                                     <div class="item"> <a href="#"><img alt="New Fashion"
-                                                src="{{ asset('banner2.webp') }}" style="height:400px;"></a>
+                                                src="{{ asset('banner2.png') }}" style="height:350px;"></a>
+                                    </div>
+                                    <div class="item"> <a href="#"><img alt="New Fashion"
+                                                src="{{ asset('banner4.png') }}" style="height:350px;"></a>
+                                    </div>
+                                    <div class="item"> <a href="#"><img alt="New Fashion"
+                                                src="{{ asset('banner5.png') }}" style="height:350px;"></a>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +74,7 @@
                                                     <a class="product-image"
                                                         href="{{ route('products.detail', ['product' => $product->id]) }}">
                                                         <img src="{{ asset($product->avatar_url) }}"
-                                                            style="height:300px;object-fit:contain;background:#f6f6f6;">
+                                                            style="height:250px;object-fit:contain;background:#f6f6f6;">
                                                     </a>
                                                     <div class="new-label new-top-left">new</div>
                                                     <div class="sale-label sale-top-right">sale</div>
@@ -113,23 +122,23 @@
                             <div class="block-content">
                                 <form id="product-filter-form" method="GET">
                                     <dl id="narrow-by-list">
-                                        <dt class="odd">{{ __('messages.brands') }}</dt>
-                                        <dd class="odd">
-                                            <ol class="bag-material">
-                                                @foreach ($brands as $brand)
-                                                    <li>
-                                                        <div class="pretty p-icon p-smooth">
-                                                            <input type="checkbox" name="brands"
-                                                                value="{{ $brand->id }}"
-                                                                @if (in_array(strval($brand->id), request()->query('brands', []))) checked @endif />
-                                                            <div class="state p-success"> <i class="icon fa fa-check"></i>
-                                                                <label>{{ $brand->name }}</label>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ol>
-                                        </dd>
+{{--                                        <dt class="odd">{{ __('messages.brands') }}</dt>--}}
+{{--                                        <dd class="odd">--}}
+{{--                                            <ol class="bag-material">--}}
+{{--                                                @foreach ($brands as $brand)--}}
+{{--                                                    <li>--}}
+{{--                                                        <div class="pretty p-icon p-smooth">--}}
+{{--                                                            <input type="checkbox" name="brands"--}}
+{{--                                                                value="{{ $brand->id }}"--}}
+{{--                                                                @if (in_array(strval($brand->id), request()->query('brands', []))) checked @endif />--}}
+{{--                                                            <div class="state p-success"> <i class="icon fa fa-check"></i>--}}
+{{--                                                                <label>{{ $brand->name }}</label>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </li>--}}
+{{--                                                @endforeach--}}
+{{--                                            </ol>--}}
+{{--                                        </dd>--}}
                                         <dt class="even">{{ __('messages.categories') }}</dt>
                                         <dd class="even">
                                             <ol class="bag-material">
@@ -170,14 +179,14 @@
                                         </li>
                                     </ol>
                                     <div class="carousel-inner">
-                                        <div class="item active"><img src="{{ asset('banner8.webp') }}" alt="New Arrivals">
+                                        <div class="item active"><img src="{{ asset('banner6.jpeg') }}" alt="New Arrivals">
                                             <div class="carousel-caption">
                                                 <h3><a title=" Sample Product" href="#">New Arrivals</a>
                                                 </h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                             </div>
                                         </div>
-                                        <div class="item"><img src="{{ asset('banner9.webp') }}" alt="Mid Season">
+                                        <div class="item"><img src="{{ asset('banner7.jpeg') }}" alt="Mid Season">
                                             <div class="carousel-caption">
                                                 <h3><a title=" Sample Product" href="#">Top Fashion</a>
                                                 </h3>

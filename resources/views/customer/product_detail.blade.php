@@ -110,43 +110,17 @@
                                         @if ($product->price != $product->final_price)
                                             <p class="old-price"><span class="price">@money($product->price, 'VND')</span></p>
                                         @endif
-                                        <p class="availability in-stock"><span>In Stock</span></p>
+                                        <p class="availability in-stock"><span>Còn hàng</span></p>
                                     </div>
                                 </div>
                                 <div class="short-description">
                                     {!! $product->description !!}
                                 </div>
                                 <div class="add-to-box" style="border-bottom:none;">
-                                    <div style="display:flex;align-items:center;">
-                                        <div style="width:80px;">
-                                            <h6 class="variant-label">{{ __('messages.size') }}:</h6>
-                                        </div>
-                                        <div>
-                                            @foreach ($sizes as $key => $size)
-                                                <label class="radio-variant">
-                                                    <input type="radio" name="size_id" value="{{ $size->id }}"
-                                                        @if ($key === 0) checked @endif><span>{{ $size->value }}</span>
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;align-items:center;margin:10px 0;">
-                                        <div style="width:80px;">
-                                            <h6 class="variant-label">{{ __('messages.color') }}:</h6>
-                                        </div>
-                                        <div>
-                                            @foreach ($colors as $key => $color)
-                                                <label class="radio-variant">
-                                                    <input type="radio" name="color_id" value="{{ $color->id }}"
-                                                        @if ($key === 0) checked @endif><span>{{ $color->value }}</span>
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                    </div>
                                     <div class="add-to-cart">
-                                        <div class="pull-left">
+                                        <div class="pull-left" style="margin-right:20px">
                                             <div class="custom pull-left">
-                                                <label>Quantity:</label>
+                                                <label>{{ __('messages.quantity') }}:</label>
                                                 <button
                                                     onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
                                                     class="reduced items-count" type="button"><i

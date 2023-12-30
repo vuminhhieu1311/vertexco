@@ -13,24 +13,18 @@ class CartController extends Controller
     {
         $cart = Cart::content();
 
-        foreach ($cart as $item) {
-            $product = Product::find($item->id);
-            $item->product_quantity = $product->quantity;
-        }
+//        foreach ($cart as $item) {
+//            $product = Product::find($item->id);
+//            $item->product_quantity = $product->quantity;
+//        }
 
         return view('customer.cart', compact('cart'));
     }
 
     public function save(Request $request, Product $product)
     {
-        $variant = ProductVariant::firstWhere([
-            'product_id' => $product->id,
-            'size_id' => $request->size_id,
-            'color_id' => $request->color_id,
-        ]);
-
-        if ($request->quantity > $variant->quantity) {
-            toast('Vui lòng nhập số lượng nhỏ hơn '.$variant->quantity, 'error');
+        if ($request->quantity > $product->quantity) {
+            toast('Vui lòng nhập số lượng nhỏ hơn '.$product->quantity, 'error');
 
             return redirect()->back();
         }
@@ -43,9 +37,6 @@ class CartController extends Controller
             'weight' => 1,
             'options' => [
                 'avatar_url' => $product->avatar_url,
-                'size' => $variant->size->value,
-                'color' => $variant->color->value,
-                'variant_id' => $variant->id,
             ],
         ]);
 

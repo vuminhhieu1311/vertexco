@@ -15,7 +15,7 @@
                         <div class="mega-container visible-lg visible-md visible-sm">
                             <div class="navleft-container">
                                 <div class="mega-menu-title">
-                                    <h3>Bí mật của thời trang</h3>
+                                    <h3>Shop quà lưu niệm</h3>
                                 </div>
                             </div>
                         </div>
