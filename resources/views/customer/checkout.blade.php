@@ -27,7 +27,6 @@
                                                     <form id="checkout-form" method="POST"
                                                           action="{{ route('orders.store') }}">
                                                         @csrf
-                                                        <input type="hidden" name="total_usd" value="{{ $totalUSD }}">
                                                         <div class="col-md-6 col-xs-12">
                                                             <div class="billing-details checkout-payment-area"
                                                                  style="background:white;">

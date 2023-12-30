@@ -6,7 +6,6 @@ use App\Enums\OrderStatus;
 use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\ProductVariant;
 use Exception;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -235,9 +234,8 @@ class OrderController extends Controller
     public function paypalCheckout(Order $order, Request $request)
     {
         try {
-            $amount = (float) $request->total_usd;
             $response = $this->gateway->purchase(array(
-                'amount' => $amount,
+                'amount' =>  round($order->total * 0.000041, 2),
                 'currency' => 'USD',
                 'returnUrl' => url('paypal-success'),
                 'cancelUrl' => url('paypal-error'),
@@ -245,8 +243,6 @@ class OrderController extends Controller
                     'orderId' => $order->id,
                 ),
             ))->send();
-
-            Log::info('Request Paypal', ['response' => $response]);
 
             if ($response->isRedirect()) {
                 $order->payment_id = $response->getData()['id'];
