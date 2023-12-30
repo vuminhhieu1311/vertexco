@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $this->authorize('viewAny', User::class);
 
-        $users = User::latest()->get();
+        $users = User::latest()->isAdmin()->get();
         $roles = Role::latest()->get();
 
         return view('user.index', compact('users', 'roles'));

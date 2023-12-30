@@ -7,7 +7,7 @@
                     <!-- Header Logo -->
                     <div class="logo">
                         <a title="ecommerce Template" href="{{ route('home') }}">
-                            <img style="height:35px;" src="{{ asset('logo.png') }}">
+                            <img style="height:40px;margin-left:40px;" src="{{ asset('logo.png') }}">
                         </a>
                     </div>
                     <!-- End Header Logo -->

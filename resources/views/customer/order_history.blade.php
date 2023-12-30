@@ -9,6 +9,9 @@
         .basket-icon i {
             color: #fff;
         }
+        .content {
+            min-height: calc(100vh - 180px);
+        }
     </style>
 @endsection
 
