@@ -184,8 +184,8 @@
                                                         <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
                                                             <a>
                                                                 <div class="symbol-label">
-{{--                                                                    <img--}}
-{{--                                                                        src="{{ Avatar::create($order->user->name)->setFontSize(10)->toBase64() }}" />--}}
+                                                                    <img
+                                                                        src="https://ui-avatars.com/api/?background=random&size=32&color=fff&name={{ urlencode($order->user->name) }}&rounded=true" />
                                                                 </div>
                                                             </a>
                                                         </div>
@@ -277,8 +277,7 @@
                                 <div class="card-body pt-0">
                                     @if ($order->rating)
                                         <div class="d-flex align-items-center">
-{{--                                            <img style="height:50px;margin-right:10px;"--}}
-{{--                                                src="{{ Avatar::create($order->user->name)->setFontSize(35)->toBase64() }}" />--}}
+                                            <img style=margin-right:10px; src="https://ui-avatars.com/api/?background=random&size=50&color=fff&name={{ urlencode($order->user->name) }}&rounded=true" />
                                             <div>
                                                 @include('components.view_rating', [
                                                     'rating' => $order->rating->rating,

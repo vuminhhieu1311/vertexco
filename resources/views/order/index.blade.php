@@ -69,8 +69,9 @@
                             <!--end::Flatpickr-->
                             <div class="w-150 mw-150px">
                                 <!--begin::Select2-->
-                                <select class="status-filter form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                    data-placeholder="Status" data-kt-ecommerce-order-filter="status">
+                                <select class="status-filter form-select form-select-solid" data-control="select2"
+                                    data-hide-search="true" data-placeholder="Status"
+                                    data-kt-ecommerce-order-filter="status">
                                     <option value="-1">Tất cả trạng thái</option>
                                     <option value="pending">{{ __('messages.pending') }}</option>
                                     <option value="delivering">{{ __('messages.delivering') }}</option>
@@ -81,8 +82,9 @@
                             </div>
                             <div class="w-150 mw-150px">
                                 <!--begin::Select2-->
-                                <select class="total-filter form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                    data-placeholder="Tổng tiền" data-kt-ecommerce-order-filter="status">
+                                <select class="total-filter form-select form-select-solid" data-control="select2"
+                                    data-hide-search="true" data-placeholder="Tổng tiền"
+                                    data-kt-ecommerce-order-filter="status">
                                     <option value="-1">Tất cả khoảng tiền</option>
                                     <option value="under 500">Dưới 500.000</option>
                                     <option value="from 500 to 1000">Từ 500.000 đến 1 triệu</option>
@@ -131,7 +133,7 @@
                                             <div class="d-flex align-items-center">
                                                 <!--begin:: Avatar -->
                                                 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-{{--                                                    <img src="{{ Avatar::create($order->user->name)->toBase64() }}" />--}}
+                                                    <img src="https://ui-avatars.com/api/?background=random&color=fff&name={{ urlencode($order->user->name) }}&rounded=true" />
                                                 </div>
                                                 <!--end::Avatar-->
                                                 <div class="ms-2">

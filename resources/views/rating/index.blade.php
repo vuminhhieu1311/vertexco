@@ -77,7 +77,9 @@
                                             <div class="d-flex align-items-center">
                                                 <!--begin:: Avatar -->
                                                 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-{{--                                                    <img src="{{ Avatar::create($rating->user->name)->toBase64() }}" />--}}
+                                                    <img
+                                                        src="https://ui-avatars.com/api/?background=random&color=fff&name={{ urlencode($rating->user->name) }}&rounded=true" />
+
                                                 </div>
                                                 <!--end::Avatar-->
                                                 <div class="ms-2">

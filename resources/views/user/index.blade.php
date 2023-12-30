@@ -34,8 +34,8 @@
                             <span class="svg-icon svg-icon-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
-                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
-                                        rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                        transform="rotate(-45 6 17.3137)" fill="black" />
                                     <rect x="7.41422" y="6" width="16" height="2" rx="1"
                                         transform="rotate(45 7.41422 6)" fill="black" />
                                 </svg>
@@ -110,12 +110,12 @@
                                                 <span class="svg-icon svg-icon-1">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none">
-                                                        <rect opacity="0.5" x="6" y="17.3137"
-                                                            width="16" height="2" rx="1"
-                                                            transform="rotate(-45 6 17.3137)" fill="black" />
-                                                        <rect x="7.41422" y="6" width="16"
-                                                            height="2" rx="1"
-                                                            transform="rotate(45 7.41422 6)" fill="black" />
+                                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
+                                                            rx="1" transform="rotate(-45 6 17.3137)"
+                                                            fill="black" />
+                                                        <rect x="7.41422" y="6" width="16" height="2"
+                                                            rx="1" transform="rotate(45 7.41422 6)"
+                                                            fill="black" />
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
@@ -292,7 +292,8 @@
                                             <!--begin:: Avatar -->
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <div>
-{{--                                                    <img src="{{ Avatar::create($user->name)->toBase64() }}" class="h-50px" />--}}
+                                                    <img
+                                                        src="https://ui-avatars.com/api/?background=random&size=50&color=fff&name={{ urlencode($user->name) }}&rounded=true" />
                                                 </div>
                                             </div>
                                             <!--end::Avatar-->
@@ -339,10 +340,10 @@
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
-{{--                                                <div class="menu-item px-3">--}}
-{{--                                                    <a href="#" class="menu-link px-3"--}}
-{{--                                                        data-kt-users-table-filter="delete_row">{{ __('messages.delete') }}</a>--}}
-{{--                                                </div>--}}
+                                                {{--                                                <div class="menu-item px-3"> --}}
+                                                {{--                                                    <a href="#" class="menu-link px-3" --}}
+                                                {{--                                                        data-kt-users-table-filter="delete_row">{{ __('messages.delete') }}</a> --}}
+                                                {{--                                                </div> --}}
                                                 <!--end::Menu item-->
                                             </div>
                                             <!--end::Menu-->
@@ -367,13 +368,13 @@
                                                             <span class="svg-icon svg-icon-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24" fill="none">
-                                                                    <rect opacity="0.5" x="6" y="17.3137"
-                                                                        width="16" height="2" rx="1"
+                                                                    <rect opacity="0.5" x="6" y="17.3137" width="16"
+                                                                        height="2" rx="1"
                                                                         transform="rotate(-45 6 17.3137)"
                                                                         fill="black" />
-                                                                    <rect x="7.41422" y="6" width="16"
-                                                                        height="2" rx="1"
-                                                                        transform="rotate(45 7.41422 6)" fill="black" />
+                                                                    <rect x="7.41422" y="6" width="16" height="2"
+                                                                        rx="1" transform="rotate(45 7.41422 6)"
+                                                                        fill="black" />
                                                                 </svg>
                                                             </span>
                                                             <!--end::Svg Icon-->
