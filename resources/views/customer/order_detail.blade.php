@@ -167,8 +167,8 @@
                                                         <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
                                                             <a>
                                                                 <div class="symbol-label">
-                                                                    <img
-                                                                        src="{{ Avatar::create($order->user->name)->toBase64() }}" />
+{{--                                                                    <img--}}
+{{--                                                                        src="{{ Avatar::create($order->user->name)->toBase64() }}" />--}}
                                                                 </div>
                                                             </a>
                                                         </div>

@@ -77,7 +77,7 @@
                                             <div class="d-flex align-items-center">
                                                 <!--begin:: Avatar -->
                                                 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                    <img src="{{ Avatar::create($rating->user->name)->toBase64() }}" />
+{{--                                                    <img src="{{ Avatar::create($rating->user->name)->toBase64() }}" />--}}
                                                 </div>
                                                 <!--end::Avatar-->
                                                 <div class="ms-2">

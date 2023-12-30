@@ -44,7 +44,7 @@
                                     @foreach ($users as $user)
                                         <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
                                             title="{{ $user->name }}">
-                                            <img src="{{ Avatar::create($user->name)->toBase64() }}" />
+{{--                                            <img src="{{ Avatar::create($user->name)->toBase64() }}" />--}}
                                         </div>
                                     @endforeach
                                     <a href="{{ route('users.index') }}" class="symbol symbol-35px symbol-circle">

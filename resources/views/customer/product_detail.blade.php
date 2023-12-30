@@ -178,8 +178,8 @@
                                 <div class="box-reviews2">
                                     @foreach ($product->ratings as $rating)
                                         <div style="display:flex;margin-bottom:20px;">
-                                            <img src="{{ Avatar::create($rating->user->name)->setFontSize(40)->toBase64() }}"
-                                                style="height:40px;" />
+{{--                                            <img src="{{ Avatar::create($rating->user->name)->setFontSize(40)->toBase64() }}"--}}
+{{--                                                style="height:40px;" />--}}
                                             <div style="margin-left:10px;margin-top:2px;">
                                                 @php
                                                     $percent = ($rating->rating / 5) * 100;
