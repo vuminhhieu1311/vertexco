@@ -276,8 +276,6 @@
                                 <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
                                     <th class="min-w-125px">{{ __('messages.user') }}</th>
                                     <th class="min-w-125px">{{ __('messages.role') }}</th>
-                                    <th class="min-w-125px">{{ __('messages.phone_number') }}</th>
-                                    <th class="min-w-125px">{{ __('messages.address') }}</th>
                                     <th class="min-w-125px">{{ __('messages.joined_date') }}</th>
                                     <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
                                 </tr>
@@ -314,10 +312,6 @@
                                             @endif
                                         </td>
                                         <!--end::Role=-->
-                                        <td>
-                                            <div class="badge badge-light fw-bolder">{{ $user->phone_number }}</div>
-                                        </td>
-                                        <td>{{ $user->address }}</td>
                                         <td>{{ $user->created_at }}</td>
                                         <!--begin::Action=-->
                                         <td class="text-end">
@@ -345,10 +339,10 @@
                                                 </div>
                                                 <!--end::Menu item-->
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-users-table-filter="delete_row">{{ __('messages.delete') }}</a>
-                                                </div>
+{{--                                                <div class="menu-item px-3">--}}
+{{--                                                    <a href="#" class="menu-link px-3"--}}
+{{--                                                        data-kt-users-table-filter="delete_row">{{ __('messages.delete') }}</a>--}}
+{{--                                                </div>--}}
                                                 <!--end::Menu item-->
                                             </div>
                                             <!--end::Menu-->
