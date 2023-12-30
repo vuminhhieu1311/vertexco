@@ -83,6 +83,13 @@ class ProductController extends Controller
             },
         ]);
 
+        $total = 0;
+        $ratingsCount = $product->ratings->count();
+        foreach ($product->ratings as $rating) {
+            $total += $rating->rating;
+        }
+        $product->rating_average = $ratingsCount > 0 ? ($total / $ratingsCount) : 0;
+
         $colors = $product->variants->pluck('color')->unique();
         $sizes = $product->variants->pluck('size')->unique();
 

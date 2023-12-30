@@ -261,7 +261,7 @@
                                     @if ($order->rating)
                                         @include('components.view_rating', [
                                             'rating' => $order->rating->rating,
-//                                        ])
+                                        ])
                                         <div class="mt-2">{{ $order->rating->comment }}</div>
                                     @elseif ($order->status === 'delivered')
                                         <form method="POST"
