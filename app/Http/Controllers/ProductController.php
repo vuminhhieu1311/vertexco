@@ -90,23 +90,19 @@ class ProductController extends Controller
         }
         $product->rating_average = $ratingsCount > 0 ? ($total / $ratingsCount) : 0;
 
-        $colors = $product->variants->pluck('color')->unique();
-        $sizes = $product->variants->pluck('size')->unique();
-
-        return view('customer.product_detail', compact('product', 'sizes', 'colors'));
+        return view('customer.product_detail', compact('product'));
     }
 
     public function edit(Product $product)
     {
         $this->authorize('update', $product);
         $categories = Category::latest()->get();
-        $brands = Brand::latest()->get();
-        $colors = Color::all();
-        $sizes = Size::all();
+        // $brands = Brand::latest()->get();
+        // $colors = Color::all();
+        // $sizes = Size::all();
         $product->category_ids = $product->categories->pluck('id')->toArray();
-        $product->load('variants');
 
-        return view('product.edit', compact('product', 'categories', 'brands', 'colors', 'sizes'));
+        return view('product.edit', compact('product', 'categories'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)

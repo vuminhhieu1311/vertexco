@@ -152,7 +152,7 @@ class OrderController extends Controller
             DB::beginTransaction();
 
             if ($request->status === OrderStatus::CANCELED) {
-                foreach ($order->productVariants as $product) {
+                foreach ($order->products as $product) {
                     $quantity = $product->quantity + $product->pivot->quantity;
                     $product->quantity = $quantity;
                     $product->save();
@@ -182,7 +182,7 @@ class OrderController extends Controller
             DB::beginTransaction();
 
             if ($order->status === OrderStatus::PENDING) {
-                foreach ($order->productVariants as $product) {
+                foreach ($order->products as $product) {
                     $quantity = $product->quantity + $product->pivot->quantity;
                     $product->quantity = $quantity;
                     $product->save();
