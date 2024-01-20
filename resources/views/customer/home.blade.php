@@ -65,46 +65,50 @@
                             <h2>Clothing</h2>
                         </div>
                         <div class="category-products">
-                            <ul class="products-grid">
-                                @foreach ($products as $product)
-                                    <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                                        <div class="item-inner">
-                                            <div class="item-img">
-                                                <div class="item-img-info">
-                                                    <a class="product-image"
-                                                        href="{{ route('products.detail', ['product' => $product->id]) }}">
-                                                        <img src="{{ asset($product->avatar_url) }}"
-                                                            style="height:250px;object-fit:contain;background:#f6f6f6;">
-                                                    </a>
-                                                    <div class="new-label new-top-left">new</div>
-                                                    <div class="sale-label sale-top-right">sale</div>
-                                                </div>
-                                            </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"><a
-                                                            href="{{ route('products.detail', ['product' => $product->id]) }}">{{ $product->name }}</a>
+                            @if($products->count())
+                                <ul class="products-grid">
+                                    @foreach ($products as $product)
+                                        <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                            <div class="item-inner">
+                                                <div class="item-img">
+                                                    <div class="item-img-info">
+                                                        <a class="product-image"
+                                                           href="{{ route('products.detail', ['product' => $product->id]) }}">
+                                                            <img src="{{ asset($product->avatar_url) }}"
+                                                                 style="height:250px;object-fit:contain;background:#f6f6f6;">
+                                                        </a>
+                                                        <div class="new-label new-top-left">new</div>
+                                                        <div class="sale-label sale-top-right">sale</div>
                                                     </div>
-                                                    <div class="item-content">
-                                                        <div class="item-price">
-                                                            <div class="price-box">
+                                                </div>
+                                                <div class="item-info">
+                                                    <div class="info-inner">
+                                                        <div class="item-title"><a
+                                                                href="{{ route('products.detail', ['product' => $product->id]) }}">{{ $product->name }}</a>
+                                                        </div>
+                                                        <div class="item-content">
+                                                            <div class="item-price">
+                                                                <div class="price-box">
                                                                 <span class="regular-price">
                                                                     <span class="price">@money($product->final_price, 'VND')</span>
                                                                 </span>
-                                                                @if ($product->price != $product->final_price)
-                                                                    <p class="old-price">
-                                                                        <span class="price">@money($product->price, 'VND')</span>
-                                                                    </p>
-                                                                @endif
+                                                                    @if ($product->price != $product->final_price)
+                                                                        <p class="old-price">
+                                                                            <span class="price">@money($product->price, 'VND')</span>
+                                                                        </p>
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <div style="margin-top: 20px;">Không tìm thấy kết quả phù hợp</div>
+                            @endif
                         </div>
                         <div class="toolbar bottom">
                             <div class="text-right product-pagination">

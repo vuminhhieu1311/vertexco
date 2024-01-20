@@ -23,6 +23,10 @@ if ($('#success-message').val()) {
 // Search
 var urlParams = new URLSearchParams(window.location.search);
 
+if (urlParams.get('name')) {
+    $('.product-search-input').val((urlParams.get('name')));
+}
+
 $('.product-search-input').keyup(function (e) {
     const keyword = $(this).val();
     urlParams.delete('name');
