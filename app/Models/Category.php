@@ -25,4 +25,14 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+
+    public function orders()
+    {
+        return $this->hasManyThrough(Order::class, Product::class);
+    }
+
+    public function getTotalOrdersAttribute()
+    {
+        return $this->orders->sum('total');
+    }
 }

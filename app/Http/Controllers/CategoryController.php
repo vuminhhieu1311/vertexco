@@ -11,7 +11,11 @@ class CategoryController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Category::class);
-        $categories = Category::latest()->get();
+        $categories = Category::with('products.orders')->latest()->get();
+
+        foreach ($categories as $category) {
+            dd($category->totalOrders);
+        }
 
         return view('category.index', compact('categories'));
     }
