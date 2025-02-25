@@ -41,17 +41,30 @@ Route::middleware(['auth', 'localization'])->group(function () {
         'updateLanguage',
     ])->name('update-language');
 
-    Route::get('/my-account', [UserController::class, 'editProfile'])->name('user.profile');
+    // Admin Routes
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/report/sales', [DashboardController::class, 'sales'])->name('report.sales');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/report/sales', [DashboardController::class, 'sales'])->name('report.sales');
+        Route::prefix('products')->group(function () {
+            Route::get('/{product}/images', [ProductController::class, 'showProductImages']);
+            Route::delete('/{product}/images/{imageId}', [ProductController::class, 'deleteProductImage']);
+            Route::post('/{product}/images', [ProductController::class, 'storeProductImage']);
+        });
 
-    Route::prefix('products')->group(function () {
-        Route::get('/{product}/images', [ProductController::class, 'showProductImages']);
-        Route::delete('/{product}/images/{imageId}', [ProductController::class, 'deleteProductImage']);
-        Route::post('/{product}/images', [ProductController::class, 'storeProductImage']);
+        Route::resources([
+            'brands' => BrandController::class,
+            'categories' => CategoryController::class,
+            'products' => ProductController::class,
+            'roles' => RoleController::class,
+            'permissions' => PermissionController::class,
+            'users' => UserController::class,
+            'orders' => OrderController::class,
+            'ratings' => RatingController::class,
+        ]);
     });
 
+    // Customer Routes
     Route::prefix('cart')->group(function () {
         Route::get('/', [CartController::class, 'show'])->name('cart.show');
         Route::post('/save/product/{product}', [CartController::class, 'save'])->name('cart.save');
@@ -59,22 +72,11 @@ Route::middleware(['auth', 'localization'])->group(function () {
         Route::put('/update/{id}', [CartController::class, 'update'])->name('cart.update');
         Route::get('/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
     });
-
+    Route::get('/my-account', [UserController::class, 'editProfile'])->name('user.profile');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::get('/order-history', [OrderController::class, 'getOrderHistory'])->name('order_history');
     Route::get('/order-history/{order}', [OrderController::class, 'getOrderDetail'])->name('order_detail');
     Route::post('/orders/{order}/rate', [OrderController::class, 'rateOrder'])->name('orders.rate');
-
-    Route::resources([
-        'brands' => BrandController::class,
-        'categories' => CategoryController::class,
-        'products' => ProductController::class,
-        'roles' => RoleController::class,
-        'permissions' => PermissionController::class,
-        'users' => UserController::class,
-        'orders' => OrderController::class,
-        'ratings' => RatingController::class,
-    ]);
 });
 
 Route::get('paypal-success', [OrderController::class, 'paypalSuccess']);

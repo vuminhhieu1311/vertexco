@@ -12,7 +12,7 @@ class RegisterResponse implements RegisterResponseContract
      */
     public function toResponse($request)
     {
-        $home = Auth::user()->is_admin ? '/dashboard' : '/';
+        $home = Auth::user()->is_admin ? '/admin' : '/';
 
         return redirect()->intended($home);
     }
