@@ -8,8 +8,8 @@
         .pagination>.active>span,
         .pagination>.active>span:focus,
         .pagination>.active>span:hover {
-            background-color: #C1262E;
-            border-color: #C1262E;
+            background-color: #009ef7;
+            border-color: #009ef7;
         }
 
         .pagination>li>a,
