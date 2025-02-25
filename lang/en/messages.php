@@ -138,4 +138,5 @@ return [
     'my_account' => 'My Account',
     'filter' => 'Filter',
     'paypal_paid' => 'Paid via Paypal',
+    'posts' => 'Posts',
 ];

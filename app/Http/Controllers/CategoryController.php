@@ -13,10 +13,6 @@ class CategoryController extends Controller
         $this->authorize('viewAny', Category::class);
         $categories = Category::with('products.orders')->latest()->get();
 
-        foreach ($categories as $category) {
-            dd($category->totalOrders);
-        }
-
         return view('category.index', compact('categories'));
     }
 

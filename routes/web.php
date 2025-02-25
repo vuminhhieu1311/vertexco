@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RoleController;
@@ -61,6 +62,7 @@ Route::middleware(['auth', 'localization'])->group(function () {
             'users' => UserController::class,
             'orders' => OrderController::class,
             'ratings' => RatingController::class,
+            'posts' => PostController::class,
         ]);
     });
 
