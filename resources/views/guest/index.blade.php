@@ -4,7 +4,7 @@
     <div class="home-banner-section w-full bg-cover bg-center"
         style="background-image: url('{{ asset('assets/home-bg.svg') }}')">
         <div class="container mx-auto h-full py-20 px-8">
-            <div class="w-full h-full flex flex-col justify-center max-w-4xl">
+            <div class="w-full h-full flex flex-col justify-center max-w-4xl" data-aos="fade-right">
                 <h1 class="home-banner-text mb-8">
                     Vận chuyển thông minh<br>
                     tương lai bền vững
@@ -15,7 +15,7 @@
                     Chúng tôi cam kết đồng hành cùng bạn xây dựng<br>
                     một tương lai xanh và phát triển bền vững.
                 </p>
-                <div>
+                <div data-aos="fade-up" data-aos-delay="200">
                     <x-primary-button link="#">Liên hệ ngay</x-primary-button>
                 </div>
             </div>
@@ -24,7 +24,7 @@
 
     <div class="about-section container mx-auto pt-12 pb-24 px-8">
         <div class="flex flex-wrap">
-            <div class="w-full lg:w-fit pr-5">
+            <div class="w-full lg:w-fit pr-5" data-aos="fade-right">
                 <div class="about-images relative">
                     <img width="531" style="max-width: 90%;" src="{{ asset('assets/about-2.svg') }}"
                         alt="Delivery professional">
@@ -32,7 +32,7 @@
                         src="{{ asset('assets/about-1.svg') }}" alt="Logistics worker">
                 </div>
             </div>
-            <div class="w-full lg:w-1/2 pl-0 lg:pl-12 mt-8 lg:mt-0">
+            <div class="w-full lg:w-1/2 pl-0 lg:pl-12 mt-8 lg:mt-0" data-aos="fade-left">
                 <div class="about-content">
                     <h2 class="about-title mt-4 mb-8">Tổng quan về Vertexco</h2>
                     <div class="tabs-wrapper mb-8">
@@ -48,7 +48,7 @@
                         không chỉ vận chuyển hàng hóa mà còn mang đến giá trị, niềm tin và sự phát triển bền vững cho khách
                         hàng.
                     </p>
-                    <div class="mt-8">
+                    <div class="mt-8"></div>
                         <x-primary-button link="#">Xem thêm</x-primary-button>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
 
     <div class="py-16" style="background: #C1262E">
         <div class="container mx-auto px-8">
-            <h2 class="text-center text-white text-4xl font-bold mb-5">Dịch vụ chính</h2>
+            <h2 class="text-center text-white text-4xl font-bold mb-5" data-aos="fade-up">Dịch vụ chính</h2>
             <p class="text-center text-white text-base mb-12 max-w-4xl mx-auto">
                 Ứng dụng của chúng tôi mang đến cho bạn khả năng hiển thị tuyệt vời về toàn bộ mạng lưới hậu cần của bạn.
                 Cho dù bạn đang quản lý một chuyến giao hàng hay giám sát hàng nghìn chuyến hàng, bạn đều có thể theo dõi vị
@@ -66,34 +66,34 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white overflow-hidden">
+                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                     <img src="{{ asset('assets/service-1.svg') }}" alt="Vận tải Bắc Nam" class="w-full object-cover">
                     <h3 class="service-text text-center py-4">VẬN TẢI BẮC NAM</h3>
                 </div>
 
-                <div class="bg-white overflow-hidden">
+                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                     <img src="{{ asset('assets/service-2.svg') }}" alt="Xe tải chở hàng" class="w-full object-cover">
                     <h3 class="service-text text-center py-4">XE TẢI CHỞ HÀNG</h3>
                 </div>
 
-                <div class="bg-white overflow-hidden">
+                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="300">
                     <img src="{{ asset('assets/service-3.svg') }}" alt="Vận chuyển container" class="w-full object-cover">
                     <h3 class="service-text text-center py-4">VẬN CHUYỂN CONTAINER</h3>
                 </div>
 
-                <div class="bg-white overflow-hidden">
+                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="400">
                     <img src="{{ asset('assets/service-4.svg') }}" alt="Vận chuyển hàng siêu trọng"
                         class="w-full object-cover">
                     <h3 class="service-text text-center py-4">VẬN CHUYỂN HÀNG SIÊU TRỌNG</h3>
                 </div>
 
-                <div class="bg-white overflow-hidden">
+                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="500">
                     <img src="{{ asset('assets/service-5.svg') }}" alt="Chuyển nhà trọn gói giá rẻ"
                         class="w-full object-cover">
                     <h3 class="service-text text-center py-4">CHUYỂN NHÀ TRỌN GÓI GIÁ RẺ</h3>
                 </div>
 
-                <div class="bg-white overflow-hidden">
+                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="600">
                     <img src="{{ asset('assets/service-6.svg') }}" alt="Chuyển văn phòng, kho xưởng"
                         class="w-full object-cover">
                     <h3 class="service-text text-center py-4">CHUYỂN VĂN PHÒNG, KHO XƯỞNG</h3>
@@ -104,26 +104,26 @@
 
     <div class="stats-section container mx-auto py-16 px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-20 px-30">
-            <div>
+            <div data-aos="fade-up" data-aos-delay="0">
                 <h3 class="statistic-text mb-4">10.000+</h3>
                 <p class="statistic-desc">Việc giao hàng được quản lý</p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="100">
                 <h3 class="statistic-text mb-4">2.500+</h3>
                 <p class="statistic-desc">Khách hàng đang hoạt động</p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="200">
                 <h3 class="statistic-text mb-4">98%</h3>
                 <p class="statistic-desc">Tỷ lệ giao hàng đúng giờ</p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="300">
                 <h3 class="statistic-text mb-4">200+</h3>
                 <p class="statistic-desc">Giải thưởng ngành</p>
             </div>
         </div>
 
         <div class="flex justify-center">
-            <div class="price-box relative px-16 py-8" style="margin-right: 10%;">
+            <div class="price-box relative px-16 py-8" style="margin-right: 10%;" data-aos="fade-right">
                 <h2 class="price-title mb-6">Giao hàng an toàn, trọn vẹn niềm tin</h2>
                 <p class="price-desc mb-8 max-w-2xl">Kiểm tra và bảo trì an toàn thường xuyên là một phần trong cam kết của
                     chúng tôi nhằm duy trì đội xe của bạn ở tình trạng tốt nhất. Ứng dụng của chúng tôi lên lịch và theo dõi
@@ -135,7 +135,7 @@
                             fill="#050505" />
                     </g>
                 </svg>
-                <div class="absolute top-0" style="right: -10%;">
+                <div class="absolute top-0" style="right: -10%;" data-aos="fade-left" data-aos-delay="200">
                     <img width="500" src="{{ asset('assets/van.png') }}" alt="Delivery van">
                     <div class="flex justify-end mt-4">
                         <a class="link-button mr-2" href="#">Nhận báo giá miễn phí</a>
@@ -145,7 +145,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-            <div class="company-info-card">
+            <div class="company-info-card" data-aos="fade-up" data-aos-delay="0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
                     <rect width="44" height="44" rx="8" fill="#FFF3EB"/>
                     <path d="M32 22C32 27.5228 27.5228 32 22 32C16.4772 32 12 27.5228 12 22C12 16.4772 16.4772 12 22 12C27.5228 12 32 16.4772 32 22Z" fill="#C1262E"/>
@@ -154,7 +154,7 @@
                 <h3 class="company-info-title my-4">Theo dõi mọi lô hàng theo thời gian thực</h3>
                 <p class="company-info-desc">Luôn cập nhật vị trí chính xác của hàng hóa với thông báo theo dõi tức thì</p>
             </div>
-            <div class="company-info-card">
+            <div class="company-info-card" data-aos="fade-up" data-aos-delay="200">
                 <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="44" height="44" rx="8" fill="#FFF3EB"/>
                     <path d="M19.9496 26.0503C20.8806 25.1192 21.3461 24.6537 21.9209 24.6234C21.9735 24.6206 22.0261 24.6206 22.0787 24.6234C22.6535 24.6537 23.119 25.1192 24.0501 26.0503C26.0759 28.0761 27.0888 29.089 26.8053 29.963C26.7809 30.0381 26.7506 30.1112 26.7147 30.1815C26.2973 31 24.8648 31 21.9998 31C19.1348 31 17.7023 31 17.2849 30.1815C17.249 30.1112 17.2187 30.0381 17.1944 29.963C16.9108 29.089 17.9237 28.0761 19.9496 26.0503Z" fill="#C1262E"/>
@@ -164,7 +164,7 @@
                 <p class="company-info-desc">Cắt giảm chi phí và thời gian bằng cách cho phép hệ thống điều khiển bằng AI của
                     chúng tôi tối ưu hóa các tuyến giao hàng.</p>
             </div>
-            <div class="company-info-card">
+            <div class="company-info-card" data-aos="fade-up" data-aos-delay="400">
                 <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="44" height="44" rx="8" fill="#FFF3EB"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M14 15V29C14 30.6569 15.3431 32 17 32H27C28.6569 32 30 30.6569 30 29V19C30 17.3431 28.6569 16 27 16H15C14.4477 16 14 15.5523 14 15ZM17.25 22C17.25 21.5858 17.5858 21.25 18 21.25H26C26.4142 21.25 26.75 21.5858 26.75 22C26.75 22.4142 26.4142 22.75 26 22.75H18C17.5858 22.75 17.25 22.4142 17.25 22ZM17.25 25.5C17.25 25.0858 17.5858 24.75 18 24.75H23.5C23.9142 24.75 24.25 25.0858 24.25 25.5C24.25 25.9142 23.9142 26.25 23.5 26.25H18C17.5858 26.25 17.25 25.9142 17.25 25.5Z" fill="#C1262E"/>
@@ -178,7 +178,7 @@
 
         <div class="p-12 mt-20" style="border-radius: 14px; background: #FFF9F9;">
             <div class="flex flex-wrap items-center">
-                <div class="w-full lg:w-1/2">
+                <div class="w-full lg:w-1/2" data-aos="fade-right">
                     <h2 class="mb-6" style="color: #C1262E; font-size: 40px; font-weight: 600; line-height: 130%;">
                         Sẵn sàng cách mạng hóa hoạt động hậu cần của bạn?
                     </h2>
@@ -187,7 +187,7 @@
                     </p>
                     <a class="link-button" href="#">Nhận báo giá</a>
                 </div>
-                <div class="w-full flex justify-end lg:w-1/2 mt-8 lg:mt-0">
+                <div class="w-full flex justify-end lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
                     <img src="{{ asset('assets/van2.png') }}" alt="Logistics truck" class="w-4/5">
                 </div>
             </div>
@@ -195,24 +195,26 @@
     </div>
 
     <div class="news-section container mx-auto py-8 px-8">
-        <h2 class="text-center mb-12 news-section-title">
+        <h2 class="text-center mb-12 news-section-title" data-aos="fade-up">
             Báo chí nói gì <span class="text-[#C1262E]">về chúng tôi</span>
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             @for ($i = 1; $i <= 6; $i++)
-                <div class="news-card">
-                    <img src="{{ asset('assets/news.png') }}" alt="News image" class="w-full object-cover mb-4">
-                    <h3 class="mb-3" style="color: #000; font-size: 18px; font-weight: 700; line-height: normal;">
-                        Vertexco cung cấp dịch vụ gom hàng lẻ và chuyển hàng nguyên container
-                    </h3>
-                    <p class="mb-4" style="color: #454545; font-size: 16px; font-weight: 500; line-height: 135.2%;">
-                        Với cam kết vì một tương lai xanh, Vertexco không chỉ giúp khách hàng tối ưu chi phí mà còn chung tay xây dựng hệ sinh thái..
-                    </p>
+                <div class="news-card cursor-pointer" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
+                    <img src="{{ asset('assets/news.png') }}" alt="News image" class="w-full object-cover">
+                    <div class="p-4">
+                        <h3 class="mb-3" style="color: #000; font-size: 18px; font-weight: 700; line-height: normal;">
+                            Vertexco cung cấp dịch vụ gom hàng lẻ và chuyển hàng nguyên container
+                        </h3>
+                        <p style="color: #454545; font-size: 16px; font-weight: 500; line-height: 135.2%;">
+                            Với cam kết vì một tương lai xanh, Vertexco không chỉ giúp khách hàng tối ưu chi phí mà còn chung tay xây dựng hệ sinh thái..
+                        </p>
+                    </div>
                 </div>
             @endfor
         </div>
-        <div class="flex justify-center mt-8">
+        <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="700">
             <x-primary-button link="#">Xem tất cả</x-primary-button>
         </div>
     </div>

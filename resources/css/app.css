@@ -3,6 +3,7 @@
 
 html {
     font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
 
 .header-menu-item {
@@ -192,6 +193,43 @@ html {
 
 .footer-link:hover {
     text-decoration: underline;
+}
+
+/* Add these transitions */
+.about-tab-btn {
+    transition: all 0.3s ease;
+}
+
+.about-tab-btn:hover {
+    transform: translateY(-2px);
+}
+
+.company-info-card {
+    transition: all 0.3s ease;
+}
+
+.company-info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.news-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.link-button {
+    transition: all 0.3s ease;
+}
+
+.link-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(193, 38, 46, 0.3);
 }
 
 .dz-progress {

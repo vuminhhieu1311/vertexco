@@ -26,8 +26,6 @@
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-medium: 500;
@@ -880,9 +878,6 @@
   .mb-auto {
     margin-bottom: auto;
   }
-  .ml-12 {
-    margin-left: calc(var(--spacing) * 12);
-  }
   .ml-20 {
     margin-left: calc(var(--spacing) * 20);
   }
@@ -1252,11 +1247,11 @@
       margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
-  .space-y-4 {
+  .space-y-8 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+      margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .space-x-3 {
@@ -1375,9 +1370,6 @@
   }
   .border-gray-900 {
     border-color: var(--color-gray-900);
-  }
-  .border-red-600 {
-    border-color: var(--color-red-600);
   }
   .border-transparent {
     border-color: transparent;
@@ -1941,10 +1933,6 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
   .leading-relaxed {
     --tw-leading: var(--leading-relaxed);
     line-height: var(--leading-relaxed);
@@ -2165,13 +2153,6 @@
       }
     }
   }
-  .hover\:text-gray-200 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-gray-200);
-      }
-    }
-  }
   .hover\:text-red-600 {
     &:hover {
       @media (hover: hover) {
@@ -2297,6 +2278,7 @@
 }
 html {
   font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
 }
 .header-menu-item {
   color: #1C1F35;
@@ -2462,6 +2444,34 @@ html {
 }
 .footer-link:hover {
   text-decoration: underline;
+}
+.about-tab-btn {
+  transition: all 0.3s ease;
+}
+.about-tab-btn:hover {
+  transform: translateY(-2px);
+}
+.company-info-card {
+  transition: all 0.3s ease;
+}
+.company-info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.news-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.news-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.link-button {
+  transition: all 0.3s ease;
+}
+.link-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(193, 38, 46, 0.3);
 }
 .dz-progress {
   display: none;

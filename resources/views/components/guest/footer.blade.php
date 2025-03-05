@@ -3,12 +3,12 @@
         <img src="{{ asset('assets/white-logo.svg') }}" alt="Vertexco Logo" width="263" class="mb-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
             <!-- Company Logo and Address -->
-            <div class="space-y-4">
+            <div class="space-y-8">
                 <div>
                     <h3 class="footer-title mb-2">Địa chỉ</h3>
                     <p class="footer-text">C40-22, Gleximco C, D. Lê Trọng Tấn, P. Dương Nội, Q. Hà Đông, TP. Hà Nội</p>
                 </div>
-                <div class="flex gap-8">
+                <div class="flex gap-10">
                     <div>
                         <h3 class="footer-title mb-2">Hotline</h3>
                         <div class="space-y-1">
