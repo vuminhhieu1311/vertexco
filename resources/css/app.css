@@ -1,3 +1,199 @@
+@import "tailwindcss";
+@source "../views";
+
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+.header-menu-item {
+    color: #1C1F35;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.header-menu-item.active {
+    color: #C1262E;
+    font-weight: 700;
+}
+
+.home-banner-section {
+    height: 680px;
+}
+
+.home-banner-text {
+    color: #C1262E;
+    font-size: 65px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%;
+}
+
+.home-banner-detail {
+    color: #000;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.about-title {
+    color: #1C1F35;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.about-content {
+    color: #666C89;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 151.523%;
+}
+
+.about-tab-btn.active {
+    background: #C1262E;
+    color: #fff;
+}
+
+.about-tab-btn {
+    background: #F4F4F4;
+    color: #1C1F35;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 151.523%;
+}
+
+.service-text {
+    color: #C1262E;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.statistic-text {
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 52px;
+    background: linear-gradient(101deg, #C1262E 21%, #E77224 93.51%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.statistic-desc {
+    color: #6D6D6D;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.price-box {
+    border-radius: 21.768px;
+    background: #FAFAFA;
+    box-shadow: 0px 10px 30px 0px rgba(21, 21, 21, 0.15);
+    width: 80%;
+}
+
+.price-title {
+    color: #000;
+    font-size: 21.768px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 166.6%;
+}
+
+.price-desc {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166.6%;
+}
+
+.link-button {
+    border-radius: 4px;
+    background: #C1262E;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 18px 34px;
+}
+
+.company-info-card {
+    border-radius: 24px;
+    border: 2px solid #FFC2C6;
+    background: #FFF;
+    box-shadow: 3.122px 9.366px 21.854px 0px rgba(0, 0, 0, 0.06);
+    padding: 40px 27px;
+}
+
+.company-info-title {
+    color: #C1262E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+.company-info-desc {
+    color: #6D6D6D;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.news-section-title {
+    color: #3D3D3D;
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 52px;
+}
+
+.footer-title {
+    color: #FFF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.footer-text {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.footer-link {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
 .dz-progress {
     display: none;
 }
@@ -36,6 +232,7 @@
     border: none;
 }
 
-.search-input-box::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.search-input-box::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #fff;
 }

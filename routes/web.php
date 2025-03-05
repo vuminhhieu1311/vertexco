@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
@@ -30,7 +31,7 @@ Route::get('ping', function () {
 });
 
 Route::middleware('localization')->group(function () {
-    Route::get('/', [ProductController::class, 'getPublishedProducts'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::prefix('products')->group(function () {
         Route::get('/{product}/show', [ProductController::class, 'show'])->name('products.detail');
     });
