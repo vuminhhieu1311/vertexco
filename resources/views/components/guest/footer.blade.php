@@ -1,14 +1,14 @@
 <footer class="bg-[#C1262E] text-white py-12">
     <div class="container mx-auto px-4">
         <img src="{{ asset('assets/white-logo.svg') }}" alt="Vertexco Logo" width="263" class="mb-4" data-aos="fade-up">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
             <!-- Company Logo and Address -->
-            <div class="space-y-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="space-y-6 md:space-y-8" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <h3 class="footer-title mb-2">Địa chỉ</h3>
                     <p class="footer-text">C40-22, Gleximco C, D. Lê Trọng Tấn, P. Dương Nội, Q. Hà Đông, TP. Hà Nội</p>
                 </div>
-                <div class="flex gap-10">
+                <div class="flex flex-col sm:flex-row gap-6 sm:gap-10">
                     <div>
                         <h3 class="footer-title mb-2">Hotline</h3>
                         <div class="space-y-1">
@@ -25,7 +25,7 @@
             </div>
 
             <!-- Links Section -->
-            <div class="ml-20" data-aos="fade-up" data-aos-delay="200">
+            <div class="md:ml-20" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="footer-title mb-4">Links</h3>
                 <ul class="space-y-2">
                     <li><a href="#" class="footer-link">Trang chủ</a></li>
@@ -50,21 +50,18 @@
 
             <!-- CTA Section -->
             <div data-aos="fade-up" data-aos-delay="400">
-                <h3 class="mb-8"
-                    style="color: #FFF; font-size: 24px; font-style: normal; font-weight: 600;line-height: normal;">Bắt
-                    đầu cách mạng hóa hoạt động hậu cần của bạn</h3>
-                <div class="space-x-4">
+                <h3 class="mb-6 md:mb-8 text-xl md:text-2xl font-semibold">Bắt đầu cách mạng hóa hoạt động hậu cần của bạn</h3>
+                <div class="flex flex-row gap-4">
                     <a href="#"
-                        class="bg-white text-red-700 px-6 py-2 rounded-full inline-block hover:bg-gray-100">Liên hệ</a>
+                        class="bg-white text-red-700 px-6 py-2 rounded-full text-center hover:bg-gray-100">Liên hệ</a>
                     <a href="#"
-                        class="bg-white text-red-700 px-6 py-2 rounded-full inline-block hover:bg-gray-100">Nhận báo
-                        giá</a>
+                        class="bg-white text-red-700 px-6 py-2 rounded-full text-center hover:bg-gray-100">Nhận báo giá</a>
                 </div>
             </div>
         </div>
 
         <!-- Copyright -->
-        <div class="border-t border-[rgba(255, 255, 255, 0.32)] mt-12 pt-8 text-center" data-aos="fade-up" data-aos-delay="500">
+        <div class="border-t border-[rgba(255,255,255,0.32)] mt-8 md:mt-12 pt-6 md:pt-8 text-center" data-aos="fade-up" data-aos-delay="500">
             <p class="footer-text">© 2025 Vertexco Logistics CO.,LTD - All rights reserved</p>
         </div>
     </div>

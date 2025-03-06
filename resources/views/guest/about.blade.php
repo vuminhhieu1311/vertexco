@@ -9,14 +9,14 @@
 
             <div class="w-full lg:w-1/2 space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="space-y-4">
-                    <h2 class="about-title">Đối tác giao hàng đáng tin cậy của bạn</h2>
+                    <h2 class="about-title text-2xl md:text-3xl lg:text-[35px]">Đối tác giao hàng đáng tin cậy của bạn</h2>
                     <p class="about-text">Trong bối cảnh thương mại điện tử và chuỗi cung ứng ngày càng phát triển, Vertexco
                         Logics tự hào là đối tác giao hàng đáng tin cậy, giúp doanh nghiệp và cá nhân tối ưu hóa quy trình
                         vận chuyển một cách hiệu quả và an toàn.</p>
                 </div>
 
                 <div class="space-y-4">
-                    <h2 class="about-title">Câu chuyện của Vexterco Logictics</h2>
+                    <h2 class="about-title text-2xl md:text-3xl lg:text-[35px]">Câu chuyện của Vexterco Logictics</h2>
                     <p class="about-text">Vertexco Logistics được thành lập với sứ mệnh kết nối thế giới bằng những giải
                         pháp vận chuyển an toàn, nhanh chóng và hiệu quả. Chúng tôi không chỉ đơn thuần là một đơn vị
                         logistics, mà còn là đối tác chiến lược, giúp doanh nghiệp tối ưu chuỗi cung ứng và vươn xa trên thị

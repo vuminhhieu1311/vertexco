@@ -26,7 +26,7 @@
         <div class="flex flex-wrap">
             <div class="w-full lg:w-fit pr-0 lg:pr-5" data-aos="fade-right">
                 <div class="about-images relative flex justify-center lg:justify-start">
-                    <img width="531" class="w-[90%] max-w-[90%] lg:max-w-none" src="{{ asset('assets/about-2.svg') }}" alt="Delivery professional">
+                    <img width="531" class="w-full lg:w-[90%] max-w-full lg:max-w-none" src="{{ asset('assets/about-2.svg') }}" alt="Delivery professional">
                     <img class="absolute hidden lg:block" style="bottom: -40px; left: 339px;" width="190" src="{{ asset('assets/about-1.svg') }}" alt="Logistics worker">
                 </div>
             </div>
@@ -34,10 +34,10 @@
                 <div class="about-content">
                     <h2 class="about-title text-2xl md:text-3xl lg:text-[35px] mt-4 mb-8">Tổng quan về Vertexco</h2>
                     <div class="tabs-wrapper mb-8">
-                        <div class="flex gap-3.5">
-                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer active px-6 md:px-8 py-3 md:py-4">Chúng tôi là ai</button>
-                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-6 md:px-8 py-3 md:py-4">Câu chuyện</button>
-                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-6 md:px-8 py-3 md:py-4">Đội ngũ</button>
+                        <div class="flex flex-wrap gap-2 md:gap-3.5">
+                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer active px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Chúng tôi là ai</button>
+                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Câu chuyện</button>
+                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Đội ngũ</button>
                         </div>
                     </div>
                     <p class="about-content text-base md:text-[20px] leading-relaxed">
@@ -56,8 +56,8 @@
 
     <div class="py-16" style="background: #C1262E">
         <div class="container mx-auto px-8">
-            <h2 class="text-center text-white text-4xl font-bold mb-5" data-aos="fade-up">Dịch vụ chính</h2>
-            <p class="text-center text-white text-base mb-12 max-w-4xl mx-auto">
+            <h2 class="text-center text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-5" data-aos="fade-up">Dịch vụ chính</h2>
+            <p class="text-center text-white text-sm md:text-base mb-8 md:mb-12 max-w-4xl mx-auto">
                 Ứng dụng của chúng tôi mang đến cho bạn khả năng hiển thị tuyệt vời về toàn bộ mạng lưới hậu cần của bạn.
                 Cho dù bạn đang quản lý một chuyến giao hàng hay giám sát hàng nghìn chuyến hàng, bạn đều có thể theo dõi vị
                 trí chính xác của từng lô hàng theo thời gian thực.
@@ -101,30 +101,30 @@
     </div>
 
     <div class="stats-section container mx-auto py-16 px-4 md:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-20 px-30">
-            <div data-aos="fade-up" data-aos-delay="0">
-                <h3 class="statistic-text mb-4">10.000+</h3>
-                <p class="statistic-desc">Việc giao hàng được quản lý</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center mb-12 md:mb-20">
+            <div class="p-4 md:p-6" data-aos="fade-up" data-aos-delay="0">
+                <h3 class="statistic-text text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-4">10.000+</h3>
+                <p class="statistic-desc text-sm md:text-base">Việc giao hàng được quản lý</p>
             </div>
-            <div data-aos="fade-up" data-aos-delay="100">
-                <h3 class="statistic-text mb-4">2.500+</h3>
-                <p class="statistic-desc">Khách hàng đang hoạt động</p>
+            <div class="p-4 md:p-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="statistic-text text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-4">2.500+</h3>
+                <p class="statistic-desc text-sm md:text-base">Khách hàng đang hoạt động</p>
             </div>
-            <div data-aos="fade-up" data-aos-delay="200">
-                <h3 class="statistic-text mb-4">98%</h3>
-                <p class="statistic-desc">Tỷ lệ giao hàng đúng giờ</p>
+            <div class="p-4 md:p-6" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="statistic-text text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-4">98%</h3>
+                <p class="statistic-desc text-sm md:text-base">Tỷ lệ giao hàng đúng giờ</p>
             </div>
-            <div data-aos="fade-up" data-aos-delay="300">
-                <h3 class="statistic-text mb-4">200+</h3>
-                <p class="statistic-desc">Giải thưởng ngành</p>
+            <div class="p-4 md:p-6" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="statistic-text text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-4">200+</h3>
+                <p class="statistic-desc text-sm md:text-base">Giải thưởng ngành</p>
             </div>
         </div>
 
         <div class="flex justify-center">
             <div class="price-box relative px-4 md:px-16 py-8 w-full lg:w-auto" style="margin-right: 0 lg:margin-right: 10%;">
                 <div data-aos="fade-right">
-                    <h2 class="price-title mb-6 text-2xl md:text-3xl">Giao hàng an toàn, trọn vẹn niềm tin</h2>
-                    <p class="price-desc mb-8 max-w-lg lg:max-w-xl">Kiểm tra và bảo trì an toàn thường xuyên là một phần trong cam kết của
+                    <h2 class="price-title mb-6 text-xl md:text-[22px]">Giao hàng an toàn, trọn vẹn niềm tin</h2>
+                    <p class="price-desc mb-8 max-w-lg lg:max-w-xl text-base md:text-[18px]">Kiểm tra và bảo trì an toàn thường xuyên là một phần trong cam kết của
                         chúng tôi nhằm duy trì đội xe của bạn ở tình trạng tốt nhất. Ứng dụng của chúng tôi lên lịch và theo dõi
                         việc kiểm tra, đảm bảo rằng mọi phương tiện đều đáp ứng các tiêu chuẩn an toàn nghiêm ngặt</p>
                     <svg class="hidden lg:block" xmlns="http://www.w3.org/2000/svg" width="95" height="95" viewBox="0 0 95 95"
@@ -223,10 +223,10 @@
                 <div class="news-card cursor-pointer" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
                     <img src="{{ asset('assets/news.png') }}" alt="News image" class="w-full object-cover">
                     <div class="p-4">
-                        <h3 class="mb-3" style="color: #000; font-size: 18px; font-weight: 700; line-height: normal;">
+                        <h3 class="mb-3 text-base md:text-lg font-semibold leading-normal">
                             Vertexco cung cấp dịch vụ gom hàng lẻ và chuyển hàng nguyên container
                         </h3>
-                        <p style="color: #454545; font-size: 16px; font-weight: 500; line-height: 135.2%;">
+                        <p class="text-sm md:text-base text-[#454545] leading-relaxed">
                             Với cam kết vì một tương lai xanh, Vertexco không chỉ giúp khách hàng tối ưu chi phí mà còn
                             chung tay xây dựng hệ sinh thái..
                         </p>
