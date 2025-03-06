@@ -1,9 +1,9 @@
 <footer class="bg-[#C1262E] text-white py-12">
     <div class="container mx-auto px-4">
-        <img src="{{ asset('assets/white-logo.svg') }}" alt="Vertexco Logo" width="263" class="mb-4">
+        <img src="{{ asset('assets/white-logo.svg') }}" alt="Vertexco Logo" width="263" class="mb-4" data-aos="fade-up">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
             <!-- Company Logo and Address -->
-            <div class="space-y-8">
+            <div class="space-y-8" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <h3 class="footer-title mb-2">Địa chỉ</h3>
                     <p class="footer-text">C40-22, Gleximco C, D. Lê Trọng Tấn, P. Dương Nội, Q. Hà Đông, TP. Hà Nội</p>
@@ -25,7 +25,7 @@
             </div>
 
             <!-- Links Section -->
-            <div class="ml-20">
+            <div class="ml-20" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="footer-title mb-4">Links</h3>
                 <ul class="space-y-2">
                     <li><a href="#" class="footer-link">Trang chủ</a></li>
@@ -38,7 +38,7 @@
             </div>
 
             <!-- Policies Section -->
-            <div>
+            <div data-aos="fade-up" data-aos-delay="300">
                 <h3 class="footer-title mb-4">Chính sách</h3>
                 <ul class="space-y-2">
                     <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
@@ -49,7 +49,7 @@
             </div>
 
             <!-- CTA Section -->
-            <div>
+            <div data-aos="fade-up" data-aos-delay="400">
                 <h3 class="mb-8"
                     style="color: #FFF; font-size: 24px; font-style: normal; font-weight: 600;line-height: normal;">Bắt
                     đầu cách mạng hóa hoạt động hậu cần của bạn</h3>
@@ -64,7 +64,7 @@
         </div>
 
         <!-- Copyright -->
-        <div class="border-t border-[rgba(255, 255, 255, 0.32)] mt-12 pt-8 text-center">
+        <div class="border-t border-[rgba(255, 255, 255, 0.32)] mt-12 pt-8 text-center" data-aos="fade-up" data-aos-delay="500">
             <p class="footer-text">© 2025 Vertexco Logistics CO.,LTD - All rights reserved</p>
         </div>
     </div>

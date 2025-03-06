@@ -214,7 +214,7 @@
                 </div>
             @endfor
         </div>
-        <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="700">
+        <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="300">
             <x-primary-button link="#">Xem tất cả</x-primary-button>
         </div>
     </div>

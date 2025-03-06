@@ -19,6 +19,16 @@ html {
     font-weight: 700;
 }
 
+.news-detail-date {
+    color: rgba(18, 20, 22, 0.81);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+}
+
 .home-banner-section {
     height: 680px;
 }
@@ -73,7 +83,7 @@ html {
     color: #C1262E;
     font-size: 18px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
 }
@@ -210,17 +220,17 @@ html {
 
 .company-info-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .news-card {
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .news-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .link-button {
@@ -230,6 +240,55 @@ html {
 .link-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(193, 38, 46, 0.3);
+}
+
+.about-title {
+    color: #1C1F35;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 124.508%;
+}
+
+.about-text {
+    color: #6B6B6B;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px;
+}
+
+.why-choose-title {
+    color: var(--White, #FFF);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    text-transform: uppercase;
+}
+
+.why-choose-text {
+    color: #EEE;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.about-box-title {
+    color: #FFF;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+}
+
+.about-box-desc {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 .dz-progress {
@@ -273,4 +332,106 @@ html {
 .search-input-box::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #fff;
+}
+
+.contact-form-label {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.contact-form-title {
+    color: #1C1F35;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.contact-form input {
+    border: 1px solid #BDBDBD;
+    background: #FFF;
+}
+
+.contact-form textarea {
+    border: 1px solid #BDBDBD;
+    background: #FFF;
+}
+
+.contact-form-button {
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+}
+
+.contact-info-title {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.contact-info-desc {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+.news-related-title {
+    color: #121416;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.news-related-title:hover {
+    color: #C1262E;
+}
+
+.news-related-text {
+    color: #121416;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.news-card-tag {
+    color: #C1262E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.news-card-desc {
+    color: #6D6E76;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.news-card-title {
+    color: #232536;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px;
 }

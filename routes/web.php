@@ -32,6 +32,12 @@ Route::get('ping', function () {
 
 Route::middleware('localization')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
+    Route::get('/services', [HomeController::class, 'services'])->name('services');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/news', [HomeController::class, 'news'])->name('news');
+    Route::get('/news/{slug}', [HomeController::class, 'newsDetail'])->name('news.detail');
+
     Route::prefix('products')->group(function () {
         Route::get('/{product}/show', [ProductController::class, 'show'])->name('products.detail');
     });
