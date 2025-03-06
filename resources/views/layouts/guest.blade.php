@@ -20,11 +20,17 @@
     @yield('content')
     @include('components.guest.footer')
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <script>
         AOS.init({
             duration: 800,
             once: true
         });
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('header', () => ({
+                mobileMenuOpen: false
+            }))
+        })
     </script>
     @include('sweetalert::alert')
 </body>
