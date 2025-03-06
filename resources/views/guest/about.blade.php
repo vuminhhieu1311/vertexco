@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="container mx-auto pt-12 pb-24 px-8">
+    <div class="container mx-auto pt-12 pb-16 px-4 md:px-8">
         <div class="flex flex-col lg:flex-row gap-12">
             <div class="w-full lg:w-1/2" data-aos="fade-right" data-aos-duration="1000">
                 <img src="{{ asset('assets/about.png') }}" alt="Container ship" class="w-full shadow-lg">
@@ -29,9 +29,9 @@
         </div>
     </div>
 
-    <div class="bg-[#C1262E] text-white py-24">
-        <div class="container mx-auto px-8">
-            <h2 class="text-[38px] font-semibold mb-16 leading-[60px] uppercase" data-aos="fade-up">TẠI SAO CHỌN VERTEXCO</h2>
+    <div class="bg-[#C1262E] text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl lg:text-[38px] font-semibold mb-16 leading-[1.6] uppercase" data-aos="fade-up">TẠI SAO CHỌN VERTEXCO</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
                 <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="why-choose-title">CHUYÊN MÔN</h3>
@@ -77,11 +77,10 @@
         </div>
     </div>
 
-    <div class="container mx-auto px-8 py-30 relative">
+    <div class="container mx-auto px-4 md:px-8 py-20 md:py-30 relative">
         <div class="flex flex-col lg:flex-row gap-16">
             <div class="w-full lg:w-1/2" data-aos="fade-right" data-aos-duration="1000">
-                <h2 class="mb-8"
-                    style="color: #1C1F35; font-size: 40px; font-style: normal; font-weight: 700; line-height: 60px; text-transform: uppercase;">
+                <h2 class="mb-8 text-[#1C1F35] text-2xl md:text-3xl lg:text-[40px] font-bold leading-[1.5] uppercase">
                     GIÁ TRỊ CỐT LÕI</h2>
                 <div class="space-y-4 about-text">
                     <p>Vertexco Logistics phát triển dựa trên những giá trị cốt lõi, giúp chúng tôi mang đến giải pháp vận
@@ -98,41 +97,33 @@
             </div>
 
             <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000">
-                <img src="{{ asset('assets/core-value-1.png') }}" alt="Container stacks"
-                    class="w-[80%] h-auto object-cover shadow-lg">
-                <div class="relative h-[300px]">
+                <div class="relative">
+                    <img src="{{ asset('assets/core-value-1.png') }}" alt="Container stacks"
+                        class="w-full md:w-[80%] h-auto object-cover shadow-lg">
                     <img src="{{ asset('assets/core-value-2.png') }}" alt="Container ship"
-                        class="absolute left-[120px] top-[-200px] w-[80%] h-auto object-cover shadow-lg">
+                        class="w-full md:w-[80%] h-auto object-cover shadow-lg mt-4 md:mt-0 md:absolute md:left-[20%] md:top-[60%]">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="relative w-full bg-cover bg-no-repeat bg-center"
+    <div class="relative w-full bg-cover bg-no-repeat bg-center mt-20"
         style="background-image: url('{{ asset('assets/about-bg.png') }}'); aspect-ratio: 1361/292; min-height: 400px;">
-        <div class="container mx-auto px-8">
+        <div class="container mx-auto px-4 md:px-8">
             <div class="relative">
-                <div class="absolute top-[-100px] w-full">
+                <div class="absolute md:top-[-100px] top-[-150px] w-full">
                     <div class="flex flex-col md:flex-row justify-center items-center max-w-[921px] mx-auto shadow-2xl">
-                        <div class="bg-[#C1262E] p-8 text-white w-[307px] hover:scale-105 transition-transform duration-300"
-                            style="border-radius: 10px 0px 0px 10px;" data-aos="fade-up" data-aos-delay="100">
-                            <h3 class="about-box-title mb-4">Linh hoạt</h3>
-                            <p class="about-box-desc">Vertexco Logistics luôn thích ứng nhanh với mọi thay đổi, cung cấp giải pháp
-                                vận chuyển tối ưu, đáp ứng nhu cầu đa dạng của khách hàng.</p>
+                        <div class="bg-[#C1262E] p-6 md:p-8 text-white w-full md:w-[307px] hover:scale-105 transition-transform duration-300 rounded-t-lg md:rounded-t-none md:rounded-l-lg mb-1 md:mb-0" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="about-box-title mb-3 md:mb-4 text-xl md:text-2xl">Linh hoạt</h3>
+                            <p class="about-box-desc text-sm md:text-base">Vertexco Logistics luôn thích ứng nhanh với mọi thay đổi, cung cấp giải pháp vận chuyển tối ưu, đáp ứng nhu cầu đa dạng của khách hàng.</p>
                         </div>
-
-                        <div class="bg-white p-8 w-[307px] hover:scale-105 transition-transform duration-300"
-                            data-aos="fade-up" data-aos-delay="200">
-                            <h3 class="about-box-title mb-4" style="color: #000;">Đoàn kết</h3>
-                            <p class="about-box-desc" style="color: #7A7A7A;">Chúng tôi đề cao tinh thần hợp tác, gắn kết giữa đội
-                                ngũ nhân sự, đối tác và khách hàng để cùng nhau tạo nên giá trị bền vững.</p>
+                        <div class="bg-white p-6 md:p-8 w-full md:w-[307px] hover:scale-105 transition-transform duration-300 mb-1 md:mb-0" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="about-box-title mb-3 md:mb-4 text-xl md:text-2xl" style="color: #000;">Đoàn kết</h3>
+                            <p class="about-box-desc text-sm md:text-base" style="color: #7A7A7A;">Chúng tôi đề cao tinh thần hợp tác, gắn kết giữa đội ngũ nhân sự, đối tác và khách hàng để cùng nhau tạo nên giá trị bền vững.</p>
                         </div>
-
-                        <div class="bg-[#C1262E] p-8 text-white w-[307px] hover:scale-105 transition-transform duration-300"
-                            style="border-radius: 0px 10px 10px 0px;" data-aos="fade-up" data-aos-delay="300">
-                            <h3 class="about-box-title mb-4">Phát triển</h3>
-                            <p class="about-box-desc">Không ngừng đổi mới và nâng cao chất lượng dịch vụ, chúng tôi hướng đến sự
-                                tăng trưởng bền vững, giúp khách hàng và đối tác vươn xa hơn.</p>
+                        <div class="bg-[#C1262E] p-6 md:p-8 text-white w-full md:w-[307px] hover:scale-105 transition-transform duration-300 rounded-b-lg md:rounded-b-none md:rounded-r-lg" data-aos="fade-up" data-aos-delay="300">
+                            <h3 class="about-box-title mb-3 md:mb-4 text-xl md:text-2xl">Phát triển</h3>
+                            <p class="about-box-desc text-sm md:text-base">Không ngừng đổi mới và nâng cao chất lượng dịch vụ, chúng tôi hướng đến sự tăng trưởng bền vững, giúp khách hàng và đối tác vươn xa hơn.</p>
                         </div>
                     </div>
                 </div>
