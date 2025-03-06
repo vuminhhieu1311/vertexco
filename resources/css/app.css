@@ -21,12 +21,26 @@ html {
 
 .news-detail-date {
     color: rgba(18, 20, 22, 0.81);
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.32px;
     text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .news-detail-date {
+        font-size: 13px;
+        letter-spacing: 0.28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-detail-date {
+        font-size: 13px;
+        letter-spacing: 0.26px;
+    }
 }
 
 .home-banner-section {
@@ -468,11 +482,23 @@ html {
 
 .contact-form-title {
     color: #1C1F35;
-    font-size: 28px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .contact-form-title {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-title {
+        font-size: 19px;
+    }
 }
 
 .contact-form input {
@@ -496,6 +522,20 @@ html {
     text-transform: uppercase;
 }
 
+@media (max-width: 768px) {
+    .contact-form-button {
+        font-size: 14px;
+        letter-spacing: 0.28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-button {
+        font-size: 13px;
+        letter-spacing: 0.26px;
+    }
+}
+
 .contact-info-title {
     color: #FFF;
     font-size: 14px;
@@ -503,6 +543,18 @@ html {
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .contact-info-title {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-title {
+        font-size: 12px;
+    }
 }
 
 .contact-info-desc {
@@ -514,12 +566,40 @@ html {
     margin-top: 8px;
 }
 
+@media (max-width: 768px) {
+    .contact-info-desc {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-desc {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
 .news-related-title {
     color: #121416;
-    font-size: 26px;
+    font-size: 23px;
     font-style: normal;
     font-weight: 500;
     line-height: 40px;
+}
+
+@media (max-width: 768px) {
+    .news-related-title {
+        font-size: 20px;
+        line-height: 34px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-related-title {
+        font-size: 18px;
+        line-height: 30px;
+    }
 }
 
 .news-related-title:hover {
@@ -528,10 +608,24 @@ html {
 
 .news-related-text {
     color: #121416;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
+}
+
+@media (max-width: 768px) {
+    .news-related-text {
+        font-size: 14px;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-related-text {
+        font-size: 14px;
+        line-height: 26px;
+    }
 }
 
 .news-card-tag {
@@ -544,6 +638,22 @@ html {
     text-transform: uppercase;
 }
 
+@media (max-width: 768px) {
+    .news-card-tag {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 2.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-card-tag {
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 2px;
+    }
+}
+
 .news-card-desc {
     color: #6D6E76;
     font-size: 16px;
@@ -552,10 +662,38 @@ html {
     line-height: 28px;
 }
 
+@media (max-width: 768px) {
+    .news-card-desc {
+        font-size: 15px;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-card-desc {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
 .news-card-title {
     color: #232536;
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
     line-height: 48px;
+}
+
+@media (max-width: 768px) {
+    .news-card-title {
+        font-size: 24px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-card-title {
+        font-size: 20px;
+        line-height: 32px;
+    }
 }

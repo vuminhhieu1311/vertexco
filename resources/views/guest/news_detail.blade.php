@@ -68,11 +68,11 @@
             </div>
         </div>
 
-        <div class="mt-12" data-aos="fade-up">
-            <h2 class="text-2xl font-bold mb-8"
-                style="color: #121416; font-size: 28px; font-style: normal; font-weight: 500; line-height: normal; letter-spacing: 0.5px; text-transform: uppercase;">
-                BÀI VIẾT LIÊN QUAN</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="mt-8 sm:mt-12" data-aos="fade-up">
+            <h2 class="text-xl sm:text-2xl lg:text-[28px] font-medium mb-6 sm:mb-8 text-[#121416] tracking-wider uppercase">
+                BÀI VIẾT LIÊN QUAN
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <!-- Bài viết liên quan 1 -->
                 <div class="group transition-all duration-300 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                     <div class="overflow-hidden">
