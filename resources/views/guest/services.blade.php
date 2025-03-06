@@ -58,7 +58,7 @@
                     tư vấn giải pháp vận chuyển tối ưu cho bạn.
                 </p>
 
-                <form action="#" method="POST" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="200">
+                <form action="{{ route('customers.store') }}" method="POST" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="200">
                     @csrf
                     <div>
                         <div class="bg-white rounded transition-all focus-within:border-l-4 focus-within:border-[#C1262E]">
@@ -97,7 +97,7 @@
                 </p>
 
                 <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#"
+                    <a href="{{ route('contact') }}"
                         class="inline-flex items-center bg-white px-8 py-3 rounded hover:bg-gray-100 transition" style="color: #000;font-size: 20px;font-style: normal;font-weight: 400;line-height: 30px;">
                         LIÊN HỆ NGAY
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">

@@ -104,7 +104,7 @@
                 <!-- Right Form -->
                 <div class="bg-white p-10 shadow-lg" data-aos="fade-left" data-aos-duration="1000">
                     <h3 class="contact-form-title text-center mb-8">HOW CAN WE HELP</h3>
-                    <form action="#" method="POST" class="contact-form space-y-4">
+                    <form action="{{ route('customers.store') }}" method="POST" class="contact-form space-y-4">
                         @csrf
                         <div>
                             <input type="text" name="name"
