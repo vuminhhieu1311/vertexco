@@ -30,12 +30,12 @@ html {
 }
 
 .home-banner-section {
-    height: 680px;
+    max-height: 680px;
+    min-height: 480px;
 }
 
 .home-banner-text {
     color: #C1262E;
-    font-size: 65px;
     font-style: normal;
     font-weight: 800;
     line-height: 130%;
@@ -43,7 +43,6 @@ html {
 
 .home-banner-detail {
     color: #000;
-    font-size: 22px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
@@ -51,7 +50,6 @@ html {
 
 .about-title {
     color: #1C1F35;
-    font-size: 35px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -59,7 +57,6 @@ html {
 
 .about-content {
     color: #666C89;
-    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 151.523%;
@@ -73,7 +70,6 @@ html {
 .about-tab-btn {
     background: #F4F4F4;
     color: #1C1F35;
-    font-size: 19px;
     font-style: normal;
     font-weight: 500;
     line-height: 151.523%;
@@ -114,6 +110,12 @@ html {
     background: #FAFAFA;
     box-shadow: 0px 10px 30px 0px rgba(21, 21, 21, 0.15);
     width: 80%;
+}
+
+@media (max-width: 768px) {
+    .price-box {
+        width: 100%;
+    }
 }
 
 .price-title {
@@ -244,7 +246,6 @@ html {
 
 .about-title {
     color: #1C1F35;
-    font-size: 35px;
     font-style: normal;
     font-weight: 600;
     line-height: 124.508%;

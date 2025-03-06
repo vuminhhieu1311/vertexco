@@ -14,7 +14,7 @@
             </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                 <li class="header-menu-item active">
                     <a href="/" class="block py-2 text-red-600 rounded-sm md:bg-transparent md:p-0" aria-current="page">Trang chủ</a>
                 </li>
@@ -25,13 +25,10 @@
                     <a href="/services" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Dịch vụ</a>
                 </li>
                 <li class="header-menu-item">
-                    <a href="/pricing" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Bảng giá</a>
-                </li>
-                <li class="header-menu-item">
                     <a href="/contact" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Liên hệ</a>
                 </li>
                 <li class="header-menu-item">
-                    <a href="/careers" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Tuyển dụng</a>
+                    <a href="/news" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Tin tức</a>
                 </li>
             </ul>
         </div>
