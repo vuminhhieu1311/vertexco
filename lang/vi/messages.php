@@ -139,4 +139,8 @@ return [
     'paypal_paid' => 'Thanh toán qua Paypal',
     'update_user' => 'Chỉnh sửa tài khoản người dùng',
     'posts' => 'Bài viết',
+    'customers' => 'Khách hàng',
+    'phone' => 'Số điện thoại',
+    'content' => 'Lời nhắn',
+    'created_at' => 'Ngày tạo',
 ];

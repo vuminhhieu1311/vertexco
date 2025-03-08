@@ -2699,14 +2699,14 @@
       width: calc(4/5 * 100%);
     }
   }
-  .md\:w-\[80\%\] {
-    @media (width >= 48rem) {
-      width: 80%;
-    }
-  }
   .md\:w-\[307px\] {
     @media (width >= 48rem) {
       width: 307px;
+    }
+  }
+  .md\:w-\[400px\] {
+    @media (width >= 48rem) {
+      width: 400px;
     }
   }
   .md\:w-auto {

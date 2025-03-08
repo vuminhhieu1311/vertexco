@@ -61,8 +61,7 @@
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-50px me-5">
-                                        <img alt="Logo"
-                                            src="{{ asset('metronic/assets/media/avatars/300-1.jpg') }}" />
+                                        <img alt="Logo" src="{{ asset('assets/vertexco-logo.svg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Username-->
@@ -160,8 +159,8 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
-                    <a class="menu-link @if (Route::is('dashboard')) active @endif"
-                        href="{{ route('dashboard') }}">
+                    <a class="menu-link @if (Route::is('customers.*')) active @endif"
+                        href="{{ route('customers.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -178,7 +177,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">{{ __('messages.dashboard') }}</span>
+                        <span class="menu-title">{{ __('messages.customers') }}</span>
                     </a>
                 </div>
                 <div class="menu-item">
@@ -203,7 +202,7 @@
                         <span class="menu-title">{{ __('messages.posts') }}</span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="click"
+                {{-- <div data-kt-menu-trigger="click"
                     class="menu-item here menu-accordion @if (Route::is('categories.*') || Route::is('products.*') || Route::is('brands.*')) show @endif">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -253,20 +252,20 @@
                                 </a>
                             </div>
                         @endcan
-                        {{--                        @can(\App\Enums\PermissionName::MANAGE_BRANDS) --}}
-                        {{--                            <div class="menu-item"> --}}
-                        {{--                                <a class="menu-link @if (Route::is('brands.*')) active @endif" --}}
-                        {{--                                    href="{{ route('brands.index') }}"> --}}
-                        {{--                                    <span class="menu-bullet"> --}}
-                        {{--                                        <span class="bullet bullet-dot"></span> --}}
-                        {{--                                    </span> --}}
-                        {{--                                    <span class="menu-title">{{ __('messages.brands') }}</span> --}}
-                        {{--                                </a> --}}
-                        {{--                            </div> --}}
-                        {{--                        @endcan --}}
+                        @can(\App\Enums\PermissionName::MANAGE_BRANDS)
+                            <div class="menu-item">
+                                <a class="menu-link @if (Route::is('brands.*')) active @endif"
+                                    href="{{ route('brands.index') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">{{ __('messages.brands') }}</span>
+                                </a>
+                            </div>
+                        @endcan
                     </div>
-                </div>
-                @can(\App\Enums\PermissionName::MANAGE_ORDERS)
+                </div> --}}
+                {{-- @can(\App\Enums\PermissionName::MANAGE_ORDERS)
                     <div class="menu-item">
                         <a class="menu-link @if (Route::is('orders.*')) active @endif"
                             href="{{ route('orders.index') }}">
@@ -286,8 +285,8 @@
                             <span class="menu-title">{{ __('messages.orders') }}</span>
                         </a>
                     </div>
-                @endcan
-                @can(\App\Enums\PermissionName::MANAGE_REVIEWS)
+                @endcan --}}
+                {{-- @can(\App\Enums\PermissionName::MANAGE_REVIEWS)
                     <div class="menu-item">
                         <a class="menu-link @if (Route::is('ratings.*')) active @endif"
                             href="{{ route('ratings.index') }}">
@@ -307,7 +306,7 @@
                             <span class="menu-title">{{ __('messages.manage_comments') }}</span>
                         </a>
                     </div>
-                @endcan
+                @endcan --}}
                 @can(\App\Enums\PermissionName::MANAGE_PERMISSIONS)
                     <div data-kt-menu-trigger="click"
                         class="menu-item here menu-accordion @if (Route::is('roles.*') || Route::is('permissions.*') || Route::is('users.*')) show @endif">
@@ -331,7 +330,7 @@
                             <span class="menu-arrow"></span>
                         </span>
                         <div class="menu-sub menu-sub-accordion menu-active-bg">
-                            <div class="menu-item">
+                            {{-- <div class="menu-item">
                                 <a class="menu-link @if (Route::is('roles.*')) active @endif"
                                     href="{{ route('roles.index') }}">
                                     <span class="menu-bullet">
@@ -339,8 +338,8 @@
                                     </span>
                                     <span class="menu-title">{{ __('messages.roles') }}</span>
                                 </a>
-                            </div>
-                            <div class="menu-item">
+                            </div> --}}
+                            {{-- <div class="menu-item">
                                 <a class="menu-link @if (Route::is('permissions.*')) active @endif"
                                     href="{{ route('permissions.index') }}">
                                     <span class="menu-bullet">
@@ -348,7 +347,7 @@
                                     </span>
                                     <span class="menu-title">{{ __('messages.permissions') }}</span>
                                 </a>
-                            </div>
+                            </div> --}}
                             <div class="menu-item">
                                 <a class="menu-link @if (Route::is('users.*')) active @endif"
                                     href="{{ route('users.index') }}">

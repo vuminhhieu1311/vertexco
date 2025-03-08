@@ -62,6 +62,8 @@ Route::middleware(['auth', 'localization'])->group(function () {
             Route::post('/{product}/images', [ProductController::class, 'storeProductImage']);
         });
 
+        Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+
         Route::resources([
             'brands' => BrandController::class,
             'categories' => CategoryController::class,

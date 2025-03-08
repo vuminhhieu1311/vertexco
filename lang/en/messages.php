@@ -139,4 +139,8 @@ return [
     'filter' => 'Filter',
     'paypal_paid' => 'Paid via Paypal',
     'posts' => 'Posts',
+    'customers' => 'Customers',
+    'phone' => 'Phone number',
+    'content' => 'Content',
+    'created_at' => 'Created at',
 ];

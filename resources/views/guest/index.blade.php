@@ -26,8 +26,10 @@
         <div class="flex flex-wrap">
             <div class="w-full lg:w-fit pr-0 lg:pr-5" data-aos="fade-right">
                 <div class="about-images relative flex justify-center lg:justify-start">
-                    <img width="531" class="w-full lg:w-[90%] max-w-full lg:max-w-none" src="{{ asset('assets/about-2.svg') }}" alt="Delivery professional">
-                    <img class="absolute hidden lg:block" style="bottom: -40px; left: 339px;" width="190" src="{{ asset('assets/about-1.svg') }}" alt="Logistics worker">
+                    <img width="531" class="w-full lg:w-[90%] max-w-full lg:max-w-none"
+                        src="{{ asset('assets/about-2.svg') }}" alt="Delivery professional">
+                    <img class="absolute hidden lg:block" style="bottom: -40px; left: 339px;" width="190"
+                        src="{{ asset('assets/about-1.svg') }}" alt="Logistics worker">
                 </div>
             </div>
             <div class="w-full lg:w-1/2 pl-0 lg:pl-12 mt-8 lg:mt-0" data-aos="fade-left">
@@ -35,9 +37,15 @@
                     <h2 class="about-title text-2xl md:text-3xl lg:text-[35px] mt-4 mb-8">Tổng quan về Vertexco</h2>
                     <div class="tabs-wrapper mb-8">
                         <div class="flex flex-wrap gap-2 md:gap-3.5">
-                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer active px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Chúng tôi là ai</button>
-                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Câu chuyện</button>
-                            <button class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Đội ngũ</button>
+                            <button
+                                class="about-tab-btn text-sm md:text-[19px] cursor-pointer active px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Chúng
+                                tôi là ai</button>
+                            <button
+                                class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Câu
+                                chuyện</button>
+                            <button
+                                class="about-tab-btn text-sm md:text-[19px] cursor-pointer px-4 md:px-8 py-2 md:py-4 w-full sm:w-auto">Đội
+                                ngũ</button>
                         </div>
                     </div>
                     <p class="about-content text-base md:text-[20px] leading-relaxed">
@@ -56,7 +64,8 @@
 
     <div class="py-16" style="background: #C1262E">
         <div class="container mx-auto px-8">
-            <h2 class="text-center text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-5" data-aos="fade-up">Dịch vụ chính</h2>
+            <h2 class="text-center text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-5" data-aos="fade-up">Dịch vụ
+                chính</h2>
             <p class="text-center text-white text-sm md:text-base mb-8 md:mb-12 max-w-4xl mx-auto">
                 Ứng dụng của chúng tôi mang đến cho bạn khả năng hiển thị tuyệt vời về toàn bộ mạng lưới hậu cần của bạn.
                 Cho dù bạn đang quản lý một chuyến giao hàng hay giám sát hàng nghìn chuyến hàng, bạn đều có thể theo dõi vị
@@ -121,14 +130,17 @@
         </div>
 
         <div class="flex justify-center">
-            <div class="price-box relative px-4 md:px-16 py-8 w-full lg:w-auto" style="margin-right: 0 lg:margin-right: 10%;">
+            <div class="price-box relative px-4 md:px-16 py-8 w-full lg:w-auto"
+                style="margin-right: 0 lg:margin-right: 10%;">
                 <div data-aos="fade-right">
                     <h2 class="price-title mb-6 text-xl md:text-[22px]">Giao hàng an toàn, trọn vẹn niềm tin</h2>
-                    <p class="price-desc mb-8 max-w-lg lg:max-w-xl text-base md:text-[18px]">Kiểm tra và bảo trì an toàn thường xuyên là một phần trong cam kết của
-                        chúng tôi nhằm duy trì đội xe của bạn ở tình trạng tốt nhất. Ứng dụng của chúng tôi lên lịch và theo dõi
+                    <p class="price-desc mb-8 max-w-lg lg:max-w-xl text-base md:text-[18px]">Kiểm tra và bảo trì an toàn
+                        thường xuyên là một phần trong cam kết của
+                        chúng tôi nhằm duy trì đội xe của bạn ở tình trạng tốt nhất. Ứng dụng của chúng tôi lên lịch và theo
+                        dõi
                         việc kiểm tra, đảm bảo rằng mọi phương tiện đều đáp ứng các tiêu chuẩn an toàn nghiêm ngặt</p>
-                    <svg class="hidden lg:block" xmlns="http://www.w3.org/2000/svg" width="95" height="95" viewBox="0 0 95 95"
-                        fill="none">
+                    <svg class="hidden lg:block" xmlns="http://www.w3.org/2000/svg" width="95" height="95"
+                        viewBox="0 0 95 95" fill="none">
                         <g opacity="0.12">
                             <path
                                 d="M71.7118 47.8556C80.527 47.8556 86.4674 54.0984 86.4674 63.3482C86.4674 71.6719 79.6399 78.6065 70.3924 78.6065C60.2634 78.6065 52.7789 70.2827 52.7789 57.5685C52.7789 28.6698 73.4749 17.1104 86.4674 15.7212V28.4354C77.6579 30.0533 67.7534 39.0688 67.3099 49.0161C67.7534 48.7874 69.5109 47.8556 71.7118 47.8556ZM26.7994 47.8556C35.6033 47.8556 41.5494 54.0984 41.5494 63.3482C41.5494 71.6719 34.7218 78.6065 25.4743 78.6065C15.3453 78.6065 7.86084 70.2827 7.86084 57.5685C7.86084 28.6698 28.5568 17.1104 41.5494 15.7212V28.4354C32.7398 30.0533 22.8354 39.0688 22.3918 49.0161C22.8354 48.7874 24.5928 47.8556 26.7994 47.8556Z"
@@ -136,8 +148,10 @@
                         </g>
                     </svg>
                 </div>
-                <div class="static lg:absolute lg:top-0 lg:right-[-10%] mt-8 lg:mt-0 w-full lg:w-auto flex flex-col items-center lg:items-end" data-aos="fade-left" data-aos-delay="200">
-                    <img class="w-full md:w-4/5 lg:w-[400px] xl:w-[450px]" src="{{ asset('assets/van.png') }}" alt="Delivery van">
+                <div class="static lg:absolute lg:top-0 lg:right-[-10%] mt-8 lg:mt-0 w-full lg:w-auto flex flex-col items-center lg:items-end"
+                    data-aos="fade-left" data-aos-delay="200">
+                    <img class="w-full md:w-4/5 lg:w-[400px] xl:w-[450px]" src="{{ asset('assets/van.png') }}"
+                        alt="Delivery van">
                     <div class="flex justify-center lg:justify-end mt-4">
                         <a class="link-button mr-0 lg:mr-2" href="#">Nhận báo giá miễn phí</a>
                     </div>
@@ -200,13 +214,15 @@
                     <h2 class="mb-6 text-2xl md:text-[40px]" style="color: #C1262E; font-weight: 600; line-height: 130%;">
                         Sẵn sàng cách mạng hóa hoạt động hậu cần của bạn?
                     </h2>
-                    <p class="mb-8 md:mb-12 text-base md:text-xl" style="color: #4D4C52; font-weight: 400; line-height: 150%;">
+                    <p class="mb-8 md:mb-12 text-base md:text-xl"
+                        style="color: #4D4C52; font-weight: 400; line-height: 150%;">
                         Tham gia cùng vô số doanh nghiệp khác đã hợp lý hóa hoạt động hậu cần của họ bằng các giải pháp tiên
                         tiến của chúng tôi
                     </p>
                     <a class="link-button" href="#">Nhận báo giá</a>
                 </div>
-                <div class="w-full flex justify-center lg:justify-end lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
+                <div class="w-full flex justify-center lg:justify-end lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left"
+                    data-aos-delay="200">
                     <img src="{{ asset('assets/van2.png') }}" alt="Logistics truck" class="w-full lg:w-4/5">
                 </div>
             </div>
@@ -219,23 +235,22 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            @for ($i = 1; $i <= 6; $i++)
-                <div class="news-card cursor-pointer" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
+            @foreach ($posts as $key => $post)
+                <div class="news-card cursor-pointer" data-aos="fade-up" data-aos-delay="{{ ($key + 1) * 100 }}">
                     <img src="{{ asset('assets/news.png') }}" alt="News image" class="w-full object-cover">
                     <div class="p-4">
                         <h3 class="mb-3 text-base md:text-lg font-semibold leading-normal">
-                            Vertexco cung cấp dịch vụ gom hàng lẻ và chuyển hàng nguyên container
+                            {{ $post->title }}
                         </h3>
                         <p class="text-sm md:text-base text-[#454545] leading-relaxed">
-                            Với cam kết vì một tương lai xanh, Vertexco không chỉ giúp khách hàng tối ưu chi phí mà còn
-                            chung tay xây dựng hệ sinh thái..
+                            {{ $post->display_excerpt }}
                         </p>
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
         <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="300">
-            <x-primary-button link="#">Xem tất cả</x-primary-button>
+            <x-primary-button link="{{ route('news') }}">Xem tất cả</x-primary-button>
         </div>
     </div>
 @endsection

@@ -29,7 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         $this->authorize('create', Product::class);
-        $categories = Category::latest()->get();
+        $categories = Category::where('type', CategoryType::PRODUCT)->latest()->get();
         $brands = Brand::latest()->get();
         $colors = Color::all();
         $sizes = Size::all();

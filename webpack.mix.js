@@ -29,6 +29,7 @@ mix.js('resources/js/app.js', 'public/resources/js')
     .js('resources/js/product/create.js', 'public/resources/js/product')
     .js('resources/js/product/edit.js', 'public/resources/js/product')
     .js('resources/js/product/index.js', 'public/resources/js/product')
+    .js('resources/js/posts/create.js', 'public/resources/js/posts')
     .js('resources/js/rating/index.js', 'public/resources/js/rating')
     .js('resources/js/role/index.js', 'public/resources/js/role')
     .postCss('resources/css/app.css', 'public/resources/css', [

@@ -99,9 +99,9 @@
             <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000">
                 <div class="relative">
                     <img src="{{ asset('assets/core-value-1.png') }}" alt="Container stacks"
-                        class="w-full md:w-[80%] h-auto object-cover shadow-lg">
+                        class="w-full md:w-[400px] h-auto object-cover shadow-lg">
                     <img src="{{ asset('assets/core-value-2.png') }}" alt="Container ship"
-                        class="w-full md:w-[80%] h-auto object-cover shadow-lg mt-4 md:mt-0 md:absolute md:left-[20%] md:top-[60%]">
+                        class="w-full md:w-[400px] h-auto object-cover shadow-lg mt-4 md:mt-0 md:absolute md:left-[20%] md:top-[60%]">
                 </div>
             </div>
         </div>

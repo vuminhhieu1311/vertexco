@@ -15,7 +15,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::latest()->get();
+
+        return view('customer_admin.index', compact('customers'));
     }
 
     /**

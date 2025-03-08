@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('guest.index');
+        $posts = Post::isPublished()
+            ->isFeatured()
+            ->orderBy('order', 'asc')
+            ->latest('id')
+            ->limit(6)
+            ->get();
+
+        return view('guest.index', compact('posts'));
     }
 
     public function about()
@@ -28,11 +36,31 @@ class HomeController extends Controller
 
     public function news()
     {
-        return view('guest.news');
+        $posts = Post::isPublished()
+            ->with('categories')
+            ->orderBy('order', 'asc')
+            ->latest('id')
+            ->paginate(2);
+
+        return view('guest.news', compact('posts'));
     }
 
     public function newsDetail($slug)
     {
-        return view('guest.news_detail');
+        $post = Post::isPublished()
+            ->where('slug', $slug)
+            ->first();
+
+        if (!$post) {
+            abort(404);
+        }
+
+        $relatedPosts = Post::isPublished()
+            ->orderBy('order', 'asc')
+            ->latest('id')
+            ->limit(4)
+            ->get();
+
+        return view('guest.news_detail', compact('post', 'relatedPosts'));
     }
 }
