@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,23 +18,21 @@ class Post extends Model
     ];
 
     /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
-    /**
      * Append attributes to the model.
      *
      * @var array
      */
     protected $appends = [
         'display_excerpt',
+        'thumbnail_url',
     ];
+
+    protected function thumbnailUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => asset($this->thumbnail),
+        );
+    }
 
     public function categories()
     {

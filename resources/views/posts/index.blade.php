@@ -42,8 +42,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <input type="text" data-kt-ecommerce-product-filter="search"
-                                    class="form-control form-control-solid w-250px ps-14"
-                                    placeholder="Tìm kiếm bài viết" />
+                                    class="form-control form-control-solid w-250px ps-14" placeholder="Tìm kiếm bài viết" />
                             </div>
                             <!--end::Search-->
                         </div>
@@ -62,8 +61,7 @@
                                 <!--end::Select2-->
                             </div> --}}
                             <!--begin::Add product-->
-                            <a href="{{ route('posts.create') }}"
-                                class="btn btn-primary">Thêm bài viết</a>
+                            <a href="{{ route('posts.create') }}" class="btn btn-primary">Thêm bài viết</a>
                             <!--end::Add product-->
                         </div>
                         <!--end::Card toolbar-->
@@ -78,10 +76,9 @@
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                     <th class="min-w-150px">Tiêu đề</th>
-                                    <th class="min-w-100px">Người tạo</th>
-                                    <th class="min-w-100px">Mô tả</th>
+                                    <th class="min-w-150px">Người tạo</th>
                                     <th class="min-w-100px text-center">Số thứ tự</th>
-                                    <th class="min-w-100px">Trạng thái</th>
+                                    <th class="min-w-200px">Trạng thái</th>
                                     <th class="text-end min-w-150px">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -130,11 +127,6 @@
                                             <!--begin::User details-->
                                         </td>
                                         <!--end::User=-->
-                                        <!--begin::Price=-->
-                                        <td class="pe-0">
-                                            <span class="fw-bolder text-dark">{{ $post->excerpt }}</span>
-                                        </td>
-                                        <!--end::Price=-->
                                         <!--begin::Rating-->
                                         <td class="pe-0 text-center" data-order="rating-3">
                                             <span class="fw-bolder text-dark">{{ $post->order }}</span>
@@ -145,7 +137,8 @@
                                             @if ($post->is_published)
                                                 <div class="badge badge-light-success">{{ __('messages.published') }}</div>
                                             @else
-                                                <div class="badge badge-light-danger">{{ __('messages.unpublished') }}</div>
+                                                <div class="badge badge-light-danger">{{ __('messages.unpublished') }}
+                                                </div>
                                             @endif
                                             @if ($post->is_featured)
                                                 <div class="badge badge-light-primary">Nổi bật</div>
@@ -156,11 +149,11 @@
                                         <td class="text-end">
                                             <div class="btn btn-sm btn-light btn-active-light-primary align-items-center"
                                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center gap-1">
                                                     <span>{{ __('messages.actions') }}</span>
-                                                    <span class="svg-icon svg-icon-5 ms-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none">
+                                                    <span class="svg-icon svg-icon-5">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" viewBox="0 0 24 24" fill="none">
                                                             <path
                                                                 d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
                                                                 fill="black" />
@@ -183,6 +176,13 @@
                                                         data-url="{{ route('posts.destroy', ['post' => $post->id]) }}"
                                                         data-id="{{ $post->id }}">
                                                         {{ __('messages.delete') }}</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('news.detail', ['slug' => $post->slug]) }}"
+                                                        class="menu-link px-3"
+                                                        target="_blank">Xem bài viết</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -213,7 +213,6 @@
     <script src="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="{{ asset('metronic/assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
-    <script src="{{ asset('resources/js/product/index.js') }}"></script>
+    <script src="{{ asset('resources/js/posts/index.js') }}"></script>
     <!--end::Page Custom Javascript-->
 @endsection

@@ -697,3 +697,43 @@ html {
         line-height: 32px;
     }
 }
+
+/* Custom bullet points for unordered lists */
+ul.custom-bullets {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+ul.custom-bullets li {
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+ul.custom-bullets li::before {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background-color: #C1262E;
+    border-radius: 50%;
+}
+
+/* Responsive adjustments for bullet points */
+@media (max-width: 768px) {
+    ul.custom-bullets li::before {
+        width: 7px;
+        height: 7px;
+        top: 0.45rem;
+    }
+}
+
+@media (max-width: 480px) {
+    ul.custom-bullets li::before {
+        width: 6px;
+        height: 6px;
+        top: 0.4rem;
+    }
+}
+

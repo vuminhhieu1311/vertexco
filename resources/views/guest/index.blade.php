@@ -16,7 +16,7 @@
                     một tương lai xanh và phát triển bền vững.
                 </p>
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <x-primary-button link="#">Liên hệ ngay</x-primary-button>
+                    <x-primary-button link="{{ route('contact') }}">Liên hệ ngay</x-primary-button>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                         hàng.
                     </p>
                     <div class="mt-8"></div>
-                    <x-primary-button link="#">Xem thêm</x-primary-button>
+                    <x-primary-button link="{{ route('about') }}">Xem thêm</x-primary-button>
                 </div>
             </div>
         </div>
@@ -73,37 +73,49 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('assets/service-1.svg') }}" alt="Vận tải Bắc Nam" class="w-full object-cover">
-                    <h3 class="service-text text-center py-4">VẬN TẢI BẮC NAM</h3>
+                <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <a href="{{ route('services') }}" class="block">
+                        <img src="{{ asset('assets/service-1.svg') }}" alt="Vận tải Bắc Nam" class="w-full object-cover">
+                        <h3 class="service-text text-center py-4">VẬN TẢI BẮC NAM</h3>
+                    </a>
                 </div>
 
-                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('assets/service-2.svg') }}" alt="Xe tải chở hàng" class="w-full object-cover">
-                    <h3 class="service-text text-center py-4">XE TẢI CHỞ HÀNG</h3>
+                <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <a href="{{ route('services') }}" class="block">
+                        <img src="{{ asset('assets/service-2.svg') }}" alt="Xe tải chở hàng" class="w-full object-cover">
+                        <h3 class="service-text text-center py-4">XE TẢI CHỞ HÀNG</h3>
+                    </a>
                 </div>
 
-                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('assets/service-3.svg') }}" alt="Vận chuyển container" class="w-full object-cover">
-                    <h3 class="service-text text-center py-4">VẬN CHUYỂN CONTAINER</h3>
+                <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="300">
+                    <a href="{{ route('services') }}" class="block">
+                        <img src="{{ asset('assets/service-3.svg') }}" alt="Vận chuyển container" class="w-full object-cover">
+                        <h3 class="service-text text-center py-4">VẬN CHUYỂN CONTAINER</h3>
+                    </a>
                 </div>
 
-                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('assets/service-4.svg') }}" alt="Vận chuyển hàng siêu trọng"
-                        class="w-full object-cover">
-                    <h3 class="service-text text-center py-4">VẬN CHUYỂN HÀNG SIÊU TRỌNG</h3>
+                <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="400">
+                    <a href="{{ route('services') }}" class="block">
+                        <img src="{{ asset('assets/service-4.svg') }}" alt="Vận chuyển hàng siêu trọng"
+                            class="w-full object-cover">
+                        <h3 class="service-text text-center py-4">VẬN CHUYỂN HÀNG SIÊU TRỌNG</h3>
+                    </a>
                 </div>
 
-                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('assets/service-5.svg') }}" alt="Chuyển nhà trọn gói giá rẻ"
-                        class="w-full object-cover">
-                    <h3 class="service-text text-center py-4">CHUYỂN NHÀ TRỌN GÓI GIÁ RẺ</h3>
+                <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="500">
+                    <a href="{{ route('services') }}" class="block">
+                        <img src="{{ asset('assets/service-5.svg') }}" alt="Chuyển nhà trọn gói giá rẻ"
+                            class="w-full object-cover">
+                        <h3 class="service-text text-center py-4">CHUYỂN NHÀ TRỌN GÓI GIÁ RẺ</h3>
+                    </a>
                 </div>
 
-                <div class="bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('assets/service-6.svg') }}" alt="Chuyển văn phòng, kho xưởng"
-                        class="w-full object-cover">
-                    <h3 class="service-text text-center py-4">CHUYỂN VĂN PHÒNG, KHO XƯỞNG</h3>
+                <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="600">
+                    <a href="{{ route('services') }}" class="block">
+                        <img src="{{ asset('assets/service-6.svg') }}" alt="Chuyển văn phòng, kho xưởng"
+                            class="w-full object-cover">
+                        <h3 class="service-text text-center py-4">CHUYỂN VĂN PHÒNG, KHO XƯỞNG</h3>
+                    </a>
                 </div>
             </div>
         </div>
@@ -153,7 +165,7 @@
                     <img class="w-full md:w-4/5 lg:w-[400px] xl:w-[450px]" src="{{ asset('assets/van.png') }}"
                         alt="Delivery van">
                     <div class="flex justify-center lg:justify-end mt-4">
-                        <a class="link-button mr-0 lg:mr-2" href="#">Nhận báo giá miễn phí</a>
+                        <a class="link-button mr-0 lg:mr-2" href="{{ route('contact') }}">Nhận báo giá miễn phí</a>
                     </div>
                 </div>
             </div>
@@ -219,7 +231,7 @@
                         Tham gia cùng vô số doanh nghiệp khác đã hợp lý hóa hoạt động hậu cần của họ bằng các giải pháp tiên
                         tiến của chúng tôi
                     </p>
-                    <a class="link-button" href="#">Nhận báo giá</a>
+                    <a class="link-button" href="{{ route('contact') }}">Nhận báo giá</a>
                 </div>
                 <div class="w-full flex justify-center lg:justify-end lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left"
                     data-aos-delay="200">
@@ -236,8 +248,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             @foreach ($posts as $key => $post)
-                <div class="news-card cursor-pointer" data-aos="fade-up" data-aos-delay="{{ ($key + 1) * 100 }}">
-                    <img src="{{ asset('assets/news.png') }}" alt="News image" class="w-full object-cover">
+                <a href="{{ route('news.detail', $post->slug) }}" class="news-card" data-aos="fade-up" data-aos-delay="{{ ($key + 1) * 100 }}">
+                    <img src="{{ $post->thumbnail_url }}" alt="News image" class="w-full object-cover h-64 md:h-64 lg:h-72">
                     <div class="p-4">
                         <h3 class="mb-3 text-base md:text-lg font-semibold leading-normal">
                             {{ $post->title }}
@@ -246,7 +258,7 @@
                             {{ $post->display_excerpt }}
                         </p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         <div class="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="300">

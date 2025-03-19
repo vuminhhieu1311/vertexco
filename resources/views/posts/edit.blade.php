@@ -3,7 +3,7 @@
 @section('content')
     @include('components.admin.header', [
         'parent' => __('messages.posts'),
-        'child' => 'Tạo bài viết',
+        'child' => 'Chỉnh sửa bài viết',
     ])
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -12,11 +12,12 @@
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Form-->
-                <form method="POST" action="{{ route('posts.store') }}" enctype='multipart/form-data'
+                <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype='multipart/form-data'
                     id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
                     @csrf
+                    @method('PUT')
                     <!--begin::Aside column-->
-                    <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-350px mb-7 me-lg-10">
+                    <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-400px mb-7 me-lg-10">
                         <!--begin::Thumbnail settings-->
                         <div class="card card-flush py-4">
                             <!--begin::Card header-->
@@ -33,7 +34,7 @@
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-empty image-input-outline mb-3"
                                     data-kt-image-input="true"
-                                    style="{{ 'background-image: url(' . asset('metronic/assets/media/svg/files/blank-image.svg') . ')' }}">
+                                    style="{{ 'background-image: url(' . ($post->thumbnail_url ? $post->thumbnail_url : asset('metronic/assets/media/svg/files/blank-image.svg')) . ')' }}">
                                     <!--begin::Preview existing avatar-->
                                     <div class="image-input-wrapper w-150px h-150px"></div>
                                     <!--end::Preview existing avatar-->
@@ -97,8 +98,8 @@
                                 <select class="form-select mb-2" name="is_published" data-control="select2"
                                     data-hide-search="true" data-placeholder="{{ __('messages.status') }}"
                                     id="kt_ecommerce_add_product_status_select">
-                                    <option value="1" selected="selected">{{ __('messages.published') }}</option>
-                                    <option value="0">{{ __('messages.unpublished') }}</option>
+                                    <option value="1" {{ $post->is_published ? 'selected' : '' }}>{{ __('messages.published') }}</option>
+                                    <option value="0" {{ !$post->is_published ? 'selected' : '' }}>{{ __('messages.unpublished') }}</option>
                                 </select>
                                 @error('is_published')
                                     <div class="text-danger"><small>{{ $message }}</small></div>
@@ -107,7 +108,7 @@
 
                                 <!--begin::Featured checkbox-->
                                 <div class="form-check form-check-custom form-check-solid mt-5">
-                                    <input class="form-check-input" type="checkbox" name="is_featured" value="1" checked id="is_featured" style="width: 1.2rem; height: 1.2rem;"/>
+                                    <input class="form-check-input" type="checkbox" name="is_featured" value="1" {{ $post->is_featured ? 'checked' : '' }} id="is_featured" style="width: 1.2rem; height: 1.2rem;"/>
                                     <label class="form-check-label fw-bold" for="is_featured">
                                         Tin nổi bật
                                     </label>
@@ -143,7 +144,7 @@
                                 <select class="form-select mb-2" name="category_ids[]" data-control="select2"
                                     data-placeholder="{{ __('messages.categories') }}" data-allow-clear="true" multiple>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $loop->first ? 'selected' : '' }}>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" {{ in_array($category->id, $post->categories->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 <!--end::Select2-->
@@ -181,7 +182,7 @@
                                             <!--begin::Input-->
                                             <input type="text" name="title" class="form-control mb-2 @error('title') is-invalid @enderror"
                                                 placeholder="Tiêu đề" id="title-input"
-                                                value="{{ old('title') }}" />
+                                                value="{{ old('title', $post->title) }}" />
                                             <!--end::Input-->
                                             @error('title')
                                                 <div class="text-danger"><small>{{ $message }}</small></div>
@@ -197,7 +198,7 @@
                                             <!--begin::Input-->
                                             <input type="text" name="slug" class="form-control mb-2 @error('slug') is-invalid @enderror"
                                                 placeholder="Đường dẫn" id="slug-input"
-                                                value="{{ old('slug') }}" />
+                                                value="{{ old('slug', $post->slug) }}" />
                                             <!--end::Input-->
                                             @error('slug')
                                                 <div class="text-danger"><small>{{ $message }}</small></div>
@@ -211,8 +212,7 @@
                                             <label class="required form-label">Mô tả</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <textarea name="excerpt" class="form-control mb-2 @error('excerpt') is-invalid @enderror" rows="4" placeholder="Mô tả"
-                                                value="{{ old('excerpt') }}"></textarea>
+                                            <textarea name="excerpt" class="form-control mb-2 @error('excerpt') is-invalid @enderror" rows="4" placeholder="Mô tả">{{ old('excerpt', $post->excerpt) }}</textarea>
                                             <!--end::Input-->
                                             @error('excerpt')
                                                 <div class="text-danger"><small>{{ $message }}</small></div>
@@ -232,7 +232,7 @@
                                                 <div class="text-danger"><small>{{ $message }}</small></div>
                                             @enderror
                                         </div>
-                                        <input type="hidden" id="product-description" name="content" value="{{ old('content') }}" />
+                                        <input type="hidden" id="product-description" name="content" value="{{ old('content', $post->content) }}" />
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
                                         <div class="mb-10 fv-row">
@@ -241,7 +241,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="number" name="order" class="form-control mb-2 @error('order') is-invalid @enderror"
-                                                placeholder="Số thứ tự" value="{{ old('order') }}" min="1" />
+                                                placeholder="Số thứ tự" value="{{ old('order', $post->order) }}" min="1" />
                                             <!--end::Input-->
                                             @error('order')
                                                 <div class="text-danger"><small>{{ $message }}</small></div>

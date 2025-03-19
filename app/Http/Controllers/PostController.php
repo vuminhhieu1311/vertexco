@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CategoryType;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -28,7 +30,7 @@ class PostController extends Controller
     }
 
     // Lưu bài viết mới
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -40,7 +42,7 @@ class PostController extends Controller
                 'order' => $request->order,
                 'excerpt' => $request->excerpt,
                 'thumbnail' => $filePath,
-                'content' => $request->content,
+                'content' => $request->input('content'),
                 'user_id' => Auth::id(),
                 'is_published' => $request->input('is_published', false),
                 'is_featured' => $request->input('is_featured', false),
@@ -65,27 +67,47 @@ class PostController extends Controller
     // Hiển thị form chỉnh sửa
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $categories = Category::where('type', CategoryType::POST)->latest()->get();
+
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     // Cập nhật bài viết
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
+        try {
+            DB::beginTransaction();
 
-        $post->update($request->all());
-        return redirect()->route('posts.index')
-            ->with('success', 'Bài viết đã được cập nhật thành công.');
+            $filePath = $post->thumbnail;
+            if ($request->file('thumbnail')) {
+                $filePath = optional($request->file('thumbnail'))->store('images', ['disk' => 'public_storage']);
+            }
+
+            $post->update([
+                'title' => $request->title,
+                'slug' => $request->slug,
+                'order' => $request->order,
+                'excerpt' => $request->excerpt,
+                'thumbnail' => $filePath,
+                'content' => $request->input('content'),
+                'user_id' => Auth::id(),
+                'is_published' => $request->input('is_published', false),
+                'is_featured' => $request->input('is_featured', false),
+            ]);
+
+            $post->categories()->sync($request->category_ids);
+            DB::commit();
+
+            return redirect()->route('posts.index')->with('success', 'Bài viết đã được cập nhật thành công.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Lỗi khi tạo bài viết: ' . $e->getMessage());
+        }
     }
 
     // Xóa bài viết
     public function destroy(Post $post)
     {
-        $post->delete();
-        return redirect()->route('posts.index')
-            ->with('success', 'Bài viết đã được xóa thành công.');
+        return $post->delete();
     }
 }

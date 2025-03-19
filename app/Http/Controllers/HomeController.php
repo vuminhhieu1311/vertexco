@@ -40,7 +40,7 @@ class HomeController extends Controller
             ->with('categories')
             ->orderBy('order', 'asc')
             ->latest('id')
-            ->paginate(2);
+            ->paginate(15);
 
         return view('guest.news', compact('posts'));
     }

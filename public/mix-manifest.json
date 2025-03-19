@@ -17,6 +17,7 @@
     "/resources/js/product/create.js": "/resources/js/product/create.js",
     "/resources/js/product/edit.js": "/resources/js/product/edit.js",
     "/resources/js/product/index.js": "/resources/js/product/index.js",
+    "/resources/js/posts/index.js": "/resources/js/posts/index.js",
     "/resources/js/posts/create.js": "/resources/js/posts/create.js",
     "/resources/js/rating/index.js": "/resources/js/rating/index.js",
     "/resources/js/role/index.js": "/resources/js/role/index.js",

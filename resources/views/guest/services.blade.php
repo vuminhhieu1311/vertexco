@@ -72,9 +72,9 @@
                                 required>
                         </div>
                         <!-- Nút đăng ký cho desktop -->
-                        <div class="hidden md:block">
+                        <div class="hidden md:block cursor-pointer">
                             <button type="submit"
-                                class="bg-[#C1262E] text-white px-8 py-4.5 rounded hover:bg-[#A01F26] transition w-full">
+                                class="bg-[#C1262E] cursor-pointer text-white px-8 py-4.5 rounded hover:bg-[#A01F26] transition w-full">
                                 Đăng ký
                             </button>
                         </div>

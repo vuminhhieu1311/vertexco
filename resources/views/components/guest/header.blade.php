@@ -16,20 +16,20 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
-                <li class="header-menu-item active">
-                    <a href="/" class="block py-2 text-red-600 rounded-sm md:bg-transparent md:p-0" aria-current="page">Trang chủ</a>
+                <li class="header-menu-item {{ request()->is('/') ? 'active' : '' }}">
+                    <a href="/" class="block py-2 {{ request()->is('/') ? 'text-red-600' : 'text-gray-900 hover:text-red-600' }} rounded-sm md:bg-transparent md:p-0" {{ request()->is('/') ? 'aria-current="page"' : '' }}>Trang chủ</a>
                 </li>
-                <li class="header-menu-item">
-                    <a href="/about" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Về chúng tôi</a>
+                <li class="header-menu-item {{ request()->is('about') ? 'active' : '' }}">
+                    <a href="/about" class="block py-2 {{ request()->is('about') ? 'text-red-600' : 'text-gray-900 hover:text-red-600' }} rounded-sm md:p-0" {{ request()->is('about') ? 'aria-current="page"' : '' }}>Về chúng tôi</a>
                 </li>
-                <li class="header-menu-item">
-                    <a href="/services" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Dịch vụ</a>
+                <li class="header-menu-item {{ request()->is('services') ? 'active' : '' }}">
+                    <a href="/services" class="block py-2 {{ request()->is('services') ? 'text-red-600' : 'text-gray-900 hover:text-red-600' }} rounded-sm md:p-0" {{ request()->is('services') ? 'aria-current="page"' : '' }}>Dịch vụ</a>
                 </li>
-                <li class="header-menu-item">
-                    <a href="/contact" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Liên hệ</a>
+                <li class="header-menu-item {{ request()->is('contact') ? 'active' : '' }}">
+                    <a href="/contact" class="block py-2 {{ request()->is('contact') ? 'text-red-600' : 'text-gray-900 hover:text-red-600' }} rounded-sm md:p-0" {{ request()->is('contact') ? 'aria-current="page"' : '' }}>Liên hệ</a>
                 </li>
-                <li class="header-menu-item">
-                    <a href="/news" class="block py-2 text-gray-900 rounded-sm hover:text-red-600 md:p-0">Tin tức</a>
+                <li class="header-menu-item {{ request()->is('news') ? 'active' : '' }}">
+                    <a href="/news" class="block py-2 {{ request()->is('news') ? 'text-red-600' : 'text-gray-900 hover:text-red-600' }} rounded-sm md:p-0" {{ request()->is('news') ? 'aria-current="page"' : '' }}>Tin tức</a>
                 </li>
             </ul>
         </div>
