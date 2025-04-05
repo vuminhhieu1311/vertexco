@@ -1,10 +1,10 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="home-banner-section w-full bg-cover bg-center aspect-[1920/1282]"
+    <div class="home-banner-section w-full bg-cover bg-center aspect-[1920/1282] flex items-center"
         style="background-image: url('{{ asset('assets/home-bg.svg') }}')">
-        <div class="container mx-auto py-12 md:py-20 px-4 md:px-8 h-full">
-            <div class="w-full flex flex-col justify-center max-w-4xl h-full" data-aos="fade-right">
+        <div class="container mx-auto py-12 md:py-20 px-4 md:px-8">
+            <div class="w-full flex flex-col justify-center max-w-4xl" data-aos="fade-right">
                 <h1 class="home-banner-text text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8">
                     Vận chuyển thông minh<br>
                     tương lai bền vững
@@ -74,28 +74,28 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <a href="{{ route('services') }}" class="block">
+                    <a href="{{ route('news.detail', ['slug' => 'van-tai-bac-nam']) }}" class="block">
                         <img src="{{ asset('assets/service-1.svg') }}" alt="Vận tải Bắc Nam" class="w-full object-cover">
                         <h3 class="service-text text-center py-4">VẬN TẢI BẮC NAM</h3>
                     </a>
                 </div>
 
                 <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <a href="{{ route('services') }}" class="block">
+                    <a href="{{ route('news.detail', ['slug' => 'xe-tai-cho-hang']) }}" class="block">
                         <img src="{{ asset('assets/service-2.svg') }}" alt="Xe tải chở hàng" class="w-full object-cover">
                         <h3 class="service-text text-center py-4">XE TẢI CHỞ HÀNG</h3>
                     </a>
                 </div>
 
                 <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-                    <a href="{{ route('services') }}" class="block">
+                    <a href="{{ route('news.detail', ['slug' => 'van-chuyen-container']) }}" class="block">
                         <img src="{{ asset('assets/service-3.svg') }}" alt="Vận chuyển container" class="w-full object-cover">
                         <h3 class="service-text text-center py-4">VẬN CHUYỂN CONTAINER</h3>
                     </a>
                 </div>
 
                 <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-                    <a href="{{ route('services') }}" class="block">
+                    <a href="{{ route('news.detail', ['slug' => 'van-chuyen-hang-sieu-trong']) }}" class="block">
                         <img src="{{ asset('assets/service-4.svg') }}" alt="Vận chuyển hàng siêu trọng"
                             class="w-full object-cover">
                         <h3 class="service-text text-center py-4">VẬN CHUYỂN HÀNG SIÊU TRỌNG</h3>
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="500">
-                    <a href="{{ route('services') }}" class="block">
+                    <a href="{{ route('news.detail', ['slug' => 'chuyen-nha-tron-goi-gia-re']) }}" class="block">
                         <img src="{{ asset('assets/service-5.svg') }}" alt="Chuyển nhà trọn gói giá rẻ"
                             class="w-full object-cover">
                         <h3 class="service-text text-center py-4">CHUYỂN NHÀ TRỌN GÓI GIÁ RẺ</h3>
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="bg-white overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="600">
-                    <a href="{{ route('services') }}" class="block">
+                    <a href="{{ route('news.detail', ['slug' => 'chuyen-van-phong-kho-xuong']) }}" class="block">
                         <img src="{{ asset('assets/service-6.svg') }}" alt="Chuyển văn phòng, kho xưởng"
                             class="w-full object-cover">
                         <h3 class="service-text text-center py-4">CHUYỂN VĂN PHÒNG, KHO XƯỞNG</h3>

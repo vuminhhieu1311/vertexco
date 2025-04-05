@@ -15,36 +15,36 @@
             </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            <div class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <a href="{{ route('news.detail', ['slug' => 'van-tai-bac-nam']) }}" class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                 <img src="{{ asset('assets/service-1.svg') }}" alt="Vận tải Bắc Nam" class="w-full object-cover">
                 <h3 class="service-text text-center py-4" style="color: #FFF;">VẬN TẢI BẮC NAM</h3>
-            </div>
+            </a>
 
-            <div class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <a href="{{ route('news.detail', ['slug' => 'xe-tai-cho-hang']) }}" class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                 <img src="{{ asset('assets/service-2.svg') }}" alt="Xe tải chở hàng" class="w-full object-cover">
                 <h3 class="service-text text-center py-4" style="color: #FFF;">XE TẢI CHỞ HÀNG</h3>
-            </div>
+            </a>
 
-            <div class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <a href="{{ route('news.detail', ['slug' => 'van-chuyen-container']) }}" class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="300">
                 <img src="{{ asset('assets/service-3.svg') }}" alt="Vận chuyển container" class="w-full object-cover">
                 <h3 class="service-text text-center py-4" style="color: #FFF;">VẬN CHUYỂN CONTAINER</h3>
-            </div>
+            </a>
 
-            <div class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+            <a href="{{ route('news.detail', ['slug' => 'van-chuyen-hang-sieu-trong']) }}" class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="400">
                 <img src="{{ asset('assets/service-4.svg') }}" alt="Vận chuyển hàng siêu trọng" class="w-full object-cover">
                 <h3 class="service-text text-center py-4" style="color: #FFF;">VẬN CHUYỂN HÀNG SIÊU TRỌNG</h3>
-            </div>
+            </a>
 
-            <div class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+            <a href="{{ route('news.detail', ['slug' => 'chuyen-nha-tron-goi-gia-re']) }}" class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="500">
                 <img src="{{ asset('assets/service-5.svg') }}" alt="Chuyển nhà trọn gói giá rẻ" class="w-full object-cover">
                 <h3 class="service-text text-center py-4" style="color: #FFF;">CHUYỂN NHÀ TRỌN GÓI GIÁ RẺ</h3>
-            </div>
+            </a>
 
-            <div class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="600">
+            <a href="{{ route('news.detail', ['slug' => 'chuyen-van-phong-kho-xuong']) }}" class="bg-[#C1262E] overflow-hidden" data-aos="fade-up" data-aos-delay="600">
                 <img src="{{ asset('assets/service-6.svg') }}" alt="Chuyển văn phòng, kho xưởng"
                     class="w-full object-cover">
                 <h3 class="service-text text-center py-4" style="color: #FFF;">CHUYỂN VĂN PHÒNG, KHO XƯỞNG</h3>
-            </div>
+            </a>
         </div>
     </div>
     <div class="container mx-auto pb-8 md:pb-12 px-4 sm:px-8">

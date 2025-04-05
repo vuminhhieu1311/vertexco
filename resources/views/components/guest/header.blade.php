@@ -36,6 +36,7 @@
 
         <!-- Mobile Menu Drawer -->
         <div x-show="mobileMenuOpen"
+            x-cloak
             x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="-translate-x-full"
             x-transition:enter-end="translate-x-0"

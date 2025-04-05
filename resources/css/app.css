@@ -6,6 +6,15 @@ html {
     scroll-behavior: smooth;
 }
 
+.container {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
 .header-menu-item {
     color: #1C1F35;
     font-size: 16px;
