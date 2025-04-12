@@ -4,7 +4,7 @@
     <div class="home-banner-section w-full bg-cover bg-center aspect-[1920/1282] flex items-center"
         style="background-image: url('{{ asset('assets/home-bg.svg') }}')">
         <div class="container mx-auto py-12 md:py-20 px-4 md:px-8">
-            <div class="w-full flex flex-col justify-center max-w-4xl" data-aos="fade-right">
+            <div class="w-full flex flex-col justify-center max-w-4xl">
                 <h1 class="home-banner-text text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8">
                     Vận chuyển thông minh<br>
                     tương lai bền vững
