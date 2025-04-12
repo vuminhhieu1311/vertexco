@@ -1,8 +1,6 @@
-RewriteEngine On
-
-# Nếu yêu cầu không trỏ tới thư mục thực tế hoặc file thực tế
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-
-# Redirect toàn bộ request về thư mục public
-RewriteRule ^(.*)$ public/$1 [L]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^$ public/index.php [L]
+    RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+</IfModule>
