@@ -15,7 +15,7 @@
                     Chúng tôi cam kết đồng hành cùng bạn xây dựng<br class="hidden md:block">
                     một tương lai xanh và phát triển bền vững.
                 </p>
-                <div data-aos="fade-up" data-aos-delay="200">
+                <div>
                     <x-primary-button link="{{ route('contact') }}">Liên hệ ngay</x-primary-button>
                 </div>
             </div>
