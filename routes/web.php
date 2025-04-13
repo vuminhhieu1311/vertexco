@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,8 @@ Route::middleware(['auth', 'localization'])->group(function () {
     // Admin Routes
     Route::prefix('admin')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+        Route::put('/setting', [SettingController::class, 'update'])->name('setting.update');
         Route::get('/report/sales', [DashboardController::class, 'sales'])->name('report.sales');
 
         Route::prefix('products')->group(function () {

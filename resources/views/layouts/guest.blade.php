@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vertexco</title>
+    @if(setting('google_verification_code'))
+        {!! setting('google_verification_code') !!}
+    @endif
+    <title>{{ setting('title', 'Website') }}</title>
     <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +16,10 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    @if(setting('favicon'))
+        <link rel="icon" type="image/x-icon" href="{{ asset(setting('favicon')) }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset(setting('favicon')) }}">
+    @endif
 </head>
 
 <body>
